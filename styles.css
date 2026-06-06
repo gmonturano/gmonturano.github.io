@@ -480,3 +480,149 @@ code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size
     white-space:normal;
   }
 }
+
+
+/* Bright-blue final homepage corrections */
+:root{
+  --link:#0057d9;
+}
+
+.home-layout{
+  grid-template-columns:185px minmax(0,585px);
+  gap:58px;
+}
+
+.content,
+.page,
+.home-bio{
+  max-width:585px;
+}
+
+.home-bio h1{
+  font-size:1.44rem;
+  margin-bottom:8px;
+}
+
+.academic-roles{
+  margin:0 0 18px;
+  font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size:.76rem;
+  line-height:1.45;
+  letter-spacing:.015em;
+  color:#56616f;
+  text-transform:none;
+}
+
+.academic-roles div{
+  margin-bottom:2px;
+}
+
+.home-bio p{
+  font-size:.94rem;
+  line-height:1.58;
+  margin-bottom:12px;
+}
+
+.home-bio .lead{
+  font-size:.98rem;
+  line-height:1.58;
+  color:#111827;
+}
+
+.home-bio a,
+.academic-roles a,
+.contact-block a{
+  color:#0057d9 !important;
+  text-decoration:none;
+  border-bottom:1px solid rgba(0,87,217,.45);
+}
+
+.home-bio a:hover,
+.academic-roles a:hover,
+.contact-block a:hover{
+  color:#003fa3 !important;
+  border-bottom-color:#003fa3;
+  text-decoration:none;
+}
+
+.contact-block .side-small{
+  font-size:.76rem;
+  line-height:1.48;
+}
+
+.programming-line{
+  margin-top:15px;
+  white-space:nowrap;
+}
+
+.code-badge{
+  font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size:.88em;
+  font-weight:800;
+  padding:2px 7px;
+  border-radius:5px;
+  border:0;
+  box-shadow:none;
+}
+
+.r-code{
+  color:#fff;
+  background:#0096ff;
+}
+
+.python-code{
+  color:#1b1b1b;
+  background:#ffd43b;
+}
+
+.secondary-logos{
+  display:none !important;
+}
+
+@media (max-width:720px){
+  .home-layout{
+    display:block;
+  }
+  .content,
+  .page,
+  .home-bio{
+    max-width:100%;
+  }
+  .programming-line{
+    white-space:normal;
+  }
+}
+
+
+/* Academic role header refinement */
+.academic-roles{
+  margin:0 0 18px;
+  font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size:.72rem;
+  line-height:1.55;
+  letter-spacing:.04em;
+  color:#5b6572;
+}
+
+.academic-roles div{
+  margin-bottom:3px;
+}
+
+.role-title{
+  font-weight:800;
+  text-transform:uppercase;
+  color:#1f2933;
+  letter-spacing:.075em;
+}
+
+.role-meta{
+  font-weight:500;
+  color:#5f6b7a;
+  letter-spacing:.025em;
+}
+
+.academic-roles a{
+  color:inherit !important;
+  border-bottom:0 !important;
+  pointer-events:none;
+}
