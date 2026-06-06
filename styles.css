@@ -211,3 +211,272 @@ code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size
 .round-logo.small{width:25px;height:25px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.08))}
 .round-logo img{width:100%;height:100%;display:block;border-radius:50%;filter:none;opacity:1}
 .round-logo:hover{transform:translateY(-1px) scale(1.04);opacity:.95;text-decoration:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.16))}
+
+
+/* Home page polish */
+.home-layout{
+  grid-template-columns:190px minmax(0,680px);
+  gap:64px;
+}
+
+.profile-photo{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.sidebar{
+  padding-top:4px;
+}
+
+.side-title{
+  font-size:.78rem;
+  letter-spacing:.12em;
+  color:#2f3a45;
+}
+
+.logo-row{
+  gap:8px;
+}
+
+.round-logo{
+  width:30px;
+  height:30px;
+}
+
+.round-logo.small{
+  width:25px;
+  height:25px;
+}
+
+.home-bio{
+  max-width:700px;
+}
+
+.home-bio h1{
+  font-size:1.55rem;
+  margin-bottom:8px;
+  letter-spacing:-.015em;
+}
+
+.home-bio .position{
+  color:#4e5966;
+  font-size:.95rem;
+  line-height:1.45;
+  margin-bottom:18px;
+}
+
+.home-bio p{
+  font-size:.98rem;
+  line-height:1.62;
+  margin-bottom:13px;
+  color:#111827;
+}
+
+.home-bio .lead{
+  font-size:1.03rem;
+  line-height:1.58;
+  color:#111;
+  margin-bottom:16px;
+}
+
+.programming-block{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.programming-text{
+  color:#111827;
+  font-size:.98rem;
+}
+
+.programming-badges{
+  display:inline-flex;
+  gap:7px;
+  align-items:center;
+}
+
+.programming-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:34px;
+  height:24px;
+  padding:0 10px;
+  border-radius:999px;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.01em;
+  line-height:1;
+  box-shadow:0 1px 2px rgba(0,0,0,.08);
+}
+
+.r-badge{
+  color:#fff;
+  background:#276dc3;
+}
+
+.python-badge{
+  color:#1f2d3d;
+  background:#ffd43b;
+}
+
+@media (max-width:720px){
+  .home-layout{
+    display:block;
+  }
+
+  .profile-photo{
+    width:122px;
+    height:122px;
+  }
+
+  .home-bio h1{
+    font-size:1.38rem;
+  }
+
+  .home-bio p{
+    font-size:.96rem;
+  }
+}
+
+
+/* Refined homepage layout and typography */
+.home-layout{
+  grid-template-columns:185px minmax(0,600px);
+  gap:58px;
+  align-items:start;
+}
+
+.content,
+.page,
+.home-bio{
+  max-width:600px;
+}
+
+.home-bio h1{
+  font-size:1.46rem;
+  letter-spacing:-.012em;
+  margin-bottom:7px;
+}
+
+.academic-roles{
+  margin:0 0 18px;
+  color:#4f5a66;
+  font-size:.84rem;
+  line-height:1.45;
+  font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.academic-roles span{
+  display:block;
+  margin-bottom:2px;
+}
+
+.academic-roles a{
+  color:#315f8b;
+}
+
+.home-bio .lead{
+  font-size:.99rem;
+  line-height:1.58;
+  color:#111;
+  margin-bottom:15px;
+}
+
+.home-bio p{
+  font-size:.94rem;
+  line-height:1.58;
+  margin-bottom:12px;
+}
+
+.home-bio a{
+  color:#245c8a;
+  text-decoration:none;
+  border-bottom:1px solid rgba(36,92,138,.25);
+}
+
+.home-bio a:hover{
+  border-bottom-color:#245c8a;
+  text-decoration:none;
+}
+
+.profile-photo{
+  width:142px;
+  height:142px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.primary-logos{
+  max-width:170px;
+}
+
+.secondary-logos{
+  display:none;
+}
+
+.contact-block .side-small{
+  font-size:.78rem;
+  line-height:1.5;
+}
+
+.contact-block a{
+  color:#245c8a;
+  text-decoration:none;
+}
+
+.contact-block a:hover{
+  text-decoration:underline;
+}
+
+.programming-line{
+  margin-top:15px;
+  white-space:nowrap;
+}
+
+.code-badge{
+  font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size:.86em;
+  font-weight:700;
+  padding:2px 7px;
+  border-radius:6px;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+}
+
+.r-code{
+  color:#fff;
+  background:#276dc3;
+}
+
+.python-code{
+  color:#1f2d3d;
+  background:#ffd43b;
+}
+
+@media (max-width:720px){
+  .home-layout{
+    display:block;
+  }
+
+  .content,
+  .page,
+  .home-bio{
+    max-width:100%;
+  }
+
+  .profile-photo{
+    width:122px;
+    height:122px;
+  }
+
+  .programming-line{
+    white-space:normal;
+  }
+}
