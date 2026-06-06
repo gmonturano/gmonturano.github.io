@@ -1,0 +1,991 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{red} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+
+\moderncvstyle{banking} % più minimal e lineare
+\moderncvcolor{black}   % elimina i colori accesi
+
+
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage[scale=0.8]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            urlcolor=blue,
+            citecolor=blue,
+            anchorcolor=blue]{hyperref}
+
+\usepackage[dvipsnames]{xcolor}
+
+
+
+\usepackage{enumitem} % per liste numerate personalizzate
+
+
+
+
+
+% Nuovo comando cvitem con rientro automatico
+\newcommand{\cvitemindent}[2]{%
+  \cvitem{#1}{\parbox[t]{0.92\linewidth}{\hangindent=0.3em \hangafter=1 #2}}%
+}
+
+
+
+% Comando per item con due colonne (personalizzabile)
+\newcommand{\cvitemcols}[3]{%
+  \begin{tabular}{p{#1}p{\dimexpr\linewidth-#1\relax}}
+    \textbf{#2} & #3
+  \end{tabular}\par\vspace{6pt}
+}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+\title{\large Curriculum Vitae-scientifico}
+\firstname{\Large  Gianluca} % Your first name
+\familyname{\Large  Monturano, \Large \textit{Ph.D}} % Your last name
+
+
+
+%%%%%%%%%%%%% qui metto la foto
+\photo[80pt][0.3 pt]{FOTO TESSERA.jpg}
+
+%----------------------------------------------------------------------------------------
+
+
+
+\begin{document}
+
+
+
+\makecvtitle % Print the CV title
+
+
+
+
+
+
+\vspace{-25pt}
+
+
+  
+\item \cvitem{\textbf{Web}}{{\ }\href{https://sites.google.com/d/1QwtV6pSQcHtIPOrL1GS7iObT4unUpD13/p/1mSCgy_rew-vScBrWUwI9tkdPo8P_PWXR/edit}{\textcolor{blue}{gianlucamonturano.it}}}\\
+\item \cvitem{\textbf{Email}}{\href{mailto:gianluca.monturano@unimore.it}{\textcolor{blue}{gianluca.monturano@uniba.it}}}\\
+
+
+
+\cvitem{}{%
+  % LinkedIn
+  \href{https://www.linkedin.com/in/gianluca-monturano93/}{%
+    \begin{figure}
+      \includegraphics[scale=0.055]{Figures/174857.png}
+    \end{figure}%
+  }%
+  % Teams
+  \href{https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB}{%
+    \begin{figure}
+      \includegraphics[scale=0.085]{Figures/teams.jpg}
+    \end{figure}%
+  }%
+  % Google Scholar
+  \href{https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao}{%
+    \begin{figure}
+      \includegraphics[scale=0.05]{Figures/1024px-Google_Scholar_logo.svg.png}
+    \end{figure}%
+  }%
+    % Github
+  \href{https://github.com/gmonturano}{%
+    \begin{figure}
+      \includegraphics[scale=0.057]{Figures/25231.png}
+    \end{figure}%
+  }%
+  % ResearchGate
+  \href{https://www.researchgate.net/profile/Gianluca-Monturano}{%
+    \begin{figure}
+      \includegraphics[scale=0.05]{Figures/ResearchGate_icon_SVG.svg.png}
+    \end{figure}%
+  }%
+  % ORCID (ultimo)
+  \href{https://orcid.org/0009-0003-0728-1423}{%
+    \begin{figure}
+      \includegraphics[scale=0.0128]{Figures/orcid-icon-2048x2048-q87cnnge.png}
+    \end{figure}%
+  }%
+  % Scopus (ultimo)
+  \href{https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage}{%
+    \begin{figure}
+    \includegraphics[scale=0.072]{Figures/icono-scopus.jpg}
+    \end{figure}%
+  }%
+}
+
+\\{\ }
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	ISTRUZIONE
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Ruoli attuali}}
+
+
+\cventry{2026 - presente}{\textbf{Ricercatore Universitario - Assistant Professor (RTDA)}}{}{}{}{
+\textit{Dipartimento di Scienze Economiche, Università del Salento}}
+
+
+\cventry{2026 - presente}{\textbf{Senior Researcher}}{}{}{}{\textit{Fondazione Eni Enrico Mattei di Milano}}
+
+
+
+\cventry{2024 - presente}{\textbf{Senior Researcher}}{}{}{}{\textit{Laboratory of Applied Economics (LEA)\\ Dipartimento di Economia, Management e Diritto dell'Impresa, Università di Bari}}
+
+
+\cventry{2025 - presente}{\textbf{Professore a contratto di Economia Politica}}{}{}{}{\textit{Dipartimento di Economia, Management e Diritto dell'Impresa, Università di Bari} }
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PAST ROLE
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Ruoli accedemici passati}}
+
+
+
+\cventry{2024 - presente}{\textbf{Assegnista di ricerca Post-Doc}}{}{}{}{\textit{Dipartimento di Economia, Management e Diritto dell'Impresa, Università di Bari}}
+
+
+
+\cventry{2021 - 2025}{\textbf{Dottorando di ricerca}}{}{}{}{\textit{Dipartimento di Economia, Università degli Studi di Modena e Reggio Emilia}}
+
+
+\cventry{2024}{\textbf{Visiting PhD Candidate}}{}{}{}{\textit{Solvay Brussels School of Economics and Management, Université libre de Bruxelles}}
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	ISTRUZIONE
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Altri ruoli accademici}}
+
+\cventry{2025 - presente}{Cultore della Materia in Statistica Economica - SECS-S/03}{}{}{}{\textit{Economia, Metodi Quantitativi e Strategie di Impresa, Università degli Milano Bicocca}}
+
+
+\cventry{2024 - presente}{Cultore della Materia in Economia Applicata - SECS-P/06}{}{}{}{\textit{Dipartimento di Economia, Management e Diritto dell'Impresa, Università degli Studi di Bari}}
+
+\cventry{2023 - 2025}{Cultore della Materia in Economia Politica - SECS-P/01}{}{}{}{\textit{Dipartimento di Economia, Università degli Studi di Modena e Reggio Emilia}}
+
+\cventry{2023 - presente}{Cultore della Materia in Economia Politica - SECS-P/01}{}{}{}{\textit{Facoltà di Economia, Università degli Studi Internazionali di Roma}}
+
+\cventry{2022 - presente}{Cultore della Materia in Statistica - SECS-S/01}{}{}{}{\textit{Dipartimento di Economia, Università degli Studi di Modena e Reggio Emilia}}
+
+\cventry{2021--2024}{Cultore della Materia in Statistica Economica - SECS-S/03}{}{}{}{\textit{Dipartimento di Scienze della Comunicazione, Università degli Studi di Teramo}}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	ISTRUZIONE
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Istruzione}}
+
+\vspace{6pt}
+
+\cventry{2025}{\textit{Dipartimento di Economia, Università di Modena e Reggio Emilia}}{Dottorato di Ricerca}{}{}{}
+
+\cventry{2020}{Università degli Studi Niccolò Cusano}{\textit{Master Universitario di II livello in Banking e Risk Management}}{}{}{}
+
+\cventry{2019}{Università degli Studi del Molise}{\textit{Laurea Magistrale in Scienze Economiche e Aziendali}}{}{}{}
+
+
+
+%----------------------------------------------------------------------------------------
+%	INSEGNAMENTI
+%----------------------------------------------------------------------------------------
+\section{\textbf{Attività didattica}}
+
+\vspace{6pt}
+
+\textbf{Insegnamenti in corsi di dottorato}
+\begin{itemize}
+  \item 2025--2026: Professore a contratto per il corso di dottorato in "Competenze trasversali" \textit{Strumenti informatici e software statistici per l'analisi dei dati}, rivolto a dottorandi/e e specializzandi/e, \textit{Università degli Studi di Bari Aldo Moro}.
+\end{itemize}
+
+\textbf{Docenza in corsi di laurea triennali e magistrali}
+\begin{itemize}
+  \item 2025--2026: Insegnamento di Empirical Industrial Organization
+Competitive Analysis, SECS-P/06, Corso di Laurea Magistrale in Economia e Management, \textit{Università di Bari}.
+  \item 2025--2026: Insegnamento di Istituzioni di Economia Politica (micro), SECS-P/01, CdL Triennale in Economia Aziendale, \textit{Università di Bari}.
+  \item 2024--2025: Insegnamento di Istituzioni di Economia Politica (micro), SECS-P/01, CdL Triennale in Marketing e Amministrazione d'Impresa, \textit{Università di Bari}.
+  \item 2022: Docente al Corso di formazione accademica in Turismo sostenibile in area marina protetta – TuSAMP, \textit{Università di Foggia}.
+\end{itemize}
+\textbf{Tutorato}
+\begin{itemize}
+  2024--2024: Tutor accademico di Introduzione alla Macroeconomia, SECS-P/01, CdL Triennale in Economia e Finanza, 
+  \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
+  2022--2024: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia Aziendale e Management, \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
+  2022--2024: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia e Finanza, \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
+  2022--2023: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia e Marketing Internazionale, \textit{Università di Modena e Reggio Emilia}.
+\end{itemize}
+
+\textbf{Esercitazioni}
+\begin{itemize}
+  2022--2023: Esercitazioni di Scenari economici e competitivi, SECS-P/01, CdL Magistrale in Gestione e Comunicazione d'Impresa, \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
+  2022--2024: Esercitazioni di Economia Industriale, SECS-P/01, CdL Magistrale in Direzione e Consulenza d'Impresa, \textit{Università di Modena e Reggio Emilia}.
+\end{itemize}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	LAVORO
+%----------------------------------------------------------------------------------------
+\section{\textbf{Esperienze professionali}}\
+
+\cvitem{}{%
+  \textbf{Economista} \hfill 2018--2021 \\
+  Consiglio Regionale del Molise, Via IV Novembre 87, Campobasso
+}
+
+
+\cvitem{}{%
+  \textbf{Tirocinio curriculare in gestione aziendale} \hfill 2018 \\
+  Azienda sanitaria regionale del Molise – ASREM, Via Ugo Petrella 1, Campobasso
+}
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PUBBLICAZIONI
+%----------------------------------------------------------------------------------------
+\section{\textbf{Pubblicazioni}}
+
+\vspace{6pt}
+
+\textbf{Articoli in riviste di classe A per Area 13 ANVUR} 
+\begin{enumerate}[label=\arabic*.] % Lista numerata
+
+\item Buongiorno, A., Bergantino, A. S., Fusco, G., Intini, M., & Monturano, G. (2026). Insights from fuel prices: Fuel costs and spatial rail accessibility: Econometric evidence from an empirically-weighted network-based 3SFCA models. \textit{Italian Economic Journal}. \textbf{Accepted}.
+
+
+
+    \item Bergantino, A. S., Buongiorno, A., Fusco, G., Intini, M., \& Monturano, G. (2026). Fuel costs and spatial rail accessibility: Econometric evidence from an empirically-weighted network-based 3SFCA model. \textit{Research in Transportation Business \& Management}, 67, 101693, DOI: \\ \href{https://doi.org/10.1016/j.rtbm.2026.101693}{https://doi.org/10.1016/j.rtbm.2026.101693}
+
+
+    \item Bergantino, A.S., Intini, M., Fusco, G., \& Monturano, G. (2025). Digital Divide and Income Inequality: Causal Evidence from Italian Provinces. \textit{The Annals of Regional Studies}, no. 1, DOI: \href{https://doi.org/10.1007/s00168-025-01440-z}{https://doi.org/10.1007/s00168-025-01440-z}.
+
+
+    \item Monturano, G., Resce, G. \& Sonzogno, G.V. (2025). Income Support and Voting with Territorial Disparities \textit{Socio-Economic Review},  DOI: \href{https://doi.org/10.1093/ser/mwaf035}{https://doi.org/10.1093/ser/mwaf035}.
+        
+
+
+    \item Bellantuono, L., Bellotti, R., Bergantino, A.S., Gardelli, A., Intini, M., Kheirkhahan, N., \& Monturano, G. (2025). Analyzing the Accessibility of Rome’s Healthcare Services via Public Transportation: A Complex Network Approach \textit{Scientific Report}, 15(1), 22880.  DOI: \href{https://doi.org/10.1038/s41598-025-05060-7}{https://doi.org/10.1038/s41598-025-05060-7}.
+
+
+   
+
+    \item Maranzano, P., Monturano, G. \& Tridico P. (2025). The Role of Poverty and Inequality in Determining Spatial Heterogeneity Across the Italian Municipalities \textit{Italian Economic Journal}, DOI: \href{https://doi.org/10.1007/s40797-025-00327-4}{https://doi.org/10.1007/s40797-025-00327-4}.
+    
+    \item Monturano, G., Resce, G., \& Ventura, M. (2025). Short-term Impact of Financial Support to Inner Areas. \textit{Italian Economic Journal}, 1-40. DOI: \href{https://doi.org/10.1007/s40797-025-00313-w}{https://doi.org/10.1007/s40797-025-00313-w}
+    
+\end{enumerate}
+
+
+
+\textbf{Articoli in riviste scientifiche di Area 13 ANVUR} 
+\begin{enumerate}[label=\arabic*.]
+
+
+    \item Buongiorno, A. \& Monturano, G. (2025). I dati sulla mobilità come strumento di governo del turismo. \textit{Urbanistica Informazioni}, luglio-agosto (322).
+    
+    \item Monturano, G. (2022). Il prodotto turistico e la sua promozione. Il caso dell’Arcipelago delle Isole Tremiti. \textit{Turistica. The Italian Journal of Tourism}, (3).
+\end{enumerate}
+
+
+\textbf{Contributi scientifici in volume}
+\begin{enumerate}[label=\arabic*.]
+
+
+\item Maranzano, P., Marcis, L., Monturano, G., Pagliarella, M. C., \& Salvatore, R. (2025). A study on the impact of “Reddito di Cittadinanza” using a multivariate linear mixed model. In: Rosalia, C., De Luca, G., \& Bruno, E. (eds.), \textit{V Book of Short Papers 3rd Italian Conference on Economic Statistics (ICES 2025) Sustainability, Innovation and Digitalization: Statistical Measurement for Economic Analysis}, pp. 197--200, Enzo Albano Edizioni. ISBN: 979-12-80655-52-3.
+
+
+
+    \item Monturano, G. \& Sonzogno, G.V. (2024). Spesa amministrativa e allocazione progetti PNRR in \textit{VII Rapporto Ca’ Foscari sui comuni}. (Ed.) Degni, M. Castelvecchi Editore. pp. 244-265.
+
+    
+    \item Argentiero, A., Maranzano, P., Monturano, G., \& Pedrini, G. (2024). Self-employment and Tax Evasion: A Descriptive Analysis of Italian Provinces. In: Germana, A. \& Piacentino, D. (edited by), \textit{Conflict scenarios and transitions : opportunities and risks for regions and territories}, pp. 59-90, Franco Angeli.
+    
+    \item Coco, G., Monturano, G., \& Resce, G. (2023). Assessing the effectiveness of coordination among public authorities in cohesion expenditure. In: Bucci A., Cartone A., Evangelista A., \& Marletta A. (edited by), \textit{IES 2023 - Statistical Methods for Evaluation and Quality: Techniques, Technologies and Trends (T3). BOOK OF SHORT PAPERS}, Edizioni Il Viandante.
+    
+    \item Monturano, G. (2023). Comunicare e percepire le politiche economiche e fiscali. L’asimmetria informativa nelle misure di contrasto alla povertà e nelle imposte sui patrimoni. In: C., Corsi \& P., Coen (edited by), \textit{Le professioni del comunicare: passato, presente, futuro}, Quasar, Roma.
+    
+    \item Mastronardi L., Monturano G., Romagnoli L., Vasile M. \& Zingaro M. (2020). L'approccio metodologico. In: Mastronardi L. \& Romagnoli L. (edited by), \textit{Metodologie, percorsi operativi e strumenti per lo sviluppo delle cooperative di comunità nelle aree interne italiane}, pp. 59-90, Firenze University Press, Firenze. DOI: \textcolor{blue}{https://doi.org/10.36253/978-88-5518-168-6.03}.
+    
+    \item Mastronardi L., Monturano G., Romagnoli L., Vasile M. \& Zingaro M. (2020). Il caso studio del Molise. In: L. Mastronardi \& L. Romagnoli (a cura di), \textit{Metodologie, percorsi operativi e strumenti per lo sviluppo delle cooperative di comunità nelle aree interne italiane}, pp. 91-130, Firenze University Press, Firenze. DOI: \textcolor{blue}{https://doi.org/10.36253/978-88-5518-168-6.04}.
+\end{enumerate}
+
+
+
+
+
+\textbf{Contributi minori in volume} 
+\begin{enumerate}[label=\arabic*.]
+
+    \item Monturano, G. \& Sonzogno, G. (2022). Beni comuni e disuguaglianze territoriali. Tra innovazione sociale, cooperazione e opportunità. In: Centro Indipendente di Studi sull’Alta Valle del Volturno CISAV-APS (edited by), \textit{Saperi Territorializzati: Aver cura dei paesi, partecipare, autodeterminarsi}, pp. 52-55, Autoproduzioni CISAV.
+    
+    %\item Monturano, G. \& Sacchetti, F. (2022). La turisticità comunale favorisce la crescita locale? Evidenze dalla mappatura delle aree turistiche prevalenti. In: Centro Indipendente di Studi sull’Alta Valle del Volturno CISAV-APS (edited by), \textit{Saperi Territorializzati: Abitare le aree fragili tra accessibilità e consapevolezza}, pp. 71-74, Autoproduzioni CISAV.
+    
+    \item Monturano, G. \& Sacchetti, F. (2021). Il Piano Nazionale di Ripresa e Resilienza – PNRR – come strumento di coesione territoriale per la crescita e lo sviluppo delle Aree Interne molisane. In: Centro Indipendente di Studi sull’Alta Valle del Volturno CISAV-APS (edited by), \textit{Saperi territorializzati: studi critici sul margine e i suoi patrimoni}, pp. 93-97, Autoproduzioni CISAV.
+
+\end{enumerate}
+
+
+
+
+\textbf{Working paper}
+
+
+
+
+\begin{enumerate}[label=\arabic*.] 
+
+\item  Chiodin, A., Manera, M., Maranzano, P., & Monturano, G. (2026). Identifying Spatial Regimes of Economic Fragility through Spatially Constrained Clustering: Evidence from Italian Municipalities.
+
+
+\item  Coco, G., Monturano, G., \& Resce, G. (2025). Predicting Delays in Cohesion Infrastructure Projects (No. esdp25099). University of Molise, Department of Economics.
+\end{enumerate}
+
+
+
+
+\textbf{Poster session}
+
+\begin{enumerate}[label=\arabic*.] 
+\item  Bergantino, A.S., Intini, M., Monturano, G., \& De Dato, D.  (2025). Understanding maritime logistics through Drewry data: a resource for port and shipping studies, in XXVII SIET Conference 
+\end{enumerate}
+
+
+
+
+%--------------------------------------------
+% SLIDE: Submitted and Ongoing Research
+%--------------------------------------------
+%--------------------------------------------
+% Submitted and ongoing research
+%--------------------------------------------
+\textbf{Submitted and ongoing papers}
+
+\begin{enumerate}
+
+\item \textbf{Monturano, G.}, Ciccarelli, C. & Mastronardi, L.
+\textit{Do Protected Areas Affect Income Levels in Remote Regions? Evidence from Italian Inner Areas} -- \textcolor{red}{Environmental and Resource Economics}, 2nd round of revision.
+
+\item Coco, G., \textbf{Monturano, G.} & Resce, G.
+\textit{Delays in Cohesion Infrastructure Projects. A Machine Learning Approach} -- \textcolor{red}{Oxford Bulletin of Economics and Statistics}, 2nd round of revision.
+
+\item Argentiero, A., Maranzano, P., Pedrini, G. & \textbf{Monturano, G.}
+\textit{Spatial consequences of tax reforms on tax compliance: Econometric evidence from the Italian Minimum Taxpayer Regime} -- \textcolor{red}{The Annals of Regional Science}, 2nd round of revision.
+
+\item Bergantino, A.S., \textbf{Monturano, G.} & Pedrini, G.
+\textit{Cohesion Policies for the Tourism Industry} -- \textcolor{red}{Regional Studies}, Revise and Resubmit.
+
+\item \textbf{Monturano, G.}, Ciccarelli, C. & Mastronardi, L.
+\textit{Consumer Food Cooperatives as Tools for Food Access and Community Support in Italian Inner Areas} -- \textcolor{red}{Journal of Rural Studies}, Under Review.
+
+\item Bergantino, A.S., Intini, M. & \textbf{Monturano, G.}
+\textit{Accessibility as a Territorial Equilibrium: Evidence from Italian Municipalities} -- \textcolor{red}{Spatial Economic Analysis}, Under Review.
+
+\item De Castris, M., Fusco, G. & \textbf{Monturano, G.}
+\textit{Employment Protection Reforms and Workers’ Health and Well-Being: An Individual Quasi-Experimental Study} -- \textcolor{red}{Health Policy}, Under Review.
+
+\item Bergantino, A.S., Coluccia, B., Fusco, G., \textbf{Monturano, G.} & Salvatore, R.
+\textit{Digital Infrastructure and Territorial Heterogeneity in Quality-of-Life Outcomes} -- \textcolor{red}{Socio-Economic Planning Sciences}, Under Review.
+
+\item Marcis, L., Maranzano, P., \textbf{Monturano, G.} & Salvatore, R.
+\textit{The Italian Citizens' Income Program: An Analysis of its Impact on the Territorial Distribution of Some Economic Indicators} -- \textcolor{red}{Socio-Economic Planning Sciences}, Under Review.
+
+\item Chiodin, A., Manera, M., Maranzano, P. & \textbf{Monturano, G.}
+\textit{Mapping Socio-Economic Fragility in Italy through Municipal-Level Spatial Clustering of COVID-19 Data} -- \textcolor{red}{Networks and Spatial Economics}, Under Review.
+
+\item Brascia, D., \textbf{Monturano, G.}, Mangiameli, G., Congedo, M.T., Mastromarino, M.G., Catelli, C., Bonis, A., Wu, C.F., Ağkoç, M., Fra, S., Maiolino, E., Onorati, I., Intini, M., Bergantino, A.S., Lucchi, M., Luzzi, L., Margaritora, S., Schiavon, M., Wu, C.Y., Turna, A., Moreno-Mata, N., Martinod, E. & Marulli, G.
+\textit{AI-Guided Brain MRI Intensification in Resected Young NSCLC: Global Multicenter Risk Model} -- Ready for submission.
+
+
+\item Bergantino, A.S., Intini, M., Pedrini, G., Scudieri, R. & \textbf{Monturano, G.}
+\textit{Spatial Spillovers and Connectivity in Italian Service Industries} -- Ongoing.
+
+\item Bourdin, S., Fusco, G. & \textbf{Monturano, G.}
+\textit{Urban Left-Behindness within Metropolitan Italy: A Sub-Municipal Spatial Panel Econometric Analysis of Electoral Discontent} -- Ongoing.
+
+\item Bergantino, A.S., Erasmo, V., Fusco, G., Intini, M. & \textbf{Monturano, G.}
+\textit{Investigating the Impact of PRIN on Higher Education Performance in Italy: A Spatial-Econometric Analysis} -- Ongoing.
+
+\item Fusco, G., Gallo, G. & \textbf{Monturano, G.}
+\textit{Population Trends in a Medium-Sized City: Shock and Local Projection} -- Ongoing.
+
+\item Coluccia, B., \textbf{Monturano, G.} & Perugini, F.
+\textit{Firm Productivity and Certification: Evidence from Italian Firms} -- Ongoing.
+
+
+
+\end{enumerate}
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+\section{\textbf{Grant e premi}}
+
+\cvitemcols{2cm}{2026}{\textbf{Vincitore} del \textbf{Giorgio Leonardi Doctoral Award -- XLI Edition}, premio nazionale per le migliori tesi di dottorato nell’ambito delle scienze regionali indetto dall'Associazione Italiana di Scienze Regionali (AISRe). Titolo della tesi: \textit{Granular Policy Evaluation: Socio-Economic and Spatial Analysis in an Unequal Country}.}
+
+\cvitemcols{2cm}{2026}{European Commission, \textbf{Marie Skłodowska-Curie Postdoctoral Fellowship} (HORIZON-MSCA-2025-PF).
+\textit{InterNetImpact -- Interdisciplinary Research, Network Structure and Impact of Science}.
+\textbf{Valutazione: 88.6/100} (above funding threshold; highly evaluated proposal).}
+
+\cvitemcols{2cm}{2025}{\textbf{Vincitore del Premio ``Valutare Premia'' -- VII edizione}, assegnato alle migliori tesi di dottorato sui temi della valutazione delle politiche pubbliche su tematiche economiche, indetto dal Consiglio Regionale della Lombardia. Titolo della tesi: \textit{Granular Policy Evaluation: Socio-Economic and Spatial Analysis in an Unequal Country}.}
+
+\cvitemcols{2cm}{2025}{Regional Studies Association (RSA), \textbf{Research Travel Grant}.
+Finanziamento per la partecipazione al \textit{65th WRSA Meeting}, Santa Fè, Nuovo Messico, USA, 2026, come riconoscimento della qualità scientifica del paper \textit{Spatial Spillovers and Connectivity between Service Companies and Service Institutions in Italy: A Gravity-Based Approach}.}
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+\section{\textbf{Partecipazione a progetti di ricerca presso enti di ricerca e università}}
+
+
+\cvitemcols{2cm}{2025 - \newpage in corso}{Progetto finanziato dal Ministero dell’Università e della Ricerca tramite la Fondazione Eni Mattei di Milano, dal titolo: “Progetto/Project MUR-FRES – Una, sola, indivisibile: le tante Italie nel COVID”. Obiettivo del progetto: analizzare le disuguaglianze socio-economiche territoriali in Italia e il ruolo del COVID-19 nel loro ampliamento, utilizzando dati granulari comunali e tecniche statistiche avanzate, con confronto a livello europeo}
+
+
+\cvitemcols{2cm}{2025 -\newpage in corso}{Attività di ricerca per \textit{ProduttivItalia -- Centro Studi dell’Associazione Entrobordo}, in collaborazione con il \textit{Dipartimento di Economia dell’Università degli Studi del Molise}, nell’ambito della ricerca \textit{“La produttività nel mondo dei servizi”}. L’attività ha riguardato l’analisi delle dinamiche di produttività nel settore dei servizi italiani, con particolare attenzione alle micro, piccole e medie imprese, alla performance settoriale nel periodo 2005--2025, alle differenze intra-settoriali, al ruolo della dimensione aziendale, dell’innovazione digitale e dell’internazionalizzazione. L’output finale consiste in un report con evidenze empiriche, benchmark internazionali e indicazioni operative per politiche pubbliche e strategie manageriali.}
+
+
+
+\cvitemcols{2cm}{2024 - \newpage 2026}{GRINS Project – Spoke 7 (Sustainable and Inclusive Growth). Attività di ricerca nell'ambito dell'Assegno di ricerca, con contributo alla preparazione dei report, dei work packages, dei deliverable e dei paper scientifici del progetto.}
+
+
+\cvitemcols{2cm}{2023}{Progetto di ricerca finanziato dall'International Center for Tropical Agriculture (CIAT) per tramite dell'Università del Molise, dal titolo: \textit{“Support Food Insecurity Early Warning Through Conflict Analysis (Fase 3)”}.}
+
+\cvitemcols{2cm}{2023}{Progetto di ricerca finanziato dall'International Center for Tropical Agriculture (CIAT) per tramite dell'Università del Molise, dal titolo: \textit{“Attività di Innovazione Digitale”}.}
+
+\cvitemcols{2cm}{2022 - \newpage 2023}{Progetto di ricerca del Dipartimento di economia "Marco Biagi" finanziato con Fondi di ateneo per la ricerca anno 2022, dal titolo: \textit{“The roles of instructor-student similarities, surnames, and beauty on UNIMORE students’ outcomes and early career jobs”}.}
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+\section{\textbf{Formali incarichi di ricerca da Enti e istituti}}
+
+\cvitemcols{2cm}{2026}{Incarico di ricerca retribuito per \textit{WITHUB S.p.A.}, nell’ambito del progetto dal titolo: \textit{“La transizione ecologica nell’automotive e il ruolo della domanda pubblica: evidenze empiriche dalla pubblica amministrazione italiana (2019--2025)”}. L’attività ha riguardato la valutazione statistica di dati sulle immatricolazioni di veicoli presso le amministrazioni pubbliche italiane, con l’obiettivo di analizzare la direzione e la velocità del cambiamento nella transizione ecologica del settore automotive.}
+
+
+\cvitemcols{2cm}{2026}{Incarico di ricerca retribuito per \textit{A.P.S. Entrobordo} e \textit{Mama Industry S.r.l.}, avente ad oggetto l’analisi della produttività nel settore dei servizi con riferimento alle micro, piccole e medie imprese con 4--9 dipendenti. L’incarico ha previsto raccolta ed elaborazione dati, analisi statistico-economica e redazione di report di sintesi, con una ricerca a livello nazionale e una ricerca territoriale con focus sulla Regione Abruzzo.}
+
+
+
+
+
+\section{\textbf{Attività di ricerca per progetti}}
+
+\cvitemcols{2cm}{2021 - \newpage 2022}{Attività di ricerca quantitativo-econometrica per il Progetto Esecutivo finanziato dall'Istituto di Studi Sulle Relazioni Industriali (ISRI), dal titolo “Valutazione dell’impatto delle politiche pubbliche: concetti, metodi, applicazioni” presso \textit{“Servizio di valutazione ex post relativo alla Programmazione regionale 2007-13 in materia di città”}, per la valutazione degli impatti netti di livello macro con metodologia econometrica controfattuale.}
+
+\cvitemcols{2cm}{2019 - \newpage 2020}{Attività di ricerca finanziata dalla FEDAM (Federazione delle Banche di Credito Cooperativo di Abruzzo e Molise), per la realizzazione del Rapporto di Ricerca: \textit{“Ricerca finalizzata alla costituzione delle Cooperative di comunità con particolare riferimento al settore dell’agricoltura e alle attività di gestione del territorio nelle aree interne del Molise”}.}
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	CONFERENZE
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Conferenze Internazionali}}
+
+\vspace{6pt}
+
+\textbf{Internazionali}
+
+\begin{enumerate}[label=\arabic*.]
+
+    \item 65th Annual Meeting Western Regional Science Association. Santa Fè, New Mexico, USA, 11 - 14 Febbraio 2026. \textbf{Contributo presentato}: \textit{Spatial Spillovers and Connectivity between ServiceCompanies and Service Institutions in Italy: A Gravity-Based Approach}.
+
+
+
+    \item XIII International Workshop on Computational Economics and Econometrics. Rome, 2-3 dicembre 2025. \textbf{Contributo presentato}: \textit{Accessibility: Prediction with Network and Machine-Learning Framework}.
+
+
+    
+    \item 64° Congresso ERSA. Atene, Grecia, 26–30 agosto 2025 \textbf{Contributo presentato}: \textit{Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach}.
+
+
+
+    \item Relatore al CIML Training & Conference 2025, Frontiers of Causal Inference and Machine Learning, 8 luglio 2025, organizzata dalla Scuola IMT Alti Studi Lucca \textbf{Contributo presentato}: \textit{Spatial Evaluation of Essential Citizenship Services at Municipalities’ Level: The Contribution of Network Analysis and ML}.
+    
+
+
+    \item 2025 RSA Annual Conference. Porto, Portogallo, 6-9 maggio 2025. \textbf{Contributo presentato}: \textit{Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach}.
+
+
+
+    \item 63° Congresso ERSA. Azzorre, Portogallo, 26–30 agosto 2024. \textbf{Contributo presentato}: \textit{Anticipating Delays in Cohesion Infrastructure Projects by Machine Learning}.
+    
+    \item 63° Congresso ERSA. Azzorre, Portogallo, 26–30 agosto 2024. \textbf{Contributo presentato}: \textit{Income Support Policies and Voting Behavior in a Dual Country. Evidence from Italy}.
+    
+    \item 2024 RCEA (The Rimini Centre for Economic Analysis) International Conference in Economics, Econometrics, and Finance. 20-22 maggio 2024, Brunel University London, \textbf{Contributo presentato}: \textit{Anticipating Delays in Cohesion Infrastructure Projects. A Machine Learning Approach}.
+    
+    \item Data Science \& Social Research. 4th International Conference. 25-27 marzo 2024, organizzata dalla SIS presso Università di Napoli Federico II, \textbf{Contributo presentato}: \textit{Anticipating Delays in Cohesion Infrastructure Projects. A Machine Learning Approach}.
+    
+    \item Data Science \& Social Research. 4th International Conference. 25-27 marzo 2024, Università di Napoli Federico II, \textbf{Contributo presentato}: \textit{Impacts of Cohesion Funds on Local Tourism. Counterfactual Analysis and Machine Learning Approaches}.
+    
+    \item 62° Congresso ERSA. Università di Alicante, 30 agosto 2023, \textbf{Contributo presentato}: \textit{Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces}.
+    
+    \item 62° Congresso ERSA. Università di Alicante, 29 agosto 2023, \textbf{Contributo presentato}: \textit{Place-Based Policies and the Location of Economic Activity: Evidence from the Italian Strategy for Inner Areas}.
+    
+    \item 51° Incontro Scientifico della Società Italiana di Statistica (SIS). Università della Campania Luigi Vanvitelli, 22-24 giugno 2022, \textbf{Contributo presentato}: \textit{Place-Based Policies and the Location of Economic Activity: Evidence from the Italian Strategy for Inner Areas}.
+    
+\end{enumerate}
+
+
+\textbf{Nazionali}
+
+\begin{enumerate}[label=\arabic*.]
+
+
+    \item XXIV Workshop Annuale SIEPI - Società Italiana di Economia e Politica Industriale, Università degli Studi di Bari,  29 e 30 gennaio 2026. \textbf{Contributo presentato}: \textit{Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model}.
+        
+
+    
+    \item 66° Riunione Scientifica Annuale (RSA) della SIE - Società Italiana di Economia, Università Parthenope di Napoli, 23-25 ottobre 2025. \textbf{Contributo presentato}: \textit{Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach.}.
+        
+        
+
+    \item XLVI Conferenza Scientifica Annuale, dell'Associazione Italiana delle Scienze Regionali - AISRE, Università di Pescara, 10-12 settembre 2025, \textbf{Contributo presentato}: \textit{Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach.
+    }
+    
+    \item XLVI Conferenza Scientifica Annuale, dell'Associazione Italiana delle Scienze Regionali - AISRE, Università di Pescara, 10-12 settembre 2025, \textbf{Contributo presentato}: Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach.
+
+
+    \item XXVII SIET Conference Resilient and Sustainable Transport and Tourism: Evidence, Strategies and Policies, University of Bari “Aldo Moro”, Department of Economics, Management and Business Law, Biblioteca Rendella, Monopoli (Bari), 8–9 September 2025. \textbf{Contributo presentato}: Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach.
+
+        
+    \item XXIII Workshop Annuale della Società Italiana di Economia e Politica Industriale (SIEPI), Dipartimento di Ingegneria Civile, Chimica, Ambientale e dei Materiali dell'Università degli Studi di Bologna (DICAM), 30-31 gennaio 2025. \textbf{Contributo presentato}: \textit{Analyzing Accessibility to Citizenship Services}.
+        
+    
+    \item 65° Riunione Scientifica Annuale (RSA) della SIE - Società Italiana di Economia, Università di Urbino Carlo Bo, 24-26 ottobre 2024. \textbf{Contributo presentato}: \textit{Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities: Evidence from Italian Municipalities}.
+        
+    \item Ventunesimo workshop annuale CiMET, Università degli Studi di Enna “Kore”, 19-20 settembre 2024. \textbf{Contributo presentato}: \textit{Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities: Evidence from Italian Municipalities}.
+        
+    
+    \item XLV Conferenza Scientifica Annuale, dell'Associazione Italiana delle Scienze Regionali - AISRE, Università di Torino, 4-6 settembre 2024. \textbf{Contributo presentato}: \textit{Income Support Policies and Voting Behavior in a Dual Country. Evidence from Italy}.
+        
+    \item Workshop "Inequality and Intergenerational Mobility: Measurement Issues, Empirical Evidence and Policies," Associazione Italiana per lo Studio dei Sistemi Economici Comparati, Università La Sapienza di Roma, 6 settembre 2024. \textbf{Contributo presentato}: \textit{Exploiting COVID-19 Data to Identify Fragile Areas in Italy Using Geographically-Informed Clustering}.
+        
+    \item 11° Incontro del Gruppo di Lavoro Federico Caffè: Politiche Economiche a Servizio delle Persone. 22 marzo 2024, Dipartimento di Economia dell'Università di Perugia, \textbf{Contributo presentato}: \textit{Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities: Evidence from Italian Municipalities}.
+        
+    \item 11° Incontro del Gruppo di Lavoro Federico Caffè: Politiche Economiche a Servizio delle Persone. 22 marzo 2024, Dipartimento di Economia dell'Università di Perugia, \textbf{Contributo presentato}: \textit{Income Support Policies and Voting Behavior in a Dual Country}.
+        
+    \item XV Incontro Scientifico SISTUR, Società delle Scienze del Turismo, Università di Messina - Taormina, 17 ottobre 2023. \textbf{Contributo presentato}: \textit{Impacts of Cohesion Funds on Local Tourism. Counterfactual Analysis and Machine Learning Approaches}.
+        
+        \item 64° Incontro Scientifico Annuale (RSA) della SIE - Società Italiana di Economia, Gran Sasso Science Institute (GSSI) di L'Aquila, 21 ottobre 2023. \textbf{Contributo presentato}: \textit{Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces}.
+        
+        \item XLIV Conferenza Scientifica Annuale, dell'Associazione Italiana delle Scienze Regionali - AISRE, Università Partenope di Napoli, 8 settembre 2023. \textbf{Contributo presentato}: \textit{Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces}.
+        
+   %     \item XLIV Conferenza Scientifica Annuale, dell'Associazione Italiana delle Scienze Regionali - AISRE, Università Partenope di Napoli, 8 settembre 2023. \textbf{Contributo presentato}: \textit{Place-Based Policies and the Location of Economic Activity: Evidence from the Italian Strategy for Inner Areas}.
+    \item 1° Conferenza Italiana di Statistica Economica. Università Bicocca di Milano, 17 febbraio 2023, \textbf{Contributo presentato}: \textit{Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces}.
+ %   \item XVII Incontro Scientifico SISTUR. Università La Sapienza di Roma, 24-26 novembre 2022, \textbf{Contributo presentato}: \textit{L’influenza spaziale nella Crescita Economica e Produttiva delle Start-up Turistiche}.
+    
+    \item Conferenza di Studio della Facoltà di Scienze della Comunicazione dell'Università di Teramo, 26-28 aprile 2022, \textbf{Contributo presentato}: \textit{Comunicare e Percepire le Politiche Economiche e Fiscali. L’Asimmetria Informativa nelle Politiche di Contrasto alla Povertà e nelle Imposte sui Patrimoni}.
+    
+\end{enumerate}
+
+
+
+%----------------------------------------------------------------------------------------
+%	FORMAZIONE ACCADEMICA
+%----------------------------------------------------------------------------------------
+
+
+\section{\textbf{Seminari e lezioni singole a corsi di laurea, Master e dottorati}}
+
+\vspace{6pt}
+
+\begin{itemize}
+    
+    \item Docente al \textit{Crash Course in Machine Learning per l’analisi dei dati}, organizzato dal Laboratorio di Economia Applicata dell'Università di Bari, nell'ambito del Progetto GRINS Spoke 7, in collaborazione con la Società Italiana di Economia dei Trasporti e della Logistica (SIET), dal 2 al 4 febbraio 2026.  
+    \item Lezioni “Big data analytics” e “Real time big data processing” nell’ambito del Master MTDS – Data Science \& Data Management, Università di Padova, 15–16 maggio 2024.
+    \item Seminario su invito al Corso Universitario in Business intelligence e sistemi informativi gestionali (Corso di Laurea in Amministrazione e gestione digitale delle imprese), Dipartimento di Management, Università di Torino, 8 maggio 2023; titolo del seminario: \textit{Introduction to R. Application and Manipolation}.
+    \item Seminario su invito al Corso Universitario in Economia dello Sviluppo Locale (Corso di Laurea in Economia e Management), Dipartimento di Management, Università di Enna “Kore”, 30 marzo 2023; titolo del seminario: \textit{Accrescere la resilienza dei sistemi economici locali: la Strategia Nazionale per le Aree Interne}.
+    \item Seminario su invito al Corso Universitario in Business intelligence e sistemi informativi gestionali (Corso di Laurea in Amministrazione e gestione digitale delle imprese), Dipartimento di Management, Università di Torino, 5 maggio 2022; titolo del seminario: \textit{Introduction to R}.
+    \item Relatore su invito al Master Universitario di I livello in Accessible and Sustainable Tourism, ISCOLLEGE – International Studies College SSML, 2 luglio 2021; titolo del seminario: \textit{Sport and sustainability: a possible TRADE-OFF}.
+    \item Relatore su invito al Master Universitario di I livello in Accessible and Sustainable Tourism, ISCOLLEGE – International Studies College SSML, 16 maggio 2021; titolo del seminario: \textit{Community-based Cooperatives: model for economic development and resilience of Inner Areas}.
+    \item Relatore su invito al Master Universitario di I livello in Accessible and Sustainable Tourism, ISCOLLEGE – International Studies College SSML, 9 maggio 2021; titolo del seminario: \textit{Analisi sociale ed economica del Progetto “South Beach”}.
+\end{itemize}
+
+
+
+
+\section{\textbf{Presentazioni a seminari e workshop scientifici}}
+
+\vspace{6pt}
+
+\begin{itemize}
+
+
+\item Relatore su invito al workshop scientifico “Scientific Workshop on Territorial Transition”, pressio il dipartimento di Economia dell'Università di Foggia, 20-21 febbraio 2026; paper presentato: \textit{Predicting Delays in Cohesion Infrastructure Projects}.
+
+
+\item Relatore al workshop scientifico “3rd Plenary Meeting on Territorial Sustainability” (Spoke 7 – GRINS), Università di Bari “Aldo Moro”, 2025; presentazione di risultati di ricerca nell’ambito del progetto GRINS (Spoke 7), finanziato dall’Unione Europea – NextGenerationEU.
+
+
+\item Relatore al workshop scientifico “3rd Workshop on Sustainable Finance: Innovation, ESG and Digital Finance” (GRINS), Università Ca’ Foscari Venezia, 3–4 dicembre 2025; paper presentato: \textit{Socio-Economic Drivers of Accessibility: Prediction with Network and Machine-Learning Framework}.
+
+
+    \item Relatore invitato al seminario “How can AI, digitalisation, and greening ensure smart and sustainable growth for EU regions and cities?”, organizzato dall’ISTAT presso l’Università dell Campania, 17 novembre 2025 contributo presentato; \textit{Machine Learning and Causal inference for economics}.
+
+
+    \item Relatore al workshop internazionale “Regional Studies and Territorial Development: Place-Based Policies and Actions”, organizzato nell’ambito dei lavori dello Spoke 7 progetto GRINS nel Dipartimento di Economia, Management e Diritto dell’Impresa, Università di Bari “Aldo Moro”, 18–19 maggio 2025; paper presentato: \textit{Analyzing Accessibility to Citizenship Services: A Network Analysis and Machine Learning Approach}. Discussant: Prof. Ugo Fratesi (Politecnico di Milano).
+
+
+    
+    \item Relatore al Multidisciplinary Territorial Policy Lab – Focus group e Laboratori per la resilienza e lo sviluppo locale sostenibile, organizzato nell’ambito dei lavori dello Spoke 7 progetto GRINS a Castel del Giudice (IS), 20–22 febbraio 2025; presentazione dello studio: \textit{L’accessibilità ai servizi di cittadinanza (salute, istruzione, mobilità): un’analisi a livello comunale}.
+
+
+    
+    \item Relatore al workshop scientifico “2nd Meeting on Territorial Sustainability” (Spoke 7 – GRINS), Università di Bari “Aldo Moro”, 12–13 febbraio 2025; report presentato: \textit{Digital vulnerability and gap analysis}.
+    \item Relatore al workshop scientifico “2nd Meeting on Territorial Sustainability” (Spoke 7 – GRINS), Università di Bari “Aldo Moro”, 12–13 febbraio 2025; paper presentato: \textit{Health access and public transport: a complex network approach}.
+
+    \item Relatore invitato al seminario “How can AI, digitalisation, and greening ensure smart and sustainable growth for EU regions and cities?”, organizzato dall’ISTAT presso l’Università Parthenope di Napoli, 26 novembre 2024; paper presentato: \textit{Analyzing Accessibility to Citizenship Services: A Network Analysis and Machine Learning Approach}.
+
+    
+    \item Relatore alla Summer School in “Economic policy and welfare in a context of high inflation”, organizzata dall'Associazione scientifica EAEPE e dal Dipartimento di Economia dell'Università Roma Tre, 5 luglio 2023; paper presentato: \textit{The Impact of Italy’s Strategy for Inner Areas on Depopulation and Industrial Growth: A Staggered Difference-in-Difference Analysis with Spatial Spillover Effects}.
+    \item Relatore al seminario dottorale “PhD Candidate”, Dipartimento di Economia, Università di Modena e Reggio Emilia, 19 maggio 2023; paper presentato: \textit{The short-run effects of Place-based policies. The case of the Italian Strategy for Inner Areas}.
+    \item Relatore alla SDNS Summer School in “Social Research Methods”, Faculty of Management, 31 agosto 2022; studio presentato: \textit{The role of local administrations in fighting inequalities and poverty in Inner Areas, focusing on the socio-economic crisis of Covid-19}.
+    \item Relatore al seminario accademico “A multi-criteria approach to social indicators”, Dipartimento di Economia, Università di Modena e Reggio Emilia, 18 maggio 2022; studio presentato: \textit{Local public spending on sustainability in NSIA areas. A multi-criteria analysis with TOPSIS model}.
+\end{itemize}
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENTO
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\section{\textbf{Formazione accademica specialistica e visite}}
+
+\cvitemcols{2cm}{2025}{Corso specialistico in “Spatial and Spatio-Temporal Modelling using R-INLA (SSTM02)”, organizzato da PRStats Training Course. 7-9 Settembre 2025.}
+
+\cvitemcols{2cm}{2023}{Crash Course on Transport Policy Evaluation, part of the XXVII Annual Scientific Conference of SIET, September 2025.}
+
+\cvitemcols{2cm}{2024}{ECARES PhD Lecture Series “Difference-in-Differences for Simple and Complex Natural Experiments”, relatore Xavier D’Haultfoeuille (CREST-ENSAE), 18–19 gennaio 2024, \textit{Solvay Brussels School of Economics and Management, Université libre de Bruxelles}.}
+
+\cvitemcols{2cm}{2022}{Corso in Machine Learning for Economists, Professor Giuliano Resce, \textit{European PhD in Socio-Economic And Statistical Studies, Università di Roma la Sapienza, Ventotene}.}
+
+\cvitemcols{2cm}{2023}{Summer School in Health Economics and Econometrics, \textit{Università di Roma la Sapienza, Ventotene}.}
+
+\cvitemcols{2cm}{2023}{Summer School in “Economic policy and welfare in a context of high inflation”, \textit{Dipartimento di Economia, Università Roma Tre}.}
+
+\cvitemcols{2cm}{2023}{RISIS Data Science Winter School “Tools and methods for analysing complex Science, Technology and Innovation (STI) systems”, \textit{IRCrES, CNR, Roma}.}
+
+\cvitemcols{2cm}{2022}{Scuola di formazione specialistica in “Valutazione dell’impatto delle politiche pubbliche: concetti, metodi, applicazioni”, \textit{Centro di Ricerca Rossi Doria, Università Roma Tre}.}
+
+\cvitemcols{2cm}{2022}{Summer School in “Social Research Methods”, \textit{Università di Łódź (Polonia)}, con \textbf{borsa di studio} finanziata da \textit{European Funds Knowledge Education Development, National Agency for Academic Exchange}.}
+
+\cvitemcols{2cm}{2022}{Summer School in “Labour and Welfare in the post Covid-19 Era”, \textit{Dipartimento di Economia, Università Roma Tre}.}
+
+\cvitemcols{2.3cm}{2021}{Summer School in Political Science “Next Generation EU”, \textit{Università degli Studi del Molise}.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+\section{\textbf{Organizzazione conferenze scientifiche e eventi}}
+
+
+\cvitemcols{2cm}{2025}{Membro del \textbf{Comitato scientifico} della XXXVIII Conferenza della Società Italiana di Economia Pubblica (SIEP), dal titolo: \textit{“Politica fiscale, rappresentanza e partecipazione politica”}, che si terrà a Modena il 10-11 settembre 2026 presso il Dipartimento di Economia dell'Università di Modena e Reggio Emilia,}
+
+
+\cvitemcols{2cm}{2025}{Membro del Comitato organizzatore locale della XXIII Riunione Scientifica della Società Italiana di Economia dei Trasporti e della Logistica (SIET), \textit{“Resilience, Innovation and Behaviour Change in Transport”}}
+
+\cvitemcols{2cm}{2023}{Collaborazione con il Comitato Scientifico Locale per la stesura del Call for Papers del XX International Conference in Commemoration of Professor Marco Biagi, \textit{“The Green Transition and the Quality of Work: Linkages, Implications and Perspectives”}, che si è tenuta presso la Fondazione Marco Biagi dell'Università di Modena e Reggio Emilia il 16 e 17 marzo 2023.}
+
+\cvitemcols{2cm}{2022}{Collaborazione con il comitato scientifico locale per l'organizzazione della 19° Conferenza Scientifica Internazionale in memoria del Prof. Marco Biagi, \textit{“Work Beyond the Pandemic: Towards a Human-Centered Recovery”},  che si è tenuta presso la Fondazione Marco Biagi dell'Università di Modena e Reggio Emilia il 16 e 17 maggio 2022.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	EDITORIAL BOARD
+%----------------------------------------------------------------------------------------
+
+
+\section{\textbf{Comitato editoriale di riviste scientifiche}}
+
+\vspace{6pt}
+
+\cvitem{\footnotesize $\circ$}{ \Large \textit{Managing Editor di `Turistica - The Italian Journal of Tourism`}. \textbf{ISSN}: 1974-2207}
+
+
+
+
+
+
+
+
+\section{\textbf{Review activity}}
+
+\vspace{6pt}
+
+Scientific Report; Journal of Agricultural, Biological, and Environmental Statistics; International Journal of Climate Change Strategies and Management; Iternational Journal of computational economics and econometrics; Social Epistemology; Plos One; The Annals of Regional Science; Case Studies on Transport Policy; Italian Economic Journal; Applied Spatial Analysis and Policy; Health Policy
+
+
+
+
+\section{\textbf{Associazioni scientifiche}}
+
+\vspace{6pt}
+
+Western Regional Science Association (WRSA); Regional Studies Association (RSA); Società Italiana di Statistica (SIS); European Regional Studies Association (ERSA), Associazione Italiana di Scienze Regionali (AISRE); Società Italiana di Economia (SIE)
+
+
+
+%----------------------------------------------------------------------------------------
+%	FORMAZIONE ACCADEMICA
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Certificazioni}}
+
+\vspace{6pt}
+
+\texb\cvitem{\large •}{Certificazione linguistica B2 ESOL CERTIFICATE, erogato da British Institutes E.B.}
+{}{}{}
+
+\cvitem{\large •}{Certificazione informatica EIPASS 7 MODULI USER, erogato da CERTIPASS}
+{}{}{}
+
+
+
+%----------------------------------------------------------------------------------------
+%	FORMAZIONE ACCADEMICA
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Corsi specialistici}}
+
+\vspace{6pt}
+
+\cvitem{\large 2022}{Corso base di R, erogato da TAO - Turtles of the adriatic organization}
+{}{}{}
+
+\cvitem{\large 2021}{Coding in R per l’analisi dei dati: da principiante a esperto, erogato da UDIEMY}
+{}{}{}
+
+\cvitem{\large 2020}{Laboratorio di analisi dei dati con R, Università degli Studi di Teramo}
+{}{}{}
+
+
+\section{\textbf{Software skills}}
+
+\vspace{6pt}
+
+\large \textbf{Writing and editing}
+
+\vspace{6pt}
+
+\begin{tabular}{l l}
+\LaTeX:     & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \bullet\ \circ$} \\
+GitHub:     & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \bullet\ \circ$} \\
+Zotero:     & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \circ\ \circ$} \\
+Mendeley:   & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \circ\ \circ$} \\
+\end{tabular}
+
+\vspace{12pt}
+
+\large \textbf{Mathematics and statistics}
+
+\vspace{6pt}
+
+\begin{tabular}{l l}
+R:          & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \bullet\ \circ$} \\
+Python:     & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \circ\ \circ$} \\
+MATLAB:     & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \circ\ \circ$} \\
+Stata:      & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \circ\ \circ$} \\
+Gretl:      & {\LARGE$\bullet\ \bullet\ \bullet\ \bullet\ \circ\ \circ$} \\
+SPSS:       & {\LARGE$\bullet\ \bullet\ \bullet\ \circ\ \circ\ \circ$} \\
+\end{tabular}
+
+
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Computer skills}}
+
+\vspace{6pt}
+
+\cvitem{Intermediate}{\textsc{Linux}; \textsc{java}; \textsc{HTML}; \textsc{C/C++}; \textsc{Photoshop}}
+\cvitem{Advanced}{\textsc{Microsoft Windows}; \textsc{Microsoft Office}}
+
+
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{\textbf{Languages}}
+
+\vspace{6pt}
+
+\begin{small}
+\cvitemwithcomment{Italian}{Native Speaker}{complete}
+\cvitemwithcomment{English}{Professional}{working knowledge}
+\end{small}
+
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+%\bigskip
+
+\section{\textbf{Interessi scientifici}}
+
+\vspace{6pt}
+
+\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+
+\cvlistdoubleitem{Political Economy}{Public Economy}
+\cvlistdoubleitem{Statistics}{Econometrics modelling}
+\cvlistdoubleitem{Territorial disparities}{Spatial analysis}
+\cvlistdoubleitem{Policy evaluation}{Machine Learning algorithm}
+\cvlistdoubleitem{Voting}{Income distribution}
+\cvlistdoubleitem{Labor Market}{Unemployment and wage level}
+\cvlistdoubleitem{Economic Growth}{Socio-economic protection}
+
+
+
+{ \ }\\{\ }
+
+%Il sottoscritto Monturano Gianluca, nato a Vasto (CH) il 27/07/1993, c.f. MNTGLC93L27E372X, residente in Montenero di Bisaccia (CB) cap. 86036, in Viale Europa n.45, consapevole che, secondo quanto previsto dagli artt. 46 e 47 del D.P.R. 28 dicembre 2000, n. 445, la falsità in atti e le dichiarazioni mendaci sono punite dal codice penale e dalle leggi speciali in materia, ai sensi delle disposizioni richiamate dall’art. 76 del D.P.R. 28 dicembre 2000, n. 445, dichiaro sotto la propria responsabilità che quanto riportato in questo documento corrisponde al vero.
+
+%\begin{flushright}\textbf{Dott. Gianluca Monturano} 
+%\end{flushright}
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+%\clearpage
+
+%\recipient{HR Departmnet}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+%\date{\today} % Letter date
+%\opening{Dear Sir or Madam,} % Opening greeting
+%\closing{Sincerely yours,} % Closing phrase
+%\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+
+%\makelettertitle % Print letter title
+
+%\lipsum[1-3] % Dummy text
+
+%\makeletterclosing % Print letter signature
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
