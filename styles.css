@@ -1277,3 +1277,43 @@ main.page,
     max-height:21px !important;
   }
 }
+
+
+
+/* Academic footer */
+.academic-footer{
+  border-top:1px solid var(--rule);
+  margin-top:46px;
+  padding:16px 0 24px;
+  color:#6b7280;
+  font-size:.78rem;
+}
+
+.academic-footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.footer-name{
+  font-weight:600;
+  color:#4b5563;
+  letter-spacing:.01em;
+}
+
+.footer-meta{
+  font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size:.72rem;
+  color:#6b7280;
+  letter-spacing:.015em;
+}
+
+.footer-meta code{
+  font-size:.72rem;
+  padding:1px 4px;
+  border-radius:4px;
+  background:#f3f4f6;
+  color:#374151;
+}
