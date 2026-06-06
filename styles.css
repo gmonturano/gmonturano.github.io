@@ -855,3 +855,129 @@ code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size
     height:21px !important;
   }
 }
+
+
+/* FINAL HOME-ONLY WIDTH: compact only on index/home, normal width elsewhere */
+.wrap{
+  max-width:940px !important;
+}
+
+/* Normal internal pages: Research, Software, Teaching, CV */
+.page{
+  max-width:690px !important;
+  width:auto !important;
+  margin:0 auto !important;
+}
+
+/* Home only: a little wider than previous version, but still compact */
+.home-layout{
+  display:grid !important;
+  grid-template-columns:150px 525px !important;
+  gap:62px !important;
+  justify-content:center !important;
+  align-items:start !important;
+}
+
+.home-bio{
+  max-width:525px !important;
+  width:525px !important;
+}
+
+.home-bio h1{
+  font-size:1.36rem !important;
+  margin-bottom:8px !important;
+}
+
+.home-bio p{
+  font-size:.90rem !important;
+  line-height:1.56 !important;
+  margin-bottom:11px !important;
+}
+
+.home-bio .lead{
+  font-size:.92rem !important;
+  line-height:1.56 !important;
+}
+
+/* Sidebar home only */
+.home-layout .sidebar{
+  width:150px !important;
+}
+
+.home-layout .profile-photo{
+  width:122px !important;
+  height:122px !important;
+}
+
+.home-layout .logo-row,
+.home-layout .primary-logos{
+  gap:5px !important;
+  max-width:112px !important;
+  margin:5px 0 8px !important;
+}
+
+.home-layout .round-logo,
+.home-layout .round-logo img{
+  width:18px !important;
+  height:18px !important;
+}
+
+.home-layout .round-logo{
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.05)) !important;
+}
+
+.home-layout .side-title{
+  font-size:.69rem !important;
+  letter-spacing:.12em !important;
+}
+
+.home-layout .contact-block .side-small,
+.home-layout .side-small{
+  font-size:.67rem !important;
+  line-height:1.42 !important;
+}
+
+/* Header role line on Home */
+.home-bio .academic-roles{
+  font-size:.64rem !important;
+  line-height:1.45 !important;
+  margin-bottom:17px !important;
+}
+
+/* R / Python inline badges */
+.home-bio .code-badge{
+  font-size:.78em !important;
+  padding:1px 5px !important;
+  border-radius:5px !important;
+}
+
+@media (max-width:720px){
+  .wrap{
+    max-width:100% !important;
+  }
+
+  .home-layout{
+    display:block !important;
+  }
+
+  .home-bio,
+  .page{
+    width:auto !important;
+    max-width:100% !important;
+  }
+
+  .home-layout .profile-photo{
+    width:116px !important;
+    height:116px !important;
+  }
+
+  .home-layout .round-logo,
+  .home-layout .round-logo img{
+    width:21px !important;
+    height:21px !important;
+  }
+
+  .home-layout .primary-logos{
+    max-width:145px !important;
+  }
+}
