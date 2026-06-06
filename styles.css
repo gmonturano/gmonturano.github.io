@@ -981,3 +981,299 @@ code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size
     max-width:145px !important;
   }
 }
+
+
+/* =========================================================
+   STRICT FINAL HOME ONLY
+   This block affects ONLY the home page layout:
+   <main class="wrap home-layout"> ... </main>
+   It restores normal width for all other pages.
+   ========================================================= */
+
+/* Global wrapper remains normal for all pages */
+.wrap{
+  max-width:940px !important;
+}
+
+/* Internal pages stay normal */
+main.page,
+.page{
+  max-width:690px !important;
+  width:auto !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* HOME ONLY: centered and narrower */
+main.home-layout{
+  max-width:680px !important;
+  width:680px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+  display:grid !important;
+  grid-template-columns:135px 475px !important;
+  gap:50px !important;
+  justify-content:center !important;
+  align-items:start !important;
+}
+
+/* HOME text column only */
+main.home-layout .home-bio,
+main.home-layout .content{
+  width:475px !important;
+  max-width:475px !important;
+}
+
+/* HOME sidebar only */
+main.home-layout .sidebar{
+  width:135px !important;
+  max-width:135px !important;
+}
+
+main.home-layout .profile-photo{
+  width:118px !important;
+  height:118px !important;
+}
+
+/* HOME logos: forced smaller */
+main.home-layout .logo-row,
+main.home-layout .primary-logos{
+  max-width:104px !important;
+  gap:4px !important;
+  margin-top:5px !important;
+  margin-bottom:8px !important;
+}
+
+main.home-layout .round-logo,
+main.home-layout .round-logo img{
+  width:16px !important;
+  height:16px !important;
+  min-width:16px !important;
+  min-height:16px !important;
+  max-width:16px !important;
+  max-height:16px !important;
+}
+
+main.home-layout .round-logo{
+  padding:0 !important;
+  border:0 !important;
+  filter:none !important;
+}
+
+/* HOME text typography */
+main.home-layout .home-bio h1{
+  font-size:1.32rem !important;
+  margin-bottom:8px !important;
+}
+
+main.home-layout .academic-roles{
+  font-size:.62rem !important;
+  line-height:1.45 !important;
+  margin-bottom:17px !important;
+}
+
+main.home-layout .home-bio p{
+  font-size:.88rem !important;
+  line-height:1.55 !important;
+  margin-bottom:11px !important;
+}
+
+main.home-layout .home-bio .lead{
+  font-size:.90rem !important;
+  line-height:1.55 !important;
+}
+
+/* HOME contact smaller */
+main.home-layout .side-title{
+  font-size:.68rem !important;
+  letter-spacing:.12em !important;
+}
+
+main.home-layout .side-small,
+main.home-layout .contact-block .side-small{
+  font-size:.65rem !important;
+  line-height:1.4 !important;
+}
+
+/* R/Python badges */
+main.home-layout .code-badge{
+  font-size:.76em !important;
+  padding:1px 5px !important;
+  border-radius:5px !important;
+}
+
+/* Mobile */
+@media (max-width:720px){
+  main.home-layout{
+    width:auto !important;
+    max-width:100% !important;
+    display:block !important;
+    padding-left:18px !important;
+    padding-right:18px !important;
+  }
+
+  main.home-layout .home-bio,
+  main.home-layout .content,
+  main.home-layout .sidebar{
+    width:auto !important;
+    max-width:100% !important;
+  }
+
+  main.home-layout .profile-photo{
+    width:116px !important;
+    height:116px !important;
+  }
+
+  main.home-layout .round-logo,
+  main.home-layout .round-logo img{
+    width:21px !important;
+    height:21px !important;
+    min-width:21px !important;
+    min-height:21px !important;
+    max-width:21px !important;
+    max-height:21px !important;
+  }
+}
+
+
+/* =========================================================
+   TRUE CENTERED HOME LAYOUT
+   The Home page now uses .home-shell instead of .wrap.
+   This avoids conflicts with .wrap and does NOT affect
+   Research / Software / Teaching / CV.
+   ========================================================= */
+
+main.home-shell{
+  width:720px !important;
+  max-width:720px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+  display:grid !important;
+  grid-template-columns:135px 525px !important;
+  column-gap:60px !important;
+  align-items:start !important;
+  justify-content:start !important;
+}
+
+/* Home text column */
+main.home-shell .home-bio,
+main.home-shell .content{
+  width:525px !important;
+  max-width:525px !important;
+}
+
+/* Home sidebar */
+main.home-shell .sidebar{
+  width:135px !important;
+  max-width:135px !important;
+}
+
+/* Home photo */
+main.home-shell .profile-photo{
+  width:122px !important;
+  height:122px !important;
+}
+
+/* Home logos: smaller and forced */
+main.home-shell .logo-row,
+main.home-shell .primary-logos{
+  max-width:108px !important;
+  gap:4px !important;
+  margin:5px 0 8px !important;
+}
+
+main.home-shell .round-logo,
+main.home-shell .round-logo img{
+  width:17px !important;
+  height:17px !important;
+  min-width:17px !important;
+  min-height:17px !important;
+  max-width:17px !important;
+  max-height:17px !important;
+}
+
+main.home-shell .round-logo{
+  padding:0 !important;
+  border:0 !important;
+  filter:none !important;
+}
+
+/* Home text size */
+main.home-shell .home-bio h1{
+  font-size:1.34rem !important;
+  margin-bottom:8px !important;
+}
+
+main.home-shell .academic-roles{
+  font-size:.63rem !important;
+  line-height:1.45 !important;
+  margin-bottom:17px !important;
+}
+
+main.home-shell .home-bio p{
+  font-size:.89rem !important;
+  line-height:1.55 !important;
+  margin-bottom:11px !important;
+}
+
+main.home-shell .home-bio .lead{
+  font-size:.91rem !important;
+  line-height:1.55 !important;
+}
+
+main.home-shell .side-title{
+  font-size:.68rem !important;
+  letter-spacing:.12em !important;
+}
+
+main.home-shell .side-small,
+main.home-shell .contact-block .side-small{
+  font-size:.65rem !important;
+  line-height:1.4 !important;
+}
+
+/* Keep internal pages normal */
+main.page,
+.page{
+  max-width:690px !important;
+  width:auto !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Mobile */
+@media (max-width:760px){
+  main.home-shell{
+    width:auto !important;
+    max-width:100% !important;
+    display:block !important;
+    padding-left:18px !important;
+    padding-right:18px !important;
+  }
+
+  main.home-shell .home-bio,
+  main.home-shell .content,
+  main.home-shell .sidebar{
+    width:auto !important;
+    max-width:100% !important;
+  }
+
+  main.home-shell .profile-photo{
+    width:116px !important;
+    height:116px !important;
+  }
+
+  main.home-shell .round-logo,
+  main.home-shell .round-logo img{
+    width:21px !important;
+    height:21px !important;
+    min-width:21px !important;
+    min-height:21px !important;
+    max-width:21px !important;
+    max-height:21px !important;
+  }
+}
