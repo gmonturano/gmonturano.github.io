@@ -25,8 +25,8 @@
 
 \documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 
-%\moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
-\moderncvcolor{red} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+% \moderncvstyle{classic} % disabled duplicate style
+% \moderncvcolor{red} % disabled duplicate color
 
 
 \moderncvstyle{banking} % più minimal e lineare
@@ -40,13 +40,9 @@
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 
-%\usepackage[colorlinks=true,
-%            linkcolor=blue,
-%            urlcolor=blue,
-%            citecolor=blue,
-%            anchorcolor=blue]{hyperref}
+% hyperref loaded by moderncv
 
-\usepackage[dvipsnames]{xcolor}
+% \usepackage[dvipsnames]{xcolor} % disabled option clash
 
 
 
@@ -90,6 +86,7 @@
 
 
 \begin{document}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,anchorcolor=blue}
 
 
 
@@ -101,61 +98,20 @@
 
 
 \vspace{-25pt}
-
-
-  
-\item \cvitem{\textbf{Web}}{{\ }\href{https://sites.google.com/d/1QwtV6pSQcHtIPOrL1GS7iObT4unUpD13/p/1mSCgy_rew-vScBrWUwI9tkdPo8P_PWXR/edit}{\textcolor{blue}{gianlucamonturano.it}}}\\
-\item \cvitem{\textbf{Email}}{\href{mailto:gianluca.monturano@unimore.it}{\textcolor{blue}{gianluca.monturano@uniba.it}}}\\
+\cvitem{\textbf{Web}}{{\ }\href{https://sites.google.com/d/1QwtV6pSQcHtIPOrL1GS7iObT4unUpD13/p/1mSCgy_rew-vScBrWUwI9tkdPo8P_PWXR/edit}{\textcolor{blue}{gianlucamonturano.it}}}
+\cvitem{\textbf{Email}}{\href{mailto:gianluca.monturano@unimore.it}{\textcolor{blue}{gianluca.monturano@uniba.it}}}
 
 
 
 \cvitem{}{%
-  % LinkedIn
-  \href{https://www.linkedin.com/in/gianluca-monturano93/}{%
-    \begin{figure}
-      \includegraphics[scale=0.055]{Figures/174857.png}
-    \end{figure}%
-  }%
-  % Teams
-  \href{https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB}{%
-    \begin{figure}
-      \includegraphics[scale=0.085]{Figures/teams.jpg}
-    \end{figure}%
-  }%
-  % Google Scholar
-  \href{https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao}{%
-    \begin{figure}
-      \includegraphics[scale=0.05]{Figures/1024px-Google_Scholar_logo.svg.png}
-    \end{figure}%
-  }%
-    % Github
-  \href{https://github.com/gmonturano}{%
-    \begin{figure}
-      \includegraphics[scale=0.057]{Figures/25231.png}
-    \end{figure}%
-  }%
-  % ResearchGate
-  \href{https://www.researchgate.net/profile/Gianluca-Monturano}{%
-    \begin{figure}
-      \includegraphics[scale=0.05]{Figures/ResearchGate_icon_SVG.svg.png}
-    \end{figure}%
-  }%
-  % ORCID (ultimo)
-  \href{https://orcid.org/0009-0003-0728-1423}{%
-    \begin{figure}
-      \includegraphics[scale=0.0128]{Figures/orcid-icon-2048x2048-q87cnnge.png}
-    \end{figure}%
-  }%
-  % Scopus (ultimo)
-  \href{https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage}{%
-    \begin{figure}
-    \includegraphics[scale=0.072]{Figures/icono-scopus.jpg}
-    \end{figure}%
-  }%
+\href{https://www.linkedin.com/in/gianluca-monturano93/}{\includegraphics[scale=0.055]{Figures/174857.png}}\quad
+\href{https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB}{\includegraphics[scale=0.085]{Figures/teams.jpg}}\quad
+\href{https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao}{\includegraphics[scale=0.05]{Figures/1024px-Google_Scholar_logo.svg.png}}\quad
+\href{https://github.com/gmonturano}{\includegraphics[scale=0.057]{Figures/25231.png}}\quad
+\href{https://www.researchgate.net/profile/Gianluca-Monturano}{\includegraphics[scale=0.05]{Figures/ResearchGate_icon_SVG.svg.png}}\quad
+\href{https://orcid.org/0009-0003-0728-1423}{\includegraphics[scale=0.0128]{Figures/orcid-icon-2048x2048-q87cnnge.png}}\quad
+\href{https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage}{\includegraphics[scale=0.072]{Figures/icono-scopus.jpg}}
 }
-
-\\{\ }
-
 
 
 
@@ -266,17 +222,17 @@ Competitive Analysis, SECS-P/06, Corso di Laurea Magistrale in Economia e Manage
 \end{itemize}
 \textbf{Tutorato}
 \begin{itemize}
-  2024--2024: Tutor accademico di Introduzione alla Macroeconomia, SECS-P/01, CdL Triennale in Economia e Finanza, 
-  \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
-  2022--2024: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia Aziendale e Management, \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
-  2022--2024: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia e Finanza, \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
-  2022--2023: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia e Marketing Internazionale, \textit{Università di Modena e Reggio Emilia}.
+  \item 2024--2024: Tutor accademico di Introduzione alla Macroeconomia, SECS-P/01, CdL Triennale in Economia e Finanza, 
+  \textit{Università di Modena e Reggio Emilia}.
+  \item 2022--2024: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia Aziendale e Management, \textit{Università di Modena e Reggio Emilia}.
+  \item 2022--2024: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia e Finanza, \textit{Università di Modena e Reggio Emilia}.
+  \item 2022--2023: Tutor accademico di Statistica, SECS-S/01, CdL Triennale in Economia e Marketing Internazionale, \textit{Università di Modena e Reggio Emilia}.
 \end{itemize}
 
 \textbf{Esercitazioni}
 \begin{itemize}
-  2022--2023: Esercitazioni di Scenari economici e competitivi, SECS-P/01, CdL Magistrale in Gestione e Comunicazione d'Impresa, \textit{Università di Modena e Reggio Emilia}.\\{\ }\\
-  2022--2024: Esercitazioni di Economia Industriale, SECS-P/01, CdL Magistrale in Direzione e Consulenza d'Impresa, \textit{Università di Modena e Reggio Emilia}.
+  \item 2022--2023: Esercitazioni di Scenari economici e competitivi, SECS-P/01, CdL Magistrale in Gestione e Comunicazione d'Impresa, \textit{Università di Modena e Reggio Emilia}.
+  \item 2022--2024: Esercitazioni di Economia Industriale, SECS-P/01, CdL Magistrale in Direzione e Consulenza d'Impresa, \textit{Università di Modena e Reggio Emilia}.
 \end{itemize}
 
 
@@ -285,7 +241,7 @@ Competitive Analysis, SECS-P/06, Corso di Laurea Magistrale in Economia e Manage
 %----------------------------------------------------------------------------------------
 %	LAVORO
 %----------------------------------------------------------------------------------------
-\section{\textbf{Esperienze professionali}}\
+\section{\textbf{Esperienze professionali}}
 
 \cvitem{}{%
   \textbf{Economista} \hfill 2018--2021 \\
@@ -313,7 +269,7 @@ Competitive Analysis, SECS-P/06, Corso di Laurea Magistrale in Economia e Manage
 \textbf{Articoli in riviste di classe A per Area 13 ANVUR} 
 \begin{enumerate}[label=\arabic*.] % Lista numerata
 
-\item Buongiorno, A., Bergantino, A. S., Fusco, G., Intini, M., & Monturano, G. (2026). Insights from fuel prices: Fuel costs and spatial rail accessibility: Econometric evidence from an empirically-weighted network-based 3SFCA models. \textit{Italian Economic Journal}. \textbf{Accepted}.
+\item Buongiorno, A., Bergantino, A. S., Fusco, G., Intini, M., \& Monturano, G. (2026). Insights from fuel prices: Fuel costs and spatial rail accessibility: Econometric evidence from an empirically-weighted network-based 3SFCA models. \textit{Italian Economic Journal}. \textbf{Accepted}.
 
 
 
@@ -397,7 +353,7 @@ Competitive Analysis, SECS-P/06, Corso di Laurea Magistrale in Economia e Manage
 
 \begin{enumerate}[label=\arabic*.] 
 
-\item  Chiodin, A., Manera, M., Maranzano, P., & Monturano, G. (2026). Identifying Spatial Regimes of Economic Fragility through Spatially Constrained Clustering: Evidence from Italian Municipalities.
+\item  Chiodin, A., Manera, M., Maranzano, P., \& Monturano, G. (2026). Identifying Spatial Regimes of Economic Fragility through Spatially Constrained Clustering: Evidence from Italian Municipalities.
 
 
 \item  Coco, G., Monturano, G., \& Resce, G. (2025). Predicting Delays in Cohesion Infrastructure Projects (No. esdp25099). University of Molise, Department of Economics.
@@ -425,53 +381,53 @@ Competitive Analysis, SECS-P/06, Corso di Laurea Magistrale in Economia e Manage
 
 \begin{enumerate}
 
-\item \textbf{Monturano, G.}, Ciccarelli, C. & Mastronardi, L.
+\item \textbf{Monturano, G.}, Ciccarelli, C. \& Mastronardi, L.
 \textit{Do Protected Areas Affect Income Levels in Remote Regions? Evidence from Italian Inner Areas} -- \textcolor{red}{Environmental and Resource Economics}, 2nd round of revision.
 
-\item Coco, G., \textbf{Monturano, G.} & Resce, G.
+\item Coco, G., \textbf{Monturano, G.} \& Resce, G.
 \textit{Delays in Cohesion Infrastructure Projects. A Machine Learning Approach} -- \textcolor{red}{Oxford Bulletin of Economics and Statistics}, 2nd round of revision.
 
-\item Argentiero, A., Maranzano, P., Pedrini, G. & \textbf{Monturano, G.}
+\item Argentiero, A., Maranzano, P., Pedrini, G. \& \textbf{Monturano, G.}
 \textit{Spatial consequences of tax reforms on tax compliance: Econometric evidence from the Italian Minimum Taxpayer Regime} -- \textcolor{red}{The Annals of Regional Science}, 2nd round of revision.
 
-\item Bergantino, A.S., \textbf{Monturano, G.} & Pedrini, G.
+\item Bergantino, A.S., \textbf{Monturano, G.} \& Pedrini, G.
 \textit{Cohesion Policies for the Tourism Industry} -- \textcolor{red}{Regional Studies}, Revise and Resubmit.
 
-\item \textbf{Monturano, G.}, Ciccarelli, C. & Mastronardi, L.
+\item \textbf{Monturano, G.}, Ciccarelli, C. \& Mastronardi, L.
 \textit{Consumer Food Cooperatives as Tools for Food Access and Community Support in Italian Inner Areas} -- \textcolor{red}{Journal of Rural Studies}, Under Review.
 
-\item Bergantino, A.S., Intini, M. & \textbf{Monturano, G.}
+\item Bergantino, A.S., Intini, M. \& \textbf{Monturano, G.}
 \textit{Accessibility as a Territorial Equilibrium: Evidence from Italian Municipalities} -- \textcolor{red}{Spatial Economic Analysis}, Under Review.
 
-\item De Castris, M., Fusco, G. & \textbf{Monturano, G.}
+\item De Castris, M., Fusco, G. \& \textbf{Monturano, G.}
 \textit{Employment Protection Reforms and Workers’ Health and Well-Being: An Individual Quasi-Experimental Study} -- \textcolor{red}{Health Policy}, Under Review.
 
-\item Bergantino, A.S., Coluccia, B., Fusco, G., \textbf{Monturano, G.} & Salvatore, R.
+\item Bergantino, A.S., Coluccia, B., Fusco, G., \textbf{Monturano, G.} \& Salvatore, R.
 \textit{Digital Infrastructure and Territorial Heterogeneity in Quality-of-Life Outcomes} -- \textcolor{red}{Socio-Economic Planning Sciences}, Under Review.
 
-\item Marcis, L., Maranzano, P., \textbf{Monturano, G.} & Salvatore, R.
+\item Marcis, L., Maranzano, P., \textbf{Monturano, G.} \& Salvatore, R.
 \textit{The Italian Citizens' Income Program: An Analysis of its Impact on the Territorial Distribution of Some Economic Indicators} -- \textcolor{red}{Socio-Economic Planning Sciences}, Under Review.
 
-\item Chiodin, A., Manera, M., Maranzano, P. & \textbf{Monturano, G.}
+\item Chiodin, A., Manera, M., Maranzano, P. \& \textbf{Monturano, G.}
 \textit{Mapping Socio-Economic Fragility in Italy through Municipal-Level Spatial Clustering of COVID-19 Data} -- \textcolor{red}{Networks and Spatial Economics}, Under Review.
 
-\item Brascia, D., \textbf{Monturano, G.}, Mangiameli, G., Congedo, M.T., Mastromarino, M.G., Catelli, C., Bonis, A., Wu, C.F., Ağkoç, M., Fra, S., Maiolino, E., Onorati, I., Intini, M., Bergantino, A.S., Lucchi, M., Luzzi, L., Margaritora, S., Schiavon, M., Wu, C.Y., Turna, A., Moreno-Mata, N., Martinod, E. & Marulli, G.
+\item Brascia, D., \textbf{Monturano, G.}, Mangiameli, G., Congedo, M.T., Mastromarino, M.G., Catelli, C., Bonis, A., Wu, C.F., Ağkoç, M., Fra, S., Maiolino, E., Onorati, I., Intini, M., Bergantino, A.S., Lucchi, M., Luzzi, L., Margaritora, S., Schiavon, M., Wu, C.Y., Turna, A., Moreno-Mata, N., Martinod, E. \& Marulli, G.
 \textit{AI-Guided Brain MRI Intensification in Resected Young NSCLC: Global Multicenter Risk Model} -- Ready for submission.
 
 
-\item Bergantino, A.S., Intini, M., Pedrini, G., Scudieri, R. & \textbf{Monturano, G.}
+\item Bergantino, A.S., Intini, M., Pedrini, G., Scudieri, R. \& \textbf{Monturano, G.}
 \textit{Spatial Spillovers and Connectivity in Italian Service Industries} -- Ongoing.
 
-\item Bourdin, S., Fusco, G. & \textbf{Monturano, G.}
+\item Bourdin, S., Fusco, G. \& \textbf{Monturano, G.}
 \textit{Urban Left-Behindness within Metropolitan Italy: A Sub-Municipal Spatial Panel Econometric Analysis of Electoral Discontent} -- Ongoing.
 
-\item Bergantino, A.S., Erasmo, V., Fusco, G., Intini, M. & \textbf{Monturano, G.}
+\item Bergantino, A.S., Erasmo, V., Fusco, G., Intini, M. \& \textbf{Monturano, G.}
 \textit{Investigating the Impact of PRIN on Higher Education Performance in Italy: A Spatial-Econometric Analysis} -- Ongoing.
 
-\item Fusco, G., Gallo, G. & \textbf{Monturano, G.}
+\item Fusco, G., Gallo, G. \& \textbf{Monturano, G.}
 \textit{Population Trends in a Medium-Sized City: Shock and Local Projection} -- Ongoing.
 
-\item Coluccia, B., \textbf{Monturano, G.} & Perugini, F.
+\item Coluccia, B., \textbf{Monturano, G.} \& Perugini, F.
 \textit{Firm Productivity and Certification: Evidence from Italian Firms} -- Ongoing.
 
 
@@ -508,21 +464,21 @@ Finanziamento per la partecipazione al \textit{65th WRSA Meeting}, Santa Fè, Nu
 \section{\textbf{Partecipazione a progetti di ricerca presso enti di ricerca e università}}
 
 
-\cvitemcols{2cm}{2025 - \newpage in corso}{Progetto finanziato dal Ministero dell’Università e della Ricerca tramite la Fondazione Eni Mattei di Milano, dal titolo: “Progetto/Project MUR-FRES – Una, sola, indivisibile: le tante Italie nel COVID”. Obiettivo del progetto: analizzare le disuguaglianze socio-economiche territoriali in Italia e il ruolo del COVID-19 nel loro ampliamento, utilizzando dati granulari comunali e tecniche statistiche avanzate, con confronto a livello europeo}
+\cvitemcols{2cm}{2025 -- in corso}{Progetto finanziato dal Ministero dell’Università e della Ricerca tramite la Fondazione Eni Mattei di Milano, dal titolo: “Progetto/Project MUR-FRES – Una, sola, indivisibile: le tante Italie nel COVID”. Obiettivo del progetto: analizzare le disuguaglianze socio-economiche territoriali in Italia e il ruolo del COVID-19 nel loro ampliamento, utilizzando dati granulari comunali e tecniche statistiche avanzate, con confronto a livello europeo}
 
 
-\cvitemcols{2cm}{2025 -\newpage in corso}{Attività di ricerca per \textit{ProduttivItalia -- Centro Studi dell’Associazione Entrobordo}, in collaborazione con il \textit{Dipartimento di Economia dell’Università degli Studi del Molise}, nell’ambito della ricerca \textit{“La produttività nel mondo dei servizi”}. L’attività ha riguardato l’analisi delle dinamiche di produttività nel settore dei servizi italiani, con particolare attenzione alle micro, piccole e medie imprese, alla performance settoriale nel periodo 2005--2025, alle differenze intra-settoriali, al ruolo della dimensione aziendale, dell’innovazione digitale e dell’internazionalizzazione. L’output finale consiste in un report con evidenze empiriche, benchmark internazionali e indicazioni operative per politiche pubbliche e strategie manageriali.}
+\cvitemcols{2cm}{2025 --in corso}{Attività di ricerca per \textit{ProduttivItalia -- Centro Studi dell’Associazione Entrobordo}, in collaborazione con il \textit{Dipartimento di Economia dell’Università degli Studi del Molise}, nell’ambito della ricerca \textit{“La produttività nel mondo dei servizi”}. L’attività ha riguardato l’analisi delle dinamiche di produttività nel settore dei servizi italiani, con particolare attenzione alle micro, piccole e medie imprese, alla performance settoriale nel periodo 2005--2025, alle differenze intra-settoriali, al ruolo della dimensione aziendale, dell’innovazione digitale e dell’internazionalizzazione. L’output finale consiste in un report con evidenze empiriche, benchmark internazionali e indicazioni operative per politiche pubbliche e strategie manageriali.}
 
 
 
-\cvitemcols{2cm}{2024 - \newpage 2026}{GRINS Project – Spoke 7 (Sustainable and Inclusive Growth). Attività di ricerca nell'ambito dell'Assegno di ricerca, con contributo alla preparazione dei report, dei work packages, dei deliverable e dei paper scientifici del progetto.}
+\cvitemcols{2cm}{2024 -- 2026}{GRINS Project – Spoke 7 (Sustainable and Inclusive Growth). Attività di ricerca nell'ambito dell'Assegno di ricerca, con contributo alla preparazione dei report, dei work packages, dei deliverable e dei paper scientifici del progetto.}
 
 
 \cvitemcols{2cm}{2023}{Progetto di ricerca finanziato dall'International Center for Tropical Agriculture (CIAT) per tramite dell'Università del Molise, dal titolo: \textit{“Support Food Insecurity Early Warning Through Conflict Analysis (Fase 3)”}.}
 
 \cvitemcols{2cm}{2023}{Progetto di ricerca finanziato dall'International Center for Tropical Agriculture (CIAT) per tramite dell'Università del Molise, dal titolo: \textit{“Attività di Innovazione Digitale”}.}
 
-\cvitemcols{2cm}{2022 - \newpage 2023}{Progetto di ricerca del Dipartimento di economia "Marco Biagi" finanziato con Fondi di ateneo per la ricerca anno 2022, dal titolo: \textit{“The roles of instructor-student similarities, surnames, and beauty on UNIMORE students’ outcomes and early career jobs”}.}
+\cvitemcols{2cm}{2022 -- 2023}{Progetto di ricerca del Dipartimento di economia "Marco Biagi" finanziato con Fondi di ateneo per la ricerca anno 2022, dal titolo: \textit{“The roles of instructor-student similarities, surnames, and beauty on UNIMORE students’ outcomes and early career jobs”}.}
 
 
 
@@ -545,9 +501,9 @@ Finanziamento per la partecipazione al \textit{65th WRSA Meeting}, Santa Fè, Nu
 
 \section{\textbf{Attività di ricerca per progetti}}
 
-\cvitemcols{2cm}{2021 - \newpage 2022}{Attività di ricerca quantitativo-econometrica per il Progetto Esecutivo finanziato dall'Istituto di Studi Sulle Relazioni Industriali (ISRI), dal titolo “Valutazione dell’impatto delle politiche pubbliche: concetti, metodi, applicazioni” presso \textit{“Servizio di valutazione ex post relativo alla Programmazione regionale 2007-13 in materia di città”}, per la valutazione degli impatti netti di livello macro con metodologia econometrica controfattuale.}
+\cvitemcols{2cm}{2021 -- 2022}{Attività di ricerca quantitativo-econometrica per il Progetto Esecutivo finanziato dall'Istituto di Studi Sulle Relazioni Industriali (ISRI), dal titolo “Valutazione dell’impatto delle politiche pubbliche: concetti, metodi, applicazioni” presso \textit{“Servizio di valutazione ex post relativo alla Programmazione regionale 2007-13 in materia di città”}, per la valutazione degli impatti netti di livello macro con metodologia econometrica controfattuale.}
 
-\cvitemcols{2cm}{2019 - \newpage 2020}{Attività di ricerca finanziata dalla FEDAM (Federazione delle Banche di Credito Cooperativo di Abruzzo e Molise), per la realizzazione del Rapporto di Ricerca: \textit{“Ricerca finalizzata alla costituzione delle Cooperative di comunità con particolare riferimento al settore dell’agricoltura e alle attività di gestione del territorio nelle aree interne del Molise”}.}
+\cvitemcols{2cm}{2019 -- 2020}{Attività di ricerca finanziata dalla FEDAM (Federazione delle Banche di Credito Cooperativo di Abruzzo e Molise), per la realizzazione del Rapporto di Ricerca: \textit{“Ricerca finalizzata alla costituzione delle Cooperative di comunità con particolare riferimento al settore dell’agricoltura e alle attività di gestione del territorio nelle aree interne del Molise”}.}
 
 
 
@@ -579,7 +535,7 @@ Finanziamento per la partecipazione al \textit{65th WRSA Meeting}, Santa Fè, Nu
 
 
 
-    \item Relatore al CIML Training & Conference 2025, Frontiers of Causal Inference and Machine Learning, 8 luglio 2025, organizzata dalla Scuola IMT Alti Studi Lucca \textbf{Contributo presentato}: \textit{Spatial Evaluation of Essential Citizenship Services at Municipalities’ Level: The Contribution of Network Analysis and ML}.
+    \item Relatore al CIML Training \& Conference 2025, Frontiers of Causal Inference and Machine Learning, 8 luglio 2025, organizzata dalla Scuola IMT Alti Studi Lucca \textbf{Contributo presentato}: \textit{Spatial Evaluation of Essential Citizenship Services at Municipalities’ Level: The Contribution of Network Analysis and ML}.
     
 
 
@@ -730,7 +686,7 @@ Finanziamento per la partecipazione al \textit{65th WRSA Meeting}, Santa Fè, Nu
 %----------------------------------------------------------------------------------------
 %	DOCUMENTO
 %----------------------------------------------------------------------------------------
-\begin{document}
+% removed duplicate \begin{document}
 
 \section{\textbf{Formazione accademica specialistica e visite}}
 
@@ -844,7 +800,7 @@ Western Regional Science Association (WRSA); Regional Studies Association (RSA);
 
 \vspace{6pt}
 
-\texb\cvitem{\large •}{Certificazione linguistica B2 ESOL CERTIFICATE, erogato da British Institutes E.B.}
+\cvitem{\large •}{Certificazione linguistica B2 ESOL CERTIFICATE, erogato da British Institutes E.B.}
 {}{}{}
 
 \cvitem{\large •}{Certificazione informatica EIPASS 7 MODULI USER, erogato da CERTIPASS}
