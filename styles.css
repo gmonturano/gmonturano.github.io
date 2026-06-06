@@ -1,0 +1,213 @@
+
+:root{
+  --text:#1c1f23;
+  --muted:#59606a;
+  --light:#f6f7f8;
+  --rule:#d9dde2;
+  --link:#224b72;
+  --max:940px;
+}
+*{box-sizing:border-box}
+html{font-size:12.5px}
+body{margin:0;color:var(--text);background:#fff;font-family:Arial, Helvetica, sans-serif;line-height:1.48;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+.topbar{border-bottom:1px solid var(--rule);margin-bottom:28px;background:#fff}
+.nav{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:14px 0 12px}
+.name{font-size:1rem;font-weight:700;color:#111;white-space:nowrap;letter-spacing:.01em}
+.menu{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+.menu a{font-size:.9rem;color:#3a4047}
+.menu a.active{font-weight:700;color:#111;border-bottom:1px solid #111;padding-bottom:2px;text-decoration:none}
+.home-layout{display:grid;grid-template-columns:205px minmax(0,1fr);gap:44px;align-items:start}
+.sidebar{font-size:.86rem;color:var(--muted)}
+.profile-photo{width:142px;height:142px;border-radius:50%;overflow:hidden;border:1px solid var(--rule);display:block;object-fit:cover;background:#eef2f5;margin:0 0 14px}
+.side-block{margin:0 0 16px}
+.side-title{font-weight:700;color:#37414a;margin-bottom:7px;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.side-small{margin:0 0 8px;line-height:1.55}
+.profile-icons,.icon-grid{display:flex;flex-wrap:wrap;gap:8px 9px;align-items:center}
+.profile-icons{max-width:170px}
+.icon-grid{margin-top:8px}
+.icon-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:31px;
+  height:31px;
+  border:1px solid var(--rule);
+  border-radius:999px;
+  background:#fff;
+  color:#333;
+  transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease,background-color .12s ease;
+  text-decoration:none;
+}
+.icon-link:hover{
+  transform:translateY(-1px);
+  border-color:#aeb8c2;
+  background:#fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  text-decoration:none;
+}
+.icon-link img{
+  width:17px;
+  height:17px;
+  display:block;
+  opacity:1;
+  filter:none;
+}
+.icon-link:hover img{
+  opacity:1;
+  filter:none;
+}
+.icon-link.labelled{width:auto;height:auto;min-height:30px;padding:0 10px;border-radius:999px;gap:6px;font-size:.82rem;line-height:1.1}
+.icon-label{display:none}
+.content,.page{max-width:690px}
+.page{margin:0 auto}
+h1{font-size:1.42rem;line-height:1.22;margin:0 0 8px;font-weight:700;color:#111}
+h2{font-size:1rem;margin:23px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--rule);font-weight:700;color:#111}
+h3{font-size:.95rem;margin:16px 0 5px;font-weight:700;color:#111}
+.position{color:var(--muted);margin:0 0 16px}
+.muted{color:var(--muted)}
+p{margin:0 0 11px}
+ul,ol{margin-top:6px;padding-left:20px}
+.compact-list li{margin-bottom:4px}
+.pubs li{margin-bottom:8px}
+.small-pubs li{margin-bottom:5px}
+.links-list{list-style:none;padding-left:0;margin:6px 0}
+.links-list li{margin-bottom:4px}
+.tagline{font-size:.95rem;color:#2c333a}
+.quote{font-family:Georgia,serif;color:#444;border-left:2px solid var(--rule);padding-left:12px;margin:18px 0}
+.note{font-size:.88rem;color:var(--muted)}
+code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:.9em;background:#f6f6f6;padding:1px 3px;border-radius:2px}
+.footer{border-top:1px solid var(--rule);margin-top:42px;padding:14px 0 24px;color:#777;font-size:.84rem}
+.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+@media (max-width:720px){
+  html{font-size:12.5px}
+  .nav{display:block}
+  .name{display:block;margin-bottom:9px}
+  .menu{justify-content:flex-start;gap:12px}
+  .home-layout{display:block}
+  .sidebar{margin-bottom:24px}
+  .profile-photo{width:118px;height:118px}
+  .profile-icons,.icon-grid{max-width:100%}
+  h1{font-size:1.3rem}
+  .topbar{margin-bottom:21px}
+}
+
+
+/* Round colored academic/social profile badges */
+.icon-link[title="Google Scholar"]{border-color:#d3e2ff;background:#f6f9ff}
+.icon-link[title="ORCID"]{border-color:#d8edbf;background:#fbfff6}
+.icon-link[title="ResearchGate"]{border-color:#b8ece7;background:#f4fffd}
+.icon-link[title="GitHub"]{border-color:#d8d8d8;background:#fafafa}
+.icon-link[title="LinkedIn"]{border-color:#c8e1f2;background:#f5fbff}
+.icon-link[title="X"]{border-color:#d8d8d8;background:#fafafa}
+.icon-link[title="SSRN"]{border-color:#f0d5bb;background:#fff8f1}
+.icon-link[title="IDEAS/RePEc"]{border-color:#d8d0f0;background:#faf8ff}
+
+.icon-link[title="Google Scholar"]:hover{border-color:#4285f4}
+.icon-link[title="ORCID"]:hover{border-color:#a6ce39}
+.icon-link[title="ResearchGate"]:hover{border-color:#00ccbb}
+.icon-link[title="GitHub"]:hover{border-color:#24292f}
+.icon-link[title="LinkedIn"]:hover{border-color:#0a66c2}
+.icon-link[title="X"]:hover{border-color:#111}
+.icon-link[title="SSRN"]:hover{border-color:#c66a1f}
+.icon-link[title="IDEAS/RePEc"]:hover{border-color:#5b4aa2}
+
+
+/* One-profile-per-row academic profile links */
+.profile-icons.column-icons,
+.icon-grid.column-icons{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:7px;
+  max-width:178px;
+}
+
+.icon-link.labelled{
+  width:100%;
+  min-height:30px;
+  height:auto;
+  justify-content:flex-start;
+  padding:5px 9px;
+  border-radius:999px;
+  gap:8px;
+  font-size:.82rem;
+  line-height:1.1;
+  color:#2e343b;
+}
+
+.icon-link.labelled span{
+  display:inline;
+  white-space:nowrap;
+}
+
+.icon-link[title="Scopus"]{border-color:#f2c7ad;background:#fff6f1}
+.icon-link[title="Scopus"]:hover{border-color:#f36c21}
+
+@media (max-width:720px){
+  .profile-icons.column-icons,
+  .icon-grid.column-icons{
+    max-width:190px;
+  }
+}
+
+
+/* Exact compact round logo rows */
+.logo-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin:6px 0 9px;
+}
+.primary-logos{
+  max-width:240px;
+}
+.secondary-logos{
+  max-width:170px;
+  gap:7px;
+  margin-top:4px;
+}
+.round-logo{
+  display:inline-flex;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  border:0;
+  background:transparent;
+  line-height:1;
+  text-decoration:none;
+  transition:transform .12s ease, opacity .12s ease;
+}
+.round-logo.small{
+  width:25px;
+  height:25px;
+}
+.round-logo img{
+  width:100%;
+  height:100%;
+  display:block;
+  border-radius:50%;
+  filter:none;
+  opacity:1;
+}
+.round-logo:hover{
+  transform:translateY(-1px);
+  opacity:.88;
+  text-decoration:none;
+}
+
+
+/* Final polished round logos */
+.logo-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:7px 0 9px}
+.primary-logos{max-width:250px}
+.secondary-logos{max-width:150px;gap:6px;margin-top:3px}
+.round-logo{display:inline-flex;width:29px;height:29px;border-radius:50%;align-items:center;justify-content:center;padding:0;border:0;background:transparent;line-height:1;text-decoration:none;transition:transform .13s ease,opacity .13s ease,filter .13s ease;filter:drop-shadow(0 1px 1px rgba(0,0,0,.10))}
+.round-logo.small{width:25px;height:25px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.08))}
+.round-logo img{width:100%;height:100%;display:block;border-radius:50%;filter:none;opacity:1}
+.round-logo:hover{transform:translateY(-1px) scale(1.04);opacity:.95;text-decoration:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.16))}
