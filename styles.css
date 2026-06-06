@@ -626,3 +626,122 @@ code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size
   border-bottom:0 !important;
   pointer-events:none;
 }
+
+
+/* Compact final correction: smaller logos and narrower biography column */
+.wrap{
+  max-width:1080px;
+}
+
+.home-layout{
+  grid-template-columns:175px minmax(0,520px);
+  gap:54px;
+}
+
+.content,
+.page,
+.home-bio{
+  max-width:520px;
+}
+
+.profile-photo{
+  width:136px;
+  height:136px;
+}
+
+.logo-row{
+  gap:6px;
+  margin:6px 0 8px;
+}
+
+.primary-logos{
+  max-width:145px;
+}
+
+.round-logo{
+  width:25px;
+  height:25px;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.08));
+}
+
+.round-logo img{
+  width:25px;
+  height:25px;
+}
+
+.side-title{
+  font-size:.74rem;
+  letter-spacing:.12em;
+}
+
+.contact-block .side-small{
+  font-size:.72rem;
+  line-height:1.45;
+}
+
+.home-bio{
+  padding-top:2px;
+}
+
+.home-bio h1{
+  font-size:1.38rem;
+  margin-bottom:8px;
+}
+
+.home-bio p{
+  font-size:.91rem;
+  line-height:1.56;
+  margin-bottom:11px;
+}
+
+.home-bio .lead{
+  font-size:.94rem;
+  line-height:1.56;
+}
+
+.academic-roles{
+  font-size:.68rem;
+  line-height:1.5;
+  margin-bottom:17px;
+}
+
+.role-title{
+  letter-spacing:.08em;
+}
+
+.code-badge{
+  font-size:.82em;
+  padding:1px 6px;
+  border-radius:5px;
+}
+
+@media (max-width:720px){
+  .wrap{
+    max-width:100%;
+  }
+
+  .home-layout{
+    display:block;
+  }
+
+  .content,
+  .page,
+  .home-bio{
+    max-width:100%;
+  }
+
+  .profile-photo{
+    width:118px;
+    height:118px;
+  }
+
+  .round-logo,
+  .round-logo img{
+    width:24px;
+    height:24px;
+  }
+
+  .primary-logos{
+    max-width:150px;
+  }
+}
