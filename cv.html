@@ -1,14 +1,209 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CV | Gianluca Monturano</title><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><div class="wrap"><div class="nav"><a class="name" href="index.html">Gianluca Monturano</a><nav class="menu" aria-label="Primary navigation"><a href="index.html">Home</a><a href="research.html">Research</a><a href="software.html">Software</a><a href="teaching.html">Teaching</a><a class="active" href="cv.html">CV</a></nav></div></div></header><main class="wrap page"><h1>Curriculum vitae</h1><p class="position">Academic CV and contact information.</p><h2>Download</h2><p>Add the PDF file as <code>assets/Curriculum_Vitae_Monturano.pdf</code>.</p><p><a href="assets/Curriculum_Vitae_Monturano.pdf">Download CV</a></p><h2>Academic profiles</h2><div class="logo-row primary-logos" aria-label="Main academic and professional profiles">
-  <a class="round-logo" href="https://be.linkedin.com/in/gianluca-monturano93" title="LinkedIn" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt=""></a>
-  <a class="round-logo" href="https://scholar.google.com/scholar?q=Gianluca+Monturano" title="Google Scholar" aria-label="Google Scholar"><img src="assets/icons/google-scholar.svg" alt=""></a>
-  <a class="round-logo" href="https://www.scopus.com/results/authorNamesList.uri?name=name&st1=Monturano&st2=Gianluca" title="Scopus" aria-label="Scopus"><img src="assets/icons/scopus.svg" alt=""></a>
-  <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate"><img src="assets/icons/researchgate.svg" alt=""></a>
-  <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID"><img src="assets/icons/orcid.svg" alt=""></a>
-  <a class="round-logo" href="https://x.com/monturano" title="X" aria-label="X"><img src="assets/icons/x.svg" alt=""></a>
-  <a class="round-logo" href="https://github.com/monturano" title="GitHub" aria-label="GitHub"><img src="assets/icons/github.svg" alt=""></a>
-</div>
-<div class="logo-row secondary-logos" aria-label="Working papers and economics profiles">
-  <a class="round-logo small" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv"><img src="assets/icons/arxiv.svg" alt=""></a>
-  <a class="round-logo small" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6299055" title="SSRN" aria-label="SSRN"><img src="assets/icons/ssrn.svg" alt=""></a>
-  <a class="round-logo small" href="https://ideas.repec.org/cgi-bin/htsearch?q=Gianluca+Monturano" title="IDEAS/RePEc" aria-label="IDEAS/RePEc"><img src="assets/icons/repec.svg" alt=""></a>
-</div><h2>Contact</h2><p><a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a><br><a href="mailto:gianluca.monturano@uniba.it">gianluca.monturano@uniba.it</a><br><a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a></p><p class="quote">“Helping those in need is not only a duty, but a source of happiness.”<br>— José Martí</p></main><footer class="footer"><div class="wrap footer-inner"><span>© Gianluca Monturano</span><span>CV</span></div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV | Gianluca Monturano</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cv-summary{
+      margin:12px 0 22px;
+    }
+
+    .cv-summary h2{
+      margin-top:18px;
+    }
+
+    .cv-summary ul{
+      margin:7px 0 13px;
+      padding-left:18px;
+    }
+
+    .cv-summary li{
+      margin-bottom:6px;
+    }
+
+    .cv-date{
+      font-weight:700;
+      color:#111;
+      white-space:nowrap;
+    }
+
+    .cv-role{
+      font-weight:700;
+      color:#111;
+    }
+
+    .cv-meta{
+      color:var(--muted);
+    }
+
+    .cv-profiles{
+      margin:12px 0 22px;
+    }
+
+    .cv-profiles .logo-row{
+      display:flex;
+      flex-wrap:nowrap;
+      gap:8px;
+      align-items:center;
+      max-width:none;
+      margin:8px 0 6px;
+    }
+
+    .cv-profiles .round-logo{
+      width:28px;
+      height:28px;
+      flex:0 0 auto;
+    }
+
+    .cv-profiles .round-logo.small{
+      width:24px;
+      height:24px;
+    }
+
+    .cv-contact{
+      margin-top:22px;
+    }
+
+    .cv-contact a{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    .cv-quote{
+      font-family:Georgia, serif;
+      color:#444;
+      border-left:2px solid var(--rule);
+      padding-left:12px;
+      margin:20px 0 0;
+    }
+
+    .cv-download{
+      margin:18px 0 22px;
+      padding:12px 14px;
+      border:1px solid var(--rule);
+      background:#fafafa;
+    }
+
+    .cv-download a{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+      font-weight:700;
+    }
+
+    .pdf-viewer{
+      width:100%;
+      height:820px;
+      border:1px solid var(--rule);
+      background:#f7f7f7;
+      margin-top:14px;
+    }
+
+    .pdf-viewer iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    @media (max-width:720px){
+      .cv-profiles .logo-row{
+        flex-wrap:wrap;
+      }
+
+      .pdf-viewer{
+        height:680px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <a class="name" href="index.html">Gianluca Monturano</a>
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="software.html">Software</a>
+        <a href="teaching.html">Teaching</a>
+        <a class="active" href="cv.html">CV</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap page">
+  <h1>Curriculum vitae</h1>
+  <p class="position">Academic profile, current roles and downloadable CV.</p>
+
+  <section class="cv-summary">
+    <h2>Current roles</h2>
+    <ul class="pubs">
+      <li><span class="cv-date">2026–present.</span> <span class="cv-role">Assistant Professor (RTDA)</span>, Department of Economics, University of Salento.</li>
+      <li><span class="cv-date">2026–present.</span> <span class="cv-role">Senior Researcher</span>, Fondazione Eni Enrico Mattei, Milan.</li>
+      <li><span class="cv-date">2024–present.</span> <span class="cv-role">Senior Researcher</span>, Laboratory of Applied Economics (LEA), Department of Economics, Management and Business Law, University of Bari.</li>
+      <li><span class="cv-date">2025–present.</span> <span class="cv-role">Adjunct Professor of Political Economy</span>, Department of Economics, Management and Business Law, University of Bari.</li>
+    </ul>
+
+    <h2>Previous roles and education</h2>
+    <ul class="pubs">
+      <li><span class="cv-date">2024–2026.</span> <span class="cv-role">Postdoctoral Research Fellow</span>, Department of Economics, Management and Business Law, University of Bari.</li>
+      <li><span class="cv-date">2021–2025.</span> <span class="cv-role">Ph.D. in Economics</span>, Department of Economics, University of Modena and Reggio Emilia.</li>
+      <li><span class="cv-date">2024.</span> <span class="cv-role">Visiting PhD Candidate</span>, Solvay Brussels School of Economics and Management, Université Libre de Bruxelles.</li>
+    </ul>
+
+    <h2>Other academic roles</h2>
+    <p>
+      Cultore della materia in Applied Economics, Political Economy, Statistics and Economic Statistics at the University of Bari, University of Modena and Reggio Emilia, University of Milano-Bicocca, UNINT University of Rome and University of Teramo.
+    </p>
+  </section>
+
+  <h2>Academic profiles</h2>
+  <div class="cv-profiles">
+    <div class="logo-row primary-logos" aria-label="Main academic and professional profiles">
+      <a class="round-logo" href="https://be.linkedin.com/in/gianluca-monturano93" title="LinkedIn" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt=""></a>
+      <a class="round-logo" href="https://scholar.google.com/scholar?q=Gianluca+Monturano" title="Google Scholar" aria-label="Google Scholar"><img src="assets/icons/google-scholar.svg" alt=""></a>
+      <a class="round-logo" href="https://www.scopus.com/results/authorNamesList.uri?name=name&st1=Monturano&st2=Gianluca" title="Scopus" aria-label="Scopus"><img src="assets/icons/scopus.svg" alt=""></a>
+      <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate"><img src="assets/icons/researchgate.svg" alt=""></a>
+      <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID"><img src="assets/icons/orcid.svg" alt=""></a>
+      <a class="round-logo" href="https://x.com/monturano" title="X" aria-label="X"><img src="assets/icons/x.svg" alt=""></a>
+      <a class="round-logo" href="https://github.com/monturano" title="GitHub" aria-label="GitHub"><img src="assets/icons/github.svg" alt=""></a>
+      <a class="round-logo small" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv"><img src="assets/icons/arxiv.svg" alt=""></a>
+      <a class="round-logo small" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6299055" title="SSRN" aria-label="SSRN"><img src="assets/icons/ssrn.svg" alt=""></a>
+      <a class="round-logo small" href="https://ideas.repec.org/cgi-bin/htsearch?q=Gianluca+Monturano" title="IDEAS/RePEc" aria-label="IDEAS/RePEc"><img src="assets/icons/repec.svg" alt=""></a>
+    </div>
+  </div>
+
+  <h2>Download</h2>
+  <div class="cv-download">
+    <p>The PDF below is generated from the LaTeX source in the repository.</p>
+    <p><a href="cv/Curriculum_Vitae_Monturano.pdf" target="_blank" rel="noopener">Download full CV as PDF</a></p>
+  </div>
+
+  <div class="pdf-viewer">
+    <iframe src="cv/Curriculum_Vitae_Monturano.pdf" title="Curriculum vitae - Gianluca Monturano"></iframe>
+  </div>
+
+  <section class="cv-contact">
+    <h2>Contact</h2>
+    <p>
+      <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a><br>
+      <a href="mailto:gianluca.monturano@uniba.it">gianluca.monturano@uniba.it</a><br>
+      <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
+    </p>
+
+    <p class="cv-quote">“Helping those in need is not only a duty, but a source of happiness.”<br>— José Martí</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© Gianluca Monturano</span>
+    <span>CV</span>
+  </div>
+</footer>
+</body>
+</html>
