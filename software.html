@@ -1,338 +1,389 @@
-.software-head{
-  border-bottom:1px solid var(--rule);
-  padding-bottom:14px;
-  margin-bottom:10px;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software | Gianluca Monturano</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .software-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 190px;
+      gap:34px;
+      align-items:start;
+    }
 
-.software-head h1{
-  margin-bottom:6px;
-}
+    .software-head{
+      border-bottom:1px solid var(--rule);
+      padding-bottom:14px;
+      margin-bottom:10px;
+    }
 
-.software-head p{
-  max-width:760px;
-  color:var(--muted);
-  margin-bottom:0;
-}
+    .software-head h1{
+      margin-bottom:6px;
+    }
 
-.github-main-link{
-  color:#0057d9;
-  text-decoration:underline;
-  text-underline-offset:2px;
-  font-weight:700;
-}
+    .software-head p{
+      max-width:760px;
+      color:var(--muted);
+      margin-bottom:0;
+    }
 
-.package-list{
-  margin-top:6px;
-}
+    .github-main-link{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+      font-weight:700;
+    }
 
-.package-item{
-  display:grid;
-  grid-template-columns:92px minmax(0,1fr);
-  gap:22px;
-  padding:22px 0 26px;
-  border-bottom:1px solid var(--rule);
-}
+    .package-list{
+      margin-top:6px;
+    }
 
-.package-icon{
-  width:92px;
-  height:92px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    .package-item{
+      display:grid;
+      grid-template-columns:92px minmax(0,1fr);
+      gap:22px;
+      padding:22px 0 26px;
+      border-bottom:1px solid var(--rule);
+    }
 
-.package-icon img{
-  max-width:82px;
-  max-height:82px;
-  display:block;
-  object-fit:contain;
-}
+    .package-icon{
+      width:92px;
+      height:92px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
 
-.package-icon.multi{
-  gap:7px;
-  flex-wrap:wrap;
-}
+    .package-icon img{
+      max-width:82px;
+      max-height:82px;
+      display:block;
+      object-fit:contain;
+    }
 
-.package-icon.multi img{
-  max-width:38px;
-  max-height:38px;
-}
+    .package-icon.multi{
+      gap:7px;
+      flex-wrap:wrap;
+    }
 
-.package-icon.wide img{
-  max-width:86px;
-  max-height:64px;
-}
+    .package-icon.multi img{
+      max-width:38px;
+      max-height:38px;
+    }
 
-.package-content{
-  border-left:3px solid #111;
-  padding-left:13px;
-}
+    .package-icon.wide img{
+      max-width:86px;
+      max-height:64px;
+    }
 
-.package-title{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:6px;
-  margin-bottom:5px;
-}
+    .package-content{
+      border-left:3px solid #111;
+      padding-left:13px;
+    }
 
-.package-title h2{
-  font-size:1.02rem;
-  margin:0;
-  line-height:1.15;
-}
+    .package-title{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-bottom:5px;
+    }
 
-.package-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin:4px 0 7px;
-  font-size:.76rem;
-}
+    .package-title h2{
+      font-size:1.02rem;
+      margin:0;
+      line-height:1.15;
+    }
 
-.badge{
-  border:1px solid var(--rule);
-  background:#f6f6f6;
-  padding:1px 6px;
-  border-radius:4px;
-  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  white-space:nowrap;
-}
+    .package-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:5px;
+      margin:4px 0 7px;
+      font-size:.76rem;
+    }
 
-.badge-r{color:#276dc3;}
-.badge-py{color:#b8860b;}
-.badge-tex{color:#006f6f;}
-.badge-rep{color:#264653;}
+    .badge{
+      border:1px solid var(--rule);
+      background:#f6f6f6;
+      padding:1px 6px;
+      border-radius:4px;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      white-space:nowrap;
+    }
 
-.package-content p{
-  margin:0;
-  font-size:.93rem;
-  line-height:1.55;
-}
+    .badge-r{color:#276dc3;}
+    .badge-py{color:#b8860b;}
+    .badge-tex{color:#006f6f;}
+    .badge-rep{color:#264653;}
 
-.software-sidebar{
-  position:sticky;
-  top:74px;
-  font-size:.9rem;
-}
+    .package-content p{
+      margin:0;
+      font-size:.93rem;
+      line-height:1.55;
+    }
 
-.software-sidebar h2{
-  font-size:1rem;
-  margin:0 0 10px;
-}
+    .software-sidebar{
+      position:sticky;
+      top:74px;
+      font-size:.9rem;
+    }
 
-.cat-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-  border-left:1px solid var(--rule);
-  padding-left:12px;
-}
+    .software-sidebar h2{
+      font-size:1rem;
+      margin:0 0 10px;
+    }
 
-.cat-list li{
-  margin-bottom:7px;
-  color:#333;
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
+    .cat-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      border-left:1px solid var(--rule);
+      padding-left:12px;
+    }
 
-.cat-list img{
-  width:16px;
-  height:16px;
-  object-fit:contain;
-  display:block;
-}
+    .cat-list li{
+      margin-bottom:7px;
+      color:#333;
+      display:flex;
+      align-items:center;
+      gap:7px;
+    }
 
-.github-box{
-  margin-top:18px;
-  border:1px solid var(--rule);
-  background:#fafafa;
-  padding:10px;
-}
+    .cat-list img{
+      width:16px;
+      height:16px;
+      object-fit:contain;
+      display:block;
+    }
 
-.github-box a{
-  color:#0057d9;
-  text-decoration:underline;
-  text-underline-offset:2px;
-  font-weight:700;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-}
+    .github-box{
+      margin-top:18px;
+      border:1px solid var(--rule);
+      background:#fafafa;
+      padding:10px;
+    }
 
-.github-box img{
-  width:18px;
-  height:18px;
-  object-fit:contain;
-}
+    .github-box a{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
 
-@media (max-width:850px){
-  .software-layout{
-    grid-template-columns:1fr;
-  }
+    .github-box img{
+      width:18px;
+      height:18px;
+      object-fit:contain;
+    }
 
-  .software-sidebar{
-    position:static;
-    order:-1;
-  }
+    @media (max-width:850px){
+      .software-layout{
+        grid-template-columns:1fr;
+      }
 
-  .package-item{
-    grid-template-columns:74px minmax(0,1fr);
-    gap:16px;
-  }
+      .software-sidebar{
+        position:static;
+        order:-1;
+      }
 
-  .package-icon{
-    width:74px;
-    height:74px;
-  }
+      .package-item{
+        grid-template-columns:74px minmax(0,1fr);
+        gap:16px;
+      }
 
-  .package-icon img{
-    max-width:66px;
-    max-height:66px;
-  }
+      .package-icon{
+        width:74px;
+        height:74px;
+      }
 
-  .package-icon.multi img{
-    max-width:31px;
-    max-height:31px;
-  }
-}
-  <nav class="menu" aria-label="Primary navigation">
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a class="active" href="software.html">Software</a>
-    <a href="teaching.html">Teaching</a>
-    <a href="dissemination.html">Dissemination</a>
-    <a href="cv.html">CV</a>
-  </nav>
-</div>
-  <div class="package-list">
+      .package-icon img{
+        max-width:66px;
+        max-height:66px;
+      }
 
-    <article class="package-item">
-      <div class="package-icon multi">
-        <img src="assets/icons/github-logo.png" alt="GitHub">
-        <img src="assets/icons/r-logo.png" alt="R">
-        <img src="assets/icons/python-logo.png" alt="Python">
-      </div>
+      .package-icon.multi img{
+        max-width:31px;
+        max-height:31px;
+      }
+    }
+  </style>
+</head>
 
-      <div class="package-content">
-        <div class="package-title">
-          <h2>Replication code repositories</h2>
-        </div>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <a class="name" href="index.html">Gianluca Monturano</a>
 
-        <div class="package-meta">
-          <span class="badge badge-rep">Replication</span>
-          <span class="badge badge-r">R</span>
-          <span class="badge badge-py">Python</span>
-          <span class="badge">Empirical workflows</span>
-        </div>
-
-        <p>
-          Replication material for published papers, submitted papers and ongoing research projects:
-          data cleaning, dataset construction, model estimation, robustness checks, tables, figures and
-          reproducible outputs. These repositories document the empirical workflow behind each study.
-        </p>
-      </div>
-    </article>
-
-    <article class="package-item">
-      <div class="package-icon wide">
-        <img src="assets/icons/r-logo.png" alt="R">
-      </div>
-
-      <div class="package-content">
-        <div class="package-title">
-          <h2>R routines for statistical analysis</h2>
-        </div>
-
-        <div class="package-meta">
-          <span class="badge badge-r">R</span>
-          <span class="badge">Data analysis</span>
-          <span class="badge">Data manipulation</span>
-          <span class="badge">Spatial econometrics</span>
-          <span class="badge">Causal inference</span>
-        </div>
-
-        <p>
-          R scripts and routines for data manipulation, descriptive and inferential statistics,
-          causal inference, spatial econometrics, policy evaluation, territorial indicators,
-          accessibility measures and reproducible analytical pipelines for empirical research.
-        </p>
-      </div>
-    </article>
-
-    <article class="package-item">
-      <div class="package-icon wide">
-        <img src="assets/icons/python-logo.png" alt="Python">
-      </div>
-
-      <div class="package-content">
-        <div class="package-title">
-          <h2>Python workflows for data science</h2>
-        </div>
-
-        <div class="package-meta">
-          <span class="badge badge-py">Python</span>
-          <span class="badge">Machine learning</span>
-          <span class="badge">Network analysis</span>
-          <span class="badge">Scraping</span>
-          <span class="badge">Text analysis</span>
-        </div>
-
-        <p>
-          Python projects for machine learning, network analysis, automated data collection,
-          web scraping, text analysis and document processing. These workflows support prediction,
-          classification, exploratory modelling and reproducible data-science applications.
-        </p>
-      </div>
-    </article>
-
-    <article class="package-item">
-      <div class="package-icon multi">
-        <img src="assets/icons/latex-logo.svg" alt="LaTeX">
-        <img src="assets/icons/markdown-logo.png" alt="Markdown">
-        <img src="assets/icons/quarto-logo.png" alt="Quarto">
-      </div>
-
-      <div class="package-content">
-        <div class="package-title">
-          <h2>LaTeX, Markdown and Quarto templates</h2>
-        </div>
-
-        <div class="package-meta">
-          <span class="badge badge-tex">LaTeX</span>
-          <span class="badge">Markdown</span>
-          <span class="badge">Quarto</span>
-          <span class="badge">CV</span>
-          <span class="badge">Slides</span>
-          <span class="badge">Working papers</span>
-        </div>
-
-        <p>
-          Academic material for CVs, conference slides, teaching notes, article templates,
-          working papers, reproducible reports and automatic PDF generation through GitHub workflows.
-        </p>
-      </div>
-    </article>
-
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="software.html">Software</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="dissemination.html">Dissemination</a>
+        <a href="cv.html">CV</a>
+      </nav>
+    </div>
   </div>
-</section>
+</header>
 
-<aside class="software-sidebar">
-  <h2>Categories</h2>
-  <ul class="cat-list">
-    <li><img src="assets/icons/github-logo.png" alt="">Replication code</li>
-    <li><img src="assets/icons/r-logo.png" alt="">R analysis</li>
-    <li><img src="assets/icons/python-logo.png" alt="">Python workflows</li>
-    <li><img src="assets/icons/latex-logo.svg" alt="">LaTeX templates</li>
-    <li><img src="assets/icons/markdown-logo.png" alt="">Markdown</li>
-    <li><img src="assets/icons/quarto-logo.png" alt="">Quarto</li>
-  </ul>
+<main class="wrap page">
+  <div class="software-layout">
+    <section>
+      <div class="software-head">
+        <h1>Software and packages</h1>
+        <p>
+          Reproducible code, statistical workflows, replication packages and academic templates.
+          R, Python, LaTeX, Markdown and Quarto materials are hosted on
+          <a class="github-main-link" href="https://github.com/monturano" target="_blank" rel="noopener">GitHub</a>
+          and are used for empirical research, data manipulation, policy evaluation, machine learning and scientific writing.
+        </p>
+      </div>
 
-  <div class="github-box">
-    <a href="https://github.com/monturano" target="_blank" rel="noopener">
-      <img src="assets/icons/github-logo.png" alt="">
-      <span>GitHub</span>
-    </a>
+      <div class="package-list">
+
+        <article class="package-item">
+          <div class="package-icon multi">
+            <img src="assets/icons/25231.png" alt="GitHub">
+            <img src="assets/icons/1_4hUdzpSQiZw0q7JtX5Ru4w.jpg" alt="R">
+            <img src="assets/icons/Python-logo-notext.svg.png" alt="Python">
+          </div>
+
+          <div class="package-content">
+            <div class="package-title">
+              <h2>Replication code repositories</h2>
+            </div>
+
+            <div class="package-meta">
+              <span class="badge badge-rep">Replication</span>
+              <span class="badge badge-r">R</span>
+              <span class="badge badge-py">Python</span>
+              <span class="badge">Empirical workflows</span>
+            </div>
+
+            <p>
+              Replication material for published papers, submitted papers and ongoing research projects:
+              data cleaning, dataset construction, model estimation, robustness checks, tables, figures and
+              reproducible outputs. These repositories document the empirical workflow behind each study.
+            </p>
+          </div>
+        </article>
+
+        <article class="package-item">
+          <div class="package-icon wide">
+            <img src="assets/icons/1_4hUdzpSQiZw0q7JtX5Ru4w.jpg" alt="R">
+          </div>
+
+          <div class="package-content">
+            <div class="package-title">
+              <h2>R routines for statistical analysis</h2>
+            </div>
+
+            <div class="package-meta">
+              <span class="badge badge-r">R</span>
+              <span class="badge">Data analysis</span>
+              <span class="badge">Data manipulation</span>
+              <span class="badge">Spatial econometrics</span>
+              <span class="badge">Causal inference</span>
+            </div>
+
+            <p>
+              R scripts and routines for data manipulation, descriptive and inferential statistics,
+              causal inference, spatial econometrics, policy evaluation, territorial indicators,
+              accessibility measures and reproducible analytical pipelines for empirical research.
+            </p>
+          </div>
+        </article>
+
+        <article class="package-item">
+          <div class="package-icon wide">
+            <img src="assets/icons/Python-logo-notext.svg.png" alt="Python">
+          </div>
+
+          <div class="package-content">
+            <div class="package-title">
+              <h2>Python workflows for data science</h2>
+            </div>
+
+            <div class="package-meta">
+              <span class="badge badge-py">Python</span>
+              <span class="badge">Machine learning</span>
+              <span class="badge">Network analysis</span>
+              <span class="badge">Scraping</span>
+              <span class="badge">Text analysis</span>
+            </div>
+
+            <p>
+              Python projects for machine learning, network analysis, automated data collection,
+              web scraping, text analysis and document processing. These workflows support prediction,
+              classification, exploratory modelling and reproducible data-science applications.
+            </p>
+          </div>
+        </article>
+
+        <article class="package-item">
+          <div class="package-icon multi">
+            <img src="assets/icons/LaTeX_logo.svg" alt="LaTeX">
+            <img src="assets/icons/download.png" alt="Markdown">
+            <img src="assets/icons/logo.png" alt="Quarto">
+          </div>
+
+          <div class="package-content">
+            <div class="package-title">
+              <h2>LaTeX, Markdown and Quarto templates</h2>
+            </div>
+
+            <div class="package-meta">
+              <span class="badge badge-tex">LaTeX</span>
+              <span class="badge">Markdown</span>
+              <span class="badge">Quarto</span>
+              <span class="badge">CV</span>
+              <span class="badge">Slides</span>
+              <span class="badge">Working papers</span>
+            </div>
+
+            <p>
+              Academic material for CVs, conference slides, teaching notes, article templates,
+              working papers, reproducible reports and automatic PDF generation through GitHub workflows.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <aside class="software-sidebar">
+      <h2>Categories</h2>
+      <ul class="cat-list">
+        <li><img src="assets/icons/25231.png" alt="">Replication code</li>
+        <li><img src="assets/icons/1_4hUdzpSQiZw0q7JtX5Ru4w.jpg" alt="">R analysis</li>
+        <li><img src="assets/icons/Python-logo-notext.svg.png" alt="">Python workflows</li>
+        <li><img src="assets/icons/LaTeX_logo.svg" alt="">LaTeX templates</li>
+        <li><img src="assets/icons/download.png" alt="">Markdown</li>
+        <li><img src="assets/icons/logo.png" alt="">Quarto</li>
+      </ul>
+
+      <div class="github-box">
+        <a href="https://github.com/monturano" target="_blank" rel="noopener">
+          <img src="assets/icons/25231.png" alt="">
+          <span>GitHub</span>
+        </a>
+      </div>
+    </aside>
   </div>
-</aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© Gianluca Monturano</span>
+    <span>R · Python · LaTeX · Markdown · Quarto</span>
+  </div>
+</footer>
+</body>
+</html>
