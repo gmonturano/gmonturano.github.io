@@ -18,7 +18,7 @@
 .software-head{
   border-bottom:1px solid var(--rule);
   padding-bottom:14px;
-  margin-bottom:10px;
+  margin-bottom:16px;
 }
 
 .software-head h1{
@@ -38,8 +38,69 @@
   font-weight:700;
 }
 
+.github-hub{
+  display:grid;
+  grid-template-columns:88px minmax(0,1fr);
+  gap:20px;
+  align-items:center;
+  border:1px solid var(--rule);
+  background:#fafafa;
+  padding:16px 18px;
+  margin:16px 0 10px;
+}
+
+.github-hub-icon{
+  width:88px;
+  height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.github-hub-icon img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  display:block;
+}
+
+.github-hub-content h2{
+  margin:0 0 5px;
+  font-size:1.08rem;
+}
+
+.github-hub-content p{
+  margin:0;
+  font-size:.94rem;
+  line-height:1.55;
+}
+
+.github-hub-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:8px 0 9px;
+}
+
+.github-hub-link{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:8px;
+}
+
 .package-list{
   margin-top:6px;
+}
+
+.package-section-title{
+  margin:20px 0 4px;
+  font-size:1rem;
+  color:#111;
 }
 
 .package-item{
@@ -132,6 +193,16 @@
   color:#264653;
 }
 
+.badge-cran{
+  color:#276dc3;
+  font-weight:700;
+}
+
+.badge-pypi{
+  color:#b8860b;
+  font-weight:700;
+}
+
 .package-content p{
   margin:0;
   font-size:.93rem;
@@ -205,6 +276,21 @@
     order:-1;
   }
 
+  .github-hub{
+    grid-template-columns:68px minmax(0,1fr);
+    gap:14px;
+  }
+
+  .github-hub-icon{
+    width:68px;
+    height:68px;
+  }
+
+  .github-hub-icon img{
+    width:58px;
+    height:58px;
+  }
+
   .package-item{
     grid-template-columns:74px minmax(0,1fr);
     gap:16px;
@@ -257,43 +343,44 @@
       <div class="software-head">
         <h1>Software and packages</h1>
         <p>
-          Reproducible code, statistical workflows, replication packages and academic templates.
-          My GitHub profile collects R, Python, LaTeX, Markdown and Quarto materials for empirical research,
-          data manipulation, policy evaluation, machine learning and scientific writing:
-          <a class="github-main-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">GitHub</a>.
+          Reproducible code, statistical workflows, replication packages and academic templates
+          for empirical research, data manipulation, policy evaluation, machine learning and scientific writing.
         </p>
       </div>
 
 ```
+  <section class="github-hub">
+    <div class="github-hub-icon">
+      <img src="assets/icons/25231.png" alt="GitHub">
+    </div>
+
+    <div class="github-hub-content">
+      <h2>GitHub code hub</h2>
+
+      <div class="github-hub-tags">
+        <span class="badge badge-rep">Replication code</span>
+        <span class="badge badge-r">R</span>
+        <span class="badge badge-py">Python</span>
+        <span class="badge badge-tex">LaTeX</span>
+        <span class="badge">Markdown</span>
+        <span class="badge">Quarto</span>
+      </div>
+
+      <p>
+        My GitHub profile is the central repository where I collect replication packages,
+        statistical workflows, R and Python code, LaTeX templates, Markdown documents and Quarto material.
+        The sections below describe the main types of material hosted there.
+      </p>
+
+      <a class="github-hub-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">
+        Open GitHub profile
+      </a>
+    </div>
+  </section>
+
+  <h2 class="package-section-title">Technical materials</h2>
+
   <div class="package-list">
-
-    <article class="package-item">
-      <div class="package-icon wide">
-        <img src="assets/icons/25231.png" alt="GitHub">
-      </div>
-
-      <div class="package-content">
-        <div class="package-title">
-          <h2>GitHub repositories</h2>
-        </div>
-
-        <div class="package-meta">
-          <span class="badge badge-rep">Replication code</span>
-          <span class="badge">R</span>
-          <span class="badge">Python</span>
-          <span class="badge">LaTeX</span>
-          <span class="badge">Markdown</span>
-          <span class="badge">Quarto</span>
-        </div>
-
-        <p>
-          My GitHub profile collects replication packages, statistical workflows, R and Python code,
-          LaTeX templates, Markdown and Quarto material. These repositories are designed to document
-          empirical workflows and support reproducible research.
-        </p>
-      </div>
-    </article>
-
     <article class="package-item">
       <div class="package-icon wide">
         <img src="assets/icons/R_logo.svg.png" alt="R">
@@ -306,6 +393,7 @@
 
         <div class="package-meta">
           <span class="badge badge-r">R</span>
+          <span class="badge badge-cran">CRAN</span>
           <span class="badge">Data analysis</span>
           <span class="badge">Data manipulation</span>
           <span class="badge">Spatial econometrics</span>
@@ -316,6 +404,7 @@
           R scripts and routines for data manipulation, descriptive and inferential statistics,
           causal inference, spatial econometrics, policy evaluation, territorial indicators,
           accessibility measures and reproducible analytical pipelines for empirical research.
+          Future R packages and package-style tools can be indexed here, including CRAN-oriented material.
         </p>
       </div>
     </article>
@@ -332,6 +421,7 @@
 
         <div class="package-meta">
           <span class="badge badge-py">Python</span>
+          <span class="badge badge-pypi">PyPI</span>
           <span class="badge">Machine learning</span>
           <span class="badge">Network analysis</span>
           <span class="badge">Scraping</span>
@@ -342,6 +432,7 @@
           Python projects for machine learning, network analysis, automated data collection,
           web scraping, text analysis and document processing. These workflows support prediction,
           classification, exploratory modelling and reproducible data-science applications.
+          Future Python packages and package-style tools can be indexed here, including PyPI-oriented material.
         </p>
       </div>
     </article>
@@ -373,19 +464,20 @@
         </p>
       </div>
     </article>
-
   </div>
 </section>
 
 <aside class="software-sidebar">
-  <h2>Categories</h2>
+  <h2>Index</h2>
   <ul class="cat-list">
-    <li><img src="assets/icons/25231.png" alt="">GitHub repositories</li>
-    <li><img src="assets/icons/1_4hUdzpSQiZw0q7JtX5Ru4w.jpg" alt="">R analysis</li>
+    <li><img src="assets/icons/25231.png" alt="">GitHub code hub</li>
+    <li><img src="assets/icons/R_logo.svg.png" alt="">R analysis</li>
     <li><img src="assets/icons/Python-logo-notext.svg.png" alt="">Python workflows</li>
     <li><img src="assets/icons/LaTeX_logo.svg" alt="">LaTeX templates</li>
     <li><img src="assets/icons/download.png" alt="">Markdown</li>
     <li><img src="assets/icons/logo.png" alt="">Quarto</li>
+    <li><span class="badge badge-cran">CRAN</span> R packages</li>
+    <li><span class="badge badge-pypi">PyPI</span> Python packages</li>
   </ul>
 
   <div class="github-box">
