@@ -1,1 +1,225 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Software | Gianluca Monturano</title><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><div class="wrap"><div class="nav"><a class="name" href="index.html">Gianluca Monturano</a><nav class="menu" aria-label="Primary navigation"><a href="index.html">Home</a><a href="research.html">Research</a><a class="active" href="software.html">Software</a><a href="teaching.html">Teaching</a><a href="cv.html">CV</a></nav></div></div></header><main class="wrap page"><h1>Software</h1><p class="position">Code, packages, replication material and empirical workflows.</p><h2>GitHub</h2><p>Replication code and statistical software can be organised as small repositories with README, reproducible scripts and citation metadata.</p><p><a class="icon-link labelled" href="https://github.com/monturano" title="GitHub"><img src="assets/icons/github.svg" alt=""><span>GitHub profile</span></a></p><h2>Suggested structure</h2><ul class="compact-list"><li>R packages: README, examples, vignettes and tests.</li><li>Python projects: reusable modules under <code>src/</code>, notebooks only for exploration.</li><li>Replication material: scripts, processed outputs, figures and data-access notes.</li></ul></main><footer class="footer"><div class="wrap footer-inner"><span>© Gianluca Monturano</span><span>R · Python</span></div></footer></body></html>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software | Gianluca Monturano</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .software-intro{
+      margin-bottom:22px;
+    }
+
+```
+.software-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:14px;
+}
+
+.software-card{
+  border:1px solid var(--rule);
+  background:#fafafa;
+  padding:14px 15px;
+}
+
+.software-card h2{
+  margin-top:0;
+  font-size:1.02rem;
+}
+
+.software-card p{
+  margin-bottom:8px;
+}
+
+.software-card ul{
+  margin:8px 0 0;
+  padding-left:18px;
+}
+
+.software-card li{
+  margin-bottom:6px;
+}
+
+.software-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  font-weight:700;
+}
+
+.software-link img{
+  width:24px;
+  height:24px;
+  display:block;
+}
+
+.software-tag{
+  display:inline-block;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:.78rem;
+  border:1px solid var(--rule);
+  background:#fff;
+  padding:2px 6px;
+  margin:2px 4px 2px 0;
+}
+
+.r-tag{
+  color:#276dc3;
+}
+
+.python-tag{
+  color:#b8860b;
+}
+
+.latex-tag{
+  color:#006f6f;
+}
+
+@media (max-width:760px){
+  .software-grid{
+    grid-template-columns:1fr;
+  }
+}
+```
+
+  </style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <a class="name" href="index.html">Gianluca Monturano</a>
+
+```
+  <nav class="menu" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a class="active" href="software.html">Software</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="dissemination.html">Dissemination</a>
+    <a href="cv.html">CV</a>
+  </nav>
+</div>
+```
+
+  </div>
+</header>
+
+<main class="wrap page">
+  <h1>Software</h1>
+
+  <p class="position">
+    Code, reproducible workflows, replication material and academic templates.
+  </p>
+
+  <section class="software-intro">
+    <p>
+      I use software development as part of my empirical research workflow, with a focus on reproducibility,
+      data processing, econometric analysis, machine learning applications and academic dissemination.
+      My repositories collect replication material for papers, reusable scripts, statistical routines and templates for scientific work.
+    </p>
+
+```
+<p>
+  <a class="software-link" href="https://github.com/monturano" target="_blank" rel="noopener">
+    <img src="assets/icons/github.svg" alt="">
+    <span>GitHub profile and repositories</span>
+  </a>
+</p>
+```
+
+  </section>
+
+  <section class="software-grid">
+    <div class="software-card">
+      <h2>Replication packages for papers</h2>
+      <p>
+        Reproducible code and empirical workflows related to published papers, working papers and ongoing research projects.
+      </p>
+      <ul>
+        <li>Data cleaning and harmonisation scripts.</li>
+        <li>Econometric models and robustness checks.</li>
+        <li>Figures, tables and replication outputs.</li>
+        <li>README files and documentation for scientific reproducibility.</li>
+      </ul>
+      <p>
+        <span class="software-tag r-tag">R</span>
+        <span class="software-tag python-tag">Python</span>
+        <span class="software-tag">Replication</span>
+      </p>
+    </div>
+
+```
+<div class="software-card">
+  <h2>R packages and statistical routines</h2>
+  <p>
+    R-based tools for applied microeconometrics, spatial analysis, policy evaluation and data visualisation.
+  </p>
+  <ul>
+    <li>Functions for causal inference and treatment-effect estimation.</li>
+    <li>Spatial econometric workflows and territorial indicators.</li>
+    <li>Network-based accessibility measures.</li>
+    <li>Publication-ready tables and figures.</li>
+  </ul>
+  <p>
+    <span class="software-tag r-tag">R</span>
+    <span class="software-tag">Econometrics</span>
+    <span class="software-tag">Spatial analysis</span>
+  </p>
+</div>
+
+<div class="software-card">
+  <h2>Python projects</h2>
+  <p>
+    Python scripts and modules for data science, machine learning and large-scale empirical applications.
+  </p>
+  <ul>
+    <li>Machine-learning pipelines for prediction and classification.</li>
+    <li>Data scraping, processing and validation routines.</li>
+    <li>Network analysis and graph-based indicators.</li>
+    <li>Reusable notebooks for exploratory analysis.</li>
+  </ul>
+  <p>
+    <span class="software-tag python-tag">Python</span>
+    <span class="software-tag">Machine learning</span>
+    <span class="software-tag">Networks</span>
+  </p>
+</div>
+
+<div class="software-card">
+  <h2>LaTeX templates and academic tools</h2>
+  <p>
+    LaTeX material for academic CVs, papers, presentations and scientific documents.
+  </p>
+  <ul>
+    <li>Academic CV templates.</li>
+    <li>Paper and working-paper templates.</li>
+    <li>Beamer slides for conferences and seminars.</li>
+    <li>GitHub Actions workflows for automatic PDF compilation.</li>
+  </ul>
+  <p>
+    <span class="software-tag latex-tag">LaTeX</span>
+    <span class="software-tag">Beamer</span>
+    <span class="software-tag">GitHub Actions</span>
+  </p>
+</div>
+```
+
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© Gianluca Monturano</span>
+    <span>R · Python · LaTeX · Reproducible research</span>
+  </div>
+</footer>
+</body>
+</html>
