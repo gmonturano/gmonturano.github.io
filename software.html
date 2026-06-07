@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -11,83 +10,106 @@
       margin-bottom:22px;
     }
 
-```
-.software-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:14px;
-}
+    .software-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:14px;
+    }
 
-.software-card{
-  border:1px solid var(--rule);
-  background:#fafafa;
-  padding:14px 15px;
-}
+    .software-card{
+      border:1px solid var(--rule);
+      background:#fafafa;
+      padding:14px 15px;
+    }
 
-.software-card h2{
-  margin-top:0;
-  font-size:1.02rem;
-}
+    .software-card h2{
+      margin-top:0;
+      font-size:1.02rem;
+    }
 
-.software-card p{
-  margin-bottom:8px;
-}
+    .software-card p{
+      margin-bottom:8px;
+    }
 
-.software-card ul{
-  margin:8px 0 0;
-  padding-left:18px;
-}
+    .software-card ul{
+      margin:8px 0 0;
+      padding-left:18px;
+    }
 
-.software-card li{
-  margin-bottom:6px;
-}
+    .software-card li{
+      margin-bottom:6px;
+    }
 
-.software-link{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:#0057d9;
-  text-decoration:underline;
-  text-underline-offset:2px;
-  font-weight:700;
-}
+    .software-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+      font-weight:700;
+    }
 
-.software-link img{
-  width:24px;
-  height:24px;
-  display:block;
-}
+    .software-link img{
+      width:24px;
+      height:24px;
+      display:block;
+    }
 
-.software-tag{
-  display:inline-block;
-  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size:.78rem;
-  border:1px solid var(--rule);
-  background:#fff;
-  padding:2px 6px;
-  margin:2px 4px 2px 0;
-}
+    .software-title{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      line-height:1.2;
+    }
 
-.r-tag{
-  color:#276dc3;
-}
+    .software-title img{
+      width:22px;
+      height:22px;
+      display:block;
+      flex:0 0 auto;
+    }
 
-.python-tag{
-  color:#b8860b;
-}
+    .software-title .multi-icons{
+      display:flex;
+      gap:4px;
+      align-items:center;
+      flex:0 0 auto;
+    }
 
-.latex-tag{
-  color:#006f6f;
-}
+    .software-title .multi-icons img{
+      width:20px;
+      height:20px;
+    }
 
-@media (max-width:760px){
-  .software-grid{
-    grid-template-columns:1fr;
-  }
-}
-```
+    .software-tag{
+      display:inline-block;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:.78rem;
+      border:1px solid var(--rule);
+      background:#fff;
+      padding:2px 6px;
+      margin:2px 4px 2px 0;
+    }
 
+    .r-tag{
+      color:#276dc3;
+    }
+
+    .python-tag{
+      color:#b8860b;
+    }
+
+    .latex-tag{
+      color:#006f6f;
+    }
+
+    @media (max-width:760px){
+      .software-grid{
+        grid-template-columns:1fr;
+      }
+    }
   </style>
 </head>
 
@@ -97,18 +119,15 @@
     <div class="nav">
       <a class="name" href="index.html">Gianluca Monturano</a>
 
-```
-  <nav class="menu" aria-label="Primary navigation">
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a class="active" href="software.html">Software</a>
-    <a href="teaching.html">Teaching</a>
-    <a href="dissemination.html">Dissemination</a>
-    <a href="cv.html">CV</a>
-  </nav>
-</div>
-```
-
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="software.html">Software</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="dissemination.html">Dissemination</a>
+        <a href="cv.html">CV</a>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -127,20 +146,24 @@
       My repositories collect replication material for papers, reusable scripts, statistical routines and LaTeX templates for scientific work.
     </p>
 
-```
-<p>
-  <a class="software-link" href="https://github.com/monturano" target="_blank" rel="noopener">
-    <img src="assets/icons/github.svg" alt="">
-    <span>GitHub profile and repositories</span>
-  </a>
-</p>
-```
-
+    <p>
+      <a class="software-link" href="https://github.com/monturano" target="_blank" rel="noopener">
+        <img src="assets/icons/github.svg" alt="">
+        <span>GitHub profile and repositories</span>
+      </a>
+    </p>
   </section>
 
   <section class="software-grid">
     <div class="software-card">
-      <h2>Replication packages for papers</h2>
+      <h2 class="software-title">
+        <span class="multi-icons">
+          <img src="assets/icons/r.svg" alt="R">
+          <img src="assets/icons/python.svg" alt="Python">
+        </span>
+        <span>Replication packages for papers</span>
+      </h2>
+
       <p>
         Reproducible code and empirical workflows related to published papers, working papers and ongoing research projects.
       </p>
@@ -158,71 +181,80 @@
       </p>
     </div>
 
-```
-<div class="software-card">
-  <h2>R packages and statistical routines</h2>
-  <p>
-    R-based tools for data analysis, data manipulation, applied microeconometrics, spatial analysis,
-    causal inference, policy evaluation and data visualisation.
-  </p>
-  <ul>
-    <li>Data cleaning, reshaping, merging and manipulation workflows.</li>
-    <li>Functions for causal inference and treatment-effect estimation.</li>
-    <li>Spatial econometric workflows and territorial indicators.</li>
-    <li>Network-based accessibility measures.</li>
-    <li>Publication-ready tables, figures and reproducible reports.</li>
-  </ul>
-  <p>
-    <span class="software-tag r-tag">R</span>
-    <span class="software-tag">Data analysis</span>
-    <span class="software-tag">Data manipulation</span>
-    <span class="software-tag">Causal inference</span>
-    <span class="software-tag">Spatial analysis</span>
-  </p>
-</div>
+    <div class="software-card">
+      <h2 class="software-title">
+        <img src="assets/icons/r.svg" alt="R">
+        <span>R packages and statistical routines</span>
+      </h2>
 
-<div class="software-card">
-  <h2>Python projects</h2>
-  <p>
-    Python scripts and modules for data science, machine learning, network analysis,
-    web scraping, text analysis and large-scale empirical applications.
-  </p>
-  <ul>
-    <li>Machine-learning pipelines for prediction and classification.</li>
-    <li>Web scraping, data collection and automated data processing.</li>
-    <li>Text analysis, document processing and natural-language workflows.</li>
-    <li>Network analysis and graph-based indicators.</li>
-    <li>Reusable notebooks for exploratory and reproducible analysis.</li>
-  </ul>
-  <p>
-    <span class="software-tag python-tag">Python</span>
-    <span class="software-tag">Machine learning</span>
-    <span class="software-tag">Networks</span>
-    <span class="software-tag">Scraping</span>
-    <span class="software-tag">Text analysis</span>
-  </p>
-</div>
+      <p>
+        R-based tools for data analysis, data manipulation, applied microeconometrics, spatial analysis,
+        causal inference, policy evaluation and data visualisation.
+      </p>
+      <ul>
+        <li>Data cleaning, reshaping, merging and manipulation workflows.</li>
+        <li>Functions for causal inference and treatment-effect estimation.</li>
+        <li>Spatial econometric workflows and territorial indicators.</li>
+        <li>Network-based accessibility measures.</li>
+        <li>Publication-ready tables, figures and reproducible reports.</li>
+      </ul>
+      <p>
+        <span class="software-tag r-tag">R</span>
+        <span class="software-tag">Data analysis</span>
+        <span class="software-tag">Data manipulation</span>
+        <span class="software-tag">Causal inference</span>
+        <span class="software-tag">Spatial analysis</span>
+      </p>
+    </div>
 
-<div class="software-card">
-  <h2>LaTeX templates and academic tools</h2>
-  <p>
-    LaTeX material hosted on GitHub for academic CVs, papers, working papers, presentations and scientific documents.
-  </p>
-  <ul>
-    <li>Academic CV templates and automatically compiled PDF workflows.</li>
-    <li>Paper and working-paper templates.</li>
-    <li>Beamer slides for conferences, seminars and teaching material.</li>
-    <li>GitHub Actions workflows for automatic LaTeX compilation.</li>
-  </ul>
-  <p>
-    <span class="software-tag latex-tag">LaTeX</span>
-    <span class="software-tag">Beamer</span>
-    <span class="software-tag">CV templates</span>
-    <span class="software-tag">GitHub Actions</span>
-  </p>
-</div>
-```
+    <div class="software-card">
+      <h2 class="software-title">
+        <img src="assets/icons/python.svg" alt="Python">
+        <span>Python projects</span>
+      </h2>
 
+      <p>
+        Python scripts and modules for data science, machine learning, network analysis,
+        web scraping, text analysis and large-scale empirical applications.
+      </p>
+      <ul>
+        <li>Machine-learning pipelines for prediction and classification.</li>
+        <li>Web scraping, data collection and automated data processing.</li>
+        <li>Text analysis, document processing and natural-language workflows.</li>
+        <li>Network analysis and graph-based indicators.</li>
+        <li>Reusable notebooks for exploratory and reproducible analysis.</li>
+      </ul>
+      <p>
+        <span class="software-tag python-tag">Python</span>
+        <span class="software-tag">Machine learning</span>
+        <span class="software-tag">Networks</span>
+        <span class="software-tag">Scraping</span>
+        <span class="software-tag">Text analysis</span>
+      </p>
+    </div>
+
+    <div class="software-card">
+      <h2 class="software-title">
+        <img src="assets/icons/latex.svg" alt="LaTeX">
+        <span>LaTeX templates and academic tools</span>
+      </h2>
+
+      <p>
+        LaTeX material hosted on GitHub for academic CVs, papers, working papers, presentations and scientific documents.
+      </p>
+      <ul>
+        <li>Academic CV templates and automatically compiled PDF workflows.</li>
+        <li>Paper and working-paper templates.</li>
+        <li>Beamer slides for conferences, seminars and teaching material.</li>
+        <li>GitHub Actions workflows for automatic LaTeX compilation.</li>
+      </ul>
+      <p>
+        <span class="software-tag latex-tag">LaTeX</span>
+        <span class="software-tag">Beamer</span>
+        <span class="software-tag">CV templates</span>
+        <span class="software-tag">GitHub Actions</span>
+      </p>
+    </div>
   </section>
 </main>
 
