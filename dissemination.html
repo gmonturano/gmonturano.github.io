@@ -7,17 +7,25 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <style>
+    /* Dissemination page only: wider layout */
+    .dissemination-page{
+      max-width:1280px !important;
+      width:auto !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+    }
+
     .dissemination-hero {
       margin-bottom: 18px;
     }
     .dissemination-grid {
       display: grid;
-      grid-template-columns: 1.35fr .85fr;
+      grid-template-columns: minmax(0, 1.65fr) 330px;
       gap: 18px;
       align-items: start;
     }
     #map {
-      height: 620px;
+      height: 680px;
       border: 1px solid var(--rule);
       background: #f5f5f5;
     }
@@ -150,7 +158,7 @@
   </div>
 </header>
 
-<main class="wrap page">
+<main class="wrap page dissemination-page">
   <section class="dissemination-hero">
     <h1>Dissemination and conferences</h1>
     <p class="position">Conference presentations, invited seminars and scientific workshops by year and location.</p>
@@ -212,10 +220,23 @@ const colors = {
 
 const map = L.map("map", { scrollWheelZoom: false }).setView([43.7, 11.5], 4);
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 18,
-  attribution: "&copy; OpenStreetMap contributors"
-}).addTo(map);
+/* Satellite basemap */
+L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  {
+    maxZoom: 19,
+    attribution: "Tiles &copy; Esri, Maxar, Earthstar Geographics"
+  }
+).addTo(map);
+
+/* Place labels above satellite imagery */
+L.tileLayer(
+  "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+  {
+    maxZoom: 19,
+    attribution: "Labels &copy; Esri"
+  }
+).addTo(map);
 
 let markers = [];
 
