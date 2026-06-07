@@ -6,6 +6,134 @@
   <title>Gianluca Monturano, PhD</title>
   <meta name="description" content="Academic website of Gianluca Monturano, quantitative economist and data scientist.">
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Home page only: centered academic profile */
+    .home-centered{
+      max-width:760px !important;
+      width:auto !important;
+      margin:0 auto !important;
+      padding:0 18px !important;
+      display:block !important;
+    }
+
+    .home-top{
+      text-align:center;
+      margin:0 auto 24px;
+    }
+
+    .home-top .profile-photo{
+      width:138px !important;
+      height:138px !important;
+      margin:0 auto 15px !important;
+      display:block !important;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow:0 2px 10px rgba(0,0,0,.08);
+    }
+
+    .home-top .side-title{
+      text-align:center;
+      margin-bottom:8px;
+      font-size:.72rem !important;
+      letter-spacing:.13em !important;
+    }
+
+    .home-top .logo-row{
+      display:flex !important;
+      flex-wrap:nowrap !important;
+      justify-content:center !important;
+      align-items:center !important;
+      gap:8px !important;
+      max-width:none !important;
+      margin:0 auto 14px !important;
+    }
+
+    .home-top .round-logo,
+    .home-top .round-logo img{
+      width:24px !important;
+      height:24px !important;
+      min-width:24px !important;
+      min-height:24px !important;
+      max-width:24px !important;
+      max-height:24px !important;
+    }
+
+    .home-contact{
+      margin:10px auto 0;
+      text-align:center;
+      font-size:.78rem;
+      line-height:1.55;
+    }
+
+    .home-contact a{
+      color:#0057d9 !important;
+      text-decoration:none;
+      border-bottom:1px solid rgba(0,87,217,.45);
+    }
+
+    .home-contact a:hover{
+      color:#003fa3 !important;
+      border-bottom-color:#003fa3;
+      text-decoration:none;
+    }
+
+    .home-bio{
+      width:auto !important;
+      max-width:760px !important;
+      margin:0 auto !important;
+      text-align:justify;
+      text-justify:inter-word;
+    }
+
+    .home-bio h1{
+      text-align:left;
+      font-size:1.42rem !important;
+      margin-bottom:8px !important;
+    }
+
+    .home-bio .academic-roles{
+      text-align:left;
+      margin-bottom:18px !important;
+    }
+
+    .home-bio .lead{
+      text-align:justify;
+      font-size:.94rem !important;
+      line-height:1.58 !important;
+    }
+
+    .home-bio p{
+      text-align:justify;
+      font-size:.91rem !important;
+      line-height:1.58 !important;
+      margin-bottom:11px !important;
+    }
+
+    .programming-line{
+      text-align:left !important;
+      white-space:nowrap;
+    }
+
+    @media (max-width:760px){
+      .home-centered{
+        max-width:100% !important;
+        padding:0 18px !important;
+      }
+
+      .home-top .logo-row{
+        flex-wrap:wrap !important;
+      }
+
+      .home-bio{
+        max-width:100% !important;
+      }
+
+      .programming-line{
+        white-space:normal;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -26,54 +154,48 @@
   </div>
 </header>
 
-<main class="home-shell home-layout">
-  <aside class="sidebar">
+<main class="home-centered">
+  <section class="home-top">
     <img class="profile-photo" src="assets/rofile-photo.sv.jpg" alt="Profile photo of Gianluca Monturano">
 
-    <div class="side-block">
-      <div class="side-title">Profiles</div>
+    <div class="side-title">Profiles</div>
 
-      <div class="logo-row primary-logos" aria-label="Main academic and professional profiles">
-        <a class="round-logo" href="https://be.linkedin.com/in/gianluca-monturano93" title="LinkedIn" aria-label="LinkedIn">
-          <img src="assets/icons/linkedin.svg" alt="">
-        </a>
+    <div class="logo-row primary-logos" aria-label="Main academic and professional profiles">
+      <a class="round-logo" href="https://be.linkedin.com/in/gianluca-monturano93" title="LinkedIn" aria-label="LinkedIn">
+        <img src="assets/icons/linkedin.svg" alt="">
+      </a>
 
-        <a class="round-logo" href="https://scholar.google.com/scholar?q=Gianluca+Monturano" title="Google Scholar" aria-label="Google Scholar">
-          <img src="assets/icons/google-scholar.svg" alt="">
-        </a>
+      <a class="round-logo" href="https://scholar.google.com/scholar?q=Gianluca+Monturano" title="Google Scholar" aria-label="Google Scholar">
+        <img src="assets/icons/google-scholar.svg" alt="">
+      </a>
 
-        <a class="round-logo" href="https://www.scopus.com/results/authorNamesList.uri?name=name&st1=Monturano&st2=Gianluca" title="Scopus" aria-label="Scopus">
-          <img src="assets/icons/scopus.svg" alt="">
-        </a>
+      <a class="round-logo" href="https://www.scopus.com/results/authorNamesList.uri?name=name&st1=Monturano&st2=Gianluca" title="Scopus" aria-label="Scopus">
+        <img src="assets/icons/scopus.svg" alt="">
+      </a>
 
-        <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate">
-          <img src="assets/icons/researchgate.svg" alt="">
-        </a>
+      <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate">
+        <img src="assets/icons/researchgate.svg" alt="">
+      </a>
 
-        <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID">
-          <img src="assets/icons/orcid.svg" alt="">
-        </a>
+      <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID">
+        <img src="assets/icons/orcid.svg" alt="">
+      </a>
 
-        <a class="round-logo" href="https://x.com/monturano" title="X" aria-label="X">
-          <img src="assets/icons/x.svg" alt="">
-        </a>
+      <a class="round-logo" href="https://x.com/monturano" title="X" aria-label="X">
+        <img src="assets/icons/x.svg" alt="">
+      </a>
 
-        <a class="round-logo" href="https://github.com/monturano" title="GitHub" aria-label="GitHub">
-          <img src="assets/icons/github.svg" alt="">
-        </a>
-      </div>
+      <a class="round-logo" href="https://github.com/gmonturano" title="GitHub" aria-label="GitHub">
+        <img src="assets/icons/github.svg" alt="">
+      </a>
     </div>
 
-    <div class="side-block contact-block">
-      <div class="side-title">Contact</div>
-
-      <p class="side-small">
-        <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a><br>
-        <a href="mailto:gianluca.monturano@uniba.it">gianluca.monturano@uniba.it</a><br>
-        <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
-      </p>
+    <div class="home-contact">
+      <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a><br>
+      <a href="mailto:gianluca.monturano@uniba.it">gianluca.monturano@uniba.it</a><br>
+      <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
     </div>
-  </aside>
+  </section>
 
   <section class="content home-bio">
     <h1>Presentation</h1>
