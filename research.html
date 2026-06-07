@@ -126,6 +126,135 @@
       }
     }
 
+    /* Two-column Research layout with sticky index */
+    .research-shell{
+      max-width:1180px !important;
+      width:auto !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 210px;
+      gap:34px;
+      align-items:start;
+      font-size:.86rem;
+      line-height:1.46;
+    }
+
+    .research-content{
+      min-width:0;
+    }
+
+    .research-content h1{
+      font-size:1.52rem;
+      margin-bottom:7px;
+    }
+
+    .research-content h2{
+      font-size:.96rem;
+      margin-top:20px;
+      margin-bottom:7px;
+      padding-bottom:3px;
+      scroll-margin-top:86px;
+    }
+
+    .research-content .position{
+      font-size:.85rem;
+      margin-bottom:17px;
+    }
+
+    .research-content .pubs{
+      max-width:none;
+    }
+
+    .research-content ol.pubs,
+    .research-content ul.pubs{
+      padding-left:20px;
+    }
+
+    .research-content .pubs li{
+      margin-bottom:6px;
+      line-height:1.46;
+    }
+
+    .research-content p{
+      line-height:1.46;
+    }
+
+    .research-content .service-box{
+      font-size:.84rem;
+    }
+
+    .research-content .highlight-section{
+      margin-top:20px;
+      padding-left:12px;
+    }
+
+    .page-index{
+      position:sticky;
+      top:74px;
+      align-self:start;
+      font-size:.82rem;
+      border-left:1px solid var(--rule);
+      padding-left:12px;
+      color:#333;
+    }
+
+    .page-index h2{
+      font-size:.95rem;
+      margin:0 0 9px;
+      padding:0;
+      border:0;
+    }
+
+    .page-index ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .page-index li{
+      margin:0 0 7px;
+      line-height:1.25;
+    }
+
+    .page-index a{
+      color:#333;
+      text-decoration:none;
+    }
+
+    .page-index a:hover{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    @media (max-width:900px){
+      .research-shell{
+        display:block;
+        max-width:100% !important;
+        font-size:.93rem;
+      }
+
+      .page-index{
+        position:static;
+        border-left:0;
+        border-bottom:1px solid var(--rule);
+        padding-left:0;
+        padding-bottom:12px;
+        margin-bottom:18px;
+      }
+
+      .page-index ul{
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px 12px;
+      }
+
+      .page-index li{
+        margin:0;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -145,11 +274,12 @@
   </div>
 </header>
 
-<main class="wrap page research-page">
+<main class="wrap page research-shell">
+  <section class="research-content">
   <h1>Research</h1>
   <p class="position">Publications, submitted and ongoing research, grants, projects and academic service.</p>
 
-  <h2>Peer-reviewed articles <span class="muted">(ANVUR A-class 13 journals)</span></h2>
+  <h2 id="peer-reviewed-articles">Peer-reviewed articles <span class="muted">(ANVUR A-class 13 journals)</span></h2>
   <ol class="pubs">
     <li>Buongiorno, A., Bergantino, A.S., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Insights from Fuel Prices: Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</span>. <span class="journal">Italian Economic Journal</span>. Accepted.</li>
 
@@ -166,7 +296,7 @@
     <li><strong>Monturano, G.</strong>, Resce, G. &amp; Ventura, M. (2025). <span class="paper-title">Short-term Impact of Financial Support to Inner Areas</span>. <span class="journal">Italian Economic Journal</span>, 1–40. DOI: <a href="https://doi.org/10.1007/s40797-025-00313-w" target="_blank" rel="noopener">10.1007/s40797-025-00313-w</a>.</li>
   </ol>
 
-  <h2>Submitted and ongoing papers</h2>
+  <h2 id="submitted-ongoing-papers">Submitted and ongoing papers</h2>
   <ol class="pubs">
     <li><strong>Monturano, G.</strong>, Ciccarelli, C. &amp; Mastronardi, L. <span class="paper-title">Do Protected Areas Affect Income Levels in Remote Regions? Evidence from Italian Inner Areas</span> — <span class="journal">Environmental and Resource Economics</span>, 2nd round of revision.</li>
 
@@ -201,7 +331,7 @@
     <li>Coluccia, B., <strong>Monturano, G.</strong> &amp; Perugini, F. <span class="paper-title">Firm Productivity and Certification: Evidence from Italian Firms</span> — Ongoing.</li>
   </ol>
 
-  <h2>Book chapters</h2>
+  <h2 id="book-chapters">Book chapters</h2>
   <ul class="pubs">
     <li>Maranzano, P., Marcis, L., <strong>Monturano, G.</strong>, Pagliarella, M.C. &amp; Salvatore, R. (2025). <em>A study on the impact of “Reddito di Cittadinanza” using a multivariate linear mixed model</em>. In Rosalia, C., De Luca, G. &amp; Bruno, E. (eds.), Book of Short Papers 3rd Italian Conference on Economic Statistics (ICES 2025). Sustainability, Innovation and Digitalization: Statistical Measurement for Economic Analysis, pp. 197–200, Enzo Albano Edizioni.</li>
 
@@ -218,7 +348,7 @@
     <li>Mastronardi, L., <strong>Monturano, G.</strong>, Romagnoli, L., Vasile, M. &amp; Zingaro, M. (2020). <em>Il caso studio del Molise</em>. In Mastronardi, L. &amp; Romagnoli, L. (eds.), Metodologie, percorsi operativi e strumenti per lo sviluppo delle cooperative di comunità nelle aree interne italiane, pp. 91–130, Firenze University Press. DOI: <a href="https://doi.org/10.36253/978-88-5518-168-6.04" target="_blank" rel="noopener">10.36253/978-88-5518-168-6.04</a>.</li>
   </ul>
 
-  <h2>Working papers</h2>
+  <h2 id="working-papers">Working papers</h2>
   <ul class="pubs">
     <li>Chiodin, A., Manera, M., Maranzano, P. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Identifying Spatial Regimes of Economic Fragility through Spatially Constrained Clustering: Evidence from Italian Municipalities</span>. Nota di Lavoro 10.2026, Fondazione Eni Enrico Mattei, Milan, Italy.</li>
 
@@ -226,7 +356,7 @@
   </ul>
 
   <section class="highlight-section">
-    <h2><span class="red-title">Grants and awards</span></h2>
+    <h2 id="grants-awards"><span class="red-title">Grants and awards</span></h2>
     <ul class="pubs grant-list">
       <li><strong>2026.</strong> <strong>Winner</strong> of the <strong>Giorgio Leonardi Doctoral Award — XLI Edition</strong>, national award for the best doctoral dissertations in regional science promoted by the Italian Association of Regional Science (AISRe). Dissertation title: <em>Granular Policy Evaluation: Socio-Economic and Spatial Analysis in an Unequal Country</em>.</li>
 
@@ -238,7 +368,7 @@
     </ul>
   </section>
 
-  <h2>Participation in research projects at research institutes and universities</h2>
+  <h2 id="research-projects">Participation in research projects at research institutes and universities</h2>
   <ul class="pubs">
     <li><strong>2025–ongoing.</strong> Project funded by the Ministry of University and Research through Fondazione Eni Enrico Mattei, Milan, entitled <a class="content-link" href="https://www.feem.it/ricerca/progetti/una-sola-indivisibile-le-tante-italie-nel-covid/" target="_blank" rel="noopener">“MUR-FRES — One, alone, indivisible: the many Italies during COVID”</a>. The project aims to analyse territorial socioeconomic inequalities in Italy and the role of COVID-19 in widening them, using granular municipal data and advanced statistical techniques, with a European-wide comparison.</li>
 
@@ -253,14 +383,14 @@
     <li><strong>2022–2023.</strong> Research project of the Department of Economics “Marco Biagi”, funded through university research funds 2022, entitled <a class="content-link" href="https://www.economia.unimore.it/en/research/research-projects" target="_blank" rel="noopener">“The roles of instructor-student similarities, surnames, and beauty on UNIMORE students’ outcomes and early career jobs”</a>.</li>
   </ul>
 
-  <h2>Formal research appointments from institutions and organizations</h2>
+  <h2 id="research-appointments">Formal research appointments from institutions and organizations</h2>
   <ul class="pubs">
     <li><strong>2026.</strong> Paid research appointment for <em>WITHUB S.p.A.</em>, within the project entitled <em>“La transizione ecologica nell’automotive e il ruolo della domanda pubblica: evidenze empiriche dalla pubblica amministrazione italiana (2019–2025)”</em>. The activity concerns the statistical evaluation of vehicle registration data from Italian public administrations, with the aim of analysing the direction and speed of change in the ecological transition of the automotive sector.</li>
 
     <li><strong>2026.</strong> Paid research appointment for <em>A.P.S. Entrobordo</em> and <em>Mama Industry S.r.l.</em>, concerning the analysis of productivity in the service sector with reference to micro, small and medium-sized enterprises with 4–9 employees. The appointment includes data collection and processing, statistical-economic analysis and the preparation of summary reports, with both a national study and a territorial study focused on the Abruzzo Region.</li>
   </ul>
 
-  <h2>Conference organization and organized sessions</h2>
+  <h2 id="conference-organization">Conference organization and organized sessions</h2>
   <ul class="pubs">
     <li><strong>2026.</strong> Co-organizer and co-chair of the organized session <em>“Shocks and Inequalities in the Energy Transition: New Econometric Evidence Across Markets, Regions and Countries”</em>, 67th Annual Scientific Meeting of the Italian Economic Association (SIE), University of Cagliari, 22–24 October 2026.</li>
 
@@ -273,12 +403,12 @@
     <li><strong>2022.</strong> Collaboration with the Local Scientific Committee for the organization of the 19th International Conference in Commemoration of Professor Marco Biagi, <em>“Work Beyond the Pandemic: Towards a Human-Centered Recovery”</em>, Marco Biagi Foundation, University of Modena and Reggio Emilia, 16–17 May 2022.</li>
   </ul>
 
-<h2>Editorial activity</h2>
+<h2 id="editorial-activity">Editorial activity</h2>
   <div class="service-box">
     <span class="service-title">Managing Editor</span> of <a class="orange-link" href="https://www.turistica.it/journal/index.php/turistica/about/editorialTeam" target="_blank" rel="noopener">Turistica — The Italian Journal of Tourism</a>. <strong>ISSN:</strong> 1974-2207.
   </div>
 
-  <h2>Scientific dissemination</h2>
+  <h2 id="scientific-dissemination">Scientific dissemination</h2>
   <ul class="pubs">
     <li><strong>Monturano, G.</strong>, Resce, G. &amp; Ventura, M. (2023). <a class="content-link" href="https://www.senato.it/4746?dossier=37311" target="_blank" rel="noopener">Come far rinascere i paesi spopolati? I primi risultati della Strategia nazionale per le aree interne</a>. <em>Ufficio Valutazione Impatto, Senato della Repubblica</em>.</li>
 
@@ -287,8 +417,27 @@
     <li><strong>Monturano, G.</strong>, Resce, G. &amp; Ventura, M. (2022). <a class="content-link" href="https://www.civiltaappennino.it/2022/10/05" target="_blank" rel="noopener">SNAI. La coesione territoriale tra ritardi e opportunità da cogliere</a>. <em>Civiltà Appennino</em>.</li>
   </ul>
 
-  <h2>Review activity</h2>
+  <h2 id="review-activity">Review activity</h2>
   <p>Scientific Reports; Journal of Agricultural, Biological, and Environmental Statistics; International Journal of Climate Change Strategies and Management; International Journal of Computational Economics and Econometrics; PLOS ONE; The Annals of Regional Science; Case Studies on Transport Policy; Italian Economic Journal; Applied Spatial Analysis and Policy; Health Policy; Socio-Economic Planning Sciences; Quality &amp; Quantity; BMC Health Services Research; Scienze Regionali; Studies in Higher Education.</p>
+  </section>
+
+  <aside class="page-index" aria-label="Research page index">
+    <h2>Index</h2>
+    <ul>
+      <li><a href="#peer-reviewed-articles">Peer-reviewed articles</a></li>
+      <li><a href="#submitted-ongoing-papers">Submitted and ongoing papers</a></li>
+      <li><a href="#book-chapters">Book chapters</a></li>
+      <li><a href="#working-papers">Working papers</a></li>
+      <li><a href="#grants-awards">Grants and awards</a></li>
+      <li><a href="#research-projects">Research projects</a></li>
+      <li><a href="#research-appointments">Research appointments</a></li>
+      <li><a href="#conference-organization">Conference organization</a></li>
+      <li><a href="#editorial-activity">Editorial activity</a></li>
+      <li><a href="#scientific-dissemination">Scientific dissemination</a></li>
+      <li><a href="#review-activity">Review activity</a></li>
+    </ul>
+  </aside>
+
 </main>
 
 <footer class="footer">
