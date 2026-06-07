@@ -1277,3 +1277,82 @@ main.page,
     max-height:21px !important;
   }
 }
+
+
+/* =========================================================
+   FINAL SITE WIDTH OVERRIDE
+   Use this block at the VERY END of styles.css.
+   It widens the site without changing colors, fonts, or content.
+   ========================================================= */
+
+/* General site width: header, footer and standard wrappers */
+.wrap{
+  max-width:1280px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding-left:24px !important;
+  padding-right:24px !important;
+}
+
+/* Standard internal pages: Software, CV and other .page pages */
+main.page,
+.page{
+  max-width:1100px !important;
+  width:auto !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Home page: keep the same structure, only make the block wider */
+main.home-shell{
+  width:900px !important;
+  max-width:900px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  display:grid !important;
+  grid-template-columns:155px 660px !important;
+  column-gap:85px !important;
+  align-items:start !important;
+  justify-content:start !important;
+}
+
+main.home-shell .home-bio,
+main.home-shell .content{
+  width:660px !important;
+  max-width:660px !important;
+}
+
+main.home-shell .sidebar{
+  width:155px !important;
+  max-width:155px !important;
+}
+
+/* Mobile remains normal */
+@media (max-width:760px){
+  .wrap{
+    max-width:100% !important;
+    padding-left:18px !important;
+    padding-right:18px !important;
+  }
+
+  main.page,
+  .page{
+    max-width:100% !important;
+    width:auto !important;
+  }
+
+  main.home-shell{
+    width:auto !important;
+    max-width:100% !important;
+    display:block !important;
+    padding-left:18px !important;
+    padding-right:18px !important;
+  }
+
+  main.home-shell .home-bio,
+  main.home-shell .content,
+  main.home-shell .sidebar{
+    width:auto !important;
+    max-width:100% !important;
+  }
+}
