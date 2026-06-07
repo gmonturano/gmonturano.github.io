@@ -65,6 +65,67 @@
       color:#003fa3 !important;
     }
 
+    /* Research page only: wider writing area and smaller text */
+    .research-page{
+      max-width:960px !important;
+      width:auto !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      font-size:.88rem;
+      line-height:1.48;
+    }
+
+    .research-page h1{
+      font-size:1.55rem;
+      margin-bottom:7px;
+    }
+
+    .research-page h2{
+      font-size:.98rem;
+      margin-top:20px;
+      margin-bottom:7px;
+      padding-bottom:3px;
+    }
+
+    .research-page .position{
+      font-size:.86rem;
+      margin-bottom:17px;
+    }
+
+    .research-page .pubs{
+      max-width:none;
+    }
+
+    .research-page ol.pubs,
+    .research-page ul.pubs{
+      padding-left:20px;
+    }
+
+    .research-page .pubs li{
+      margin-bottom:6px;
+      line-height:1.47;
+    }
+
+    .research-page p{
+      line-height:1.47;
+    }
+
+    .research-page .service-box{
+      font-size:.84rem;
+    }
+
+    .research-page .highlight-section{
+      margin-top:20px;
+      padding-left:12px;
+    }
+
+    @media (max-width:760px){
+      .research-page{
+        max-width:100% !important;
+        font-size:.93rem;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -84,7 +145,7 @@
   </div>
 </header>
 
-<main class="wrap page">
+<main class="wrap page research-page">
   <h1>Research</h1>
   <p class="position">Publications, submitted and ongoing research, grants, projects and academic service.</p>
 
