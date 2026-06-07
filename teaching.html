@@ -6,30 +6,39 @@
   <title>Teaching | Gianluca Monturano</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Teaching page only: wider writing area and smaller text */
-    .teaching-page{
-      max-width:1000px !important;
+    /* Teaching page only: wider writing area, smaller text, sticky index */
+    .teaching-shell{
+      max-width:1080px !important;
       width:auto !important;
       margin-left:auto !important;
       margin-right:auto !important;
-      font-size:.88rem;
-      line-height:1.48;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 210px;
+      gap:34px;
+      align-items:start;
+      font-size:.86rem;
+      line-height:1.46;
     }
 
-    .teaching-page h1{
-      font-size:1.55rem;
+    .teaching-content{
+      min-width:0;
+    }
+
+    .teaching-content h1{
+      font-size:1.52rem;
       margin-bottom:7px;
     }
 
-    .teaching-page h2{
-      font-size:.98rem;
+    .teaching-content h2{
+      font-size:.96rem;
       margin-top:20px;
       margin-bottom:7px;
       padding-bottom:3px;
+      scroll-margin-top:86px;
     }
 
-    .teaching-page .position{
-      font-size:.86rem;
+    .teaching-content .position{
+      font-size:.85rem;
       margin-bottom:17px;
     }
 
@@ -45,7 +54,7 @@
 
     .teaching-list li{
       margin-bottom:7px;
-      line-height:1.47;
+      line-height:1.46;
     }
 
     .teaching-role{
@@ -58,10 +67,69 @@
       color:#111;
     }
 
-    @media (max-width:760px){
-      .teaching-page{
+    .page-index{
+      position:sticky;
+      top:74px;
+      align-self:start;
+      font-size:.82rem;
+      border-left:1px solid var(--rule);
+      padding-left:12px;
+      color:#333;
+    }
+
+    .page-index h2{
+      font-size:.95rem;
+      margin:0 0 9px;
+      padding:0;
+      border:0;
+    }
+
+    .page-index ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .page-index li{
+      margin:0 0 7px;
+      line-height:1.25;
+    }
+
+    .page-index a{
+      color:#333;
+      text-decoration:none;
+    }
+
+    .page-index a:hover{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    @media (max-width:900px){
+      .teaching-shell{
+        display:block;
         max-width:100% !important;
         font-size:.93rem;
+      }
+
+      .page-index{
+        position:static;
+        border-left:0;
+        border-bottom:1px solid var(--rule);
+        padding-left:0;
+        padding-bottom:12px;
+        margin-bottom:18px;
+      }
+
+      .page-index ul{
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px 12px;
+      }
+
+      .page-index li{
+        margin:0;
       }
     }
   </style>
@@ -84,142 +152,155 @@
   </div>
 </header>
 
-<main class="wrap page teaching-page">
-  <h1>Teaching</h1>
-  <p class="position">Economics, statistics, econometrics, empirical methods and data analysis.</p>
+<main class="wrap page teaching-shell">
+  <section class="teaching-content">
+    <h1>Teaching</h1>
+    <p class="position">Economics, statistics, econometrics, empirical methods and data analysis.</p>
 
-  <h2>PhD teaching</h2>
-  <ul class="pubs teaching-list">
-    <li>
-      <span class="teaching-year">2025–2026.</span>
-      <span class="teaching-role">Adjunct Professor</span> for the PhD course in transversal skills,
-      <span class="teaching-course">Strumenti informatici e software statistici per l’analisi dei dati</span>,
-      addressed to PhD students and postgraduate trainees, <em>University of Bari Aldo Moro</em>.
-    </li>
-  </ul>
+    <h2 id="phd-teaching">PhD teaching</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span> for the PhD course in transversal skills,
+        <span class="teaching-course">Strumenti informatici e software statistici per l’analisi dei dati</span>,
+        addressed to PhD students and postgraduate trainees, <em>University of Bari Aldo Moro</em>.
+      </li>
+    </ul>
 
-  <h2>Undergraduate and graduate courses</h2>
-  <ul class="pubs teaching-list">
-    <li>
-      <span class="teaching-year">2025–2026.</span>
-      <span class="teaching-role">Adjunct Professor</span>,
-      <span class="teaching-course">Empirical Industrial Organization Competitive Analysis</span>,
-      SECS-P/06, Master’s Degree in Economics and Management, <em>University of Bari</em>.
-    </li>
+    <h2 id="undergraduate-graduate-courses">Undergraduate and graduate courses</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Empirical Industrial Organization Competitive Analysis</span>,
+        SECS-P/06, Master’s Degree in Economics and Management, <em>University of Bari</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2025–2026.</span>
-      <span class="teaching-role">Adjunct Professor</span>,
-      <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
-      SECS-P/01, Bachelor’s Degree in Business Economics, <em>University of Bari</em>.
-    </li>
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Business Economics, <em>University of Bari</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2024–2025.</span>
-      <span class="teaching-role">Adjunct Professor</span>,
-      <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
-      SECS-P/01, Bachelor’s Degree in Marketing and Business Administration, <em>University of Bari</em>.
-    </li>
+      <li>
+        <span class="teaching-year">2024–2025.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Marketing and Business Administration, <em>University of Bari</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2022.</span>
-      <span class="teaching-role">Lecturer</span> in the academic training course
-      <span class="teaching-course">Turismo sostenibile in area marina protetta — TuSAMP</span>,
-      <em>University of Foggia</em>.
-    </li>
-  </ul>
+      <li>
+        <span class="teaching-year">2022.</span>
+        <span class="teaching-role">Lecturer</span> in the academic training course
+        <span class="teaching-course">Turismo sostenibile in area marina protetta — TuSAMP</span>,
+        <em>University of Foggia</em>.
+      </li>
+    </ul>
 
-  <h2>Tutoring</h2>
-  <ul class="pubs teaching-list">
-    <li>
-      <span class="teaching-year">2024.</span>
-      <span class="teaching-role">Tutoring grant</span> for
-      <span class="teaching-course">Introduction to Macroeconomics</span>,
-      SECS-P/01, Bachelor’s Degree in Economics and Finance,
-      <em>University of Modena and Reggio Emilia</em>.
-    </li>
+    <h2 id="tutoring">Tutoring</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Introduction to Macroeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Economics and Finance,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2022–2024.</span>
-      <span class="teaching-role">Tutoring grant</span> for
-      <span class="teaching-course">Statistics</span>,
-      SECS-S/01, Bachelor’s Degree in Business Economics and Management,
-      <em>University of Modena and Reggio Emilia</em>.
-    </li>
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Business Economics and Management,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2022–2024.</span>
-      <span class="teaching-role">Tutoring grant</span> for
-      <span class="teaching-course">Statistics</span>,
-      SECS-S/01, Bachelor’s Degree in Economics and Finance,
-      <em>University of Modena and Reggio Emilia</em>.
-    </li>
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Economics and Finance,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2022–2023.</span>
-      <span class="teaching-role">Tutoring grant</span> for
-      <span class="teaching-course">Statistics</span>,
-      SECS-S/01, Bachelor’s Degree in Economics and International Marketing,
-      <em>University of Modena and Reggio Emilia</em>.
-    </li>
-  </ul>
+      <li>
+        <span class="teaching-year">2022–2023.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Economics and International Marketing,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+    </ul>
 
-  <h2>Teaching assistance and tutorials</h2>
-  <ul class="pubs teaching-list">
-    <li>
-      <span class="teaching-year">2022–2023.</span>
-      <span class="teaching-role">Teaching assistance grant</span> for
-      <span class="teaching-course">Economic and Competitive Scenarios</span>,
-      SECS-P/01, Master’s Degree in Business Management and Communication,
-      <em>University of Modena and Reggio Emilia</em>.
-    </li>
+    <h2 id="teaching-assistance-tutorials">Teaching assistance and tutorials</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2022–2023.</span>
+        <span class="teaching-role">Teaching assistance grant</span> for
+        <span class="teaching-course">Economic and Competitive Scenarios</span>,
+        SECS-P/01, Master’s Degree in Business Management and Communication,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2022–2024.</span>
-      <span class="teaching-role">Teaching assistance grant</span> for
-      <span class="teaching-course">Industrial Economics</span>,
-      SECS-P/01, Master’s Degree in Business Management and Consulting,
-      <em>University of Modena and Reggio Emilia</em>.
-    </li>
-  </ul>
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Teaching assistance grant</span> for
+        <span class="teaching-course">Industrial Economics</span>,
+        SECS-P/01, Master’s Degree in Business Management and Consulting,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+    </ul>
 
-  <h2>Lectures and invited speaking</h2>
-  <ul class="pubs teaching-list">
-    <li>
-      <span class="teaching-year">2026.</span>
-      <span class="teaching-role">Lecturer</span> at the
-      <span class="teaching-course">Crash Course in Machine Learning per l’analisi dei dati</span>,
-      organized by the Laboratory of Applied Economics of the University of Bari within the GRINS Spoke 7 Project,
-      in collaboration with the Italian Society of Transport and Logistics Economics (SIET), 2–4 February 2026.
-    </li>
+    <h2 id="lectures-invited-speaking">Lectures and invited speaking</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2026.</span>
+        <span class="teaching-role">Lecturer</span> at the
+        <span class="teaching-course">Crash Course in Machine Learning per l’analisi dei dati</span>,
+        organized by the Laboratory of Applied Economics of the University of Bari within the GRINS Spoke 7 Project,
+        in collaboration with the Italian Society of Transport and Logistics Economics (SIET), 2–4 February 2026.
+      </li>
 
-    <li>
-      <span class="teaching-year">2024.</span>
-      <span class="teaching-role">Lecturer</span> for
-      <span class="teaching-course">Big Data Analytics</span> and
-      <span class="teaching-course">Real-Time Big Data Processing</span>
-      within the MTDS Master’s Programme in Data Science and Data Management,
-      University of Padua, 15–16 May 2024.
-    </li>
+      <li>
+        <span class="teaching-year">2024.</span>
+        <span class="teaching-role">Lecturer</span> for
+        <span class="teaching-course">Big Data Analytics</span> and
+        <span class="teaching-course">Real-Time Big Data Processing</span>
+        within the MTDS Master’s Programme in Data Science and Data Management,
+        University of Padua, 15–16 May 2024.
+      </li>
 
-    <li>
-      <span class="teaching-year">2023.</span>
-      <span class="teaching-role">Invited seminar</span> for the university course in
-      <span class="teaching-course">Business Intelligence and Management Information Systems</span>,
-      Bachelor’s Degree in Digital Business Administration and Management,
-      Department of Management, University of Turin, 8 May 2023.
-      Seminar title: <em>Introduction to R. Application and Manipulation</em>.
-    </li>
+      <li>
+        <span class="teaching-year">2023.</span>
+        <span class="teaching-role">Invited seminar</span> for the university course in
+        <span class="teaching-course">Business Intelligence and Management Information Systems</span>,
+        Bachelor’s Degree in Digital Business Administration and Management,
+        Department of Management, University of Turin, 8 May 2023.
+        Seminar title: <em>Introduction to R. Application and Manipulation</em>.
+      </li>
 
-    <li>
-      <span class="teaching-year">2023.</span>
-      <span class="teaching-role">Invited seminar</span> for the university course in
-      <span class="teaching-course">Economics of Local Development</span>,
-      Bachelor’s Degree in Economics and Management,
-      Department of Management, University of Enna “Kore”, 30 March 2023.
-      Seminar title: <em>Accrescere la resilienza dei sistemi economici locali: la Strategia Nazionale per le Aree Interne</em>.
-    </li>
-  </ul>
+      <li>
+        <span class="teaching-year">2023.</span>
+        <span class="teaching-role">Invited seminar</span> for the university course in
+        <span class="teaching-course">Economics of Local Development</span>,
+        Bachelor’s Degree in Economics and Management,
+        Department of Management, University of Enna “Kore”, 30 March 2023.
+        Seminar title: <em>Accrescere la resilienza dei sistemi economici locali: la Strategia Nazionale per le Aree Interne</em>.
+      </li>
+    </ul>
+  </section>
+
+  <aside class="page-index" aria-label="Teaching page index">
+    <h2>Index</h2>
+    <ul>
+      <li><a href="#phd-teaching">PhD teaching</a></li>
+      <li><a href="#undergraduate-graduate-courses">Undergraduate and graduate courses</a></li>
+      <li><a href="#tutoring">Tutoring</a></li>
+      <li><a href="#teaching-assistance-tutorials">Teaching assistance and tutorials</a></li>
+      <li><a href="#lectures-invited-speaking">Lectures and invited speaking</a></li>
+    </ul>
+  </aside>
 </main>
 
 <footer class="footer">
