@@ -1,319 +1,138 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Software | Gianluca Monturano</title>
+  <title>Teaching | Gianluca Monturano</title>
   <link rel="stylesheet" href="styles.css">
+
   <style>
-    .software-layout{
+    /* Teaching page only: wider writing area, smaller text, sticky index */
+    .teaching-shell{
+      max-width:1180px !important;
+      width:auto !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
       display:grid;
       grid-template-columns:minmax(0,1fr) 190px;
       gap:34px;
       align-items:start;
+      font-size:.86rem;
+      line-height:1.46;
     }
 
+    .teaching-content{
+      min-width:0;
+    }
 
-.software-head{
-  border-bottom:1px solid var(--rule);
-  padding-bottom:14px;
-  margin-bottom:16px;
-}
+    .teaching-content h1{
+      font-size:1.52rem;
+      margin-bottom:7px;
+    }
 
-.software-head h1{
-  margin-bottom:6px;
-}
+    .teaching-content h2{
+      font-size:.96rem;
+      margin-top:20px;
+      margin-bottom:7px;
+      padding-bottom:3px;
+      scroll-margin-top:86px;
+    }
 
-.software-head p{
-  max-width:760px;
-  color:var(--muted);
-  margin-bottom:0;
-}
+    .teaching-content .position{
+      font-size:.85rem;
+      margin-bottom:17px;
+    }
 
-.github-main-link{
-  color:#0057d9;
-  text-decoration:underline;
-  text-underline-offset:2px;
-  font-weight:700;
-}
+    .teaching-year{
+      font-weight:700;
+      color:#111;
+      white-space:nowrap;
+    }
 
-.github-hub{
-  display:grid;
-  grid-template-columns:130px minmax(0,1fr);
-  gap:20px;
-  align-items:center;
-  border:1px solid var(--rule);
-  background:#fafafa;
-  padding:16px 18px;
-  margin:16px 0 10px;
-}
+    .teaching-list{
+      max-width:none;
+    }
 
-.github-hub-icon{
-  width:130px;
-  height:130px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    .teaching-list li{
+      margin-bottom:7px;
+      line-height:1.46;
+    }
 
-.github-hub-icon img{
-  width:112px;
-  height:112px;
-  object-fit:contain;
-  display:block;
-}
+    .teaching-role{
+      font-weight:700;
+      color:#111;
+    }
 
-.github-hub-content h2{
-  margin:0 0 5px;
-  font-size:1.08rem;
-}
+    .teaching-course{
+      font-weight:700;
+      color:#111;
+    }
 
-.github-hub-content p{
-  margin:0;
-  font-size:.94rem;
-  line-height:1.55;
-}
+    .page-index{
+      position:sticky;
+      top:74px;
+      align-self:start;
+      font-size:.82rem;
+      border-left:1px solid var(--rule);
+      padding-left:12px;
+      color:#333;
+    }
 
-.github-hub-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin:8px 0 9px;
-}
+    .page-index h2{
+      font-size:.95rem;
+      margin:0 0 9px;
+      padding:0;
+      border:0;
+    }
 
-.github-hub-link{
-  color:#0057d9;
-  text-decoration:underline;
-  text-underline-offset:2px;
-  font-weight:700;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  margin-top:8px;
-}
+    .page-index ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
 
-.package-list{
-  margin-top:6px;
-}
+    .page-index li{
+      margin:0 0 7px;
+      line-height:1.25;
+    }
 
-.package-section-title{
-  margin:20px 0 4px;
-  font-size:1rem;
-  color:#111;
-}
+    .page-index a{
+      color:#333;
+      text-decoration:none;
+    }
 
-.package-item{
-  display:grid;
-  grid-template-columns:120px minmax(0,1fr);
-  gap:22px;
-  padding:22px 0 26px;
-  border-bottom:1px solid var(--rule);
-}
+    .page-index a:hover{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
 
-.package-icon{
-  width:120px;
-  height:110px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    @media (max-width:900px){
+      .teaching-shell{
+        display:block;
+        max-width:100% !important;
+        font-size:.93rem;
+      }
 
-.package-icon img{
-  max-width:96px;
-  max-height:96px;
-  display:block;
-  object-fit:contain;
-}
+      .page-index{
+        position:static;
+        border-left:0;
+        border-bottom:1px solid var(--rule);
+        padding-left:0;
+        padding-bottom:12px;
+        margin-bottom:18px;
+      }
 
-.package-icon.multi{
-  gap:7px;
-  flex-wrap:wrap;
-}
+      .page-index ul{
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px 12px;
+      }
 
-.package-icon.multi img{
-  max-width:48px;
-  max-height:48px;
-}
-
-.package-icon.wide img{
-  max-width:104px;
-  max-height:82px;
-}
-
-.package-content{
-  border-left:3px solid #111;
-  padding-left:13px;
-}
-
-.package-title{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:6px;
-  margin-bottom:5px;
-}
-
-.package-title h2{
-  font-size:1.02rem;
-  margin:0;
-  line-height:1.15;
-}
-
-.package-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin:4px 0 7px;
-  font-size:.76rem;
-}
-
-.badge{
-  border:1px solid var(--rule);
-  background:#f6f6f6;
-  padding:1px 6px;
-  border-radius:4px;
-  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  white-space:nowrap;
-}
-
-.badge-r{
-  color:#276dc3;
-}
-
-.badge-py{
-  color:#b8860b;
-}
-
-.badge-tex{
-  color:#006f6f;
-}
-
-.badge-rep{
-  color:#264653;
-}
-
-.badge-cran{
-  color:#276dc3;
-  font-weight:700;
-}
-
-.badge-pypi{
-  color:#b8860b;
-  font-weight:700;
-}
-
-.package-content p{
-  margin:0;
-  font-size:.93rem;
-  line-height:1.55;
-}
-
-.software-sidebar{
-  position:sticky;
-  top:74px;
-  font-size:.9rem;
-}
-
-.software-sidebar h2{
-  font-size:1rem;
-  margin:0 0 10px;
-}
-
-.cat-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-  border-left:1px solid var(--rule);
-  padding-left:12px;
-}
-
-.cat-list li{
-  margin-bottom:7px;
-  color:#333;
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
-.cat-list img{
-  width:20px;
-  height:20px;
-  object-fit:contain;
-  display:block;
-  flex:0 0 20px;
-}
-
-.github-box{
-  margin-top:18px;
-  border:1px solid var(--rule);
-  background:#fafafa;
-  padding:10px;
-}
-
-.github-box a{
-  color:#0057d9;
-  text-decoration:underline;
-  text-underline-offset:2px;
-  font-weight:700;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-}
-
-.github-box img{
-  width:24px;
-  height:24px;
-  object-fit:contain;
-}
-
-@media (max-width:850px){
-  .software-layout{
-    grid-template-columns:1fr;
-  }
-
-  .software-sidebar{
-    position:static;
-    order:-1;
-  }
-
-  .github-hub{
-    grid-template-columns:80px minmax(0,1fr);
-    gap:14px;
-  }
-
-  .github-hub-icon{
-    width:80px;
-    height:80px;
-  }
-
-  .github-hub-icon img{
-    width:70px;
-    height:70px;
-  }
-
-  .package-item{
-    grid-template-columns:88px minmax(0,1fr);
-    gap:16px;
-  }
-
-  .package-icon{
-    width:88px;
-    height:80px;
-  }
-
-  .package-icon img{
-    max-width:66px;
-    max-height:66px;
-  }
-
-  .package-icon.multi img{
-    max-width:31px;
-    max-height:31px;
-  }
-}
-
-
+      .page-index li{
+        margin:0;
+      }
+    }
   </style>
 </head>
 
@@ -323,180 +142,173 @@
     <div class="nav">
       <a class="name" href="index.html">Gianluca Monturano</a>
 
-
-  <nav class="menu" aria-label="Primary navigation">
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a class="active" href="software.html">Software</a>
-    <a href="teaching.html">Teaching</a>
-    <a href="dissemination.html">Dissemination</a>
-    <a href="cv.html">CV</a>
-  </nav>
-</div>
-
-
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="software.html">Software</a>
+        <a class="active" href="teaching.html">Teaching</a>
+        <a href="dissemination.html">Dissemination</a>
+        <a href="cv.html">CV</a>
+      </nav>
+    </div>
   </div>
 </header>
 
-<main class="wrap page">
-  <div class="software-layout">
-    <section>
-      <div class="software-head">
-        <h1>Software and packages</h1>
-        <p>
-          Reproducible code, statistical workflows, replication packages and academic templates
-          for empirical research, data manipulation, policy evaluation, machine learning and scientific writing.
-        </p>
-      </div>
+<main class="wrap page teaching-shell">
+  <section class="teaching-content">
+    <h1>Teaching</h1>
+    <p class="position">Economics, statistics, econometrics, empirical methods and data analysis.</p>
 
+    <h2 id="phd-teaching">PhD teaching</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span> for the PhD course in transversal skills,
+        <span class="teaching-course">Strumenti informatici e software statistici per l’analisi dei dati</span>,
+        addressed to PhD students and postgraduate trainees, <em>University of Bari Aldo Moro</em>.
+      </li>
+    </ul>
 
-  <section class="github-hub">
-    <div class="github-hub-icon">
-      <img src="assets/icons/Ghithub.png" alt="GitHub">
-    </div>
+    <h2 id="undergraduate-graduate-courses">Undergraduate and graduate courses</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Empirical Industrial Organization Competitive Analysis</span>,
+        SECS-P/06, Master’s Degree in Economics and Management, <em>University of Bari</em>.
+      </li>
 
-    <div class="github-hub-content">
-      <h2>GitHub code hub</h2>
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Business Economics, <em>University of Bari</em>.
+      </li>
 
-      <div class="github-hub-tags">
-        <span class="badge badge-rep">Replication code</span>
-        <span class="badge badge-r">R</span>
-        <span class="badge badge-py">Python</span>
-        <span class="badge badge-tex">LaTeX</span>
-        <span class="badge">Markdown</span>
-        <span class="badge">Quarto</span>
-      </div>
+      <li>
+        <span class="teaching-year">2024–2025.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Marketing and Business Administration, <em>University of Bari</em>.
+      </li>
 
-      <p>
-        My GitHub profile is the central repository where I collect replication packages,
-        statistical workflows, R and Python code, LaTeX templates, Markdown documents and Quarto material.
-        The sections below describe the main types of material hosted there.
-      </p>
+      <li>
+        <span class="teaching-year">2022.</span>
+        <span class="teaching-role">Lecturer</span> in the academic training course
+        <span class="teaching-course">Turismo sostenibile in area marina protetta — TuSAMP</span>,
+        <em>University of Foggia</em>.
+      </li>
+    </ul>
 
-      <a class="github-hub-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">
-        Open GitHub profile
-      </a>
-    </div>
+    <h2 id="tutoring">Tutoring</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Introduction to Macroeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Economics and Finance,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Business Economics and Management,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Economics and Finance,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2023.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Economics and International Marketing,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+    </ul>
+
+    <h2 id="teaching-assistance-tutorials">Teaching assistance and tutorials</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2022–2023.</span>
+        <span class="teaching-role">Teaching assistance grant</span> for
+        <span class="teaching-course">Economic and Competitive Scenarios</span>,
+        SECS-P/01, Master’s Degree in Business Management and Communication,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Teaching assistance grant</span> for
+        <span class="teaching-course">Industrial Economics</span>,
+        SECS-P/01, Master’s Degree in Business Management and Consulting,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+    </ul>
+
+    <h2 id="lectures-invited-speaking">Lectures and invited speaking</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2026.</span>
+        <span class="teaching-role">Lecturer</span> at the
+        <span class="teaching-course">Crash Course in Machine Learning per l’analisi dei dati</span>,
+        organized by the Laboratory of Applied Economics of the University of Bari within the GRINS Spoke 7 Project,
+        in collaboration with the Italian Society of Transport and Logistics Economics (SIET), 2–4 February 2026.
+      </li>
+
+      <li>
+        <span class="teaching-year">2024.</span>
+        <span class="teaching-role">Lecturer</span> for
+        <span class="teaching-course">Big Data Analytics</span> and
+        <span class="teaching-course">Real-Time Big Data Processing</span>
+        within the MTDS Master’s Programme in Data Science and Data Management,
+        University of Padua, 15–16 May 2024.
+      </li>
+
+      <li>
+        <span class="teaching-year">2023.</span>
+        <span class="teaching-role">Invited seminar</span> for the university course in
+        <span class="teaching-course">Business Intelligence and Management Information Systems</span>,
+        Bachelor’s Degree in Digital Business Administration and Management,
+        Department of Management, University of Turin, 8 May 2023.
+        Seminar title: <em>Introduction to R. Application and Manipulation</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2023.</span>
+        <span class="teaching-role">Invited seminar</span> for the university course in
+        <span class="teaching-course">Economics of Local Development</span>,
+        Bachelor’s Degree in Economics and Management,
+        Department of Management, University of Enna “Kore”, 30 March 2023.
+        Seminar title: <em>Accrescere la resilienza dei sistemi economici locali: la Strategia Nazionale per le Aree Interne</em>.
+      </li>
+    </ul>
   </section>
 
-  <h2 class="package-section-title">Technical materials</h2>
-
-  <div class="package-list">
-    <article class="package-item">
-      <div class="package-icon wide">
-        <img src="assets/icons/R.svg.png" alt="R">
-      </div>
-
-      <div class="package-content">
-        <div class="package-title">
-          <h2>R routines for statistical analysis</h2>
-        </div>
-
-        <div class="package-meta">
-          <span class="badge badge-r">R</span>
-          <span class="badge badge-cran">CRAN</span>
-          <span class="badge">Data analysis</span>
-          <span class="badge">Data manipulation</span>
-          <span class="badge">Spatial econometrics</span>
-          <span class="badge">Causal inference</span>
-        </div>
-
-        <p>
-          R scripts and routines for data manipulation, descriptive and inferential statistics,
-          causal inference, spatial econometrics, policy evaluation, territorial indicators,
-          accessibility measures and reproducible analytical pipelines for empirical research.
-          Future R packages and package-style tools can be indexed here, including CRAN-oriented material.
-        </p>
-      </div>
-    </article>
-
-    <article class="package-item">
-      <div class="package-icon wide">
-        <img src="assets/icons/Python.svg.png" alt="Python">
-      </div>
-
-      <div class="package-content">
-        <div class="package-title">
-          <h2>Python workflows for data science</h2>
-        </div>
-
-        <div class="package-meta">
-          <span class="badge badge-py">Python</span>
-          <span class="badge badge-pypi">PyPI</span>
-          <span class="badge">Machine learning</span>
-          <span class="badge">Network analysis</span>
-          <span class="badge">Scraping</span>
-          <span class="badge">Text analysis</span>
-        </div>
-
-        <p>
-          Python projects for machine learning, network analysis, automated data collection,
-          web scraping, text analysis and document processing. These workflows support prediction,
-          classification, exploratory modelling and reproducible data-science applications.
-          Future Python packages and package-style tools can be indexed here, including PyPI-oriented material.
-        </p>
-      </div>
-    </article>
-
-    <article class="package-item">
-      <div class="package-icon multi">
-        <img src="assets/icons/Latex.svg" alt="LaTeX">
-        <img src="assets/icons/markdown.png" alt="Markdown">
-        <img src="assets/icons/logo.png" alt="Quarto">
-      </div>
-
-      <div class="package-content">
-        <div class="package-title">
-          <h2>LaTeX, Markdown and Quarto templates</h2>
-        </div>
-
-        <div class="package-meta">
-          <span class="badge badge-tex">LaTeX</span>
-          <span class="badge">Markdown</span>
-          <span class="badge">Quarto</span>
-          <span class="badge">CV</span>
-          <span class="badge">Slides</span>
-          <span class="badge">Working papers</span>
-        </div>
-
-        <p>
-          Academic material for CVs, conference slides, teaching notes, article templates,
-          working papers, reproducible reports and automatic PDF generation through GitHub workflows.
-        </p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<aside class="software-sidebar">
-  <h2>Index</h2>
-  <ul class="cat-list">
-    <li><img src="assets/icons/Ghithub.png" alt="">GitHub code hub</li>
-    <li><img src="assets/icons/R.svg.png" alt="">R analysis</li>
-    <li><img src="assets/icons/Python.svg.png" alt="">Python workflows</li>
-    <li><img src="assets/icons/Latex.svg" alt="">LaTeX templates</li>
-    <li><img src="assets/icons/markdown.png" alt="">Markdown</li>
-    <li><img src="assets/icons/logo.png" alt="">Quarto</li>
-    <li><span class="badge badge-cran">CRAN</span> R packages</li>
-    <li><span class="badge badge-pypi">PyPI</span> Python packages</li>
-  </ul>
-
-  <div class="github-box">
-    <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
-      <img src="assets/icons/" alt="">
-      <span>GitHub</span>
-    </a>
-  </div>
-</aside>
-
-
-  </div>
+  <aside class="page-index" aria-label="Teaching page index">
+    <h2>Index</h2>
+    <ul>
+      <li><a href="#phd-teaching">PhD teaching</a></li>
+      <li><a href="#undergraduate-graduate-courses">Undergraduate and graduate courses</a></li>
+      <li><a href="#tutoring">Tutoring</a></li>
+      <li><a href="#teaching-assistance-tutorials">Teaching assistance and tutorials</a></li>
+      <li><a href="#lectures-invited-speaking">Lectures and invited speaking</a></li>
+    </ul>
+  </aside>
 </main>
 
 <footer class="footer">
   <div class="wrap footer-inner">
     <span>© Gianluca Monturano</span>
-    <span>R · Python · LaTeX · Markdown · Quarto</span>
+    <span>Teaching</span>
   </div>
 </footer>
 </body>
