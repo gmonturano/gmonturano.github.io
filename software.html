@@ -173,6 +173,99 @@
   max-height:190px;
 }
 
+
+.replication-flow{
+  margin-top:16px;
+  padding:14px 12px;
+  border:1px solid var(--rule);
+  background:#fafafa;
+  grid-column:1 / -1;
+}
+
+.flow-title{
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#444;
+  margin:0 0 12px;
+}
+
+.flow-grid{
+  display:grid;
+  grid-template-columns:1fr 30px 1fr 30px 1fr 30px 1fr;
+  align-items:center;
+  gap:0;
+}
+
+.flow-node{
+  min-height:54px;
+  border:1px solid #d8d8d8;
+  background:#fff;
+  padding:8px 9px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+
+.flow-node strong{
+  display:block;
+  font-size:.82rem;
+  line-height:1.2;
+  color:#111;
+  margin-bottom:3px;
+}
+
+.flow-node span{
+  display:block;
+  color:#666;
+  font-size:.72rem;
+  line-height:1.25;
+}
+
+.flow-arrow{
+  height:1px;
+  background:#999;
+  position:relative;
+  margin:0 6px;
+}
+
+.flow-arrow::after{
+  content:"";
+  position:absolute;
+  right:-1px;
+  top:-4px;
+  width:0;
+  height:0;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  border-left:7px solid #999;
+}
+
+@media (max-width:850px){
+  .flow-grid{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .flow-arrow{
+    width:1px;
+    height:18px;
+    margin:0 auto;
+  }
+
+  .flow-arrow::after{
+    right:-4px;
+    top:auto;
+    bottom:-1px;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:7px solid #999;
+    border-bottom:0;
+  }
+}
+
 .badge-paper{
   color:#7a2e12;
   font-weight:700;
@@ -444,9 +537,9 @@
   <div class="software-layout">
     <section>
       <div class="software-head">
-        <h1>Software and replication code</h1>
+        <h1>Software, packages and replication code</h1>
         <p>
-          Reproducible code, statistical workflows, replication packages and academic templates
+          Reproducible code, statistical workflows, replication packages, package-style tools and academic templates
           for empirical research, data manipulation, policy evaluation, machine learning and scientific writing.
         </p>
       </div>
@@ -471,8 +564,8 @@
 
       <p>
         My GitHub profile is the central repository where I collect replication packages,
-        statistical workflows, R and Python code, LaTeX templates, Markdown documents and Quarto material.
-        The sections below describe the main types of material hosted there.
+        statistical workflows, R and Python code, package-style tools, LaTeX templates,
+        Markdown documents and Quarto material. The sections below describe the main types of material hosted there.
       </p>
 
       <a class="github-hub-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">
@@ -522,33 +615,76 @@ source("R/03_dml_metadata.R")
 
 # Or run the full workflow
 source("R/99_run_all.R")</code></pre>
-    </article>
 
+      <div class="replication-flow" aria-label="Replication workflow">
+        <div class="flow-title">Replication flow</div>
+
+        <div class="flow-grid">
+          <div class="flow-node">
+            <strong>Paper</strong>
+            <span>published article and empirical design</span>
+          </div>
+
+          <div class="flow-arrow" aria-hidden="true"></div>
+
+          <div class="flow-node">
+            <strong>Processed panel</strong>
+            <span>100-row sample or full estimation data</span>
+          </div>
+
+          <div class="flow-arrow" aria-hidden="true"></div>
+
+          <div class="flow-node">
+            <strong>Metadata</strong>
+            <span>TWFE, IV and DBML specifications</span>
+          </div>
+
+          <div class="flow-arrow" aria-hidden="true"></div>
+
+          <div class="flow-node">
+            <strong>Outputs</strong>
+            <span>tables, coefficients and model objects</span>
+          </div>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+
+
+  <h2 class="package-section-title" id="packaging">Packages and reusable tools</h2>
+
+  <div class="repo-list">
     <article class="repo-card">
       <div>
-        <h2 class="repo-title">Additional replication repositories</h2>
+        <h2 class="repo-title">Package-oriented research utilities</h2>
 
         <div class="repo-tags">
           <span class="badge badge-r">R</span>
           <span class="badge badge-py">Python</span>
-          <span class="badge">Panel data</span>
-          <span class="badge">Spatial econometrics</span>
-          <span class="badge">Machine learning</span>
+          <span class="badge badge-cran">CRAN</span>
+          <span class="badge badge-pypi">PyPI</span>
+          <span class="badge">Reusable functions</span>
         </div>
 
         <p>
-          This section can be extended as additional paper repositories are cleaned and released.
-          Each item should include the paper title, the repository link, the publication link when available,
-          the estimation language and a compact code preview.
+          Alongside paper replication repositories, this page also indexes package-style material:
+          reusable R functions, Python modules, statistical utilities, templates and documented workflows
+          that can later be organised as formal packages for CRAN-style or PyPI-style distribution.
         </p>
       </div>
 
-      <pre class="code-preview"><code># Suggested repository structure
+      <pre class="code-preview"><code># Package-oriented structure
 R/
-data/processed/
-data/metadata/
-results/tables/
-README.md</code></pre>
+  functions/
+  tests/
+  vignettes/
+
+python/
+  src/
+  tests/
+  docs/</code></pre>
     </article>
   </div>
 
@@ -643,17 +779,18 @@ README.md</code></pre>
 </section>
 
 <aside class="software-sidebar">
-  <h2>Index</h2>
+  <h2>Research stack</h2>
   <ul class="cat-list">
-    <li><img src="assets/icons/Ghithub.png" alt=""><a href="#github-code-hub">GitHub code hub</a></li>
+    <li><img src="assets/icons/Ghithub.png" alt=""><a href="#github-code-hub">GitHub hub</a></li>
     <li><span class="badge badge-rep">Code</span><a href="#paper-code">Papers with code</a></li>
-    <li><img src="assets/icons/R.svg.png" alt=""><a href="#r-routines">R analysis</a></li>
-    <li><img src="assets/icons/Python.svg.png" alt=""><a href="#python-workflows">Python workflows</a></li>
+    <li><img src="assets/icons/R.svg.png" alt=""><a href="#r-routines">R analysis and packages</a></li>
+    <li><img src="assets/icons/Python.svg.png" alt=""><a href="#python-workflows">Python workflows and packages</a></li>
+    <li><span class="badge">Pkg</span><a href="#packaging">Packages and reusable tools</a></li>
     <li><img src="assets/icons/Latex.svg" alt=""><a href="#latex-markdown-quarto">LaTeX templates</a></li>
-    <li><img src="assets/icons/markdown.png" alt=""><a href="#latex-markdown-quarto">Markdown</a></li>
-    <li><img src="assets/icons/logo.png" alt=""><a href="#latex-markdown-quarto">Quarto</a></li>
-    <li><span class="badge badge-cran">CRAN</span> R packages</li>
-    <li><span class="badge badge-pypi">PyPI</span> Python packages</li>
+    <li><img src="assets/icons/markdown.png" alt=""><a href="#latex-markdown-quarto">Markdown docs</a></li>
+    <li><img src="assets/icons/logo.png" alt=""><a href="#latex-markdown-quarto">Quarto reports</a></li>
+    <li><span class="badge badge-cran">CRAN</span> R package-ready material</li>
+    <li><span class="badge badge-pypi">PyPI</span> Python package-ready material</li>
   </ul>
 
   <div class="github-box">
