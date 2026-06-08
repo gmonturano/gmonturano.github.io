@@ -8,129 +8,186 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Home page only: centered academic profile */
+    /* Home page only */
     .home-centered{
-      max-width:760px !important;
-      width:auto !important;
-      margin:0 auto !important;
-      padding:0 18px !important;
-      display:block !important;
+      max-width: 820px !important;
+      width: auto !important;
+      margin: 0 auto !important;
+      padding: 0 18px !important;
+      display: block !important;
     }
 
     .home-top{
-      text-align:center;
-      margin:0 auto 24px;
+      text-align: center;
+      margin: 0 auto 26px;
     }
 
     .home-top .profile-photo{
-      width:168px !important;
-      height:168px !important;
-      margin:0 auto 16px !important;
-      display:block !important;
-      border-radius:50%;
-      object-fit:cover;
-      box-shadow:0 5px 15px rgba(0,0,0,.08);
+      width: 190px !important;
+      height: 190px !important;
+      margin: 0 auto 18px !important;
+      display: block !important;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 7px 20px rgba(0,0,0,.10);
     }
 
     .home-top .side-title{
-      text-align:center;
-      margin-bottom:8px;
-      font-size:.72rem !important;
-      letter-spacing:.13em !important;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: .72rem !important;
+      letter-spacing: .13em !important;
     }
 
-    .home-top .logo-row{
-      display:flex !important;
-      flex-wrap:nowrap !important;
-      justify-content:center !important;
-      align-items:center !important;
-      gap:8px !important;
-      max-width:none !important;
-      margin:0 auto 14px !important;
+    /* More realistic logos */
+    .profile-links{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 0 auto 16px;
+      max-width: 760px;
     }
 
-    .home-top .round-logo,
-    .home-top .round-logo img{
-      width:24px !important;
-      height:24px !important;
-      min-width:24px !important;
-      min-height:24px !important;
-      max-width:24px !important;
-      max-height:24px !important;
+    .profile-link{
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+
+    .profile-link:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+      border-color: #d4dbe3;
+    }
+
+    .profile-link img{
+      max-width: 28px;
+      max-height: 28px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .profile-link.wide img{
+      max-width: 31px;
+      max-height: 24px;
     }
 
     .home-contact{
-      margin:10px auto 0;
-      text-align:center;
-      font-size:.78rem;
-      line-height:1.55;
+      margin: 10px auto 0;
+      text-align: center;
+      font-size: .80rem;
+      line-height: 1.6;
     }
 
     .home-contact a{
-      color:#0057d9 !important;
-      text-decoration:none;
-      border-bottom:1px solid rgba(0,87,217,.45);
+      color: #0057d9 !important;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,87,217,.45);
     }
 
     .home-contact a:hover{
-      color:#003fa3 !important;
-      border-bottom-color:#003fa3;
-      text-decoration:none;
+      color: #003fa3 !important;
+      border-bottom-color: #003fa3;
+      text-decoration: none;
     }
 
     .home-bio{
-      width:auto !important;
-      max-width:760px !important;
-      margin:0 auto !important;
-      text-align:justify;
-      text-justify:inter-word;
+      width: auto !important;
+      max-width: 820px !important;
+      margin: 0 auto !important;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .home-bio h1{
-      text-align:left;
-      font-size:1.42rem !important;
-      margin-bottom:8px !important;
+      text-align: left;
+      font-size: 1.58rem !important;
+      margin-bottom: 8px !important;
     }
 
     .home-bio .academic-roles{
-      text-align:left;
-      margin-bottom:18px !important;
+      text-align: left;
+      margin-bottom: 18px !important;
     }
 
     .home-bio .lead{
-      text-align:justify;
-      font-size:.94rem !important;
-      line-height:1.58 !important;
+      text-align: justify;
+      font-size: .97rem !important;
+      line-height: 1.62 !important;
     }
 
     .home-bio p{
-      text-align:justify;
-      font-size:.91rem !important;
-      line-height:1.58 !important;
-      margin-bottom:11px !important;
+      text-align: justify;
+      font-size: .93rem !important;
+      line-height: 1.62 !important;
+      margin-bottom: 12px !important;
     }
 
     .programming-line{
-      text-align:left !important;
-      white-space:nowrap;
+      text-align: left !important;
     }
 
-    @media (max-width:760px){
+    .inline-tech{
+      display: inline-block;
+      border: 1px solid var(--rule);
+      background: #f6f6f6;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .84em;
+      line-height: 1.4;
+      vertical-align: baseline;
+      white-space: nowrap;
+    }
+
+    .inline-tech.r{
+      color: #276dc3;
+    }
+
+    .inline-tech.py{
+      color: #b8860b;
+    }
+
+    @media (max-width: 760px){
       .home-centered{
-        max-width:100% !important;
-        padding:0 18px !important;
+        max-width: 100% !important;
+        padding: 0 18px !important;
       }
 
-      .home-top .logo-row{
-        flex-wrap:wrap !important;
+      .home-top .profile-photo{
+        width: 170px !important;
+        height: 170px !important;
+      }
+
+      .profile-links{
+        gap: 8px;
+      }
+
+      .profile-link{
+        width: 38px;
+        height: 38px;
+        padding: 4px;
+      }
+
+      .profile-link img{
+        max-width: 24px;
+        max-height: 24px;
       }
 
       .home-bio{
-        max-width:100% !important;
-      }
-
-      .programming-line{
-        white-space:normal;
+        max-width: 100% !important;
       }
     }
   </style>
@@ -158,41 +215,48 @@
   <section class="home-top">
     <img class="profile-photo" src="assets/rofile-photo.sv.jpg" alt="Profile photo of Gianluca Monturano">
 
-    <div class="side-title">Profiles</div>
+    <div class="side-title">PROFILES</div>
 
-    <div class="logo-row primary-logos" aria-label="Main academic and professional profiles">
-      <a class="round-logo" href="https://be.linkedin.com/in/gianluca-monturano93" title="LinkedIn" aria-label="LinkedIn">
-        <img src="assets/icons/linkedin.svg" alt="">
+    <div class="profile-links" aria-label="Academic and professional profiles">
+      <a class="profile-link" href="https://www.linkedin.com/in/gianluca-monturano93/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
+        <img src="assets/icons/174857.png" alt="LinkedIn">
       </a>
 
-      <a class="round-logo" href="https://scholar.google.com/scholar?q=Gianluca+Monturano" title="Google Scholar" aria-label="Google Scholar">
-        <img src="assets/icons/google-scholar.svg" alt="">
+      <a class="profile-link wide" href="https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB" title="Microsoft Teams" aria-label="Microsoft Teams" target="_blank" rel="noopener">
+        <img src="assets/icons/teams.jpg" alt="Teams">
       </a>
 
-      <a class="round-logo" href="https://www.scopus.com/results/authorNamesList.uri?name=name&st1=Monturano&st2=Gianluca" title="Scopus" aria-label="Scopus">
-        <img src="assets/icons/scopus.svg" alt="">
+      <a class="profile-link wide" href="https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener">
+        <img src="assets/icons/1024px-Google_Scholar_logo.svg.png" alt="Google Scholar">
       </a>
 
-      <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate">
-        <img src="assets/icons/researchgate.svg" alt="">
+      <a class="profile-link" href="https://github.com/gmonturano" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
+        <img src="assets/icons/25231.png" alt="GitHub">
       </a>
 
-      <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID">
-        <img src="assets/icons/orcid.svg" alt="">
+      <a class="profile-link" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate" target="_blank" rel="noopener">
+        <img src="assets/icons/ResearchGate_icon_SVG.svg.png" alt="ResearchGate">
       </a>
 
-      <a class="round-logo" href="https://x.com/monturano" title="X" aria-label="X">
-        <img src="assets/icons/x.svg" alt="">
+      <a class="profile-link" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
+        <img src="assets/icons/orcid-icon-2048x2048-q87cnnge.png" alt="ORCID">
       </a>
 
-      <a class="round-logo" href="https://github.com/gmonturano" title="GitHub" aria-label="GitHub">
-        <img src="assets/icons/github.svg" alt="">
+      <a class="profile-link" href="https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage" title="Scopus" aria-label="Scopus" target="_blank" rel="noopener">
+        <img src="assets/icons/icono-scopus.jpg" alt="Scopus">
+      </a>
+
+      <a class="profile-link" href="https://x.com/GMonturano" title="X" aria-label="X" target="_blank" rel="noopener">
+        <img src="assets/icons/x.svg" alt="X">
+      </a>
+
+      <a class="profile-link" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv" target="_blank" rel="noopener">
+        <img src="assets/icons/arxiv.svg" alt="arXiv">
       </a>
     </div>
 
     <div class="home-contact">
       <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a><br>
-      <a href="mailto:gianluca.monturano@uniba.it">gianluca.monturano@uniba.it</a><br>
       <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
     </div>
   </section>
@@ -211,15 +275,17 @@
     </p>
 
     <p>
-      I am currently an Assistant Professor (RTDA) in Political Economy at the Department of Economics of the University of Lecce and a Senior Researcher at the Fondazione Eni Enrico Mattei
+      I am currently an Assistant Professor (RTDA) in Political Economy at the Department of Economics of the University of Salento and a Senior Researcher at the Fondazione Eni Enrico Mattei
       (<a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">FEEM</a>)
       in Milan.
     </p>
 
     <p>
-      Previously, I was a Postdoctoral Research Fellow in Applied Economics at the Department of Economics, Management and Business Law of the University of Bari, where I remain affiliated as a researcher at the Laboratory of Applied Economics
+      Previously, I was a Postdoctoral Research Fellow in Applied Economics at the Department of Economics, Management and Business Law
+      (<a href="https://www.uniba.it/it/ricerca/dipartimenti/demdi/dipartimento/personale-demdi/docenti-esterni-1/2025-2026/monturano-gianluca" target="_blank" rel="noopener">DEMDI</a>)
+      of the University of Bari, where I remain affiliated as a researcher at the Laboratory of Applied Economics
       (<a href="https://www.laboratorioeconomiapplicata.it/" target="_blank" rel="noopener">LEA</a>).
-      I hold a Ph.D. in Economics from the Department of Economics of the University of Modena and Reggio Emilia.
+      I hold a Ph.D. in Economics from the Department of Economics (DEMB) of the University of Modena and Reggio Emilia.
       I was also a Visiting Research Fellow in Economics and Econometrics at the Solvay Brussels School of Economics and Management, Université Libre de Bruxelles (ULB).
     </p>
 
@@ -232,7 +298,7 @@
     </p>
 
     <p class="programming-line">
-      I program mainly in <code class="code-badge r-code">R</code> and <code class="code-badge python-code">Python</code>.
+      I program mainly in <span class="inline-tech r">R</span> and <span class="inline-tech py">Python</span>.
     </p>
   </section>
 </main>
