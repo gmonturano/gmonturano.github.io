@@ -1,39 +1,228 @@
-# Gianluca Monturano — academic website
+# Gianluca Monturano — Academic Website
 
-Versione più sobria / quant-style per GitHub Pages.
+Personal academic website of **Gianluca Monturano**, quantitative economist and data scientist.
 
-## Pubblicazione
-1. Crea un repository GitHub, ad esempio `monturano.github.io`.
-2. Carica tutti i file nella root del repository.
-3. Vai in **Settings → Pages → Deploy from branch → main → /root**.
+The website is built as a static GitHub Pages site using plain HTML, CSS and JavaScript. It presents academic roles, research outputs, teaching activity, software material, dissemination events and the full curriculum vitae.
 
-## Foto profilo
-La homepage usa `assets/profile-photo.svg` come placeholder.
-Per inserire la tua foto:
-- sostituisci quel file con una tua immagine chiamata `profile-photo.jpg` oppure `profile-photo.png`
-- poi aggiorna in `index.html` la riga dell'immagine, se necessario.
+## Website structure
 
-La foto viene ritagliata automaticamente in forma circolare via CSS.
+The repository contains the main pages of the academic website:
 
-## Loghi/link accademici
-Le icone sono SVG locali in `assets/icons/` e non dipendono da CDN esterni.
-Puoi cambiare gli URL dei profili in `index.html`, `research.html` e `cv.html`.
-
-## CV
-Inserisci il PDF come `assets/Curriculum_Vitae_Monturano.pdf`.
-
-## Stile icone
-Le icone sono rotonde e colorate, con colori leggeri e riconoscibili per ciascun profilo scientifico/social, mantenendo uno stile sobrio da sito accademico quantitativo.
-
-## Aggiornamento profili
-È stato aggiunto Scopus. I profili nella sidebar sono disposti in colonna, una riga per ogni logo/link.
-
-## Profili
-La riga principale dei loghi usa: LinkedIn, Google Scholar, Scopus, ResearchGate, ORCID, X, GitHub.
-La riga secondaria usa: arXiv, SSRN, IDEAS/RePEc.
-
-## Logo polish
-Icone ridisegnate in SVG con stile coerente: cerchi pieni, colori più netti, centratura migliore, ombra leggera e hover discreto.
+```text
+index.html             Home page and academic presentation
+research.html          Publications, submitted papers, projects, grants and service
+software.html          Code, statistical workflows and software material
+teaching.html          Teaching, lectures and invited seminars
+dissemination.html     Conferences, workshops and dissemination map
+cv.html                Academic CV page with embedded PDF
+styles.css             Main stylesheet
+script.js              JavaScript utilities
+assets/                Images, icons and static files
+cv/                    LaTeX CV source and generated PDF
+```
 
 ## Home page
-La homepage contiene solo la presentazione iniziale. Research interests, publications e working papers restano nelle pagine dedicate.
+
+The home page contains a concise academic presentation with:
+
+```text
+profile photo
+academic and professional profile icons
+institutional email contacts
+current roles
+research profile
+main programming tools
+```
+
+The profile icons use local files stored in:
+
+```text
+assets/icons/
+```
+
+The profile photo is stored in:
+
+```text
+assets/rofile-photo.sv.jpg
+```
+
+## Research page
+
+The research page includes:
+
+```text
+peer-reviewed articles
+submitted and ongoing papers
+book chapters
+working papers
+grants and awards
+research projects
+formal research appointments
+conference organization and organized sessions
+editorial activity
+scientific dissemination
+review activity
+```
+
+Journal names for published and ongoing papers are styled separately from paper titles. Project and dissemination links are embedded directly in the text.
+
+## Teaching page
+
+The teaching page reports:
+
+```text
+PhD teaching
+undergraduate and graduate courses
+tutoring activities
+teaching assistance and tutorials
+lectures and invited speaking
+```
+
+The page uses a wider text layout with a sticky index for easier navigation.
+
+## Dissemination page
+
+The dissemination page presents conferences, seminars and workshops through:
+
+```text
+interactive map
+year filter
+type filter
+event list
+summary statistics
+```
+
+The map uses a satellite basemap with place labels and highlights academic dissemination activities by location and type.
+
+## Software page
+
+The software page documents research-related technical material, including:
+
+```text
+GitHub repositories
+R routines for statistical analysis
+Python workflows for data science
+LaTeX templates
+Markdown and Quarto material
+replication code and reproducible workflows
+```
+
+GitHub is presented as the central hub for code, replication material, templates and research workflows.
+
+## CV page
+
+The CV page contains:
+
+```text
+current roles
+previous roles and education
+other academic roles
+academic profiles
+embedded full CV PDF
+```
+
+The full CV is generated from the LaTeX source stored in:
+
+```text
+cv/
+```
+
+The generated PDF is expected at:
+
+```text
+cv/main.pdf
+```
+
+and is embedded directly in `cv.html`.
+
+## Icons
+
+Academic and professional icons are stored locally in:
+
+```text
+assets/icons/
+```
+
+The website uses local icon files for:
+
+```text
+LinkedIn
+Microsoft Teams
+Google Scholar
+GitHub
+ResearchGate
+ORCID
+Scopus
+X
+arXiv
+SSRN
+R
+Python
+LaTeX
+Markdown
+Quarto
+```
+
+Using local icons avoids external dependencies and keeps the website stable on GitHub Pages.
+
+## CV generation
+
+The CV is written in LaTeX and stored in the `cv/` folder.
+
+A GitHub Actions workflow can compile the LaTeX source and generate:
+
+```text
+cv/main.pdf
+```
+
+The PDF is then shown directly on the CV page through an embedded viewer.
+
+## GitHub Pages deployment
+
+To publish the website:
+
+1. Open the repository on GitHub.
+2. Go to **Settings**.
+3. Open **Pages**.
+4. Select **Deploy from branch**.
+5. Choose branch `main`.
+6. Choose folder `/root`.
+7. Save.
+
+The website will be available through GitHub Pages after the deployment finishes.
+
+## Updating the website
+
+To update the site:
+
+```text
+edit the relevant HTML file
+commit the change
+wait for GitHub Pages deployment
+refresh the website
+```
+
+For visual changes, edit:
+
+```text
+styles.css
+```
+
+For profile icons or images, update files in:
+
+```text
+assets/icons/
+assets/
+```
+
+For the full CV, update the LaTeX source in:
+
+```text
+cv/
+```
+
+and let the workflow regenerate the PDF.
+
+## Notes
+
+This repository is designed for a clean academic website with a quantitative-economics style: minimal layout, local assets, reproducible CV generation, and separate pages for research, teaching, software, dissemination and curriculum vitae.
