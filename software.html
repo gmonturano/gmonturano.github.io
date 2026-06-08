@@ -9,7 +9,7 @@
   <style>
     .software-layout{
       display:grid;
-      grid-template-columns:minmax(0,1fr) 255px;
+      grid-template-columns:minmax(0,1fr) 260px;
       gap:34px;
       align-items:start;
     }
@@ -56,42 +56,43 @@
 
     .github-hub{
       display:grid;
-      grid-template-columns:112px minmax(0,1fr);
+      grid-template-columns:110px minmax(0,1fr);
       gap:20px;
       align-items:center;
       border:1px solid var(--rule);
       background:#fafafa;
       padding:16px 18px;
-      margin:16px 0 22px;
+      margin:16px 0 18px;
     }
 
     .github-hub-icon{
-      width:112px;
-      height:112px;
+      width:110px;
+      height:110px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
 
     .github-hub-icon img{
-      width:98px;
-      height:98px;
+      width:96px;
+      height:96px;
       object-fit:contain;
       display:block;
     }
 
-    .github-hub-content h2{
+    .github-hub h2{
       margin:0 0 5px;
       font-size:1.08rem;
     }
 
-    .github-hub-content p{
+    .github-hub p{
       margin:0;
       font-size:.94rem;
       line-height:1.55;
     }
 
-    .tag-row{
+    .hub-tags,
+    .repo-tags{
       display:flex;
       flex-wrap:wrap;
       gap:5px;
@@ -99,67 +100,72 @@
       font-size:.76rem;
     }
 
-    .github-hub-link{
+    .hub-link{
       color:#0057d9;
       text-decoration:underline;
       text-underline-offset:2px;
       font-weight:700;
       display:inline-flex;
-      align-items:center;
-      gap:6px;
       margin-top:8px;
     }
 
     .section-title{
       margin:24px 0 10px;
-      font-size:1.02rem;
+      font-size:1rem;
       color:#111;
       padding-bottom:5px;
       border-bottom:1px solid var(--rule);
       scroll-margin-top:86px;
     }
 
-    .paper-code-grid{
+    .repo-list{
       display:grid;
       gap:16px;
       margin-top:12px;
     }
 
-    .paper-card{
+    .repo-card{
       border:1px solid var(--rule);
       background:#fff;
-      padding:17px 18px;
+      padding:16px 17px;
     }
 
-    .paper-card.featured{
-      background:#fffdf9;
+    .repo-card.featured{
+      background:linear-gradient(180deg,#fffdf9 0%, #ffffff 100%);
       border-color:#e7d7bd;
     }
 
-    .paper-title{
-      margin:0 0 6px;
-      font-size:1.08rem;
+    .repo-top{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 260px;
+      gap:18px;
+      align-items:start;
+    }
+
+    .repo-title{
+      margin:0 0 5px;
+      font-size:1.06rem;
       line-height:1.25;
     }
 
-    .paper-title a{
+    .repo-title a{
       color:#111;
       text-decoration:none;
     }
 
-    .paper-title a:hover{
+    .repo-title a:hover{
       color:#0057d9;
       text-decoration:underline;
       text-underline-offset:2px;
     }
 
-    .paper-card p{
-      margin:0 0 10px;
+    .repo-card p{
+      margin:0;
       font-size:.92rem;
-      line-height:1.56;
+      line-height:1.55;
     }
 
-    .paper-links{
+    .repo-links{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
@@ -167,113 +173,11 @@
       font-size:.86rem;
     }
 
-    .paper-links a{
+    .repo-links a{
       color:#0057d9;
       text-decoration:underline;
       text-underline-offset:2px;
       font-weight:700;
-    }
-
-    .workflow-panel{
-      margin:14px 0;
-      border:1px solid var(--rule);
-      background:#fafafa;
-      padding:14px;
-    }
-
-    .workflow-title{
-      font-size:.82rem;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:#555;
-      margin:0 0 12px;
-    }
-
-    .workflow{
-      display:grid;
-      grid-template-columns:1fr 22px 1.15fr 22px 1fr;
-      gap:0;
-      align-items:center;
-    }
-
-    .flow-node{
-      min-height:58px;
-      border:1px solid var(--rule);
-      background:#fff;
-      padding:10px 11px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .flow-node strong{
-      font-size:.84rem;
-      color:#111;
-      margin-bottom:3px;
-    }
-
-    .flow-node span{
-      font-size:.76rem;
-      line-height:1.35;
-      color:#555;
-    }
-
-    .flow-arrow{
-      height:1px;
-      background:#222;
-      position:relative;
-    }
-
-    .flow-arrow::after{
-      content:"";
-      position:absolute;
-      right:-1px;
-      top:-4px;
-      width:0;
-      height:0;
-      border-top:4px solid transparent;
-      border-bottom:4px solid transparent;
-      border-left:6px solid #222;
-    }
-
-    .workflow-branches{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:8px;
-    }
-
-    .branch{
-      border:1px solid var(--rule);
-      background:#fff;
-      padding:8px;
-      text-align:center;
-      font-size:.76rem;
-      line-height:1.25;
-    }
-
-    .branch strong{
-      display:block;
-      color:#111;
-      margin-bottom:2px;
-    }
-
-    .code-row{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-      gap:14px;
-      margin-top:14px;
-    }
-
-    .code-box{
-      min-width:0;
-    }
-
-    .code-box-title{
-      font-size:.80rem;
-      font-weight:700;
-      color:#444;
-      margin:0 0 6px;
     }
 
     .code-preview{
@@ -285,28 +189,101 @@
       line-height:1.42;
       font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       white-space:pre;
-      max-height:210px;
+      max-height:190px;
     }
 
-    .paper-placeholder{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) 200px;
-      gap:16px;
-      border:1px dashed #cfcfcf;
-      background:#fcfcfc;
-      padding:14px 16px;
-      margin-top:14px;
-    }
-
-    .placeholder-mini-code{
-      background:#f6f6f6;
+    .replication-flow{
+      margin-top:16px;
+      padding:14px 12px;
       border:1px solid var(--rule);
-      padding:9px 10px;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:.68rem;
-      line-height:1.4;
-      white-space:pre;
-      overflow:auto;
+      background:#fafafa;
+    }
+
+    .flow-title{
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#444;
+      margin:0 0 12px;
+    }
+
+    .flow-grid{
+      display:grid;
+      grid-template-columns:1fr 30px 1fr 30px 1fr 30px 1fr;
+      align-items:center;
+      gap:0;
+    }
+
+    .flow-node{
+      min-height:54px;
+      border:1px solid #d8d8d8;
+      background:#fff;
+      padding:8px 9px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      box-shadow:0 1px 3px rgba(0,0,0,.03);
+    }
+
+    .flow-node strong{
+      display:block;
+      font-size:.82rem;
+      line-height:1.2;
+      color:#111;
+      margin-bottom:3px;
+    }
+
+    .flow-node span{
+      display:block;
+      color:#666;
+      font-size:.72rem;
+      line-height:1.25;
+    }
+
+    .flow-arrow{
+      height:1px;
+      background:#999;
+      position:relative;
+      margin:0 6px;
+    }
+
+    .flow-arrow::after{
+      content:"";
+      position:absolute;
+      right:-1px;
+      top:-4px;
+      width:0;
+      height:0;
+      border-top:4px solid transparent;
+      border-bottom:4px solid transparent;
+      border-left:7px solid #999;
+    }
+
+    .mini-repo-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .mini-repo{
+      border:1px solid var(--rule);
+      background:#fff;
+      padding:13px 14px;
+      min-height:132px;
+    }
+
+    .mini-repo h3{
+      margin:0 0 6px;
+      font-size:.96rem;
+      line-height:1.25;
+    }
+
+    .mini-repo p{
+      margin:0;
+      font-size:.88rem;
+      line-height:1.5;
+      color:#444;
     }
 
     .software-sidebar{
@@ -315,59 +292,90 @@
       font-size:.84rem;
     }
 
-    .software-sidebar h2{
+    .side-panel{
+      border-left:1px solid var(--rule);
+      padding-left:14px;
+    }
+
+    .side-panel h2{
       font-size:1rem;
       margin:0 0 10px;
     }
 
-    .stack-panel{
-      border-left:1px solid var(--rule);
-      padding-left:13px;
+    .side-note{
+      color:var(--muted);
+      font-size:.78rem;
+      line-height:1.45;
+      margin:0 0 13px;
     }
 
-    .stack-card{
-      margin-bottom:12px;
+    .tool-stack{
+      display:grid;
+      gap:10px;
+    }
+
+    .tool-card{
+      display:grid;
+      grid-template-columns:26px minmax(0,1fr);
+      gap:8px;
+      align-items:start;
       padding-bottom:10px;
       border-bottom:1px solid var(--rule);
     }
 
-    .stack-card:last-child{
-      border-bottom:0;
-    }
-
-    .stack-head{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin-bottom:5px;
-      font-weight:700;
-      color:#111;
-    }
-
-    .stack-head img{
-      width:20px;
-      height:20px;
+    .tool-card img{
+      width:24px;
+      height:24px;
       object-fit:contain;
-      flex:0 0 20px;
+      display:block;
     }
 
-    .stack-card p{
+    .tool-card h3{
+      margin:0 0 2px;
+      font-size:.86rem;
+      line-height:1.2;
+    }
+
+    .tool-card p{
       margin:0;
       color:#555;
-      font-size:.78rem;
-      line-height:1.4;
+      font-size:.75rem;
+      line-height:1.35;
     }
 
-    .stack-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:4px;
-      margin-top:6px;
-      font-size:.68rem;
+    .quick-links{
+      margin-top:16px;
+    }
+
+    .quick-links h2{
+      font-size:.95rem;
+      margin:0 0 9px;
+    }
+
+    .quick-links ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .quick-links li{
+      margin-bottom:7px;
+      line-height:1.25;
+    }
+
+    .quick-links a{
+      color:#333;
+      text-decoration:none;
+    }
+
+    .quick-links a:hover{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
     }
 
     .github-box{
-      margin-top:16px;
+      margin-top:18px;
       border:1px solid var(--rule);
       background:#fafafa;
       padding:10px;
@@ -399,71 +407,65 @@
         order:-1;
       }
 
-      .stack-panel{
+      .side-panel{
         border-left:0;
         border-bottom:1px solid var(--rule);
         padding-left:0;
-        padding-bottom:12px;
-        display:grid;
-        grid-template-columns:repeat(2, minmax(0,1fr));
-        gap:12px;
+        padding-bottom:15px;
+        margin-bottom:18px;
       }
 
-      .stack-card{
-        margin-bottom:0;
-        border-bottom:0;
-      }
-    }
-
-    @media (max-width:760px){
-      .github-hub{
-        grid-template-columns:78px minmax(0,1fr);
-        gap:14px;
+      .tool-stack{
+        grid-template-columns:repeat(3,minmax(0,1fr));
       }
 
-      .github-hub-icon{
-        width:78px;
-        height:78px;
+      .repo-top{
+        grid-template-columns:1fr;
       }
 
-      .github-hub-icon img{
-        width:68px;
-        height:68px;
-      }
-
-      .workflow{
+      .flow-grid{
         grid-template-columns:1fr;
         gap:8px;
       }
 
       .flow-arrow{
-        height:18px;
         width:1px;
+        height:18px;
         margin:0 auto;
       }
 
       .flow-arrow::after{
         right:-4px;
-        top:14px;
+        top:auto;
+        bottom:-1px;
         border-left:4px solid transparent;
         border-right:4px solid transparent;
-        border-top:6px solid #222;
+        border-top:7px solid #999;
         border-bottom:0;
       }
 
-      .workflow-branches{
+      .mini-repo-grid{
         grid-template-columns:1fr;
       }
+    }
 
-      .code-row{
-        grid-template-columns:1fr;
+    @media (max-width:640px){
+      .github-hub{
+        grid-template-columns:80px minmax(0,1fr);
+        gap:14px;
       }
 
-      .paper-placeholder{
-        grid-template-columns:1fr;
+      .github-hub-icon{
+        width:80px;
+        height:80px;
       }
 
-      .stack-panel{
+      .github-hub-icon img{
+        width:70px;
+        height:70px;
+      }
+
+      .tool-stack{
         grid-template-columns:1fr;
       }
     }
@@ -494,8 +496,8 @@
       <div class="software-head">
         <h1>Software and replication code</h1>
         <p>
-          A curated collection of replication repositories, statistical workflows and academic tools
-          for empirical research, policy evaluation, machine learning and scientific writing.
+          A research-oriented code page collecting replication packages, estimation workflows,
+          statistical routines and academic templates connected to papers, data analysis and scientific writing.
         </p>
       </div>
 
@@ -504,10 +506,10 @@
           <img src="assets/icons/Ghithub.png" alt="GitHub">
         </div>
 
-        <div class="github-hub-content">
+        <div>
           <h2>GitHub code hub</h2>
 
-          <div class="tag-row">
+          <div class="hub-tags">
             <span class="badge badge-rep">Replication code</span>
             <span class="badge badge-r">R</span>
             <span class="badge badge-py">Python</span>
@@ -517,11 +519,11 @@
           </div>
 
           <p>
-            My GitHub profile is the central place where I collect paper-level replication packages,
-            reusable estimation routines, document templates and reproducible research workflows.
+            My GitHub profile is the central hub for paper repositories, metadata-based replication scripts,
+            code templates, statistical routines and reproducible research material.
           </p>
 
-          <a class="github-hub-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">
+          <a class="hub-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">
             Open GitHub profile
           </a>
         </div>
@@ -529,194 +531,180 @@
 
       <h2 class="section-title" id="papers-with-code">Papers with code and replication material</h2>
 
-      <div class="paper-code-grid">
-        <article class="paper-card featured">
-          <h2 class="paper-title">
-            <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">
-              Fuel Costs and Spatial Rail Accessibility
-            </a>
-          </h2>
+      <div class="repo-list">
+        <article class="repo-card featured">
+          <div class="repo-top">
+            <div>
+              <h2 class="repo-title">
+                <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">
+                  Fuel Costs and Spatial Rail Accessibility
+                </a>
+              </h2>
 
-          <div class="tag-row">
-            <span class="badge badge-paper">Published paper</span>
-            <span class="badge badge-r">R</span>
-            <span class="badge">TWFE</span>
-            <span class="badge">IV / 2SLS</span>
-            <span class="badge">DML</span>
-            <span class="badge">Metadata-driven</span>
-            <span class="badge">3SFCA</span>
+              <div class="repo-tags">
+                <span class="badge badge-paper">Published paper</span>
+                <span class="badge badge-r">R</span>
+                <span class="badge">TWFE</span>
+                <span class="badge">IV / 2SLS</span>
+                <span class="badge">DML</span>
+                <span class="badge">Metadata-driven</span>
+                <span class="badge">3SFCA</span>
+              </div>
+
+              <p>
+                Replication repository for the published article
+                <em>Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</em>.
+                The repository is organised around a processed panel, a metadata workbook and three estimation blocks:
+                TWFE, IV/2SLS and Double Machine Learning.
+              </p>
+
+              <div class="repo-links">
+                <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">GitHub repository</a>
+                <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
+              </div>
+            </div>
+
+            <pre class="code-preview"><code># Metadata-based replication
+source("R/01_twfe_metadata.R")
+source("R/02_iv_metadata.R")
+source("R/03_dml_metadata.R")
+
+# Full workflow
+source("R/99_run_all.R")</code></pre>
           </div>
 
-          <p>
-            Replication repository for the article
-            <em>Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</em>.
-            The repository is organised as a metadata-driven workflow: one processed estimation panel, one metadata workbook,
-            and three separate estimation scripts for TWFE, IV/2SLS and Double Machine Learning.
-          </p>
+          <div class="replication-flow" aria-label="Replication workflow">
+            <div class="flow-title">Replication flow</div>
 
-          <div class="paper-links">
-            <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">GitHub repository</a>
-            <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
-          </div>
+            <div class="flow-grid">
+              <div class="flow-node">
+                <strong>Paper</strong>
+                <span>published article and empirical design</span>
+              </div>
 
-          <div class="workflow-panel">
-            <div class="workflow-title">Replication flow</div>
+              <div class="flow-arrow" aria-hidden="true"></div>
 
-            <div class="workflow">
               <div class="flow-node">
                 <strong>Processed panel</strong>
-                <span>100-row public sample or full private panel</span>
+                <span>100-row sample or full estimation data</span>
               </div>
 
-              <div class="flow-arrow"></div>
+              <div class="flow-arrow" aria-hidden="true"></div>
 
               <div class="flow-node">
-                <strong>Metadata workbook</strong>
-                <span>GENERAL, IV and DBML specification sheets</span>
+                <strong>Metadata</strong>
+                <span>GENERAL, IV and DBML specifications</span>
               </div>
 
-              <div class="flow-arrow"></div>
+              <div class="flow-arrow" aria-hidden="true"></div>
 
               <div class="flow-node">
                 <strong>Outputs</strong>
-                <span>Machine-readable tables and model objects</span>
+                <span>tables, coefficients and model objects</span>
               </div>
-            </div>
-
-            <div style="height:10px"></div>
-
-            <div class="workflow-branches">
-              <div class="branch">
-                <strong>TWFE</strong>
-                R/01_twfe_metadata.R
-              </div>
-
-              <div class="branch">
-                <strong>IV / 2SLS</strong>
-                R/02_iv_metadata.R
-              </div>
-
-              <div class="branch">
-                <strong>DML</strong>
-                R/03_dml_metadata.R
-              </div>
-            </div>
-          </div>
-
-          <div class="code-row">
-            <div class="code-box">
-              <div class="code-box-title">Run the complete workflow</div>
-              <pre class="code-preview"><code># From the project root
-source("R/99_run_all.R")</code></pre>
-            </div>
-
-            <div class="code-box">
-              <div class="code-box-title">Run single estimation blocks</div>
-              <pre class="code-preview"><code>source("R/01_twfe_metadata.R")
-source("R/02_iv_metadata.R")
-source("R/03_dml_metadata.R")</code></pre>
             </div>
           </div>
         </article>
 
-        <article class="paper-placeholder">
-          <div>
-            <h2 class="paper-title">Additional paper repositories</h2>
-
-            <div class="tag-row">
+        <div class="mini-repo-grid">
+          <article class="mini-repo">
+            <h3>Upcoming replication repositories</h3>
+            <div class="repo-tags">
               <span class="badge badge-r">R</span>
-              <span class="badge badge-py">Python</span>
               <span class="badge">Panel data</span>
-              <span class="badge">Spatial econometrics</span>
-              <span class="badge">Machine learning</span>
+              <span class="badge">Econometrics</span>
             </div>
-
             <p>
-              This section can be extended as other papers are cleaned and released.
-              Each repository can show the paper title, publication status, code language,
-              empirical strategy, data structure and a compact executable code block.
+              Additional paper repositories will be added as the code is cleaned, documented and separated from private data construction workflows.
             </p>
-          </div>
+          </article>
 
-          <pre class="placeholder-mini-code"><code>Paper repository template
-
-README.md
-R/
-Python/
-data/metadata/
-data/processed/
-results/tables/</code></pre>
-        </article>
+          <article class="mini-repo">
+            <h3>Repository standard</h3>
+            <div class="repo-tags">
+              <span class="badge">README</span>
+              <span class="badge">metadata</span>
+              <span class="badge">sample data</span>
+            </div>
+            <p>
+              Each public repository will include estimation scripts, a metadata file, a small structural data sample and clear instructions for reproduction.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
     <aside class="software-sidebar">
-      <h2>Technical stack</h2>
+      <div class="side-panel">
+        <h2>Research stack</h2>
+        <p class="side-note">
+          Main languages and tools used across paper repositories, replication scripts and scientific writing.
+        </p>
 
-      <div class="stack-panel">
-        <div class="stack-card">
-          <div class="stack-head">
+        <div class="tool-stack">
+          <div class="tool-card">
             <img src="assets/icons/R.svg.png" alt="R">
-            <span>R</span>
+            <div>
+              <h3>R analysis</h3>
+              <p>statistics, econometrics, spatial analysis, causal inference.</p>
+            </div>
           </div>
-          <p>Statistical analysis, causal inference, spatial econometrics and reproducible estimation pipelines.</p>
-          <div class="stack-tags">
-            <span class="badge badge-r">R</span>
-            <span class="badge badge-cran">CRAN</span>
-          </div>
-        </div>
 
-        <div class="stack-card">
-          <div class="stack-head">
+          <div class="tool-card">
             <img src="assets/icons/Python.svg.png" alt="Python">
-            <span>Python</span>
+            <div>
+              <h3>Python</h3>
+              <p>machine learning, scraping, networks and text analysis.</p>
+            </div>
           </div>
-          <p>Machine learning, network analysis, scraping, text analysis and automated data workflows.</p>
-          <div class="stack-tags">
-            <span class="badge badge-py">Python</span>
-            <span class="badge badge-pypi">PyPI</span>
-          </div>
-        </div>
 
-        <div class="stack-card">
-          <div class="stack-head">
+          <div class="tool-card">
             <img src="assets/icons/Latex.svg" alt="LaTeX">
-            <span>LaTeX</span>
+            <div>
+              <h3>LaTeX</h3>
+              <p>papers, CV, slides and academic templates.</p>
+            </div>
           </div>
-          <p>Academic papers, CVs, slides and automatic PDF generation through GitHub workflows.</p>
-          <div class="stack-tags">
-            <span class="badge badge-tex">LaTeX</span>
-          </div>
-        </div>
 
-        <div class="stack-card">
-          <div class="stack-head">
+          <div class="tool-card">
             <img src="assets/icons/markdown.png" alt="Markdown">
-            <span>Markdown</span>
+            <div>
+              <h3>Markdown</h3>
+              <p>documentation, README files and technical notes.</p>
+            </div>
           </div>
-          <p>README files, documentation, notes and lightweight reproducible research material.</p>
-          <div class="stack-tags">
-            <span class="badge">Markdown</span>
-          </div>
-        </div>
 
-        <div class="stack-card">
-          <div class="stack-head">
+          <div class="tool-card">
             <img src="assets/icons/logo.png" alt="Quarto">
-            <span>Quarto</span>
+            <div>
+              <h3>Quarto</h3>
+              <p>reproducible reports and computational documents.</p>
+            </div>
           </div>
-          <p>Reports, notebooks, teaching material and dynamic scientific documents.</p>
-          <div class="stack-tags">
-            <span class="badge">Quarto</span>
+
+          <div class="tool-card">
+            <img src="assets/icons/Ghithub.png" alt="GitHub">
+            <div>
+              <h3>GitHub</h3>
+              <p>version control, code hosting and replication packages.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="github-box">
-        <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
-          <img src="assets/icons/Ghithub.png" alt="GitHub">
-          <span>GitHub</span>
-        </a>
+        <div class="quick-links">
+          <h2>Sections</h2>
+          <ul>
+            <li><a href="#github-code-hub">GitHub code hub</a></li>
+            <li><a href="#papers-with-code">Papers with code</a></li>
+          </ul>
+        </div>
+
+        <div class="github-box">
+          <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
+            <img src="assets/icons/Ghithub.png" alt="GitHub">
+            <span>GitHub</span>
+          </a>
+        </div>
       </div>
     </aside>
   </div>
