@@ -40,39 +40,39 @@
 
     .github-hub{
       display:grid;
-      grid-template-columns:124px minmax(0,1fr);
-      gap:22px;
+      grid-template-columns:110px minmax(0,1fr);
+      gap:20px;
       align-items:center;
       border:1px solid var(--rule);
       background:#fafafa;
-      padding:18px 18px;
+      padding:16px 16px;
       margin:16px 0 18px;
     }
 
     .github-hub-icon{
-      width:124px;
-      height:124px;
+      width:110px;
+      height:110px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
 
     .github-hub-icon img{
-      width:104px;
-      height:104px;
+      width:86px;
+      height:86px;
       object-fit:contain;
       display:block;
     }
 
     .github-hub-content h2{
       margin:0 0 6px;
-      font-size:1.08rem;
+      font-size:1.06rem;
     }
 
     .github-hub-content p{
       margin:0;
-      font-size:.94rem;
-      line-height:1.58;
+      font-size:.93rem;
+      line-height:1.56;
     }
 
     .github-hub-tags{
@@ -108,11 +108,7 @@
     .repo-card{
       border:1px solid var(--rule);
       background:#fff;
-      padding:16px 16px;
-      display:grid;
-      grid-template-columns:minmax(0,1fr) 330px;
-      gap:18px;
-      align-items:start;
+      padding:14px 14px;
     }
 
     .repo-card.featured{
@@ -121,22 +117,25 @@
     }
 
     .paper-code-card{
-      grid-template-columns:180px minmax(0,1fr);
+      display:grid;
+      grid-template-columns:108px minmax(0,1fr);
+      gap:16px;
       align-items:start;
     }
 
     .paper-logo-box{
-      width:180px;
-      min-height:180px;
+      width:108px;
       display:flex;
       align-items:flex-start;
       justify-content:center;
+      padding-top:4px;
     }
 
     .paper-logo{
-      width:170px;
-      height:170px;
+      width:94px;
+      height:94px;
       display:block;
+      flex:0 0 auto;
     }
 
     .paper-code-content{
@@ -145,8 +144,10 @@
 
     .repo-title{
       margin:0 0 6px;
-      font-size:1.04rem;
+      font-size:1.02rem;
       line-height:1.25;
+      padding-bottom:4px;
+      border-bottom:1px solid var(--rule);
     }
 
     .repo-title a{
@@ -165,13 +166,13 @@
       flex-wrap:wrap;
       gap:5px;
       margin:8px 0 10px;
-      font-size:.76rem;
+      font-size:.75rem;
     }
 
     .repo-card p{
       margin:0;
-      font-size:.93rem;
-      line-height:1.58;
+      font-size:.92rem;
+      line-height:1.56;
     }
 
     .repo-links{
@@ -179,7 +180,7 @@
       flex-wrap:wrap;
       gap:10px;
       margin-top:12px;
-      font-size:.86rem;
+      font-size:.85rem;
     }
 
     .repo-links a{
@@ -193,13 +194,14 @@
       border:1px solid var(--rule);
       background:#f7f7f7;
       overflow:hidden;
+      margin-top:12px;
     }
 
     .repo-preview-head{
       border-bottom:1px solid var(--rule);
       background:#f1f1f1;
-      padding:8px 10px;
-      font-size:.78rem;
+      padding:7px 10px;
+      font-size:.77rem;
       font-weight:700;
       color:#333;
       letter-spacing:.02em;
@@ -207,24 +209,14 @@
 
     .repo-preview pre{
       margin:0;
-      padding:10px 12px;
+      padding:9px 11px;
       overflow:auto;
-      font-size:.71rem;
-      line-height:1.48;
+      font-size:.68rem;
+      line-height:1.42;
       font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       white-space:pre;
-      max-height:250px;
+      max-height:170px;
       color:#222;
-    }
-
-    .repo-preview-wide{
-      margin-top:13px;
-    }
-
-    .repo-preview-wide pre{
-      max-height:330px;
-      font-size:.70rem;
-      line-height:1.45;
     }
 
     .package-list{
@@ -233,40 +225,40 @@
 
     .package-item{
       display:grid;
-      grid-template-columns:120px minmax(0,1fr);
-      gap:22px;
-      padding:22px 0 26px;
+      grid-template-columns:110px minmax(0,1fr);
+      gap:20px;
+      padding:20px 0 24px;
       border-bottom:1px solid var(--rule);
     }
 
     .package-icon{
-      width:120px;
-      height:110px;
+      width:110px;
+      height:95px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
 
     .package-icon img{
-      max-width:96px;
-      max-height:96px;
+      max-width:86px;
+      max-height:86px;
       display:block;
       object-fit:contain;
     }
 
     .package-icon.multi{
-      gap:8px;
+      gap:7px;
       flex-wrap:wrap;
     }
 
     .package-icon.multi img{
-      max-width:46px;
-      max-height:46px;
+      max-width:40px;
+      max-height:40px;
     }
 
     .package-icon.wide img{
-      max-width:102px;
-      max-height:82px;
+      max-width:92px;
+      max-height:72px;
     }
 
     .package-content{
@@ -283,7 +275,7 @@
     }
 
     .package-title h2{
-      font-size:1.02rem;
+      font-size:1rem;
       margin:0;
       line-height:1.15;
     }
@@ -293,13 +285,13 @@
       flex-wrap:wrap;
       gap:5px;
       margin:4px 0 8px;
-      font-size:.76rem;
+      font-size:.75rem;
     }
 
     .package-content p{
       margin:0;
-      font-size:.93rem;
-      line-height:1.56;
+      font-size:.92rem;
+      line-height:1.54;
     }
 
     .badge{
@@ -382,11 +374,11 @@
     }
 
     .cat-list img{
-      width:18px;
-      height:18px;
+      width:17px;
+      height:17px;
       object-fit:contain;
       display:block;
-      flex:0 0 18px;
+      flex:0 0 17px;
     }
 
     .sidebar-note{
@@ -417,15 +409,9 @@
     }
 
     .github-box img{
-      width:24px;
-      height:24px;
+      width:22px;
+      height:22px;
       object-fit:contain;
-    }
-
-    @media (max-width:980px){
-      .repo-card{
-        grid-template-columns:1fr;
-      }
     }
 
     @media (max-width:850px){
@@ -439,18 +425,18 @@
       }
 
       .github-hub{
-        grid-template-columns:82px minmax(0,1fr);
+        grid-template-columns:80px minmax(0,1fr);
         gap:14px;
       }
 
       .github-hub-icon{
-        width:82px;
-        height:82px;
+        width:80px;
+        height:80px;
       }
 
       .github-hub-icon img{
-        width:70px;
-        height:70px;
+        width:64px;
+        height:64px;
       }
 
       .paper-code-card{
@@ -459,33 +445,33 @@
 
       .paper-logo-box{
         width:100%;
-        min-height:auto;
         justify-content:flex-start;
+        padding-top:0;
       }
 
       .paper-logo{
-        width:150px;
-        height:150px;
+        width:88px;
+        height:88px;
       }
 
       .package-item{
-        grid-template-columns:88px minmax(0,1fr);
-        gap:16px;
+        grid-template-columns:82px minmax(0,1fr);
+        gap:14px;
       }
 
       .package-icon{
-        width:88px;
-        height:80px;
+        width:82px;
+        height:76px;
       }
 
       .package-icon img{
-        max-width:66px;
-        max-height:66px;
+        max-width:62px;
+        max-height:62px;
       }
 
       .package-icon.multi img{
-        max-width:31px;
-        max-height:31px;
+        max-width:28px;
+        max-height:28px;
       }
     }
   </style>
@@ -525,7 +511,7 @@
 
       <section class="github-hub" id="github-code-hub">
         <div class="github-hub-icon">
-          <img src="assets/icons/Ghithub.png" alt="GitHub">
+          <img src="assets/icons/github.svg" alt="GitHub">
         </div>
 
         <div class="github-hub-content">
@@ -556,93 +542,73 @@
 
       <div class="repo-list">
         <article class="repo-card featured paper-code-card">
+
           <div class="paper-logo-box" aria-label="FuelRail repository badge">
             <svg class="paper-logo" viewBox="0 0 220 220" role="img" aria-label="FuelRail Spatial Accessibility">
               <defs>
-                <linearGradient id="fuelRailBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#062f38"/>
-                  <stop offset="100%" stop-color="#0b5361"/>
+                <linearGradient id="fuelRailBgSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0d3240"/>
+                  <stop offset="100%" stop-color="#154d5d"/>
                 </linearGradient>
-
-                <linearGradient id="fuelRailCopper" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#f0a348"/>
-                  <stop offset="100%" stop-color="#c56f25"/>
+                <linearGradient id="fuelRailAccentSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#efab54"/>
+                  <stop offset="100%" stop-color="#cb7a2b"/>
                 </linearGradient>
               </defs>
 
-              <polygon points="110,8 196,58 196,162 110,212 24,162 24,58"
-                       fill="url(#fuelRailBg)" stroke="#06313a" stroke-width="8"/>
-              <polygon points="110,18 186,63 186,157 110,202 34,157 34,63"
+              <polygon points="110,10 192,58 192,162 110,210 28,162 28,58"
+                       fill="url(#fuelRailBgSmall)" stroke="#123745" stroke-width="8"/>
+              <polygon points="110,22 181,63 181,156 110,198 39,156 39,63"
                        fill="none" stroke="#ffffff" stroke-width="3"/>
-              <polygon points="110,27 177,68 177,152 110,193 43,152 43,68"
-                       fill="none" stroke="#d98638" stroke-width="2"/>
 
-              <path d="M50 70 C78 54, 110 54, 150 66" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
-              <path d="M52 94 C82 80, 121 84, 164 98" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
-              <path d="M66 122 C92 104, 126 112, 154 132" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+              <!-- rail lines -->
+              <path d="M56 82 C86 68, 118 68, 158 82" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+              <path d="M58 110 C90 95, 124 98, 162 113" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+              <path d="M70 139 C98 120, 129 126, 154 145" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
 
-              <g stroke="#0b5361" stroke-width="2">
-                <line x1="62" y1="66" x2="58" y2="76"/>
-                <line x1="78" y1="61" x2="76" y2="73"/>
-                <line x1="96" y1="59" x2="96" y2="72"/>
-                <line x1="115" y1="60" x2="113" y2="73"/>
-                <line x1="134" y1="63" x2="130" y2="75"/>
-                <line x1="152" y1="67" x2="146" y2="78"/>
-
-                <line x1="65" y1="90" x2="62" y2="101"/>
-                <line x1="83" y1="84" x2="82" y2="96"/>
-                <line x1="102" y1="84" x2="102" y2="96"/>
-                <line x1="122" y1="87" x2="120" y2="99"/>
-                <line x1="142" y1="92" x2="137" y2="103"/>
-                <line x1="160" y1="98" x2="154" y2="109"/>
-
-                <line x1="76" y1="115" x2="72" y2="126"/>
-                <line x1="94" y1="108" x2="92" y2="121"/>
-                <line x1="113" y1="109" x2="112" y2="122"/>
-                <line x1="132" y1="116" x2="127" y2="128"/>
+              <!-- sleepers -->
+              <g stroke="#0d3240" stroke-width="2">
+                <line x1="72" y1="75" x2="68" y2="88"/>
+                <line x1="94" y1="70" x2="92" y2="84"/>
+                <line x1="118" y1="70" x2="118" y2="84"/>
+                <line x1="141" y1="73" x2="137" y2="87"/>
+                <line x1="73" y1="103" x2="69" y2="116"/>
+                <line x1="97" y1="97" x2="95" y2="111"/>
+                <line x1="121" y1="99" x2="120" y2="113"/>
+                <line x1="145" y1="105" x2="141" y2="118"/>
+                <line x1="83" y1="132" x2="79" y2="145"/>
+                <line x1="108" y1="124" x2="106" y2="138"/>
+                <line x1="132" y1="129" x2="128" y2="142"/>
               </g>
 
-              <g>
-                <circle cx="58" cy="70" r="7" fill="#ffffff" stroke="#58c7d4" stroke-width="3"/>
-                <circle cx="102" cy="60" r="7" fill="#ffffff" stroke="#58c7d4" stroke-width="3"/>
-                <circle cx="151" cy="67" r="7" fill="#ffffff" stroke="#58c7d4" stroke-width="3"/>
-                <circle cx="70" cy="96" r="7" fill="#ffffff" stroke="#d98638" stroke-width="3"/>
-                <circle cx="122" cy="88" r="8" fill="#d98638" stroke="#ffffff" stroke-width="3"/>
-                <circle cx="163" cy="99" r="7" fill="#ffffff" stroke="#58c7d4" stroke-width="3"/>
-                <circle cx="83" cy="123" r="7" fill="#ffffff" stroke="#58c7d4" stroke-width="3"/>
-                <circle cx="151" cy="132" r="7" fill="#ffffff" stroke="#d98638" stroke-width="3"/>
+              <!-- network nodes -->
+              <circle cx="70" cy="78" r="9" fill="#57c7d3" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="112" cy="70" r="9" fill="#57c7d3" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="154" cy="78" r="9" fill="#57c7d3" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="79" cy="106" r="9" fill="#f0a348" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="124" cy="98" r="10" fill="#f0a348" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="166" cy="111" r="9" fill="#57c7d3" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="92" cy="135" r="9" fill="#57c7d3" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="151" cy="145" r="9" fill="#57c7d3" stroke="#ffffff" stroke-width="4"/>
+
+              <!-- fuel symbol -->
+              <g transform="translate(158 48)">
+                <path d="M0 12 h20 l7 8 v28 h-8 v-18 h-11 v18 h-8 z" fill="url(#fuelRailAccentSmall)"/>
+                <path d="M23 14 c10 5 16 10 16 21 v12" fill="none" stroke="#cb7a2b" stroke-width="4" stroke-linecap="round"/>
+                <path d="M40 54 c-6 9 -9 12 -9 18 a9 9 0 0 0 18 0 c0 -6 -4 -10 -9 -18z" fill="#f0a348"/>
               </g>
 
-              <path d="M52 148 C74 137, 92 154, 113 143 C132 133, 148 143, 166 134"
-                    fill="none" stroke="#f0a348" stroke-width="3" stroke-dasharray="4 4" stroke-linecap="round"/>
-
-              <g transform="translate(147 39)">
-                <path d="M18 4 h16 l7 10 v24 h-9 v-17 h-10 v17 h-9 v-26 z"
-                      fill="url(#fuelRailCopper)"/>
-                <path d="M34 11 c9 5 15 10 15 20 v12"
-                      fill="none" stroke="#d98638" stroke-width="4" stroke-linecap="round"/>
-                <path d="M49 47 c-5 8 -8 12 -8 17 a8 8 0 0 0 16 0 c0 -5 -3 -9 -8 -17z"
-                      fill="#f0a348"/>
-              </g>
-
-              <text x="110" y="158" text-anchor="middle"
-                    font-family="Georgia, 'Times New Roman', serif"
-                    font-size="31" font-weight="700" fill="#ffffff">
+              <text x="110" y="159" text-anchor="middle"
+                    font-family="Georgia, serif"
+                    font-size="25" font-weight="700" fill="#ffffff">
                 Fuel<tspan fill="#f0a348">Rail</tspan>
               </text>
 
-              <text x="110" y="179" text-anchor="middle"
-                    font-family="Arial, Helvetica, sans-serif"
-                    font-size="9" font-weight="700"
-                    letter-spacing="2.2" fill="#b8eef2">
-                SPATIAL ACCESSIBILITY
-              </text>
-
-              <text x="110" y="194" text-anchor="middle"
+              <text x="110" y="178" text-anchor="middle"
                     font-family="Arial, Helvetica, sans-serif"
                     font-size="7.5" font-weight="700"
-                    letter-spacing="1.4" fill="#ffffff">
-                REPLICATION REPOSITORY
+                    letter-spacing="2" fill="#c9eef0">
+                SPATIAL ACCESSIBILITY
               </text>
             </svg>
           </div>
@@ -675,31 +641,22 @@
               <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
             </div>
 
-            <div class="repo-preview repo-preview-wide">
+            <div class="repo-preview">
               <div class="repo-preview-head">Repository structure</div>
 <pre>Fuel-Costs-and-Spatial-Rail-Accessibility/
 │
 ├── README.md
-│   └── overview, data requirements and replication instructions
-│
 ├── data/
 │   ├── metadata/
 │   │   └── Meta_fusco_dm.xlsx
 │   └── processed/
 │       └── DB_finale_3SFCA_panel_sample_100rows.RData
-│
 ├── R/
 │   ├── 00_functions.R
-│   │   └── shared utilities, metadata parser and data loader
 │   ├── 01_twfe_metadata.R
-│   │   └── two-way fixed effects specifications
 │   ├── 02_iv_metadata.R
-│   │   └── IV / 2SLS specifications
 │   ├── 03_dml_metadata.R
-│   │   └── double machine learning specifications
 │   └── 99_run_all.R
-│       └── complete replication workflow
-│
 └── results/
     └── tables/</pre>
             </div>
@@ -799,7 +756,7 @@
       <h2>Sections</h2>
 
       <ul class="cat-list">
-        <li><img src="assets/icons/Ghithub.png" alt=""><a href="#github-code-hub">GitHub hub</a></li>
+        <li><img src="assets/icons/github.svg" alt=""><a href="#github-code-hub">GitHub hub</a></li>
         <li><span class="badge badge-rep">Code</span><a href="#paper-code">Papers with code</a></li>
         <li><img src="assets/icons/R.svg.png" alt=""><a href="#r-routines">R material</a></li>
         <li><img src="assets/icons/Python.svg.png" alt=""><a href="#python-workflows">Python material</a></li>
@@ -816,7 +773,7 @@
 
       <div class="github-box">
         <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
-          <img src="assets/icons/Ghithub.png" alt="GitHub">
+          <img src="assets/icons/github.svg" alt="GitHub">
           <span>GitHub</span>
         </a>
       </div>
