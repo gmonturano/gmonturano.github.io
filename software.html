@@ -93,6 +93,108 @@
   margin-top:8px;
 }
 
+
+.repo-list{
+  display:grid;
+  gap:14px;
+  margin-top:12px;
+}
+
+.repo-card{
+  border:1px solid var(--rule);
+  background:#fff;
+  padding:15px 16px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 270px;
+  gap:18px;
+  align-items:start;
+}
+
+.repo-card.featured{
+  background:#fffdf9;
+  border-color:#e7d7bd;
+}
+
+.repo-title{
+  margin:0 0 5px;
+  font-size:1.02rem;
+  line-height:1.25;
+}
+
+.repo-title a{
+  color:#111;
+  text-decoration:none;
+}
+
+.repo-title a:hover{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+.repo-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:8px 0 9px;
+  font-size:.76rem;
+}
+
+.repo-card p{
+  margin:0;
+  font-size:.92rem;
+  line-height:1.55;
+}
+
+.repo-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+  font-size:.86rem;
+}
+
+.repo-links a{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  font-weight:700;
+}
+
+.code-preview{
+  background:#f6f6f6;
+  border:1px solid var(--rule);
+  padding:10px 12px;
+  overflow:auto;
+  font-size:.70rem;
+  line-height:1.42;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space:pre;
+  max-height:190px;
+}
+
+.badge-paper{
+  color:#7a2e12;
+  font-weight:700;
+}
+
+.cat-list a{
+  color:#333;
+  text-decoration:none;
+}
+
+.cat-list a:hover{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+@media (max-width:850px){
+  .repo-card{
+    grid-template-columns:1fr;
+  }
+}
+
 .package-list{
   margin-top:6px;
 }
@@ -342,7 +444,7 @@
   <div class="software-layout">
     <section>
       <div class="software-head">
-        <h1>Software and packages</h1>
+        <h1>Software and replication code</h1>
         <p>
           Reproducible code, statistical workflows, replication packages and academic templates
           for empirical research, data manipulation, policy evaluation, machine learning and scientific writing.
@@ -350,7 +452,7 @@
       </div>
 
 
-  <section class="github-hub">
+  <section class="github-hub" id="github-code-hub">
     <div class="github-hub-icon">
       <img src="assets/icons/Ghithub.png" alt="GitHub">
     </div>
@@ -379,10 +481,82 @@
     </div>
   </section>
 
-  <h2 class="package-section-title">Technical materials</h2>
+
+  <h2 class="package-section-title" id="paper-code">Papers with code and replication material</h2>
+
+  <div class="repo-list">
+    <article class="repo-card featured">
+      <div>
+        <h2 class="repo-title">
+          <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">
+            Fuel Costs and Spatial Rail Accessibility
+          </a>
+        </h2>
+
+        <div class="repo-tags">
+          <span class="badge badge-paper">Published paper</span>
+          <span class="badge badge-r">R</span>
+          <span class="badge">TWFE</span>
+          <span class="badge">IV / 2SLS</span>
+          <span class="badge">DML</span>
+          <span class="badge">Metadata-driven replication</span>
+        </div>
+
+        <p>
+          Replication repository for the published article
+          <em>Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</em>.
+          The repository is organised around a metadata-driven workflow with separate scripts for TWFE, IV/2SLS and Double Machine Learning.
+          A 100-row sample panel can be used to verify code structure, while the full processed panel is required to reproduce the published estimates.
+        </p>
+
+        <div class="repo-links">
+          <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">GitHub repository</a>
+          <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
+        </div>
+      </div>
+
+      <pre class="code-preview"><code># Metadata-based replication
+source("R/01_twfe_metadata.R")
+source("R/02_iv_metadata.R")
+source("R/03_dml_metadata.R")
+
+# Or run the full workflow
+source("R/99_run_all.R")</code></pre>
+    </article>
+
+    <article class="repo-card">
+      <div>
+        <h2 class="repo-title">Additional replication repositories</h2>
+
+        <div class="repo-tags">
+          <span class="badge badge-r">R</span>
+          <span class="badge badge-py">Python</span>
+          <span class="badge">Panel data</span>
+          <span class="badge">Spatial econometrics</span>
+          <span class="badge">Machine learning</span>
+        </div>
+
+        <p>
+          This section can be extended as additional paper repositories are cleaned and released.
+          Each item should include the paper title, the repository link, the publication link when available,
+          the estimation language and a compact code preview.
+        </p>
+      </div>
+
+      <pre class="code-preview"><code># Suggested repository structure
+R/
+data/processed/
+data/metadata/
+results/tables/
+README.md</code></pre>
+    </article>
+  </div>
+
+
+  <h2 class="package-section-title" id="technical-materials">Technical materials</h2>
 
   <div class="package-list">
-    <article class="package-item">
+    <article class="package-item" id="r-routines">
       <div class="package-icon wide">
         <img src="assets/icons/R.svg.png" alt="R">
       </div>
@@ -410,7 +584,7 @@
       </div>
     </article>
 
-    <article class="package-item">
+    <article class="package-item" id="python-workflows">
       <div class="package-icon wide">
         <img src="assets/icons/Python.svg.png" alt="Python">
       </div>
@@ -438,7 +612,7 @@
       </div>
     </article>
 
-    <article class="package-item">
+    <article class="package-item" id="latex-markdown-quarto">
       <div class="package-icon multi">
         <img src="assets/icons/Latex.svg" alt="LaTeX">
         <img src="assets/icons/markdown.png" alt="Markdown">
@@ -471,19 +645,20 @@
 <aside class="software-sidebar">
   <h2>Index</h2>
   <ul class="cat-list">
-    <li><img src="assets/icons/Ghithub.png" alt="">GitHub code hub</li>
-    <li><img src="assets/icons/R.svg.png" alt="">R analysis</li>
-    <li><img src="assets/icons/Python.svg.png" alt="">Python workflows</li>
-    <li><img src="assets/icons/Latex.svg" alt="">LaTeX templates</li>
-    <li><img src="assets/icons/markdown.png" alt="">Markdown</li>
-    <li><img src="assets/icons/logo.png" alt="">Quarto</li>
+    <li><img src="assets/icons/Ghithub.png" alt=""><a href="#github-code-hub">GitHub code hub</a></li>
+    <li><span class="badge badge-rep">Code</span><a href="#paper-code">Papers with code</a></li>
+    <li><img src="assets/icons/R.svg.png" alt=""><a href="#r-routines">R analysis</a></li>
+    <li><img src="assets/icons/Python.svg.png" alt=""><a href="#python-workflows">Python workflows</a></li>
+    <li><img src="assets/icons/Latex.svg" alt=""><a href="#latex-markdown-quarto">LaTeX templates</a></li>
+    <li><img src="assets/icons/markdown.png" alt=""><a href="#latex-markdown-quarto">Markdown</a></li>
+    <li><img src="assets/icons/logo.png" alt=""><a href="#latex-markdown-quarto">Quarto</a></li>
     <li><span class="badge badge-cran">CRAN</span> R packages</li>
     <li><span class="badge badge-pypi">PyPI</span> Python packages</li>
   </ul>
 
   <div class="github-box">
     <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
-      <img src="assets/icons/" alt="">
+      <img src="assets/icons/Ghithub.png" alt="GitHub">
       <span>GitHub</span>
     </a>
   </div>
