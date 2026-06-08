@@ -1,474 +1,421 @@
 <!doctype html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Software | Gianluca Monturano</title>
   <link rel="stylesheet" href="styles.css">
-
   <style>
     .software-layout{
       display:grid;
-      grid-template-columns:minmax(0,1fr) 260px;
+      grid-template-columns:minmax(0,1fr) 190px;
       gap:34px;
       align-items:start;
     }
 
-    .software-head{
-      border-bottom:1px solid var(--rule);
-      padding-bottom:14px;
-      margin-bottom:16px;
-    }
-
-    .software-head h1{
-      margin-bottom:6px;
-    }
-
-    .software-head p{
-      max-width:860px;
-      color:var(--muted);
-      margin-bottom:0;
-    }
-
-    .text-link{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-      font-weight:700;
-    }
-
-    .badge{
-      border:1px solid var(--rule);
-      background:#f6f6f6;
-      padding:1px 6px;
-      border-radius:4px;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      white-space:nowrap;
-    }
-
-    .badge-r{ color:#276dc3; }
-    .badge-py{ color:#b8860b; }
-    .badge-tex{ color:#006f6f; }
-    .badge-rep{ color:#264653; }
-    .badge-paper{ color:#7a2e12; font-weight:700; }
-    .badge-cran{ color:#276dc3; font-weight:700; }
-    .badge-pypi{ color:#b8860b; font-weight:700; }
-
-    .github-hub{
-      display:grid;
-      grid-template-columns:110px minmax(0,1fr);
-      gap:20px;
-      align-items:center;
-      border:1px solid var(--rule);
-      background:#fafafa;
-      padding:16px 18px;
-      margin:16px 0 18px;
-    }
-
-    .github-hub-icon{
-      width:110px;
-      height:110px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .github-hub-icon img{
-      width:96px;
-      height:96px;
-      object-fit:contain;
-      display:block;
-    }
-
-    .github-hub h2{
-      margin:0 0 5px;
-      font-size:1.08rem;
-    }
-
-    .github-hub p{
-      margin:0;
-      font-size:.94rem;
-      line-height:1.55;
-    }
-
-    .hub-tags,
-    .repo-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:5px;
-      margin:8px 0 9px;
-      font-size:.76rem;
-    }
-
-    .hub-link{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-      font-weight:700;
-      display:inline-flex;
-      margin-top:8px;
-    }
-
-    .section-title{
-      margin:24px 0 10px;
-      font-size:1rem;
-      color:#111;
-      padding-bottom:5px;
-      border-bottom:1px solid var(--rule);
-      scroll-margin-top:86px;
-    }
-
-    .repo-list{
-      display:grid;
-      gap:16px;
-      margin-top:12px;
-    }
-
-    .repo-card{
-      border:1px solid var(--rule);
-      background:#fff;
-      padding:16px 17px;
-    }
-
-    .repo-card.featured{
-      background:linear-gradient(180deg,#fffdf9 0%, #ffffff 100%);
-      border-color:#e7d7bd;
-    }
-
-    .repo-top{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) 260px;
-      gap:18px;
-      align-items:start;
-    }
-
-    .repo-title{
-      margin:0 0 5px;
-      font-size:1.06rem;
-      line-height:1.25;
-    }
-
-    .repo-title a{
-      color:#111;
-      text-decoration:none;
-    }
-
-    .repo-title a:hover{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-    }
-
-    .repo-card p{
-      margin:0;
-      font-size:.92rem;
-      line-height:1.55;
-    }
-
-    .repo-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:10px;
-      font-size:.86rem;
-    }
-
-    .repo-links a{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-      font-weight:700;
-    }
-
-    .code-preview{
-      background:#f6f6f6;
-      border:1px solid var(--rule);
-      padding:10px 12px;
-      overflow:auto;
-      font-size:.70rem;
-      line-height:1.42;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      white-space:pre;
-      max-height:190px;
-    }
-
-    .replication-flow{
-      margin-top:16px;
-      padding:14px 12px;
-      border:1px solid var(--rule);
-      background:#fafafa;
-    }
-
-    .flow-title{
-      font-size:.82rem;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:#444;
-      margin:0 0 12px;
-    }
-
-    .flow-grid{
-      display:grid;
-      grid-template-columns:1fr 30px 1fr 30px 1fr 30px 1fr;
-      align-items:center;
-      gap:0;
-    }
-
-    .flow-node{
-      min-height:54px;
-      border:1px solid #d8d8d8;
-      background:#fff;
-      padding:8px 9px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      box-shadow:0 1px 3px rgba(0,0,0,.03);
-    }
-
-    .flow-node strong{
-      display:block;
-      font-size:.82rem;
-      line-height:1.2;
-      color:#111;
-      margin-bottom:3px;
-    }
-
-    .flow-node span{
-      display:block;
-      color:#666;
-      font-size:.72rem;
-      line-height:1.25;
-    }
-
-    .flow-arrow{
-      height:1px;
-      background:#999;
-      position:relative;
-      margin:0 6px;
-    }
-
-    .flow-arrow::after{
-      content:"";
-      position:absolute;
-      right:-1px;
-      top:-4px;
-      width:0;
-      height:0;
-      border-top:4px solid transparent;
-      border-bottom:4px solid transparent;
-      border-left:7px solid #999;
-    }
-
-    .mini-repo-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:14px;
-    }
-
-    .mini-repo{
-      border:1px solid var(--rule);
-      background:#fff;
-      padding:13px 14px;
-      min-height:132px;
-    }
-
-    .mini-repo h3{
-      margin:0 0 6px;
-      font-size:.96rem;
-      line-height:1.25;
-    }
-
-    .mini-repo p{
-      margin:0;
-      font-size:.88rem;
-      line-height:1.5;
-      color:#444;
-    }
-
-    .software-sidebar{
-      position:sticky;
-      top:74px;
-      font-size:.84rem;
-    }
-
-    .side-panel{
-      border-left:1px solid var(--rule);
-      padding-left:14px;
-    }
-
-    .side-panel h2{
-      font-size:1rem;
-      margin:0 0 10px;
-    }
-
-    .side-note{
-      color:var(--muted);
-      font-size:.78rem;
-      line-height:1.45;
-      margin:0 0 13px;
-    }
-
-    .tool-stack{
-      display:grid;
-      gap:10px;
-    }
-
-    .tool-card{
-      display:grid;
-      grid-template-columns:26px minmax(0,1fr);
-      gap:8px;
-      align-items:start;
-      padding-bottom:10px;
-      border-bottom:1px solid var(--rule);
-    }
-
-    .tool-card img{
-      width:24px;
-      height:24px;
-      object-fit:contain;
-      display:block;
-    }
-
-    .tool-card h3{
-      margin:0 0 2px;
-      font-size:.86rem;
-      line-height:1.2;
-    }
-
-    .tool-card p{
-      margin:0;
-      color:#555;
-      font-size:.75rem;
-      line-height:1.35;
-    }
-
-    .quick-links{
-      margin-top:16px;
-    }
-
-    .quick-links h2{
-      font-size:.95rem;
-      margin:0 0 9px;
-    }
-
-    .quick-links ul{
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-
-    .quick-links li{
-      margin-bottom:7px;
-      line-height:1.25;
-    }
-
-    .quick-links a{
-      color:#333;
-      text-decoration:none;
-    }
-
-    .quick-links a:hover{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-    }
-
-    .github-box{
-      margin-top:18px;
-      border:1px solid var(--rule);
-      background:#fafafa;
-      padding:10px;
-    }
-
-    .github-box a{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-      font-weight:700;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-    }
-
-    .github-box img{
-      width:22px;
-      height:22px;
-      object-fit:contain;
-    }
-
-    @media (max-width:980px){
-      .software-layout{
-        grid-template-columns:1fr;
-      }
-
-      .software-sidebar{
-        position:static;
-        order:-1;
-      }
-
-      .side-panel{
-        border-left:0;
-        border-bottom:1px solid var(--rule);
-        padding-left:0;
-        padding-bottom:15px;
-        margin-bottom:18px;
-      }
-
-      .tool-stack{
-        grid-template-columns:repeat(3,minmax(0,1fr));
-      }
-
-      .repo-top{
-        grid-template-columns:1fr;
-      }
-
-      .flow-grid{
-        grid-template-columns:1fr;
-        gap:8px;
-      }
-
-      .flow-arrow{
-        width:1px;
-        height:18px;
-        margin:0 auto;
-      }
-
-      .flow-arrow::after{
-        right:-4px;
-        top:auto;
-        bottom:-1px;
-        border-left:4px solid transparent;
-        border-right:4px solid transparent;
-        border-top:7px solid #999;
-        border-bottom:0;
-      }
-
-      .mini-repo-grid{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media (max-width:640px){
-      .github-hub{
-        grid-template-columns:80px minmax(0,1fr);
-        gap:14px;
-      }
-
-      .github-hub-icon{
-        width:80px;
-        height:80px;
-      }
-
-      .github-hub-icon img{
-        width:70px;
-        height:70px;
-      }
-
-      .tool-stack{
-        grid-template-columns:1fr;
-      }
-    }
+
+.software-head{
+  border-bottom:1px solid var(--rule);
+  padding-bottom:14px;
+  margin-bottom:16px;
+}
+
+.software-head h1{
+  margin-bottom:6px;
+}
+
+.software-head p{
+  max-width:760px;
+  color:var(--muted);
+  margin-bottom:0;
+}
+
+.github-main-link{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  font-weight:700;
+}
+
+.github-hub{
+  display:grid;
+  grid-template-columns:130px minmax(0,1fr);
+  gap:20px;
+  align-items:center;
+  border:1px solid var(--rule);
+  background:#fafafa;
+  padding:16px 18px;
+  margin:16px 0 10px;
+}
+
+.github-hub-icon{
+  width:130px;
+  height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.github-hub-icon img{
+  width:112px;
+  height:112px;
+  object-fit:contain;
+  display:block;
+}
+
+.github-hub-content h2{
+  margin:0 0 5px;
+  font-size:1.08rem;
+}
+
+.github-hub-content p{
+  margin:0;
+  font-size:.94rem;
+  line-height:1.55;
+}
+
+.github-hub-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:8px 0 9px;
+}
+
+.github-hub-link{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:8px;
+}
+
+
+.repo-list{
+  display:grid;
+  gap:14px;
+  margin-top:12px;
+}
+
+.repo-card{
+  border:1px solid var(--rule);
+  background:#fff;
+  padding:15px 16px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 270px;
+  gap:18px;
+  align-items:start;
+}
+
+.repo-card.featured{
+  background:#fffdf9;
+  border-color:#e7d7bd;
+}
+
+.repo-title{
+  margin:0 0 5px;
+  font-size:1.02rem;
+  line-height:1.25;
+}
+
+.repo-title a{
+  color:#111;
+  text-decoration:none;
+}
+
+.repo-title a:hover{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+.repo-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:8px 0 9px;
+  font-size:.76rem;
+}
+
+.repo-card p{
+  margin:0;
+  font-size:.92rem;
+  line-height:1.55;
+}
+
+.repo-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+  font-size:.86rem;
+}
+
+.repo-links a{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  font-weight:700;
+}
+
+.code-preview{
+  background:#f6f6f6;
+  border:1px solid var(--rule);
+  padding:10px 12px;
+  overflow:auto;
+  font-size:.70rem;
+  line-height:1.42;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space:pre;
+  max-height:190px;
+}
+
+.badge-paper{
+  color:#7a2e12;
+  font-weight:700;
+}
+
+.cat-list a{
+  color:#333;
+  text-decoration:none;
+}
+
+.cat-list a:hover{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+@media (max-width:850px){
+  .repo-card{
+    grid-template-columns:1fr;
+  }
+}
+
+.package-list{
+  margin-top:6px;
+}
+
+.package-section-title{
+  margin:20px 0 4px;
+  font-size:1rem;
+  color:#111;
+}
+
+.package-item{
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr);
+  gap:22px;
+  padding:22px 0 26px;
+  border-bottom:1px solid var(--rule);
+}
+
+.package-icon{
+  width:120px;
+  height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.package-icon img{
+  max-width:96px;
+  max-height:96px;
+  display:block;
+  object-fit:contain;
+}
+
+.package-icon.multi{
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.package-icon.multi img{
+  max-width:48px;
+  max-height:48px;
+}
+
+.package-icon.wide img{
+  max-width:104px;
+  max-height:82px;
+}
+
+.package-content{
+  border-left:3px solid #111;
+  padding-left:13px;
+}
+
+.package-title{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:5px;
+}
+
+.package-title h2{
+  font-size:1.02rem;
+  margin:0;
+  line-height:1.15;
+}
+
+.package-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:4px 0 7px;
+  font-size:.76rem;
+}
+
+.badge{
+  border:1px solid var(--rule);
+  background:#f6f6f6;
+  padding:1px 6px;
+  border-radius:4px;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space:nowrap;
+}
+
+.badge-r{
+  color:#276dc3;
+}
+
+.badge-py{
+  color:#b8860b;
+}
+
+.badge-tex{
+  color:#006f6f;
+}
+
+.badge-rep{
+  color:#264653;
+}
+
+.badge-cran{
+  color:#276dc3;
+  font-weight:700;
+}
+
+.badge-pypi{
+  color:#b8860b;
+  font-weight:700;
+}
+
+.package-content p{
+  margin:0;
+  font-size:.93rem;
+  line-height:1.55;
+}
+
+.software-sidebar{
+  position:sticky;
+  top:74px;
+  font-size:.9rem;
+}
+
+.software-sidebar h2{
+  font-size:1rem;
+  margin:0 0 10px;
+}
+
+.cat-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  border-left:1px solid var(--rule);
+  padding-left:12px;
+}
+
+.cat-list li{
+  margin-bottom:7px;
+  color:#333;
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.cat-list img{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+  display:block;
+  flex:0 0 20px;
+}
+
+.github-box{
+  margin-top:18px;
+  border:1px solid var(--rule);
+  background:#fafafa;
+  padding:10px;
+}
+
+.github-box a{
+  color:#0057d9;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.github-box img{
+  width:24px;
+  height:24px;
+  object-fit:contain;
+}
+
+@media (max-width:850px){
+  .software-layout{
+    grid-template-columns:1fr;
+  }
+
+  .software-sidebar{
+    position:static;
+    order:-1;
+  }
+
+  .github-hub{
+    grid-template-columns:80px minmax(0,1fr);
+    gap:14px;
+  }
+
+  .github-hub-icon{
+    width:80px;
+    height:80px;
+  }
+
+  .github-hub-icon img{
+    width:70px;
+    height:70px;
+  }
+
+  .package-item{
+    grid-template-columns:88px minmax(0,1fr);
+    gap:16px;
+  }
+
+  .package-icon{
+    width:88px;
+    height:80px;
+  }
+
+  .package-icon img{
+    max-width:66px;
+    max-height:66px;
+  }
+
+  .package-icon.multi img{
+    max-width:31px;
+    max-height:31px;
+  }
+}
+
+
   </style>
 </head>
 
@@ -478,15 +425,18 @@
     <div class="nav">
       <a class="name" href="index.html">Gianluca Monturano</a>
 
-      <nav class="menu" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a class="active" href="software.html">Software</a>
-        <a href="teaching.html">Teaching</a>
-        <a href="dissemination.html">Dissemination</a>
-        <a href="cv.html">CV</a>
-      </nav>
-    </div>
+
+  <nav class="menu" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a class="active" href="software.html">Software</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="dissemination.html">Dissemination</a>
+    <a href="cv.html">CV</a>
+  </nav>
+</div>
+
+
   </div>
 </header>
 
@@ -496,217 +446,225 @@
       <div class="software-head">
         <h1>Software and replication code</h1>
         <p>
-          A research-oriented code page collecting replication packages, estimation workflows,
-          statistical routines and academic templates connected to papers, data analysis and scientific writing.
+          Reproducible code, statistical workflows, replication packages and academic templates
+          for empirical research, data manipulation, policy evaluation, machine learning and scientific writing.
         </p>
       </div>
 
-      <section class="github-hub" id="github-code-hub">
-        <div class="github-hub-icon">
-          <img src="assets/icons/Ghithub.png" alt="GitHub">
-        </div>
 
-        <div>
-          <h2>GitHub code hub</h2>
+  <section class="github-hub" id="github-code-hub">
+    <div class="github-hub-icon">
+      <img src="assets/icons/Ghithub.png" alt="GitHub">
+    </div>
 
-          <div class="hub-tags">
-            <span class="badge badge-rep">Replication code</span>
-            <span class="badge badge-r">R</span>
-            <span class="badge badge-py">Python</span>
-            <span class="badge badge-tex">LaTeX</span>
-            <span class="badge">Markdown</span>
-            <span class="badge">Quarto</span>
-          </div>
+    <div class="github-hub-content">
+      <h2>GitHub code hub</h2>
 
-          <p>
-            My GitHub profile is the central hub for paper repositories, metadata-based replication scripts,
-            code templates, statistical routines and reproducible research material.
-          </p>
+      <div class="github-hub-tags">
+        <span class="badge badge-rep">Replication code</span>
+        <span class="badge badge-r">R</span>
+        <span class="badge badge-py">Python</span>
+        <span class="badge badge-tex">LaTeX</span>
+        <span class="badge">Markdown</span>
+        <span class="badge">Quarto</span>
+      </div>
 
-          <a class="hub-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">
-            Open GitHub profile
+      <p>
+        My GitHub profile is the central repository where I collect replication packages,
+        statistical workflows, R and Python code, LaTeX templates, Markdown documents and Quarto material.
+        The sections below describe the main types of material hosted there.
+      </p>
+
+      <a class="github-hub-link" href="https://github.com/gmonturano" target="_blank" rel="noopener">
+        Open GitHub profile
+      </a>
+    </div>
+  </section>
+
+
+  <h2 class="package-section-title" id="paper-code">Papers with code and replication material</h2>
+
+  <div class="repo-list">
+    <article class="repo-card featured">
+      <div>
+        <h2 class="repo-title">
+          <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">
+            Fuel Costs and Spatial Rail Accessibility
           </a>
+        </h2>
+
+        <div class="repo-tags">
+          <span class="badge badge-paper">Published paper</span>
+          <span class="badge badge-r">R</span>
+          <span class="badge">TWFE</span>
+          <span class="badge">IV / 2SLS</span>
+          <span class="badge">DML</span>
+          <span class="badge">Metadata-driven replication</span>
         </div>
-      </section>
 
-      <h2 class="section-title" id="papers-with-code">Papers with code and replication material</h2>
+        <p>
+          Replication repository for the published article
+          <em>Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</em>.
+          The repository is organised around a metadata-driven workflow with separate scripts for TWFE, IV/2SLS and Double Machine Learning.
+          A 100-row sample panel can be used to verify code structure, while the full processed panel is required to reproduce the published estimates.
+        </p>
 
-      <div class="repo-list">
-        <article class="repo-card featured">
-          <div class="repo-top">
-            <div>
-              <h2 class="repo-title">
-                <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">
-                  Fuel Costs and Spatial Rail Accessibility
-                </a>
-              </h2>
+        <div class="repo-links">
+          <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">GitHub repository</a>
+          <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
+        </div>
+      </div>
 
-              <div class="repo-tags">
-                <span class="badge badge-paper">Published paper</span>
-                <span class="badge badge-r">R</span>
-                <span class="badge">TWFE</span>
-                <span class="badge">IV / 2SLS</span>
-                <span class="badge">DML</span>
-                <span class="badge">Metadata-driven</span>
-                <span class="badge">3SFCA</span>
-              </div>
-
-              <p>
-                Replication repository for the published article
-                <em>Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</em>.
-                The repository is organised around a processed panel, a metadata workbook and three estimation blocks:
-                TWFE, IV/2SLS and Double Machine Learning.
-              </p>
-
-              <div class="repo-links">
-                <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">GitHub repository</a>
-                <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
-              </div>
-            </div>
-
-            <pre class="code-preview"><code># Metadata-based replication
+      <pre class="code-preview"><code># Metadata-based replication
 source("R/01_twfe_metadata.R")
 source("R/02_iv_metadata.R")
 source("R/03_dml_metadata.R")
 
-# Full workflow
+# Or run the full workflow
 source("R/99_run_all.R")</code></pre>
-          </div>
+    </article>
 
-          <div class="replication-flow" aria-label="Replication workflow">
-            <div class="flow-title">Replication flow</div>
+    <article class="repo-card">
+      <div>
+        <h2 class="repo-title">Additional replication repositories</h2>
 
-            <div class="flow-grid">
-              <div class="flow-node">
-                <strong>Paper</strong>
-                <span>published article and empirical design</span>
-              </div>
-
-              <div class="flow-arrow" aria-hidden="true"></div>
-
-              <div class="flow-node">
-                <strong>Processed panel</strong>
-                <span>100-row sample or full estimation data</span>
-              </div>
-
-              <div class="flow-arrow" aria-hidden="true"></div>
-
-              <div class="flow-node">
-                <strong>Metadata</strong>
-                <span>GENERAL, IV and DBML specifications</span>
-              </div>
-
-              <div class="flow-arrow" aria-hidden="true"></div>
-
-              <div class="flow-node">
-                <strong>Outputs</strong>
-                <span>tables, coefficients and model objects</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <div class="mini-repo-grid">
-          <article class="mini-repo">
-            <h3>Upcoming replication repositories</h3>
-            <div class="repo-tags">
-              <span class="badge badge-r">R</span>
-              <span class="badge">Panel data</span>
-              <span class="badge">Econometrics</span>
-            </div>
-            <p>
-              Additional paper repositories will be added as the code is cleaned, documented and separated from private data construction workflows.
-            </p>
-          </article>
-
-          <article class="mini-repo">
-            <h3>Repository standard</h3>
-            <div class="repo-tags">
-              <span class="badge">README</span>
-              <span class="badge">metadata</span>
-              <span class="badge">sample data</span>
-            </div>
-            <p>
-              Each public repository will include estimation scripts, a metadata file, a small structural data sample and clear instructions for reproduction.
-            </p>
-          </article>
+        <div class="repo-tags">
+          <span class="badge badge-r">R</span>
+          <span class="badge badge-py">Python</span>
+          <span class="badge">Panel data</span>
+          <span class="badge">Spatial econometrics</span>
+          <span class="badge">Machine learning</span>
         </div>
-      </div>
-    </section>
 
-    <aside class="software-sidebar">
-      <div class="side-panel">
-        <h2>Research stack</h2>
-        <p class="side-note">
-          Main languages and tools used across paper repositories, replication scripts and scientific writing.
+        <p>
+          This section can be extended as additional paper repositories are cleaned and released.
+          Each item should include the paper title, the repository link, the publication link when available,
+          the estimation language and a compact code preview.
         </p>
-
-        <div class="tool-stack">
-          <div class="tool-card">
-            <img src="assets/icons/R.svg.png" alt="R">
-            <div>
-              <h3>R analysis</h3>
-              <p>statistics, econometrics, spatial analysis, causal inference.</p>
-            </div>
-          </div>
-
-          <div class="tool-card">
-            <img src="assets/icons/Python.svg.png" alt="Python">
-            <div>
-              <h3>Python</h3>
-              <p>machine learning, scraping, networks and text analysis.</p>
-            </div>
-          </div>
-
-          <div class="tool-card">
-            <img src="assets/icons/Latex.svg" alt="LaTeX">
-            <div>
-              <h3>LaTeX</h3>
-              <p>papers, CV, slides and academic templates.</p>
-            </div>
-          </div>
-
-          <div class="tool-card">
-            <img src="assets/icons/markdown.png" alt="Markdown">
-            <div>
-              <h3>Markdown</h3>
-              <p>documentation, README files and technical notes.</p>
-            </div>
-          </div>
-
-          <div class="tool-card">
-            <img src="assets/icons/logo.png" alt="Quarto">
-            <div>
-              <h3>Quarto</h3>
-              <p>reproducible reports and computational documents.</p>
-            </div>
-          </div>
-
-          <div class="tool-card">
-            <img src="assets/icons/Ghithub.png" alt="GitHub">
-            <div>
-              <h3>GitHub</h3>
-              <p>version control, code hosting and replication packages.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="quick-links">
-          <h2>Sections</h2>
-          <ul>
-            <li><a href="#github-code-hub">GitHub code hub</a></li>
-            <li><a href="#papers-with-code">Papers with code</a></li>
-          </ul>
-        </div>
-
-        <div class="github-box">
-          <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
-            <img src="assets/icons/Ghithub.png" alt="GitHub">
-            <span>GitHub</span>
-          </a>
-        </div>
       </div>
-    </aside>
+
+      <pre class="code-preview"><code># Suggested repository structure
+R/
+data/processed/
+data/metadata/
+results/tables/
+README.md</code></pre>
+    </article>
+  </div>
+
+
+  <h2 class="package-section-title" id="technical-materials">Technical materials</h2>
+
+  <div class="package-list">
+    <article class="package-item" id="r-routines">
+      <div class="package-icon wide">
+        <img src="assets/icons/R.svg.png" alt="R">
+      </div>
+
+      <div class="package-content">
+        <div class="package-title">
+          <h2>R routines for statistical analysis</h2>
+        </div>
+
+        <div class="package-meta">
+          <span class="badge badge-r">R</span>
+          <span class="badge badge-cran">CRAN</span>
+          <span class="badge">Data analysis</span>
+          <span class="badge">Data manipulation</span>
+          <span class="badge">Spatial econometrics</span>
+          <span class="badge">Causal inference</span>
+        </div>
+
+        <p>
+          R scripts and routines for data manipulation, descriptive and inferential statistics,
+          causal inference, spatial econometrics, policy evaluation, territorial indicators,
+          accessibility measures and reproducible analytical pipelines for empirical research.
+          Future R packages and package-style tools can be indexed here, including CRAN-oriented material.
+        </p>
+      </div>
+    </article>
+
+    <article class="package-item" id="python-workflows">
+      <div class="package-icon wide">
+        <img src="assets/icons/Python.svg.png" alt="Python">
+      </div>
+
+      <div class="package-content">
+        <div class="package-title">
+          <h2>Python workflows for data science</h2>
+        </div>
+
+        <div class="package-meta">
+          <span class="badge badge-py">Python</span>
+          <span class="badge badge-pypi">PyPI</span>
+          <span class="badge">Machine learning</span>
+          <span class="badge">Network analysis</span>
+          <span class="badge">Scraping</span>
+          <span class="badge">Text analysis</span>
+        </div>
+
+        <p>
+          Python projects for machine learning, network analysis, automated data collection,
+          web scraping, text analysis and document processing. These workflows support prediction,
+          classification, exploratory modelling and reproducible data-science applications.
+          Future Python packages and package-style tools can be indexed here, including PyPI-oriented material.
+        </p>
+      </div>
+    </article>
+
+    <article class="package-item" id="latex-markdown-quarto">
+      <div class="package-icon multi">
+        <img src="assets/icons/Latex.svg" alt="LaTeX">
+        <img src="assets/icons/markdown.png" alt="Markdown">
+        <img src="assets/icons/logo.png" alt="Quarto">
+      </div>
+
+      <div class="package-content">
+        <div class="package-title">
+          <h2>LaTeX, Markdown and Quarto templates</h2>
+        </div>
+
+        <div class="package-meta">
+          <span class="badge badge-tex">LaTeX</span>
+          <span class="badge">Markdown</span>
+          <span class="badge">Quarto</span>
+          <span class="badge">CV</span>
+          <span class="badge">Slides</span>
+          <span class="badge">Working papers</span>
+        </div>
+
+        <p>
+          Academic material for CVs, conference slides, teaching notes, article templates,
+          working papers, reproducible reports and automatic PDF generation through GitHub workflows.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<aside class="software-sidebar">
+  <h2>Index</h2>
+  <ul class="cat-list">
+    <li><img src="assets/icons/Ghithub.png" alt=""><a href="#github-code-hub">GitHub code hub</a></li>
+    <li><span class="badge badge-rep">Code</span><a href="#paper-code">Papers with code</a></li>
+    <li><img src="assets/icons/R.svg.png" alt=""><a href="#r-routines">R analysis</a></li>
+    <li><img src="assets/icons/Python.svg.png" alt=""><a href="#python-workflows">Python workflows</a></li>
+    <li><img src="assets/icons/Latex.svg" alt=""><a href="#latex-markdown-quarto">LaTeX templates</a></li>
+    <li><img src="assets/icons/markdown.png" alt=""><a href="#latex-markdown-quarto">Markdown</a></li>
+    <li><img src="assets/icons/logo.png" alt=""><a href="#latex-markdown-quarto">Quarto</a></li>
+    <li><span class="badge badge-cran">CRAN</span> R packages</li>
+    <li><span class="badge badge-pypi">PyPI</span> Python packages</li>
+  </ul>
+
+  <div class="github-box">
+    <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
+      <img src="assets/icons/Ghithub.png" alt="GitHub">
+      <span>GitHub</span>
+    </a>
+  </div>
+</aside>
+
+
   </div>
 </main>
 
