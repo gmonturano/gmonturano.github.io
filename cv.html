@@ -47,18 +47,43 @@
       border-radius:10px;
     }
 
-    .cv-card-icon{
-      width:42px;
-      height:42px;
-      flex:0 0 42px;
+    .cv-card-icon,
+    .cv-detail-icon{
+      flex:0 0 auto;
       border-radius:50%;
-      background:#eef3fb;
-      color:#244a8f;
+      background:#f3f4f6;
+      color:#333;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:1.15rem;
-      line-height:1;
+      border:1px solid #d9dde2;
+    }
+
+    .cv-card-icon{
+      width:42px;
+      height:42px;
+    }
+
+    .cv-detail-icon{
+      width:30px;
+      height:30px;
+      margin-top:1px;
+    }
+
+    .cv-card-icon svg,
+    .cv-detail-icon svg{
+      width:21px;
+      height:21px;
+      stroke:#333;
+      stroke-width:1.8;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .cv-detail-icon svg{
+      width:17px;
+      height:17px;
     }
 
     .cv-card-body{
@@ -100,21 +125,6 @@
       border:1px solid var(--rule);
       background:#fcfcfc;
       border-radius:8px;
-    }
-
-    .cv-detail-icon{
-      width:28px;
-      height:28px;
-      flex:0 0 28px;
-      border-radius:50%;
-      background:#f1f4f8;
-      color:#333;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:.95rem;
-      line-height:1;
-      margin-top:1px;
     }
 
     .cv-detail-text{
@@ -196,6 +206,7 @@
     }
   </style>
 </head>
+
 <body>
 <header class="topbar">
   <div class="wrap">
@@ -221,9 +232,17 @@
 
   <section class="cv-section">
     <h2>Current roles</h2>
+
     <div class="cv-grid">
       <article class="cv-card">
-        <div class="cv-card-icon"></div>
+        <div class="cv-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 20h16"/>
+            <path d="M5 20V9l7-4 7 4v11"/>
+            <path d="M9 20v-6h6v6"/>
+            <path d="M9 11h.01M12 11h.01M15 11h.01"/>
+          </svg>
+        </div>
         <div class="cv-card-body">
           <span class="cv-date">2026–present</span>
           <span class="cv-role">Assistant Professor (RTDA)</span>
@@ -232,7 +251,14 @@
       </article>
 
       <article class="cv-card">
-        <div class="cv-card-icon"></div>
+        <div class="cv-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 3v6l-4 8a3 3 0 0 0 2.7 4h8.6a3 3 0 0 0 2.7-4l-4-8V3"/>
+            <path d="M8 3h8"/>
+            <path d="M8 14h8"/>
+            <path d="M10 17h.01M14 17h.01"/>
+          </svg>
+        </div>
         <div class="cv-card-body">
           <span class="cv-date">2026–present</span>
           <span class="cv-role">Senior Researcher</span>
@@ -241,7 +267,15 @@
       </article>
 
       <article class="cv-card">
-        <div class="cv-card-icon"></div>
+        <div class="cv-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 19V5"/>
+            <path d="M4 19h16"/>
+            <path d="M7 16l3-4 3 2 5-7"/>
+            <path d="M18 7h-3"/>
+            <path d="M18 7v3"/>
+          </svg>
+        </div>
         <div class="cv-card-body">
           <span class="cv-date">2024–present</span>
           <span class="cv-role">Senior Researcher</span>
@@ -250,7 +284,13 @@
       </article>
 
       <article class="cv-card">
-        <div class="cv-card-icon"></div>
+        <div class="cv-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+            <path d="M7 10v5c0 2 2 4 5 4s5-2 5-4v-5"/>
+            <path d="M21 7v6"/>
+          </svg>
+        </div>
         <div class="cv-card-body">
           <span class="cv-date">2025–present</span>
           <span class="cv-role">Adjunct Professor of Political Economy</span>
@@ -262,9 +302,16 @@
 
   <section class="cv-section">
     <h2>Previous roles and education</h2>
+
     <div class="cv-grid">
       <article class="cv-card">
-        <div class="cv-card-icon"></div>
+        <div class="cv-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 4h8"/>
+            <path d="M10 4v5l-5 8a3 3 0 0 0 2.6 4h8.8a3 3 0 0 0 2.6-4l-5-8V4"/>
+            <path d="M8 15h8"/>
+          </svg>
+        </div>
         <div class="cv-card-body">
           <span class="cv-date">2024–2026</span>
           <span class="cv-role">Postdoctoral Research Fellow</span>
@@ -273,7 +320,14 @@
       </article>
 
       <article class="cv-card">
-        <div class="cv-card-icon"></div>
+        <div class="cv-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3l9 5-9 5-9-5 9-5z"/>
+            <path d="M5 10v5c2 3 12 3 14 0v-5"/>
+            <path d="M12 13v8"/>
+            <path d="M9 21h6"/>
+          </svg>
+        </div>
         <div class="cv-card-body">
           <span class="cv-date">2021–2025</span>
           <span class="cv-role">Ph.D. in Economics</span>
@@ -282,7 +336,16 @@
       </article>
 
       <article class="cv-card">
-        <div class="cv-card-icon"></div>
+        <div class="cv-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12h18"/>
+            <path d="M12 3c3 3 3 15 0 18"/>
+            <path d="M12 3c-3 3-3 15 0 18"/>
+            <path d="M16 8l3-3"/>
+            <path d="M19 5v4"/>
+          </svg>
+        </div>
         <div class="cv-card-body">
           <span class="cv-date">2024</span>
           <span class="cv-role">Visiting PhD Candidate</span>
@@ -294,9 +357,17 @@
 
   <section class="cv-section">
     <h2>Other academic roles</h2>
+
     <div class="cv-inline-details">
       <div class="cv-detail-item">
-        <div class="cv-detail-icon"></div>
+        <div class="cv-detail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 5h12"/>
+            <path d="M8 5c4 5 4 9 0 14"/>
+            <path d="M16 5c-4 5-4 9 0 14"/>
+            <path d="M6 19h12"/>
+          </svg>
+        </div>
         <div class="cv-detail-text">
           Subject expert appointments in Applied Economics, Statistics and Economic Statistics at the University of Bari, University of Modena and Reggio Emilia, University of Milano-Bicocca.
         </div>
@@ -304,16 +375,12 @@
     </div>
   </section>
 
-
-  
   <section class="cv-section cv-pdf-block">
     <h2>Full CV</h2>
     <div class="pdf-viewer">
       <iframe src="cv/main.pdf" title="Curriculum vitae - Gianluca Monturano"></iframe>
     </div>
   </section>
-
-
 
   <section class="cv-section">
     <h2>Academic profiles</h2>
@@ -325,14 +392,13 @@
         <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate"><img src="assets/icons/researchgate.svg" alt=""></a>
         <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID"><img src="assets/icons/orcid.svg" alt=""></a>
         <a class="round-logo" href="https://x.com/monturano" title="X" aria-label="X"><img src="assets/icons/x.svg" alt=""></a>
-        <a class="round-logo" href="https://github.com/monturano" title="GitHub" aria-label="GitHub"><img src="assets/icons/github.svg" alt=""></a>
+        <a class="round-logo" href="https://github.com/gmonturano" title="GitHub" aria-label="GitHub"><img src="assets/icons/github.svg" alt=""></a>
         <a class="round-logo small" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv"><img src="assets/icons/arxiv.svg" alt=""></a>
         <a class="round-logo small" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6299055" title="SSRN" aria-label="SSRN"><img src="assets/icons/ssrn.svg" alt=""></a>
       </div>
     </div>
   </section>
 
-  
   <section class="cv-contact">
     <h2>Contact</h2>
     <p>
@@ -343,9 +409,6 @@
 
     <p class="cv-quote">“Helping those in need is not only a duty, but a source of happiness.”<br>— José Martí</p>
   </section>
-
-
-  
 </main>
 
 <footer class="footer">
