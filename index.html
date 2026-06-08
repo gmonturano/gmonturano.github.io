@@ -23,13 +23,13 @@
     }
 
     .home-top .profile-photo{
-      width: 190px !important;
-      height: 190px !important;
+      width: 215px !important;
+      height: 215px !important;
       margin: 0 auto 18px !important;
       display: block !important;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 7px 20px rgba(0,0,0,.10);
+      box-shadow: 0 8px 22px rgba(0,0,0,.11);
     }
 
     .home-top .side-title{
@@ -39,35 +39,33 @@
       letter-spacing: .13em !important;
     }
 
-    /* More realistic logos */
     .profile-links{
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin: 0 auto 16px;
       max-width: 760px;
     }
 
     .profile-link{
-      width: 42px;
-      height: 42px;
+      width: 28px;
+      height: 28px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 5px;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,.04);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      transition: transform .15s ease, opacity .15s ease;
     }
 
     .profile-link:hover{
       transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,.08);
-      border-color: #d4dbe3;
+      opacity: .82;
     }
 
     .profile-link img{
@@ -81,7 +79,7 @@
 
     .profile-link.wide img{
       max-width: 31px;
-      max-height: 24px;
+      max-height: 26px;
     }
 
     .home-contact{
@@ -167,23 +165,27 @@
       }
 
       .home-top .profile-photo{
-        width: 170px !important;
-        height: 170px !important;
+        width: 185px !important;
+        height: 185px !important;
       }
 
       .profile-links{
-        gap: 8px;
+        gap: 10px;
       }
 
       .profile-link{
-        width: 38px;
-        height: 38px;
-        padding: 4px;
+        width: 25px;
+        height: 25px;
       }
 
       .profile-link img{
-        max-width: 24px;
-        max-height: 24px;
+        max-width: 25px;
+        max-height: 25px;
+      }
+
+      .profile-link.wide img{
+        max-width: 28px;
+        max-height: 23px;
       }
 
       .home-bio{
@@ -250,8 +252,8 @@
         <img src="assets/icons/x.svg" alt="X">
       </a>
 
-      <a class="profile-link" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv" target="_blank" rel="noopener">
-        <img src="assets/icons/arxiv.svg" alt="arXiv">
+      <a class="profile-link wide" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv" target="_blank" rel="noopener">
+        <img src="assets/icons/ArXiv_logo_2022.png" alt="arXiv">
       </a>
     </div>
 
@@ -275,7 +277,9 @@
     </p>
 
     <p>
-      I am currently an Assistant Professor (RTDA) in Political Economy at the Department of Economics of the University of Salento and a Senior Researcher at the Fondazione Eni Enrico Mattei
+      I am currently an Assistant Professor (RTDA) in Political Economy at the Department of Economics of the University of Salento
+      (<a href="https://www.dse.unisalento.it/organizzazione/personale-docente" target="_blank" rel="noopener">Unisalento</a>)
+      and a Senior Researcher at the Fondazione Eni Enrico Mattei
       (<a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">FEEM</a>)
       in Milan.
     </p>
