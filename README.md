@@ -4,6 +4,8 @@ Personal academic website of **Gianluca Monturano**, quantitative economist and 
 
 The website is built as a static GitHub Pages site using plain HTML, CSS and JavaScript. It presents academic roles, research outputs, teaching activity, software material, dissemination events and the full curriculum vitae.
 
+The site can be reached at this link: https://gmonturano.github.io/
+
 ## Website structure
 
 The repository contains the main pages of the academic website:
