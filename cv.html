@@ -418,35 +418,55 @@
     }
 
     .cv-pdf-heading{
+      height:46px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      margin-bottom:10px;
-      padding-bottom:0;
-      border-bottom:1px solid var(--rule);
+      padding:0 12px;
+      margin-bottom:0;
+      background:#2f3136;
+      color:#fff;
+      border:1px solid var(--rule);
+      border-bottom:0;
+      border-radius:10px 10px 0 0;
+      font-size:.82rem;
+      font-weight:700;
     }
 
     .cv-pdf-heading h2{
       margin:0 !important;
-      padding-bottom:6px !important;
+      padding-bottom:0 !important;
       border-bottom:0 !important;
+      color:#fff;
+      font-size:.86rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     .cv-fullscreen-btn{
-      border:1px solid var(--rule);
-      background:#fafafa;
-      color:#111;
-      border-radius:6px;
-      padding:5px 9px;
-      font-size:.78rem;
-      font-weight:700;
+      width:34px;
+      height:34px;
+      border:0;
+      border-radius:7px;
+      background:rgba(255,255,255,.09);
+      color:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       cursor:pointer;
-      line-height:1.2;
+      font-size:1rem;
+      line-height:1;
+      flex:0 0 auto;
     }
 
     .cv-fullscreen-btn:hover{
-      background:#f0f0f0;
+      background:rgba(255,255,255,.18);
+    }
+
+    .pdf-viewer{
+      border-radius:0 0 10px 10px !important;
     }
 
     .pdf-viewer{
@@ -739,8 +759,8 @@
     <aside class="cv-right">
       <section class="cv-section cv-pdf-block">
         <div class="cv-pdf-heading">
-          <h2>Full CV</h2>
-          <button class="cv-fullscreen-btn" type="button" onclick="openCvFullscreen()">Full screen</button>
+          <h2>Gianluca Monturano, PhD — Scientific CV</h2>
+          <button class="cv-fullscreen-btn" type="button" title="Full screen" aria-label="Full screen" onclick="openCvFullscreen()">⛶</button>
         </div>
 
         <div class="pdf-viewer" id="cvPdfViewer">
