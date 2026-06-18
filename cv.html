@@ -333,6 +333,17 @@
       border-bottom:0 !important;
     }
 
+    .cv-landscape-caption{
+      max-width:540px;
+      margin:0 0 7px auto;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      color:#555;
+      text-align:left;
+    }
+
     .cv-landscape{
       width:100%;
       max-width:540px;
@@ -404,6 +415,38 @@
 
     .cv-pdf-block{
       margin-top:0 !important;
+    }
+
+    .cv-pdf-heading{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+      padding-bottom:0;
+      border-bottom:1px solid var(--rule);
+    }
+
+    .cv-pdf-heading h2{
+      margin:0 !important;
+      padding-bottom:6px !important;
+      border-bottom:0 !important;
+    }
+
+    .cv-fullscreen-btn{
+      border:1px solid var(--rule);
+      background:#fafafa;
+      color:#111;
+      border-radius:6px;
+      padding:5px 9px;
+      font-size:.78rem;
+      font-weight:700;
+      cursor:pointer;
+      line-height:1.2;
+    }
+
+    .cv-fullscreen-btn:hover{
+      background:#f0f0f0;
     }
 
     .pdf-viewer{
@@ -517,9 +560,12 @@
       </section>
     </div>
 
-    <figure class="cv-landscape" aria-label="Landscape image">
-      <img src="assets/cv-landscap.png" alt="Landscape view">
-    </figure>
+    <div>
+      <div class="cv-landscape-caption">My place with a view over the Adriatic Sea</div>
+      <figure class="cv-landscape" aria-label="Landscape image">
+        <img src="assets/cv-landscap.png" alt="Landscape view">
+      </figure>
+    </div>
   </section>
 
   <div class="cv-two-column">
@@ -692,9 +738,12 @@
 
     <aside class="cv-right">
       <section class="cv-section cv-pdf-block">
-        <h2>Full CV</h2>
+        <div class="cv-pdf-heading">
+          <h2>Full CV</h2>
+          <button class="cv-fullscreen-btn" type="button" onclick="openCvFullscreen()">Full screen</button>
+        </div>
 
-        <div class="pdf-viewer">
+        <div class="pdf-viewer" id="cvPdfViewer">
           <iframe src="cv/main.pdf" title="Curriculum vitae - Gianluca Monturano"></iframe>
         </div>
       </section>
@@ -708,5 +757,31 @@
     <span>CV</span>
   </div>
 </footer>
+
+<script>
+  function openCvFullscreen() {
+    const viewer = document.getElementById("cvPdfViewer");
+    if (!viewer) return;
+
+    if (!document.fullscreenElement) {
+      if (viewer.requestFullscreen) {
+        viewer.requestFullscreen();
+      } else if (viewer.webkitRequestFullscreen) {
+        viewer.webkitRequestFullscreen();
+      } else if (viewer.msRequestFullscreen) {
+        viewer.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  }
+</script>
+
 </body>
 </html>
