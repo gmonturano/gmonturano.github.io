@@ -6,36 +6,43 @@
   <title>Dissemination | Gianluca Monturano</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
   <style>
-.dissemination-hero {
+    .dissemination-hero {
       margin-bottom: 18px;
     }
+
     .dissemination-grid {
       display: grid;
       grid-template-columns:minmax(0, 1fr) 390px;
       gap: 18px;
       align-items: start;
     }
+
     #map {
       height:760px;
       border: 1px solid var(--rule);
       background: #f5f5f5;
     }
+
     .map-panel {
       border: 1px solid var(--rule);
       background: #fafafa;
       padding: 12px;
     }
+
     .filters {
       display: grid;
       gap: 9px;
       margin-bottom: 12px;
     }
+
     .filters label {
       font-size: .82rem;
       font-weight: 700;
       color: #111;
     }
+
     .filters select {
       width: 100%;
       padding: 7px 8px;
@@ -44,6 +51,7 @@
       font: inherit;
       font-size: .9rem;
     }
+
     .legend {
       display: flex;
       flex-wrap: wrap;
@@ -51,55 +59,66 @@
       margin: 10px 0 14px;
       font-size: .82rem;
     }
+
     .legend-item {
       display: inline-flex;
       align-items: center;
       gap: 5px;
     }
+
     .dot {
       width: 10px;
       height: 10px;
       border-radius: 99px;
       display: inline-block;
     }
+
     .dot.int { background: #b00020; }
     .dot.nat { background: #0057d9; }
     .dot.work { background: #d97706; }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin-bottom: 14px;
     }
+
     .stat {
       border: 1px solid var(--rule);
       background: white;
       padding: 9px;
       text-align: center;
     }
+
     .stat strong {
       display: block;
       font-size: 1.25rem;
       color: #111;
     }
+
     .stat span {
       font-size: .78rem;
       color: var(--muted);
     }
+
     .event-list {
       max-height: 390px;
       overflow: auto;
       border-top: 1px solid var(--rule);
       padding-top: 8px;
     }
+
     .event-card {
       padding: 9px 0;
       border-bottom: 1px solid var(--rule);
       cursor: pointer;
     }
+
     .event-card:hover .event-title {
       text-decoration: underline;
     }
+
     .event-meta {
       font-size: .78rem;
       text-transform: uppercase;
@@ -107,45 +126,53 @@
       color: var(--muted);
       font-weight: 700;
     }
+
     .event-title {
       font-weight: 700;
       color: #111;
       margin-top: 2px;
     }
+
     .event-paper {
       font-size: .86rem;
       margin-top: 3px;
     }
+
     .popup-title {
       font-weight: 700;
       margin-bottom: 4px;
     }
+
     .popup-paper {
       font-size: .9rem;
     }
+
     @media (max-width: 900px) {
       .dissemination-grid {
         grid-template-columns: 1fr;
       }
+
       #map {
         height: 520px;
       }
     }
   </style>
 </head>
+
 <body>
 <header class="topbar">
   <div class="wrap">
     <div class="nav">
       <a class="name" href="index.html">Gianluca Monturano, PhD</a>
-<nav class="menu" aria-label="Primary navigation">
-  <a href="index.html">Home</a>
-  <a href="research.html">Research</a>
-  <a href="software.html">Software</a>
-  <a href="teaching.html">Teaching</a>
-  <a class="active" href="dissemination.html">Dissemination</a>
-  <a href="cv.html">CV</a>
-</nav>
+
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="software.html">Software</a>
+        <a href="teaching.html">Teaching</a>
+        <a class="active" href="dissemination.html">Dissemination</a>
+        <a href="cv.html">CV</a>
+      </nav>
     </div>
   </div>
 </header>
@@ -164,7 +191,11 @@
         <label for="yearFilter">Year</label>
         <select id="yearFilter">
           <option value="all">All years</option>
-          <option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
         </select>
 
         <label for="typeFilter">Type</label>
@@ -201,8 +232,483 @@
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script>
-const events = [{"year": 2026, "type": "International conference", "city": "Santa Fe", "country": "USA", "lat": 35.687, "lon": -105.9378, "venue": "Western Regional Science Association", "title": "65th Annual Meeting Western Regional Science Association", "paper": "Spatial Spillovers and Connectivity between Service Companies and Service Institutions in Italy: A Gravity-Based Approach"}, {"year": 2025, "type": "International conference", "city": "Rome", "country": "Italy", "lat": 41.9028, "lon": 12.4964, "venue": "XIII International Workshop on Computational Economics and Econometrics", "title": "XIII International Workshop on Computational Economics and Econometrics", "paper": "Accessibility: Prediction with Network and Machine-Learning Framework"}, {"year": 2025, "type": "International conference", "city": "Athens", "country": "Greece", "lat": 37.9838, "lon": 23.7275, "venue": "ERSA", "title": "64th ERSA Congress", "paper": "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"}, {"year": 2025, "type": "International conference", "city": "Lucca", "country": "Italy", "lat": 43.8429, "lon": 10.5027, "venue": "Scuola IMT Alti Studi Lucca", "title": "CIML Training & Conference 2025", "paper": "Spatial Evaluation of Essential Citizenship Services at Municipalities’ Level"}, {"year": 2025, "type": "International conference", "city": "Porto", "country": "Portugal", "lat": 41.1579, "lon": -8.6291, "venue": "Regional Studies Association", "title": "2025 RSA Annual Conference", "paper": "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"}, {"year": 2024, "type": "International conference", "city": "Azores", "country": "Portugal", "lat": 37.7412, "lon": -25.6756, "venue": "ERSA", "title": "63rd ERSA Congress", "paper": "Anticipating Delays in Cohesion Infrastructure Projects by Machine Learning"}, {"year": 2024, "type": "International conference", "city": "Azores", "country": "Portugal", "lat": 37.7412, "lon": -25.6756, "venue": "ERSA", "title": "63rd ERSA Congress", "paper": "Income Support Policies and Voting Behavior in a Dual Country. Evidence from Italy"}, {"year": 2024, "type": "International conference", "city": "London", "country": "United Kingdom", "lat": 51.532, "lon": -0.472, "venue": "Brunel University London", "title": "2024 RCEA International Conference in Economics, Econometrics, and Finance", "paper": "Anticipating Delays in Cohesion Infrastructure Projects. A Machine Learning Approach"}, {"year": 2024, "type": "International conference", "city": "Naples", "country": "Italy", "lat": 40.8518, "lon": 14.2681, "venue": "University of Naples Federico II", "title": "Data Science & Social Research, 4th International Conference", "paper": "Anticipating Delays in Cohesion Infrastructure Projects. A Machine Learning Approach"}, {"year": 2024, "type": "International conference", "city": "Naples", "country": "Italy", "lat": 40.8518, "lon": 14.2681, "venue": "University of Naples Federico II", "title": "Data Science & Social Research, 4th International Conference", "paper": "Impacts of Cohesion Funds on Local Tourism. Counterfactual Analysis and Machine Learning Approaches"}, {"year": 2023, "type": "International conference", "city": "Alicante", "country": "Spain", "lat": 38.3452, "lon": -0.481, "venue": "University of Alicante", "title": "62nd ERSA Congress", "paper": "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"}, {"year": 2023, "type": "International conference", "city": "Alicante", "country": "Spain", "lat": 38.3452, "lon": -0.481, "venue": "University of Alicante", "title": "62nd ERSA Congress", "paper": "Place-Based Policies and the Location of Economic Activity: Evidence from the Italian Strategy for Inner Areas"}, {"year": 2022, "type": "International conference", "city": "Caserta", "country": "Italy", "lat": 41.0723, "lon": 14.3311, "venue": "University of Campania Luigi Vanvitelli", "title": "51st Scientific Meeting of the Italian Statistical Society", "paper": "Place-Based Policies and the Location of Economic Activity: Evidence from the Italian Strategy for Inner Areas"}, {"year": 2026, "type": "National conference", "city": "Bari", "country": "Italy", "lat": 41.1171, "lon": 16.8719, "venue": "University of Bari", "title": "XXIV Annual Workshop SIEPI", "paper": "Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model"}, {"year": 2025, "type": "National conference", "city": "Naples", "country": "Italy", "lat": 40.8518, "lon": 14.2681, "venue": "University of Naples Parthenope", "title": "66th Annual Scientific Meeting of the Italian Economic Association", "paper": "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"}, {"year": 2025, "type": "National conference", "city": "Pescara", "country": "Italy", "lat": 42.4618, "lon": 14.2161, "venue": "University of Pescara", "title": "XLVI Annual Scientific Conference AISRe", "paper": "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"}, {"year": 2025, "type": "National conference", "city": "Monopoli", "country": "Italy", "lat": 40.9525, "lon": 17.2986, "venue": "Biblioteca Rendella", "title": "XXVII SIET Conference", "paper": "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"}, {"year": 2025, "type": "National conference", "city": "Bologna", "country": "Italy", "lat": 44.4949, "lon": 11.3426, "venue": "University of Bologna", "title": "XXIII Annual Workshop SIEPI", "paper": "Analyzing Accessibility to Citizenship Services"}, {"year": 2024, "type": "National conference", "city": "Urbino", "country": "Italy", "lat": 43.7262, "lon": 12.6363, "venue": "University of Urbino Carlo Bo", "title": "65th Annual Scientific Meeting of the Italian Economic Association", "paper": "Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities"}, {"year": 2024, "type": "National conference", "city": "Enna", "country": "Italy", "lat": 37.5675, "lon": 14.279, "venue": "University of Enna Kore", "title": "21st Annual CiMET Workshop", "paper": "Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities"}, {"year": 2024, "type": "National conference", "city": "Turin", "country": "Italy", "lat": 45.0703, "lon": 7.6869, "venue": "University of Turin", "title": "XLV Annual Scientific Conference AISRe", "paper": "Income Support Policies and Voting Behavior in a Dual Country. Evidence from Italy"}, {"year": 2024, "type": "National conference", "city": "Rome", "country": "Italy", "lat": 41.9028, "lon": 12.4964, "venue": "Sapienza University of Rome", "title": "Workshop on Inequality and Intergenerational Mobility", "paper": "Exploiting COVID-19 Data to Identify Fragile Areas in Italy Using Geographically-Informed Clustering"}, {"year": 2024, "type": "National conference", "city": "Perugia", "country": "Italy", "lat": 43.1107, "lon": 12.3908, "venue": "University of Perugia", "title": "11th Federico Caffè Working Group Meeting", "paper": "Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities"}, {"year": 2023, "type": "National conference", "city": "Taormina", "country": "Italy", "lat": 37.8516, "lon": 15.2853, "venue": "University of Messina / Taormina", "title": "XV SISTUR Scientific Meeting", "paper": "Impacts of Cohesion Funds on Local Tourism. Counterfactual Analysis and Machine Learning Approaches"}, {"year": 2023, "type": "National conference", "city": "L'Aquila", "country": "Italy", "lat": 42.3498, "lon": 13.3995, "venue": "Gran Sasso Science Institute", "title": "64th Annual Scientific Meeting of the Italian Economic Association", "paper": "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"}, {"year": 2023, "type": "National conference", "city": "Naples", "country": "Italy", "lat": 40.8518, "lon": 14.2681, "venue": "University of Naples Parthenope", "title": "XLIV Annual Scientific Conference AISRe", "paper": "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"}, {"year": 2023, "type": "National conference", "city": "Milan", "country": "Italy", "lat": 45.4642, "lon": 9.19, "venue": "University of Milano-Bicocca", "title": "1st Italian Conference on Economic Statistics", "paper": "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"}, {"year": 2022, "type": "National conference", "city": "Teramo", "country": "Italy", "lat": 42.6612, "lon": 13.699, "venue": "University of Teramo", "title": "Conference of the Faculty of Communication Sciences", "paper": "Comunicare e Percepire le Politiche Economiche e Fiscali"}, {"year": 2026, "type": "Workshop / invited seminar", "city": "Foggia", "country": "Italy", "lat": 41.4622, "lon": 15.5446, "venue": "University of Foggia", "title": "Scientific Workshop on Territorial Transition", "paper": "Predicting Delays in Cohesion Infrastructure Projects"}, {"year": 2025, "type": "Workshop / invited seminar", "city": "Bari", "country": "Italy", "lat": 41.1171, "lon": 16.8719, "venue": "University of Bari Aldo Moro", "title": "3rd Plenary Meeting on Territorial Sustainability", "paper": "Results within the GRINS Spoke 7 project"}, {"year": 2025, "type": "Workshop / invited seminar", "city": "Venice", "country": "Italy", "lat": 45.4408, "lon": 12.3155, "venue": "Ca’ Foscari University of Venice", "title": "3rd Workshop on Sustainable Finance: Innovation, ESG and Digital Finance", "paper": "Socio-Economic Drivers of Accessibility: Prediction with Network and Machine-Learning Framework"}, {"year": 2025, "type": "Workshop / invited seminar", "city": "Naples", "country": "Italy", "lat": 40.8518, "lon": 14.2681, "venue": "ISTAT / University of Campania", "title": "How can AI, digitalisation, and greening ensure smart and sustainable growth?", "paper": "Machine Learning and Causal inference for economics"}, {"year": 2025, "type": "Workshop / invited seminar", "city": "Bari", "country": "Italy", "lat": 41.1171, "lon": 16.8719, "venue": "University of Bari Aldo Moro", "title": "Regional Studies and Territorial Development", "paper": "Analyzing Accessibility to Citizenship Services: A Network Analysis and Machine Learning Approach"}, {"year": 2025, "type": "Workshop / invited seminar", "city": "Castel del Giudice", "country": "Italy", "lat": 41.8547, "lon": 14.2324, "venue": "GRINS Spoke 7", "title": "Multidisciplinary Territorial Policy Lab", "paper": "L’accessibilità ai servizi di cittadinanza: un’analisi a livello comunale"}, {"year": 2025, "type": "Workshop / invited seminar", "city": "Bari", "country": "Italy", "lat": 41.1171, "lon": 16.8719, "venue": "University of Bari Aldo Moro", "title": "2nd Meeting on Territorial Sustainability", "paper": "Digital vulnerability and gap analysis; Health access and public transport"}, {"year": 2024, "type": "Workshop / invited seminar", "city": "Naples", "country": "Italy", "lat": 40.8518, "lon": 14.2681, "venue": "ISTAT / University of Naples Parthenope", "title": "How can AI, digitalisation, and greening ensure smart and sustainable growth?", "paper": "Analyzing Accessibility to Citizenship Services: A Network Analysis and Machine Learning Approach"}, {"year": 2023, "type": "Workshop / invited seminar", "city": "Rome", "country": "Italy", "lat": 41.9028, "lon": 12.4964, "venue": "Roma Tre University", "title": "Summer School in Economic policy and welfare in a context of high inflation", "paper": "The Impact of Italy’s Strategy for Inner Areas on Depopulation and Industrial Growth"}, {"year": 2023, "type": "Workshop / invited seminar", "city": "Modena", "country": "Italy", "lat": 44.6471, "lon": 10.9252, "venue": "University of Modena and Reggio Emilia", "title": "PhD Candidate Seminar", "paper": "The short-run effects of Place-based policies"}, {"year": 2022, "type": "Workshop / invited seminar", "city": "Modena", "country": "Italy", "lat": 44.6471, "lon": 10.9252, "venue": "University of Modena and Reggio Emilia", "title": "A multi-criteria approach to social indicators", "paper": "Local public spending on sustainability in NSIA areas"}];
+const events = [
+  {
+    year: 2026,
+    type: "National conference",
+    city: "Firenze",
+    country: "Italy",
+    lat: 43.7696,
+    lon: 11.2558,
+    venue: "AISRE",
+    title: "XLVII Conferenza scientifica annuale AISRE, Firenze, 24-26 giugno 2026",
+    paper: "Agglomeration economies in the tertiary sector and connectivity between service firms and public facilities in Italy: A Gravity-Based Approach"
+  },
+  {
+    year: 2026,
+    type: "National conference",
+    city: "Firenze",
+    country: "Italy",
+    lat: 43.7696,
+    lon: 11.2558,
+    venue: "AISRE",
+    title: "XLVII Conferenza scientifica annuale AISRE, Firenze, 24-26 giugno 2026",
+    paper: "A Causal Evaluation of PNRR Transport and Mobility Investments: Evidence from Italian Territories"
+  },
+  {
+    year: 2026,
+    type: "National conference",
+    city: "Firenze",
+    country: "Italy",
+    lat: 43.7696,
+    lon: 11.2558,
+    venue: "AISRE",
+    title: "XLVII Conferenza scientifica annuale AISRE, Firenze, 24-26 giugno 2026",
+    paper: "Mapping Socio-Economic Fragility in Italy through Municipal-Level Spatial Clustering of COVID-19 Data"
+  },
+  {
+    year: 2026,
+    type: "National conference",
+    city: "Firenze",
+    country: "Italy",
+    lat: 43.7696,
+    lon: 11.2558,
+    venue: "AISRE",
+    title: "XLVII Conferenza scientifica annuale AISRE, Firenze, 24-26 giugno 2026",
+    paper: "Investigating the impact of PRIN on higher education performance in Italy: a spatial-econometric analysis"
+  },
+  {
+    year: 2026,
+    type: "International conference",
+    city: "Santa Fe",
+    country: "USA",
+    lat: 35.687,
+    lon: -105.9378,
+    venue: "Western Regional Science Association",
+    title: "65th Annual Meeting Western Regional Science Association",
+    paper: "Spatial Spillovers and Connectivity between Service Companies and Service Institutions in Italy: A Gravity-Based Approach"
+  },
+  {
+    year: 2025,
+    type: "International conference",
+    city: "Rome",
+    country: "Italy",
+    lat: 41.9028,
+    lon: 12.4964,
+    venue: "XIII International Workshop on Computational Economics and Econometrics",
+    title: "XIII International Workshop on Computational Economics and Econometrics",
+    paper: "Accessibility: Prediction with Network and Machine-Learning Framework"
+  },
+  {
+    year: 2025,
+    type: "International conference",
+    city: "Athens",
+    country: "Greece",
+    lat: 37.9838,
+    lon: 23.7275,
+    venue: "ERSA",
+    title: "64th ERSA Congress",
+    paper: "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"
+  },
+  {
+    year: 2025,
+    type: "International conference",
+    city: "Lucca",
+    country: "Italy",
+    lat: 43.8429,
+    lon: 10.5027,
+    venue: "Scuola IMT Alti Studi Lucca",
+    title: "CIML Training & Conference 2025",
+    paper: "Spatial Evaluation of Essential Citizenship Services at Municipalities’ Level"
+  },
+  {
+    year: 2025,
+    type: "International conference",
+    city: "Porto",
+    country: "Portugal",
+    lat: 41.1579,
+    lon: -8.6291,
+    venue: "Regional Studies Association",
+    title: "2025 RSA Annual Conference",
+    paper: "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"
+  },
+  {
+    year: 2024,
+    type: "International conference",
+    city: "Azores",
+    country: "Portugal",
+    lat: 37.7412,
+    lon: -25.6756,
+    venue: "ERSA",
+    title: "63rd ERSA Congress",
+    paper: "Anticipating Delays in Cohesion Infrastructure Projects by Machine Learning"
+  },
+  {
+    year: 2024,
+    type: "International conference",
+    city: "Azores",
+    country: "Portugal",
+    lat: 37.7412,
+    lon: -25.6756,
+    venue: "ERSA",
+    title: "63rd ERSA Congress",
+    paper: "Income Support Policies and Voting Behavior in a Dual Country. Evidence from Italy"
+  },
+  {
+    year: 2024,
+    type: "International conference",
+    city: "London",
+    country: "United Kingdom",
+    lat: 51.532,
+    lon: -0.472,
+    venue: "Brunel University London",
+    title: "2024 RCEA International Conference in Economics, Econometrics, and Finance",
+    paper: "Anticipating Delays in Cohesion Infrastructure Projects. A Machine Learning Approach"
+  },
+  {
+    year: 2024,
+    type: "International conference",
+    city: "Naples",
+    country: "Italy",
+    lat: 40.8518,
+    lon: 14.2681,
+    venue: "University of Naples Federico II",
+    title: "Data Science & Social Research, 4th International Conference",
+    paper: "Anticipating Delays in Cohesion Infrastructure Projects. A Machine Learning Approach"
+  },
+  {
+    year: 2024,
+    type: "International conference",
+    city: "Naples",
+    country: "Italy",
+    lat: 40.8518,
+    lon: 14.2681,
+    venue: "University of Naples Federico II",
+    title: "Data Science & Social Research, 4th International Conference",
+    paper: "Impacts of Cohesion Funds on Local Tourism. Counterfactual Analysis and Machine Learning Approaches"
+  },
+  {
+    year: 2023,
+    type: "International conference",
+    city: "Alicante",
+    country: "Spain",
+    lat: 38.3452,
+    lon: -0.481,
+    venue: "University of Alicante",
+    title: "62nd ERSA Congress",
+    paper: "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"
+  },
+  {
+    year: 2023,
+    type: "International conference",
+    city: "Alicante",
+    country: "Spain",
+    lat: 38.3452,
+    lon: -0.481,
+    venue: "University of Alicante",
+    title: "62nd ERSA Congress",
+    paper: "Place-Based Policies and the Location of Economic Activity: Evidence from the Italian Strategy for Inner Areas"
+  },
+  {
+    year: 2022,
+    type: "International conference",
+    city: "Caserta",
+    country: "Italy",
+    lat: 41.0723,
+    lon: 14.3311,
+    venue: "University of Campania Luigi Vanvitelli",
+    title: "51st Scientific Meeting of the Italian Statistical Society",
+    paper: "Place-Based Policies and the Location of Economic Activity: Evidence from the Italian Strategy for Inner Areas"
+  },
+  {
+    year: 2026,
+    type: "National conference",
+    city: "Bari",
+    country: "Italy",
+    lat: 41.1171,
+    lon: 16.8719,
+    venue: "University of Bari",
+    title: "XXIV Annual Workshop SIEPI",
+    paper: "Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model"
+  },
+  {
+    year: 2025,
+    type: "National conference",
+    city: "Naples",
+    country: "Italy",
+    lat: 40.8518,
+    lon: 14.2681,
+    venue: "University of Naples Parthenope",
+    title: "66th Annual Scientific Meeting of the Italian Economic Association",
+    paper: "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"
+  },
+  {
+    year: 2025,
+    type: "National conference",
+    city: "Pescara",
+    country: "Italy",
+    lat: 42.4618,
+    lon: 14.2161,
+    venue: "University of Pescara",
+    title: "XLVI Annual Scientific Conference AISRe",
+    paper: "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"
+  },
+  {
+    year: 2025,
+    type: "National conference",
+    city: "Monopoli",
+    country: "Italy",
+    lat: 40.9525,
+    lon: 17.2986,
+    venue: "Biblioteca Rendella",
+    title: "XXVII SIET Conference",
+    paper: "Analyzing Accessibility to Citizenship Services. A Network Analysis and Machine Learning Approach"
+  },
+  {
+    year: 2025,
+    type: "National conference",
+    city: "Bologna",
+    country: "Italy",
+    lat: 44.4949,
+    lon: 11.3426,
+    venue: "University of Bologna",
+    title: "XXIII Annual Workshop SIEPI",
+    paper: "Analyzing Accessibility to Citizenship Services"
+  },
+  {
+    year: 2024,
+    type: "National conference",
+    city: "Urbino",
+    country: "Italy",
+    lat: 43.7262,
+    lon: 12.6363,
+    venue: "University of Urbino Carlo Bo",
+    title: "65th Annual Scientific Meeting of the Italian Economic Association",
+    paper: "Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities"
+  },
+  {
+    year: 2024,
+    type: "National conference",
+    city: "Enna",
+    country: "Italy",
+    lat: 37.5675,
+    lon: 14.279,
+    venue: "University of Enna Kore",
+    title: "21st Annual CiMET Workshop",
+    paper: "Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities"
+  },
+  {
+    year: 2024,
+    type: "National conference",
+    city: "Turin",
+    country: "Italy",
+    lat: 45.0703,
+    lon: 7.6869,
+    venue: "University of Turin",
+    title: "XLV Annual Scientific Conference AISRe",
+    paper: "Income Support Policies and Voting Behavior in a Dual Country. Evidence from Italy"
+  },
+  {
+    year: 2024,
+    type: "National conference",
+    city: "Rome",
+    country: "Italy",
+    lat: 41.9028,
+    lon: 12.4964,
+    venue: "Sapienza University of Rome",
+    title: "Workshop on Inequality and Intergenerational Mobility",
+    paper: "Exploiting COVID-19 Data to Identify Fragile Areas in Italy Using Geographically-Informed Clustering"
+  },
+  {
+    year: 2024,
+    type: "National conference",
+    city: "Perugia",
+    country: "Italy",
+    lat: 43.1107,
+    lon: 12.3908,
+    venue: "University of Perugia",
+    title: "11th Federico Caffè Working Group Meeting",
+    paper: "Assessing the Effectiveness of the Italian Citizenship Income on Tackling Poverty and Inequalities"
+  },
+  {
+    year: 2023,
+    type: "National conference",
+    city: "Taormina",
+    country: "Italy",
+    lat: 37.8516,
+    lon: 15.2853,
+    venue: "University of Messina / Taormina",
+    title: "XV SISTUR Scientific Meeting",
+    paper: "Impacts of Cohesion Funds on Local Tourism. Counterfactual Analysis and Machine Learning Approaches"
+  },
+  {
+    year: 2023,
+    type: "National conference",
+    city: "L'Aquila",
+    country: "Italy",
+    lat: 42.3498,
+    lon: 13.3995,
+    venue: "Gran Sasso Science Institute",
+    title: "64th Annual Scientific Meeting of the Italian Economic Association",
+    paper: "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"
+  },
+  {
+    year: 2023,
+    type: "National conference",
+    city: "Naples",
+    country: "Italy",
+    lat: 40.8518,
+    lon: 14.2681,
+    venue: "University of Naples Parthenope",
+    title: "XLIV Annual Scientific Conference AISRe",
+    paper: "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"
+  },
+  {
+    year: 2023,
+    type: "National conference",
+    city: "Milan",
+    country: "Italy",
+    lat: 45.4642,
+    lon: 9.19,
+    venue: "University of Milano-Bicocca",
+    title: "1st Italian Conference on Economic Statistics",
+    paper: "Which Kind of Occupational Profiles Are More Likely to Evade? Evidence from Italian Provinces"
+  },
+  {
+    year: 2022,
+    type: "National conference",
+    city: "Teramo",
+    country: "Italy",
+    lat: 42.6612,
+    lon: 13.699,
+    venue: "University of Teramo",
+    title: "Conference of the Faculty of Communication Sciences",
+    paper: "Comunicare e Percepire le Politiche Economiche e Fiscali"
+  },
+  {
+    year: 2026,
+    type: "Workshop / invited seminar",
+    city: "Foggia",
+    country: "Italy",
+    lat: 41.4622,
+    lon: 15.5446,
+    venue: "University of Foggia",
+    title: "Scientific Workshop on Territorial Transition",
+    paper: "Predicting Delays in Cohesion Infrastructure Projects"
+  },
+  {
+    year: 2025,
+    type: "Workshop / invited seminar",
+    city: "Bari",
+    country: "Italy",
+    lat: 41.1171,
+    lon: 16.8719,
+    venue: "University of Bari Aldo Moro",
+    title: "3rd Plenary Meeting on Territorial Sustainability",
+    paper: "Results within the GRINS Spoke 7 project"
+  },
+  {
+    year: 2025,
+    type: "Workshop / invited seminar",
+    city: "Venice",
+    country: "Italy",
+    lat: 45.4408,
+    lon: 12.3155,
+    venue: "Ca’ Foscari University of Venice",
+    title: "3rd Workshop on Sustainable Finance: Innovation, ESG and Digital Finance",
+    paper: "Socio-Economic Drivers of Accessibility: Prediction with Network and Machine-Learning Framework"
+  },
+  {
+    year: 2025,
+    type: "Workshop / invited seminar",
+    city: "Naples",
+    country: "Italy",
+    lat: 40.8518,
+    lon: 14.2681,
+    venue: "ISTAT / University of Campania",
+    title: "How can AI, digitalisation, and greening ensure smart and sustainable growth?",
+    paper: "Machine Learning and Causal inference for economics"
+  },
+  {
+    year: 2025,
+    type: "Workshop / invited seminar",
+    city: "Bari",
+    country: "Italy",
+    lat: 41.1171,
+    lon: 16.8719,
+    venue: "University of Bari Aldo Moro",
+    title: "Regional Studies and Territorial Development",
+    paper: "Analyzing Accessibility to Citizenship Services: A Network Analysis and Machine Learning Approach"
+  },
+  {
+    year: 2025,
+    type: "Workshop / invited seminar",
+    city: "Castel del Giudice",
+    country: "Italy",
+    lat: 41.8547,
+    lon: 14.2324,
+    venue: "GRINS Spoke 7",
+    title: "Multidisciplinary Territorial Policy Lab",
+    paper: "L’accessibilità ai servizi di cittadinanza: un’analisi a livello comunale"
+  },
+  {
+    year: 2025,
+    type: "Workshop / invited seminar",
+    city: "Bari",
+    country: "Italy",
+    lat: 41.1171,
+    lon: 16.8719,
+    venue: "University of Bari Aldo Moro",
+    title: "2nd Meeting on Territorial Sustainability",
+    paper: "Digital vulnerability and gap analysis; Health access and public transport"
+  },
+  {
+    year: 2024,
+    type: "Workshop / invited seminar",
+    city: "Naples",
+    country: "Italy",
+    lat: 40.8518,
+    lon: 14.2681,
+    venue: "ISTAT / University of Naples Parthenope",
+    title: "How can AI, digitalisation, and greening ensure smart and sustainable growth?",
+    paper: "Analyzing Accessibility to Citizenship Services: A Network Analysis and Machine Learning Approach"
+  },
+  {
+    year: 2023,
+    type: "Workshop / invited seminar",
+    city: "Rome",
+    country: "Italy",
+    lat: 41.9028,
+    lon: 12.4964,
+    venue: "Roma Tre University",
+    title: "Summer School in Economic policy and welfare in a context of high inflation",
+    paper: "The Impact of Italy’s Strategy for Inner Areas on Depopulation and Industrial Growth"
+  },
+  {
+    year: 2023,
+    type: "Workshop / invited seminar",
+    city: "Modena",
+    country: "Italy",
+    lat: 44.6471,
+    lon: 10.9252,
+    venue: "University of Modena and Reggio Emilia",
+    title: "PhD Candidate Seminar",
+    paper: "The short-run effects of Place-based policies"
+  },
+  {
+    year: 2022,
+    type: "Workshop / invited seminar",
+    city: "Modena",
+    country: "Italy",
+    lat: 44.6471,
+    lon: 10.9252,
+    venue: "University of Modena and Reggio Emilia",
+    title: "A multi-criteria approach to social indicators",
+    paper: "Local public spending on sustainability in NSIA areas"
+  }
+];
 
 const colors = {
   "International conference": "#b00020",
@@ -278,6 +784,7 @@ function render() {
         <div class="popup-paper"><strong>Paper:</strong> ${escapeHtml(e.paper)}</div>
       `)
       .addTo(map);
+
     marker._eventIndex = idx;
     markers.push(marker);
     bounds.push([e.lat, e.lon]);
@@ -292,6 +799,7 @@ function render() {
   document.getElementById("countryCount").textContent = new Set(filtered.map(e => e.country)).size;
 
   const list = document.getElementById("eventList");
+
   list.innerHTML = filtered.map((e, i) => `
     <div class="event-card" data-i="${i}">
       <div class="event-meta">${e.year} · ${escapeHtml(e.type)} · ${escapeHtml(e.city)}, ${escapeHtml(e.country)}</div>
