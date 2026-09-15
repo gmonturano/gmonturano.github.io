@@ -25,14 +25,14 @@
     }
 
     .course-content h1{
-      font-size:1.58rem;
+      font-size:1.62rem;
       margin-bottom:7px;
     }
 
     .course-content h2{
-      font-size:1rem;
-      margin-top:24px;
-      margin-bottom:9px;
+      font-size:1.02rem;
+      margin-top:0;
+      margin-bottom:10px;
       padding-bottom:5px;
       border-bottom:1px solid var(--rule);
       scroll-margin-top:86px;
@@ -44,40 +44,43 @@
     }
 
     .course-hero{
-      border:1px solid var(--rule);
-      background:#fafafa;
-      border-radius:12px;
-      padding:18px 20px;
-      margin-bottom:24px;
-      box-shadow:0 6px 18px rgba(0,0,0,.04);
+      position:relative;
+      border:1px solid #cfd8e3;
+      border-left:5px solid #0057d9;
+      background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%);
+      border-radius:13px;
+      padding:20px 22px;
+      margin-bottom:26px;
+      box-shadow:0 8px 22px rgba(0,0,0,.06);
     }
 
     .course-label{
       display:inline-block;
-      font-size:.72rem;
-      font-weight:700;
-      letter-spacing:.09em;
+      font-size:.70rem;
+      font-weight:800;
+      letter-spacing:.11em;
       text-transform:uppercase;
-      color:#555;
+      color:#0057d9;
       margin-bottom:7px;
     }
 
     .course-meta{
-      color:#555;
+      color:#444;
       font-size:.84rem;
       margin-top:10px;
+      font-weight:600;
     }
 
     .quick-links{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      margin-top:14px;
+      margin-top:15px;
     }
 
     .quick-links a{
       display:inline-block;
-      border:1px solid var(--rule);
+      border:1px solid #cfd8e3;
       background:white;
       color:#0057d9;
       text-decoration:none;
@@ -90,6 +93,21 @@
     .quick-links a:hover{
       text-decoration:underline;
       text-underline-offset:2px;
+      background:#f7fbff;
+    }
+
+    .course-section-card{
+      border:1px solid var(--rule);
+      background:#fff;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:0 0 18px;
+      box-shadow:0 4px 14px rgba(0,0,0,.035);
+    }
+
+    .course-section-card.highlight{
+      background:#fafcff;
+      border-left:4px solid #0057d9;
     }
 
     .notice-box{
@@ -130,6 +148,7 @@
 
     .course-list{
       max-width:none;
+      margin-bottom:0;
     }
 
     .course-list li{
@@ -161,6 +180,26 @@
     .file-status{
       color:#777;
       font-size:.8rem;
+    }
+
+    .assessment-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .assessment-card{
+      border:1px solid var(--rule);
+      background:#fafafa;
+      border-radius:10px;
+      padding:12px 14px;
+    }
+
+    .assessment-card strong{
+      display:block;
+      color:#111;
+      margin-bottom:5px;
     }
 
     .page-index{
@@ -231,6 +270,10 @@
       .file-actions{
         white-space:normal;
       }
+
+      .assessment-grid{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
@@ -288,249 +331,257 @@
       </div>
     </section>
 
-    <h2 id="news">News</h2>
+    <section id="news" class="course-section-card highlight">
+      <h2>News</h2>
 
-    <div class="notice-box">
-      <div class="notice-date">Avviso</div>
+      <div class="notice-box">
+        <div class="notice-date">Avviso</div>
+        <p>
+          Le slide e gli altri materiali del corso saranno caricati progressivamente durante il semestre.
+        </p>
+      </div>
+    </section>
+
+    <section id="calendario-ricevimento" class="course-section-card">
+      <h2>Calendario e ricevimento</h2>
+
+      <div class="notice-box">
+        <div class="notice-date">Calendario delle lezioni</div>
+        <p>
+          Le lezioni si svolgono il martedì e il mercoledì, dalle ore 14:00 alle ore 17:00.
+          Le slide saranno caricate progressivamente.
+        </p>
+      </div>
+
+      <div class="notice-box">
+        <div class="notice-date">Ricevimento</div>
+        <p>
+          Il ricevimento studenti si svolge il mercoledì alle ore 11:00, presso il mio ufficio al primo piano.
+        </p>
+      </div>
+    </section>
+
+    <section id="programma-syllabus" class="course-section-card">
+      <h2>Programma e syllabus</h2>
+
       <p>
-        Le slide e gli altri materiali del corso saranno caricati progressivamente durante il semestre.
+        Il programma/syllabus del corso sarà disponibile in formato PDF.
       </p>
-    </div>
 
-    <h2 id="calendario-ricevimento">Calendario e ricevimento</h2>
+      <table class="course-table">
+        <thead>
+          <tr>
+            <th>Documento</th>
+            <th>Descrizione</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
 
-    <div class="notice-box">
-      <div class="notice-date">Calendario delle lezioni</div>
+        <tbody>
+          <tr>
+            <td>Programma/Syllabus</td>
+            <td>Programma del corso, obiettivi formativi, struttura delle lezioni e modalità di valutazione.</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="programma-sintetico" class="course-section-card">
+      <h2>Programma sintetico</h2>
+
+      <ul class="pubs course-list">
+        <li>Economia pubblica dell’innovazione e razionale dell’intervento pubblico.</li>
+        <li>Conoscenza come bene economico: non rivalità, escludibilità imperfetta e appropriabilità.</li>
+        <li>Esternalità, spillover di conoscenza e divergenza tra rendimento privato e rendimento sociale.</li>
+        <li>Strumenti pubblici per l’innovazione: brevetti, sussidi, crediti d’imposta, ricerca pubblica e domanda pubblica.</li>
+        <li>Additionality, deadweight, crowding-in e crowding-out.</li>
+        <li>Vincoli finanziari, asimmetrie informative e investimento in innovazione.</li>
+        <li>Politica industriale e competitività delle imprese.</li>
+        <li>Politiche territoriali, sviluppo regionale ed ecosistemi dell’innovazione.</li>
+        <li>Metodi empirici per la valutazione delle politiche pubbliche e inferenza causale.</li>
+        <li>Applicazioni a politiche pubbliche italiane ed europee.</li>
+      </ul>
+    </section>
+
+    <section id="slide" class="course-section-card">
+      <h2>Slide</h2>
+
       <p>
-        Le lezioni si svolgono il martedì e il mercoledì, dalle ore 14:00 alle ore 17:00.
-        Le slide saranno caricate progressivamente.
+        Per ogni lezione, il primo link apre il PDF nel browser, mentre il secondo consente di scaricarlo.
+        I link diventano blu solo dopo il caricamento effettivo del file PDF nel repository.
       </p>
-    </div>
 
-    <div class="notice-box">
-      <div class="notice-date">Ricevimento</div>
+      <table class="course-table">
+        <thead>
+          <tr>
+            <th>Lezione</th>
+            <th>Argomento</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Lezione 1</td>
+            <td>Introduzione al corso e presentazione del syllabus</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 2</td>
+            <td>Economia pubblica dell’innovazione: fallimenti di mercato, spillover e intervento pubblico</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 3</td>
+            <td>Finanziamento dell’innovazione, asimmetrie informative e vincoli finanziari</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 4</td>
+            <td>Incentivi pubblici, additionality e disegno delle politiche</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 5</td>
+            <td>Politica industriale, imprese e produttività</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 6</td>
+            <td>Politiche territoriali, sviluppo locale ed ecosistemi dell’innovazione</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 7</td>
+            <td>Approcci empirici alla valutazione delle politiche pubbliche</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 8</td>
+            <td>Difference-in-differences e metodi controfattuali</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 9</td>
+            <td>Dimensione spaziale e territoriale delle politiche pubbliche</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 10</td>
+            <td>Dati, indicatori ed evidenza empirica per le politiche dell’innovazione</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 11</td>
+            <td>Casi studio e applicazioni empiriche</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Lezione 12</td>
+            <td>Discussione finale e riepilogo del corso</td>
+            <td class="file-actions">
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf" target="_blank" rel="noopener">Apri PDF</a>
+              <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf" download>Scarica PDF</a>
+              <span class="file-status">Non ancora disponibile</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="valutazione" class="course-section-card">
+      <h2>Valutazione</h2>
+
       <p>
-        Il ricevimento studenti si svolge il mercoledì alle ore 11:00, presso il mio ufficio al primo piano.
+        La valutazione prevede una prova individuale e un progetto applicato.
+        La prova verifica la capacità di comprendere il razionale economico delle politiche pubbliche,
+        analizzare strumenti alternativi di intervento e interpretare evidenza empirica.
+        Il progetto riguarda l’analisi applicata di una politica pubblica per l’innovazione,
+        le imprese o lo sviluppo territoriale.
       </p>
-    </div>
 
-    <h2 id="programma-syllabus">Programma e syllabus</h2>
+      <div class="assessment-grid">
+        <div class="assessment-card">
+          <strong>Prova individuale</strong>
+          Verifica della comprensione dei concetti, degli strumenti di policy e della logica della valutazione.
+        </div>
 
-    <p>
-      Il programma/syllabus del corso sarà disponibile in formato PDF.
-    </p>
+        <div class="assessment-card">
+          <strong>Progetto applicato</strong>
+          Analisi di una politica pubblica per l’innovazione, le imprese o lo sviluppo territoriale,
+          con discussione del contesto, del meccanismo economico, dei dati e delle implicazioni di policy.
+        </div>
+      </div>
+    </section>
 
-    <table class="course-table">
-      <thead>
-        <tr>
-          <th>Documento</th>
-          <th>Descrizione</th>
-          <th>PDF</th>
-        </tr>
-      </thead>
+    <section id="contatti" class="course-section-card">
+      <h2>Contatti</h2>
 
-      <tbody>
-        <tr>
-          <td>Programma/Syllabus</td>
-          <td>Programma del corso, obiettivi formativi, struttura delle lezioni e modalità di valutazione.</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2 id="programma-sintetico">Programma sintetico</h2>
-
-    <ul class="pubs course-list">
-      <li>Economia pubblica dell’innovazione e razionale dell’intervento pubblico.</li>
-      <li>Conoscenza come bene economico: non rivalità, escludibilità imperfetta e appropriabilità.</li>
-      <li>Esternalità, spillover di conoscenza e divergenza tra rendimento privato e rendimento sociale.</li>
-      <li>Strumenti pubblici per l’innovazione: brevetti, sussidi, crediti d’imposta, ricerca pubblica e domanda pubblica.</li>
-      <li>Additionality, deadweight, crowding-in e crowding-out.</li>
-      <li>Vincoli finanziari, asimmetrie informative e investimento in innovazione.</li>
-      <li>Politica industriale e competitività delle imprese.</li>
-      <li>Politiche territoriali, sviluppo regionale ed ecosistemi dell’innovazione.</li>
-      <li>Metodi empirici per la valutazione delle politiche pubbliche e inferenza causale.</li>
-      <li>Applicazioni a politiche pubbliche italiane ed europee.</li>
-    </ul>
-
-    <h2 id="slide">Slide</h2>
-
-    <p>
-      Per ogni lezione, il primo link apre il PDF nel browser, mentre il secondo consente di scaricarlo.
-      I link diventano blu solo dopo il caricamento effettivo del file PDF nel repository.
-    </p>
-
-    <table class="course-table">
-      <thead>
-        <tr>
-          <th>Lezione</th>
-          <th>Argomento</th>
-          <th>PDF</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Lezione 1</td>
-          <td>Introduzione al corso e presentazione del syllabus</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 2</td>
-          <td>Economia pubblica dell’innovazione: fallimenti di mercato, spillover e intervento pubblico</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 3</td>
-          <td>Finanziamento dell’innovazione, asimmetrie informative e vincoli finanziari</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 4</td>
-          <td>Incentivi pubblici, additionality e disegno delle politiche</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 5</td>
-          <td>Politica industriale, imprese e produttività</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 6</td>
-          <td>Politiche territoriali, sviluppo locale ed ecosistemi dell’innovazione</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 7</td>
-          <td>Approcci empirici alla valutazione delle politiche pubbliche</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 8</td>
-          <td>Difference-in-differences e metodi controfattuali</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 9</td>
-          <td>Dimensione spaziale e territoriale delle politiche pubbliche</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 10</td>
-          <td>Dati, indicatori ed evidenza empirica per le politiche dell’innovazione</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 11</td>
-          <td>Casi studio e applicazioni empiriche</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Lezione 12</td>
-          <td>Discussione finale e riepilogo del corso</td>
-          <td class="file-actions">
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf" target="_blank" rel="noopener">Apri PDF</a>
-            <a class="file-link" data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf" download>Scarica PDF</a>
-            <span class="file-status">Non ancora disponibile</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2 id="valutazione">Valutazione</h2>
-
-    <p>
-      La valutazione prevede una prova individuale e un progetto applicato.
-      La prova verifica la capacità di comprendere il razionale economico delle politiche pubbliche,
-      analizzare strumenti alternativi di intervento e interpretare evidenza empirica.
-      Il progetto riguarda l’analisi applicata di una politica pubblica per l’innovazione,
-      le imprese o lo sviluppo territoriale.
-    </p>
-
-    <table class="course-table">
-      <thead>
-        <tr>
-          <th>Componente</th>
-          <th>Descrizione</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Prova individuale</td>
-          <td>Verifica della comprensione dei concetti, degli strumenti di policy e della logica della valutazione.</td>
-        </tr>
-        <tr>
-          <td>Progetto applicato</td>
-          <td>Analisi di una politica pubblica per l’innovazione, le imprese o lo sviluppo territoriale, con discussione del contesto, del meccanismo economico, dei dati e delle implicazioni di policy.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2 id="contatti">Contatti</h2>
-
-    <p>
-      Per domande relative al corso, gli studenti possono contattare il professore al seguente indirizzo:
-      <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>.
-    </p>
+      <p>
+        Per domande relative al corso, gli studenti possono contattare il professore al seguente indirizzo:
+        <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>.
+      </p>
+    </section>
   </section>
 
   <aside class="page-index" aria-label="Indice della pagina del corso">
