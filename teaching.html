@@ -187,6 +187,65 @@
         margin:0;
       }
     }
+
+    /* Previous teaching block: makes clear that everything below the current course refers to past/previous activities */
+    .previous-teaching-block{
+      margin-top:8px;
+      border:1px solid var(--rule);
+      border-radius:12px;
+      background:#fff;
+      padding:16px 18px 18px;
+      box-shadow:0 4px 14px rgba(0,0,0,.025);
+    }
+
+    .previous-teaching-header{
+      border:1px solid #d8e1ea;
+      border-left:4px solid #777;
+      background:#fafafa;
+      border-radius:10px;
+      padding:12px 14px;
+      margin-bottom:16px;
+    }
+
+    .previous-teaching-label{
+      display:inline-block;
+      font-size:.68rem;
+      font-weight:800;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      color:#555;
+      margin-bottom:5px;
+    }
+
+    .previous-teaching-header h2{
+      margin:0 0 5px !important;
+      padding:0 !important;
+      border:0 !important;
+      font-size:1.05rem !important;
+      color:#111;
+    }
+
+    .previous-teaching-header p{
+      margin:0;
+      color:#555;
+      font-size:.84rem;
+      line-height:1.45;
+    }
+
+    .previous-teaching-block > h2{
+      color:#333;
+      border-bottom:1px solid var(--rule);
+      margin-top:20px;
+    }
+
+    .previous-teaching-block > h2:first-of-type{
+      margin-top:0;
+    }
+
+    .previous-teaching-block .teaching-list{
+      color:#333;
+    }
+
   </style>
 </head>
 
@@ -233,6 +292,16 @@
         University of Salento · Department of Economics · Academic year 2026–2026 · Professor: Gianluca Monturano
       </p>
     </section>
+
+    <section id="previous-teaching" class="previous-teaching-block">
+      <div class="previous-teaching-header">
+        <span class="previous-teaching-label">Previous teaching activities</span>
+        <h2>Previous teaching activities and academic training</h2>
+        <p>
+          The activities listed below refer to previous teaching appointments, tutoring,
+          teaching assistance, lectures and invited seminars.
+        </p>
+      </div>
 
     <h2 id="phd-teaching">PhD teaching</h2>
     <ul class="pubs teaching-list">
@@ -366,12 +435,14 @@
         Seminar title: <em>Accrescere la resilienza dei sistemi economici locali: la Strategia Nazionale per le Aree Interne</em>.
       </li>
     </ul>
+    </section>
   </section>
 
   <aside class="page-index" aria-label="Teaching page index">
     <h2>Index</h2>
     <ul>
       <li><a href="#current-course">Current course</a></li>
+      <li><a href="#previous-teaching">Previous teaching activities</a></li>
       <li><a href="#phd-teaching">PhD teaching</a></li>
       <li><a href="#undergraduate-graduate-courses">Undergraduate and graduate courses</a></li>
       <li><a href="#tutoring">Tutoring</a></li>
