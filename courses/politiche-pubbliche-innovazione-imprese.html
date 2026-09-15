@@ -1,60 +1,425 @@
-.current-course-box{
-  border:1px solid var(--rule);
-  background:#fafafa;
-  padding:18px 20px;
-  margin:0 0 26px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.04);
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Politiche Pubbliche per l’Innovazione e le Imprese | Gianluca Monturano</title>
+  <link rel="stylesheet" href="../styles.css">
 
-.current-course-label{
-  display:inline-block;
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.09em;
-  text-transform:uppercase;
-  color:#555;
-  margin-bottom:7px;
-}
+  <style>
+    .course-shell{
+      max-width:1180px !important;
+      width:auto !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 210px;
+      gap:34px;
+      align-items:start;
+      font-size:.88rem;
+      line-height:1.5;
+    }
 
-.current-course-box h2{
-  margin-top:0 !important;
-  margin-bottom:7px !important;
-  padding-bottom:0 !important;
-  border-bottom:0 !important;
-  font-size:1.08rem !important;
-}
+    .course-content{
+      min-width:0;
+    }
 
-.current-course-box p{
-  margin:0 0 10px;
-  line-height:1.55;
-}
+    .course-content h1{
+      font-size:1.58rem;
+      margin-bottom:7px;
+    }
 
-.current-course-meta{
-  color:#555;
-  font-size:.83rem;
-}
+    .course-content h2{
+      font-size:1rem;
+      margin-top:24px;
+      margin-bottom:9px;
+      padding-bottom:5px;
+      border-bottom:1px solid var(--rule);
+      scroll-margin-top:86px;
+    }
 
-.current-course-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:13px;
-}
+    .course-content .position{
+      font-size:.86rem;
+      margin-bottom:18px;
+    }
 
-.current-course-links a{
-  display:inline-block;
-  border:1px solid var(--rule);
-  background:white;
-  color:#0057d9;
-  text-decoration:none;
-  padding:6px 10px;
-  border-radius:7px;
-  font-size:.82rem;
-  font-weight:700;
-}
+    .course-hero{
+      border:1px solid var(--rule);
+      background:#fafafa;
+      border-radius:12px;
+      padding:18px 20px;
+      margin-bottom:24px;
+      box-shadow:0 6px 18px rgba(0,0,0,.04);
+    }
 
-.current-course-links a:hover{
-  text-decoration:underline;
-  text-underline-offset:2px;
-}
+    .course-label{
+      display:inline-block;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:#555;
+      margin-bottom:7px;
+    }
+
+    .course-meta{
+      color:#555;
+      font-size:.84rem;
+      margin-top:10px;
+    }
+
+    .course-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .course-actions a{
+      display:inline-block;
+      border:1px solid var(--rule);
+      background:white;
+      color:#0057d9;
+      text-decoration:none;
+      padding:6px 10px;
+      border-radius:7px;
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .course-actions a:hover{
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    .notice-box{
+      border:1px solid var(--rule);
+      background:#fff;
+      border-radius:10px;
+      padding:13px 15px;
+      margin-bottom:10px;
+    }
+
+    .notice-date{
+      font-weight:700;
+      color:#111;
+      font-size:.82rem;
+      margin-bottom:4px;
+    }
+
+    .course-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:.86rem;
+    }
+
+    .course-table th,
+    .course-table td{
+      border-bottom:1px solid var(--rule);
+      padding:8px 7px;
+      vertical-align:top;
+      text-align:left;
+    }
+
+    .course-table th{
+      font-weight:700;
+      color:#111;
+      background:#fafafa;
+    }
+
+    .course-table a{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    .course-list{
+      max-width:none;
+    }
+
+    .course-list li{
+      margin-bottom:7px;
+      line-height:1.5;
+    }
+
+    .page-index{
+      position:sticky;
+      top:74px;
+      align-self:start;
+      font-size:.82rem;
+      border-left:1px solid var(--rule);
+      padding-left:12px;
+      color:#333;
+    }
+
+    .page-index h2{
+      font-size:.95rem;
+      margin:0 0 9px;
+      padding:0;
+      border:0;
+    }
+
+    .page-index ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .page-index li{
+      margin:0 0 7px;
+      line-height:1.25;
+    }
+
+    .page-index a{
+      color:#333;
+      text-decoration:none;
+    }
+
+    .page-index a:hover{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    @media (max-width:900px){
+      .course-shell{
+        display:block;
+        max-width:100% !important;
+        font-size:.93rem;
+      }
+
+      .page-index{
+        position:static;
+        border-left:0;
+        border-bottom:1px solid var(--rule);
+        padding-left:0;
+        padding-bottom:12px;
+        margin-bottom:18px;
+      }
+
+      .page-index ul{
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px 12px;
+      }
+
+      .page-index li{
+        margin:0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <a class="name" href="../index.html">Gianluca Monturano, PhD</a>
+
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="../index.html">Home</a>
+        <a href="../research.html">Research</a>
+        <a href="../software.html">Software</a>
+        <a class="active" href="../teaching.html">Teaching</a>
+        <a href="../dissemination.html">Dissemination</a>
+        <a href="../cv.html">CV</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap page course-shell">
+  <section class="course-content">
+
+    <section class="course-hero">
+      <span class="course-label">Current course</span>
+
+      <h1>Politiche Pubbliche per l’Innovazione e le Imprese</h1>
+
+      <p class="position">
+        Course materials, notices, slides and teaching resources.
+      </p>
+
+      <p>
+        The course introduces the economic rationale, instruments and evaluation methods
+        of public policies for innovation and firms. Topics include market failures,
+        knowledge spillovers, public intervention, financing of innovation, industrial policy,
+        territorial policy and empirical approaches to policy evaluation.
+      </p>
+
+      <p class="course-meta">
+        University of Salento · Department of Economics · Academic year 2025–2026 · Instructor: Gianluca Monturano
+      </p>
+
+      <div class="course-actions">
+        <a href="#notices">Notices</a>
+        <a href="#slides">Slides</a>
+        <a href="#programme">Programme</a>
+        <a href="#materials">Materials</a>
+        <a href="#exam">Assessment</a>
+      </div>
+    </section>
+
+    <h2 id="notices">Notices</h2>
+
+    <div class="notice-box">
+      <div class="notice-date">Latest notice</div>
+      <p>
+        Course materials and lecture slides will be uploaded progressively during the semester.
+      </p>
+    </div>
+
+    <div class="notice-box">
+      <div class="notice-date">Teaching materials</div>
+      <p>
+        Slides, readings and additional materials will be made available in the dedicated sections below.
+      </p>
+    </div>
+
+    <h2 id="slides">Slides</h2>
+
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th>Lecture</th>
+          <th>Topic</th>
+          <th>File</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Lecture 1</td>
+          <td>Course introduction and syllabus</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 2</td>
+          <td>Economia pubblica dell’innovazione: fallimenti di mercato, spillover e intervento pubblico</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 3</td>
+          <td>Financing innovation, information asymmetries and public support</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 4</td>
+          <td>Public incentives, additionality and policy design</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 5</td>
+          <td>Industrial policy, firms and productivity</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 6</td>
+          <td>Territorial policies, local development and innovation ecosystems</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 7</td>
+          <td>Empirical approaches to policy evaluation</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 8</td>
+          <td>Difference-in-differences and counterfactual methods</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 9</td>
+          <td>Spatial and territorial dimensions of public policies</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 10</td>
+          <td>Data, indicators and evidence for innovation policies</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 11</td>
+          <td>Case studies and empirical applications</td>
+          <td>Coming soon</td>
+        </tr>
+
+        <tr>
+          <td>Lecture 12</td>
+          <td>Final discussion and course review</td>
+          <td>Coming soon</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="programme">Programme</h2>
+
+    <ul class="pubs course-list">
+      <li>Public economics of innovation and the rationale for public intervention.</li>
+      <li>Knowledge as an economic good: non-rivalry, imperfect excludability and appropriability.</li>
+      <li>Externalities, knowledge spillovers and the divergence between private and social returns.</li>
+      <li>Public instruments for innovation: patents, subsidies, tax credits, public research and public demand.</li>
+      <li>Additionality, deadweight, crowding-in and crowding-out.</li>
+      <li>Financing constraints, information asymmetries and innovation investment.</li>
+      <li>Industrial policy and firm-level competitiveness.</li>
+      <li>Territorial policies, regional development and innovation systems.</li>
+      <li>Empirical methods for policy evaluation and causal inference.</li>
+      <li>Applications to Italian and European public policies.</li>
+    </ul>
+
+    <h2 id="materials">Materials</h2>
+
+    <ul class="pubs course-list">
+      <li>Syllabus: coming soon.</li>
+      <li>Reading list: coming soon.</li>
+      <li>Datasets and empirical materials: coming soon.</li>
+      <li>Code and replication examples: coming soon.</li>
+    </ul>
+
+    <h2 id="exam">Assessment</h2>
+
+    <p>
+      Assessment information, exam rules and additional instructions will be communicated during the course
+      and updated on this page.
+    </p>
+
+    <h2 id="contacts">Contacts</h2>
+
+    <p>
+      For course-related questions, students may contact the instructor by email:
+      <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>.
+    </p>
+  </section>
+
+  <aside class="page-index" aria-label="Course page index">
+    <h2>Course index</h2>
+    <ul>
+      <li><a href="#notices">Notices</a></li>
+      <li><a href="#slides">Slides</a></li>
+      <li><a href="#programme">Programme</a></li>
+      <li><a href="#materials">Materials</a></li>
+      <li><a href="#exam">Assessment</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© Gianluca Monturano</span>
+    <span>Teaching</span>
+  </div>
+</footer>
+</body>
+</html>
