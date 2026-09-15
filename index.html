@@ -260,6 +260,47 @@
         justify-content:center !important;
       }
     }
+
+    /* FINAL: light-grey card and office footnote below the line */
+    .home-card{
+      border:1px solid #d2d6dc !important;
+      border-top:5px solid #a9afb8 !important;
+      background:linear-gradient(180deg,#ffffff 0%,#f4f5f6 100%) !important;
+      box-shadow:0 10px 26px rgba(0,0,0,.055) !important;
+    }
+
+    .office-line{
+      display:none !important;
+    }
+
+    .office-footnote{
+      max-width:820px !important;
+      margin:24px auto 0 !important;
+      padding:13px 18px 0 !important;
+      text-align:center !important;
+      color:#3b4450 !important;
+      font-size:.82rem !important;
+      line-height:1.5 !important;
+      border-top:1px solid #d2d6dc !important;
+    }
+
+    .office-footnote strong{
+      color:#111 !important;
+      font-weight:700 !important;
+    }
+
+    .office-footnote a{
+      color:#0057d9 !important;
+      text-decoration:none !important;
+      border-bottom:1px solid rgba(0,87,217,.42) !important;
+    }
+
+    .office-footnote a:hover{
+      color:#003fa3 !important;
+      border-bottom-color:#003fa3 !important;
+      text-decoration:none !important;
+    }
+
   </style>
 </head>
 
@@ -297,13 +338,7 @@
         <span class="role-title">Senior Researcher</span><span class="role-separator"> · </span><a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">Fondazione Eni Enrico Mattei</a>
       </div>
     </div>
-
-    <div class="office-line" aria-label="Office address">
-      <strong>Office:</strong>
-      <a href="https://maps.app.goo.gl/ydmHbmiB5CQFaNb48" target="_blank" rel="noopener">Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.</a>
-    </div>
-
-    <div class="logo-row primary-logos centered-logos" aria-label="Academic and social profiles">
+<div class="logo-row primary-logos centered-logos" aria-label="Academic and social profiles">
       <a class="round-logo" href="https://www.linkedin.com/in/gianluca-monturano93/" target="_blank" rel="noopener" title="LinkedIn">
         <img src="assets/icons/LinkeIn.png" alt="LinkedIn">
       </a>
@@ -384,6 +419,11 @@
     </div>
   </section>
 </main>
+
+<div class="office-footnote" aria-label="Office address">
+  <strong>Office:</strong>
+  <a href="https://maps.app.goo.gl/ydmHbmiB5CQFaNb48" target="_blank" rel="noopener">Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.</a>
+</div>
 
 <footer class="footer">
   <div class="wrap footer-inner">
