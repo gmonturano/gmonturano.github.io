@@ -162,10 +162,10 @@
       align-items:center;
       justify-content:center;
       font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      font-size:.80em !important;
+      font-size:.92em !important;
       font-weight:800;
-      padding:2px 6px !important;
-      border-radius:5px;
+      padding:3px 8px !important;
+      border-radius:6px;
       line-height:1;
       vertical-align:middle;
     }
@@ -340,10 +340,11 @@
       display:flex !important;
       justify-content:center !important;
       align-items:center !important;
-      flex-wrap:wrap !important;
-      max-width:260px !important;
+      flex-wrap:nowrap !important;
+      max-width:none !important;
       gap:8px !important;
-      margin:10px auto 10px !important;
+      margin:10px auto 8px !important;
+      overflow-x:auto !important;
     }
 
     main.home-shell.home-centered .round-logo,
@@ -360,15 +361,32 @@
       filter:drop-shadow(0 1px 1px rgba(0,0,0,.08)) !important;
     }
 
+    .office-inline{
+      text-align:center;
+      font-size:.84rem;
+      line-height:1.5;
+      color:#4f5a66;
+      margin:8px 0 10px;
+    }
+
+    .office-inline strong{
+      color:#111;
+      font-weight:700;
+    }
+
     .email-line{
       display:flex;
+      flex-direction:column;
       justify-content:center;
       align-items:center;
-      gap:8px;
-      flex-wrap:wrap;
+      gap:4px;
       color:#5b6572;
       font-size:.82rem;
       margin:8px 0 20px;
+    }
+
+    .email-line span{
+      display:none;
     }
 
     main.home-shell.home-centered .home-bio{
@@ -436,6 +454,12 @@
         height:180px !important;
       }
 
+      main.home-shell.home-centered .centered-logos,
+      main.home-shell.home-centered .primary-logos{
+        flex-wrap:wrap !important;
+        justify-content:center !important;
+      }
+
       main.home-shell.home-centered .home-bio{
         width:auto !important;
         max-width:100% !important;
@@ -486,6 +510,10 @@
       </div>
     </div>
 
+    <div class="office-inline" aria-label="Office address">
+      <strong>Office:</strong> Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.
+    </div>
+
     <div class="logo-row primary-logos centered-logos" aria-label="Academic and social profiles">
       <a class="round-logo" href="https://www.linkedin.com/in/gianluca-monturano93/" target="_blank" rel="noopener" title="LinkedIn">
         <img src="assets/icons/LinkeIn.png" alt="LinkedIn">
@@ -530,7 +558,6 @@
 
     <div class="email-line">
       <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>
-      <span>·</span>
       <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
     </div>
 
@@ -576,10 +603,6 @@
   </section>
 </main>
 
-<div class="office-note" aria-label="Office address">
-  <strong>Office:</strong>
-  Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.
-</div>
 
 <footer class="footer">
   <div class="wrap footer-inner">
