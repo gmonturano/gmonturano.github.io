@@ -1,2876 +1,395 @@
-# ==============================================================================
-# NONLINEAR_STANDALONE_AOR_FULL_V2.R
-#
-# Standalone nonlinear robustness analysis for AOR project
-#
-# Models:
-#   1. Linear
-#   2. Quadratic
-#   3. Cubic
-#   4. Natural spline df = 3
-#   5. Natural spline df = 4
-#
-# Pipelines:
-#   FILTER
-#   SUBSET
-#   REBUILT
-#
-# Estimator:
-#   TWFE via plm::plm(model = "within", effect = "twoways")
-#
-# Inference:
-#   HC1 clustered by municipality/group
-#
-# IMPORTANT:
-#   - starts from a clean R session
-#   - reloads the master data and metadata
-#   - freezes the complete-case sample
-#   - constructs polynomial and spline terms BEFORE pdata.frame
-#   - then creates FILTER / SUBSET / REBUILT
-#   - stops immediately if no model output is produced
-#   - saves CSV outputs and PNG/PDF plots
-# ==============================================================================
-
-
-# ==============================================================================
-# 0. CLEAN SESSION
-# ==============================================================================
-
-rm(list = ls())
-gc()
-
-options(
-  stringsAsFactors = FALSE,
-  scipen = 999
-)
-
-
-# ==============================================================================
-# 1. PACKAGES
-# ==============================================================================
-
-required_packages <- c(
-  "dplyr",
-  "tidyr",
-  "tibble",
-  "plm",
-  "lmtest",
-  "ggplot2"
-)
-
-missing_packages <- required_packages[
-  !vapply(
-    required_packages,
-    requireNamespace,
-    FUN.VALUE = logical(1),
-    quietly = TRUE
-  )
-]
-
-if (length(missing_packages) > 0L) {
-  stop(
-    paste0(
-      "Installare prima questi pacchetti: ",
-      paste(missing_packages, collapse = ", ")
-    ),
-    call. = FALSE
-  )
-}
-
-suppressPackageStartupMessages({
-  library(dplyr)
-  library(tidyr)
-  library(tibble)
-  library(plm)
-  library(lmtest)
-  library(ggplot2)
-})
-
-
-# ==============================================================================
-# 2. PATHS
-# ==============================================================================
-
-AOR_ROOT <-
-  "C:/Monturano/Monturano_singolo/1_Annals_operazional_research"
-
-DATA_DIR <- file.path(
-  AOR_ROOT,
-  "01_data_master"
-)
-
-OUT_DIR <- file.path(
-  AOR_ROOT,
-  "06_tables",
-  "NONLINEAR_STANDALONE"
-)
-
-FIG_DIR <- file.path(
-  AOR_ROOT,
-  "07_figures",
-  "NONLINEAR_STANDALONE"
-)
-
-dir.create(
-  OUT_DIR,
-  recursive = TRUE,
-  showWarnings = FALSE
-)
-
-dir.create(
-  FIG_DIR,
-  recursive = TRUE,
-  showWarnings = FALSE
-)
-
-
-# ==============================================================================
-# 3. INPUT FILES
-# ==============================================================================
-
-find_input_file <- function(filename) {
-
-  preferred <- file.path(
-    DATA_DIR,
-    filename
-  )
-
-  if (file.exists(preferred)) {
-    return(preferred)
-  }
-
-  escaped <- gsub(
-    "\\.",
-    "\\\\.",
-    filename
-  )
-
-  hits <- list.files(
-    AOR_ROOT,
-    pattern = paste0("^", escaped, "$"),
-    recursive = TRUE,
-    full.names = TRUE
-  )
-
-  if (length(hits) == 0L) {
-    stop(
-      paste0(
-        "File non trovato: ",
-        filename
-      ),
-      call. = FALSE
-    )
-  }
-
-  if (length(hits) > 1L) {
-    cat(
-      "\nATTENZIONE: trovate più copie di ",
-      filename,
-      ". Uso la prima:\n",
-      hits[1],
-      "\n",
-      sep = ""
-    )
-  }
-
-  hits[1]
-}
-
-
-RDC_FILE <- find_input_file(
-  "DB_AOR_RDC_MASTER.rds"
-)
-
-COH_FILE <- find_input_file(
-  "DB_AOR_COHESION_MASTER.rds"
-)
-
-RDC_META_FILE <- find_input_file(
-  "RDC_METADATA.rds"
-)
-
-COH_META_FILE <- find_input_file(
-  "COHESION_METADATA.rds"
-)
-
-
-# ==============================================================================
-# 4. LOAD DATA
-# ==============================================================================
-
-RDC <- readRDS(
-  RDC_FILE
-)
-
-COH <- readRDS(
-  COH_FILE
-)
-
-RDC_META <- readRDS(
-  RDC_META_FILE
-)
-
-COH_META <- readRDS(
-  COH_META_FILE
-)
-
-cat(
-  "\nDATA LOADED\n",
-  "RDC rows      : ", nrow(RDC), "\n",
-  "COHESION rows : ", nrow(COH), "\n\n",
-  sep = ""
-)
-
-
-# ==============================================================================
-# 5. BASIC HELPERS
-# ==============================================================================
-
-as_num <- function(x) {
-
-  suppressWarnings(
-    as.numeric(
-      as.character(x)
-    )
-  )
-}
-
-
-bt <- function(x) {
-
-  paste0(
-    "`",
-    gsub(
-      "`",
-      "",
-      x,
-      fixed = TRUE
-    ),
-    "`"
-  )
-}
-
-
-safe_name <- function(x) {
-
-  x <- gsub(
-    "[^A-Za-z0-9_-]+",
-    "_",
-    x
-  )
-
-  gsub(
-    "_+",
-    "_",
-    x
-  )
-}
-
-
-# ==============================================================================
-# 6. CONTROL-NAME NORMALIZATION
-# ==============================================================================
-
-canonical_control_name <- function(name) {
-
-  ifelse(
-    name == "Età/Anno",
-    "Età.Anno",
-    name
-  )
-}
-
-
-canonicalize_controls <- function(x) {
-
-  if (length(x) == 0L) {
-    return(character(0))
-  }
-
-  unique(
-    vapply(
-      x,
-      canonical_control_name,
-      FUN.VALUE = character(1)
-    )
-  )
-}
-
-
-resolve_one_name <- function(
-    name,
-    DB) {
-
-  name <- canonical_control_name(
-    name
-  )
-
-  if (
-    identical(name, "Età.Anno") &&
-    "Età.Anno" %in% names(DB)
-  ) {
-    return("Età.Anno")
-  }
-
-  if (name %in% names(DB)) {
-    return(name)
-  }
-
-  target <- tolower(
-    make.names(
-      name,
-      unique = FALSE
-    )
-  )
-
-  available <- tolower(
-    make.names(
-      names(DB),
-      unique = FALSE
-    )
-  )
-
-  hit <- which(
-    available == target
-  )
-
-  if (length(hit) == 1L) {
-    return(
-      names(DB)[hit]
-    )
-  }
-
-  NA_character_
-}
-
-
-resolve_controls <- function(
-    controls,
-    DB,
-    dataset = NA_character_,
-    spec = NA_character_) {
-
-  if (length(controls) == 0L) {
-    return(character(0))
-  }
-
-  controls <- canonicalize_controls(
-    controls
-  )
-
-  resolved <- vapply(
-    controls,
-    resolve_one_name,
-    FUN.VALUE = character(1),
-    DB = DB
-  )
-
-  missing <- is.na(
-    resolved
-  )
-
-  if (any(missing)) {
-
-    for (j in which(missing)) {
-
-      cat(
-        "CONTROL NOT FOUND -> DROPPED | ",
-        dataset,
-        " | ",
-        spec,
-        " | ",
-        controls[j],
-        "\n",
-        sep = ""
-      )
-    }
-  }
-
-  unique(
-    resolved[
-      !is.na(resolved)
-    ]
-  )
-}
-
-
-# ==============================================================================
-# 7. PREPARE OUTCOMES
-# ==============================================================================
-
-prepare_common_outcomes <- function(DB) {
-
-  if ("Gini_con_NA" %in% names(DB)) {
-
-    DB$Y_GINI_MAIN <-
-      as_num(
-        DB$Gini_con_NA
-      )
-
-  } else if ("y_gini" %in% names(DB)) {
-
-    DB$Y_GINI_MAIN <-
-      as_num(
-        DB$y_gini
-      )
-  }
-
-  if ("y_income_pc" %in% names(DB)) {
-
-    DB$Y_INCOME_LEVEL <-
-      as_num(
-        DB$y_income_pc
-      )
-
-    DB$Y_LOG_INCOME <-
-      ifelse(
-        is.finite(DB$Y_INCOME_LEVEL) &
-          DB$Y_INCOME_LEVEL > 0,
-        log(DB$Y_INCOME_LEVEL),
-        NA_real_
-      )
-  }
-
-  if ("y_low_income_share" %in% names(DB)) {
-
-    DB$Y_LOW_INCOME_SHARE <-
-      as_num(
-        DB$y_low_income_share
-      )
-  }
-
-  DB
-}
-
-
-RDC <- prepare_common_outcomes(
-  RDC
-)
-
-COH <- prepare_common_outcomes(
-  COH
-)
-
-
-# ==============================================================================
-# 8. COHESION CANONICAL COLUMN
-# ==============================================================================
-
-if (
-  !"Età.Anno" %in% names(COH) &&
-  "Età/Anno" %in% names(COH)
-) {
-
-  COH[["Età.Anno"]] <-
-    COH[["Età/Anno"]]
-
-  cat(
-    "COHESION CANONICAL COLUMN CREATED | Età/Anno -> Età.Anno\n"
-  )
-}
-
-
-# ==============================================================================
-# 9. ROW IDENTIFIERS
-# ==============================================================================
-
-if (!"row_id" %in% names(RDC)) {
-
-  RDC$row_id <-
-    seq_len(
-      nrow(RDC)
-    )
-}
-
-
-if (!"row_id" %in% names(COH)) {
-
-  COH$row_id <-
-    seq_len(
-      nrow(COH)
-    )
-}
-
-
-# ==============================================================================
-# 10. DESIGN
-# ==============================================================================
-
-DESIGN <- list()
-
-
-DESIGN$RDC <- list(
-
-  DB = RDC,
-
-  id = RDC_META$id,
-  time = RDC_META$time,
-
-  panel_years = 2015:2022,
-  keep_years = 2019:2022,
-
-  outcomes = intersect(
-    c(
-      "Y_GINI_MAIN",
-      "Y_LOG_INCOME",
-      "Y_LOW_INCOME_SHARE"
-    ),
-    names(RDC)
-  ),
-
-  exposures = intersect(
-    c(
-      "rdc_dose",
-      "rdc_dose_panel"
-    ),
-    names(RDC)
-  ),
-
-  spec_blocks =
-    RDC_META$spec_blocks
-)
-
-
-DESIGN$COHESION <- list(
-
-  DB = COH,
-
-  id = COH_META$id,
-  time = COH_META$time,
-
-  panel_years = 2007:2020,
-  keep_years = 2014:2020,
-
-  outcomes = intersect(
-    c(
-      "Y_GINI_MAIN",
-      "Y_LOG_INCOME",
-      "Y_LOW_INCOME_SHARE"
-    ),
-    names(COH)
-  ),
-
-  exposures = intersect(
-    c(
-      "log1p_fin_1420_all_pc",
-      "log1p_pay_1420_all_pc"
-    ),
-    names(COH)
-  ),
-
-  spec_blocks =
-    lapply(
-      COH_META$spec_blocks,
-      canonicalize_controls
-    )
-)
-
-
-# ==============================================================================
-# 11. FAIL-FAST DESIGN CHECKS
-# ==============================================================================
-
-for (dataset_name in names(DESIGN)) {
-
-  DD <- DESIGN[[dataset_name]]
-
-  if (!DD$id %in% names(DD$DB)) {
-    stop(
-      paste0(
-        dataset_name,
-        ": id column not found: ",
-        DD$id
-      ),
-      call. = FALSE
-    )
-  }
-
-  if (!DD$time %in% names(DD$DB)) {
-    stop(
-      paste0(
-        dataset_name,
-        ": time column not found: ",
-        DD$time
-      ),
-      call. = FALSE
-    )
-  }
-
-  if (length(DD$outcomes) == 0L) {
-    stop(
-      paste0(
-        dataset_name,
-        ": no main outcomes found."
-      ),
-      call. = FALSE
-    )
-  }
-
-  if (length(DD$exposures) == 0L) {
-    stop(
-      paste0(
-        dataset_name,
-        ": no main exposures found."
-      ),
-      call. = FALSE
-    )
-  }
-
-  if (length(DD$spec_blocks) == 0L) {
-    stop(
-      paste0(
-        dataset_name,
-        ": spec_blocks is empty."
-      ),
-      call. = FALSE
-    )
-  }
-}
-
-
-# ==============================================================================
-# 12. FROZEN SAMPLE
-# ==============================================================================
-
-freeze_sample <- function(
-    DB,
-    id,
-    time,
-    y,
-    x,
-    controls,
-    panel_years) {
-
-  controls <- controls[
-    controls %in% names(DB)
-  ]
-
-  vars <- unique(
-    c(
-      id,
-      time,
-      "row_id",
-      y,
-      x,
-      controls
-    )
-  )
-
-  vars <- vars[
-    vars %in% names(DB)
-  ]
-
-  D <- DB[
-    DB[[time]] %in% panel_years,
-    vars,
-    drop = FALSE
-  ]
-
-  complete_vars <- unique(
-    c(
-      id,
-      time,
-      y,
-      x,
-      controls
-    )
-  )
-
-  complete_vars <- complete_vars[
-    complete_vars %in% names(D)
-  ]
-
-  keep <- complete.cases(
-    D[
-      ,
-      complete_vars,
-      drop = FALSE
-    ]
-  )
-
-  D <- D[
-    keep,
-    ,
-    drop = FALSE
-  ]
-
-  D <- D[
-    order(
-      D[[id]],
-      D[[time]]
-    ),
-    ,
-    drop = FALSE
-  ]
-
-  rownames(D) <- NULL
-
-  D
-}
-
-
-# ==============================================================================
-# 13. ADD NONLINEAR TERMS BEFORE pdata.frame
-# ==============================================================================
-
-add_nonlinear_terms <- function(
-    D,
-    x) {
-
-  xv <- as_num(
-    D[[x]]
-  )
-
-  xbar <- mean(
-    xv,
-    na.rm = TRUE
-  )
-
-  D$X_CENTERED <- xv - xbar
-  D$X_SQ <- D$X_CENTERED^2
-  D$X_CUBE <- D$X_CENTERED^3
-
-  attr(D, "x_mean") <- xbar
-
-  # Natural spline df = 3.
-  # Failure of the spline basis must NOT invalidate linear/quadratic/cubic.
-  NS3_RAW <- tryCatch(
-    splines::ns(
-      D$X_CENTERED,
-      df = 3,
-      intercept = FALSE
-    ),
-    error = function(e) NULL
-  )
-
-  if (!is.null(NS3_RAW)) {
-
-    attr(D, "ns3_ok") <- TRUE
-    attr(D, "ns3_knots") <- attr(NS3_RAW, "knots")
-    attr(D, "ns3_boundary") <- attr(NS3_RAW, "Boundary.knots")
-
-    NS3 <- as.matrix(NS3_RAW)
-
-    for (j in seq_len(ncol(NS3))) {
-      D[[paste0("NS3_", j)]] <- NS3[, j]
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gianluca Monturano | Assistant Professor · Senior Researcher</title>
+  <meta name="description" content="Gianluca Monturano is Assistant Professor at the University of Salento and Senior Researcher at Fondazione Eni Enrico Mattei. His research focuses on public policy evaluation, regional economics, spatial econometrics, transport, innovation and applied economics.">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root{
+      --home-blue:#0057d9;
+      --home-blue-dark:#003fa3;
+      --home-grey:#3f4854;
+      --home-grey-soft:#56616f;
+      --home-border:#d8e1ea;
     }
 
-  } else {
-
-    attr(D, "ns3_ok") <- FALSE
-    attr(D, "ns3_knots") <- NULL
-    attr(D, "ns3_boundary") <- NULL
-  }
-
-  # Natural spline df = 4.
-  NS4_RAW <- tryCatch(
-    splines::ns(
-      D$X_CENTERED,
-      df = 4,
-      intercept = FALSE
-    ),
-    error = function(e) NULL
-  )
-
-  if (!is.null(NS4_RAW)) {
-
-    attr(D, "ns4_ok") <- TRUE
-    attr(D, "ns4_knots") <- attr(NS4_RAW, "knots")
-    attr(D, "ns4_boundary") <- attr(NS4_RAW, "Boundary.knots")
-
-    NS4 <- as.matrix(NS4_RAW)
-
-    for (j in seq_len(ncol(NS4))) {
-      D[[paste0("NS4_", j)]] <- NS4[, j]
+    main.home-shell.home-centered{
+      width:820px !important;
+      max-width:820px !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      padding-left:0 !important;
+      padding-right:0 !important;
+      display:block !important;
     }
 
-  } else {
-
-    attr(D, "ns4_ok") <- FALSE
-    attr(D, "ns4_knots") <- NULL
-    attr(D, "ns4_boundary") <- NULL
-  }
-
-  D
-}
-
-
-# ==============================================================================
-# 14. FILTER / SUBSET / REBUILT
-# ==============================================================================
-
-make_three_pipelines <- function(
-    D,
-    id,
-    time,
-    keep_years) {
-
-  P0 <- plm::pdata.frame(
-    D,
-    index = c(
-      id,
-      time
-    ),
-    drop.index = FALSE,
-    row.names = TRUE
-  )
-
-  yrs <- as.character(
-    keep_years
-  )
-
-  P_FILTER <- dplyr::filter(
-    P0,
-    .data[[time]] %in% yrs
-  )
-
-  P_SUBSET <- subset(
-    P0,
-    P0[[time]] %in% yrs
-  )
-
-  P_REBUILT <- plm::pdata.frame(
-    as.data.frame(
-      P_FILTER
-    ),
-    index = c(
-      id,
-      time
-    ),
-    drop.index = FALSE,
-    row.names = TRUE
-  )
-
-  list(
-    FULL = P0,
-    FILTER = P_FILTER,
-    SUBSET = P_SUBSET,
-    REBUILT = P_REBUILT
-  )
-}
-
-
-# ==============================================================================
-# 15. PANEL-STATE DIAGNOSTICS
-# ==============================================================================
-
-idx_attr_n <- function(
-    P,
-    var) {
-
-  if (!var %in% names(P)) {
-    return(NA_integer_)
-  }
-
-  z <- attr(
-    P[[var]],
-    "index"
-  )
-
-  if (is.null(z)) {
-    return(NA_integer_)
-  }
-
-  nrow(z)
-}
-
-
-pipeline_diagnostic_one <- function(
-    P,
-    pipeline_name,
-    dataset_name,
-    y,
-    x,
-    spec,
-    model_name) {
-
-  tibble::tibble(
-    dataset = dataset_name,
-    y = y,
-    x = x,
-    spec = spec,
-    model = model_name,
-    pipeline = pipeline_name,
-    visible_rows = nrow(P),
-    plm_index_rows =
-      tryCatch(
-        nrow(
-          plm::index(P)
-        ),
-        error = function(e)
-          NA_integer_
-      ),
-    y_attr_index_rows =
-      idx_attr_n(
-        P,
-        y
-      ),
-    x_attr_index_rows =
-      idx_attr_n(
-        P,
-        x
-      ),
-    centered_attr_index_rows =
-      idx_attr_n(
-        P,
-        "X_CENTERED"
-      )
-  )
-}
-
-
-# ==============================================================================
-# 16. FORMULA HELPER
-# ==============================================================================
-
-make_formula <- function(
-    y,
-    terms,
-    controls = character(0)) {
-
-  rhs <- unique(
-    c(
-      terms,
-      controls
-    )
-  )
-
-  if (length(rhs) == 0L) {
-    stop(
-      "Empty RHS.",
-      call. = FALSE
-    )
-  }
-
-  stats::as.formula(
-    paste(
-      bt(y),
-      "~",
-      paste(
-        bt(rhs),
-        collapse = " + "
-      )
-    )
-  )
-}
-
-
-# ==============================================================================
-# 17. MODEL DEFINITIONS
-# ==============================================================================
-
-NONLINEAR_MODELS <- list(
-
-  linear =
-    c(
-      "X_CENTERED"
-    ),
-
-  quadratic =
-    c(
-      "X_CENTERED",
-      "X_SQ"
-    ),
-
-  cubic =
-    c(
-      "X_CENTERED",
-      "X_SQ",
-      "X_CUBE"
-    ),
-
-  spline_df3 =
-    c(
-      "NS3_1",
-      "NS3_2",
-      "NS3_3"
-    ),
-
-  spline_df4 =
-    c(
-      "NS4_1",
-      "NS4_2",
-      "NS4_3",
-      "NS4_4"
-    )
-)
-
-
-# ==============================================================================
-# 18. SAFE JOINT WALD TEST
-# ==============================================================================
-
-joint_wald_test <- function(
-    model,
-    V,
-    terms) {
-
-  if (
-    inherits(model, "error") ||
-    is.null(V)
-  ) {
-
-    return(
-      tibble::tibble(
-        wald_stat = NA_real_,
-        wald_df = NA_integer_,
-        wald_p = NA_real_
-      )
-    )
-  }
-
-  b <- stats::coef(
-    model
-  )
-
-  terms <- intersect(
-    terms,
-    names(b)
-  )
-
-  if (length(terms) == 0L) {
-
-    return(
-      tibble::tibble(
-        wald_stat = NA_real_,
-        wald_df = 0L,
-        wald_p = NA_real_
-      )
-    )
-  }
-
-  bb <- b[
-    terms
-  ]
-
-  VV <- V[
-    terms,
-    terms,
-    drop = FALSE
-  ]
-
-  invV <- tryCatch(
-    solve(VV),
-    error = function(e)
-      NULL
-  )
-
-  if (is.null(invV)) {
-
-    return(
-      tibble::tibble(
-        wald_stat = NA_real_,
-        wald_df = length(terms),
-        wald_p = NA_real_
-      )
-    )
-  }
-
-  W <- as.numeric(
-    t(bb) %*%
-      invV %*%
-      bb
-  )
-
-  df <- length(
-    terms
-  )
-
-  p <- stats::pchisq(
-    W,
-    df = df,
-    lower.tail = FALSE
-  )
-
-  tibble::tibble(
-    wald_stat = W,
-    wald_df = df,
-    wald_p = p
-  )
-}
-
-
-# ==============================================================================
-# 19. FIT ONE TWFE MODEL
-# ==============================================================================
-
-fit_one_nonlinear <- function(
-    P,
-    formula,
-    test_terms,
-    dataset_name,
-    y,
-    x,
-    spec,
-    model_name,
-    pipeline_name) {
-
-  empty_result <- function(message, model_object = NULL, V = NULL) {
-
-    n_obs <- if (!is.null(model_object)) {
-      tryCatch(
-        as.integer(stats::nobs(model_object)),
-        error = function(e) nrow(P)
-      )
-    } else {
-      nrow(P)
+    .home-card{
+      width:100% !important;
+      max-width:820px !important;
+      margin:0 auto !important;
+      text-align:center;
+      border:1px solid var(--home-border);
+      border-top:5px solid var(--home-blue);
+      border-radius:16px;
+      background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%);
+      padding:28px 42px 30px;
+      box-shadow:0 10px 28px rgba(0,0,0,.06);
     }
 
-    list(
-      terms = tibble::tibble(
-        dataset = dataset_name,
-        y = y,
-        x = x,
-        spec = spec,
-        model = model_name,
-        pipeline = pipeline_name,
-        term = NA_character_,
-        beta = NA_real_,
-        se = NA_real_,
-        stat = NA_real_,
-        p = NA_real_,
-        ci_low = NA_real_,
-        ci_high = NA_real_,
-        n = n_obs,
-        error = message
-      ),
-      joint = tibble::tibble(
-        dataset = dataset_name,
-        y = y,
-        x = x,
-        spec = spec,
-        model = model_name,
-        pipeline = pipeline_name,
-        wald_stat = NA_real_,
-        wald_df = NA_integer_,
-        wald_p = NA_real_,
-        error = message
-      ),
-      model_object = model_object,
-      vcov = V
-    )
-  }
-
-  m <- tryCatch(
-    plm::plm(
-      formula,
-      data = P,
-      model = "within",
-      effect = "twoways"
-    ),
-    error = function(e) e
-  )
-
-  if (inherits(m, "error")) {
-    return(
-      empty_result(
-        m$message
-      )
-    )
-  }
-
-  V <- tryCatch(
-    plm::vcovHC(
-      m,
-      method = "arellano",
-      type = "HC1",
-      cluster = "group"
-    ),
-    error = function(e) NULL
-  )
-
-  if (is.null(V)) {
-    return(
-      empty_result(
-        "vcovHC cluster-group failed",
-        model_object = m
-      )
-    )
-  }
-
-  b <- tryCatch(
-    stats::coef(m),
-    error = function(e) NULL
-  )
-
-  if (is.null(b) || length(b) == 0L) {
-    return(
-      empty_result(
-        "No coefficients returned by plm.",
-        model_object = m,
-        V = V
-      )
-    )
-  }
-
-  # Do not depend on coeftest() column names or dimensions.
-  # Align coefficients and covariance matrix explicitly by term name.
-  if (
-    is.null(rownames(V)) ||
-    is.null(colnames(V))
-  ) {
-    return(
-      empty_result(
-        "Robust covariance matrix has no coefficient names.",
-        model_object = m,
-        V = V
-      )
-    )
-  }
-
-  common_terms <- Reduce(
-    intersect,
-    list(
-      names(b),
-      rownames(V),
-      colnames(V)
-    )
-  )
-
-  if (length(common_terms) == 0L) {
-    return(
-      empty_result(
-        "No coefficient names matched the covariance matrix.",
-        model_object = m,
-        V = V
-      )
-    )
-  }
-
-  b_use <- b[
-    common_terms
-  ]
-
-  V_use <- V[
-    common_terms,
-    common_terms,
-    drop = FALSE
-  ]
-
-  variances <- diag(
-    V_use
-  )
-
-  se <- sqrt(
-    ifelse(
-      is.finite(variances) & variances >= 0,
-      variances,
-      NA_real_
-    )
-  )
-
-  stat <- b_use / se
-
-  # Same asymptotic two-sided normal inference used for robust coefficient
-  # reporting; no assumption about the printed structure of coeftest().
-  p <- 2 * stats::pnorm(
-    abs(stat),
-    lower.tail = FALSE
-  )
-
-  terms_out <- tibble::tibble(
-    dataset = dataset_name,
-    y = y,
-    x = x,
-    spec = spec,
-    model = model_name,
-    pipeline = pipeline_name,
-    term = common_terms,
-    beta = as.numeric(b_use),
-    se = as.numeric(se),
-    stat = as.numeric(stat),
-    p = as.numeric(p),
-    ci_low =
-      as.numeric(b_use) -
-      1.96 * as.numeric(se),
-    ci_high =
-      as.numeric(b_use) +
-      1.96 * as.numeric(se),
-    n = as.integer(
-      stats::nobs(m)
-    ),
-    error = NA_character_
-  )
-
-  JT <- joint_wald_test(
-    model = m,
-    V = V,
-    terms = test_terms
-  )
-
-  joint_out <- tibble::tibble(
-    dataset = dataset_name,
-    y = y,
-    x = x,
-    spec = spec,
-    model = model_name,
-    pipeline = pipeline_name,
-    wald_stat = JT$wald_stat,
-    wald_df = JT$wald_df,
-    wald_p = JT$wald_p,
-    error = NA_character_
-  )
-
-  list(
-    terms = terms_out,
-    joint = joint_out,
-    model_object = m,
-    vcov = V
-  )
-}
-
-
-# ==============================================================================
-# 20. BUILD EXPOSURE-COMPONENT CURVE
-# ==============================================================================
-
-build_curve <- function(
-    model_object,
-    model_name,
-    pipeline_name,
-    dataset_name,
-    y,
-    x,
-    spec,
-    frozen_data,
-    x_original) {
-
-  if (is.null(model_object)) {
-    return(
-      tibble::tibble()
-    )
-  }
-
-  b <- stats::coef(
-    model_object
-  )
-
-  xv <- as_num(
-    frozen_data[[x_original]]
-  )
-
-  xv <- xv[
-    is.finite(xv)
-  ]
-
-  if (length(xv) < 2L) {
-    return(
-      tibble::tibble()
-    )
-  }
-
-  q <- stats::quantile(
-    xv,
-    probs = c(0.01, 0.99),
-    na.rm = TRUE,
-    names = FALSE
-  )
-
-  if (
-    !all(is.finite(q)) ||
-    q[1] >= q[2]
-  ) {
-    q <- range(
-      xv,
-      na.rm = TRUE
-    )
-  }
-
-  x_grid <- seq(
-    q[1],
-    q[2],
-    length.out = 100L
-  )
-
-  xbar <- attr(
-    frozen_data,
-    "x_mean"
-  )
-
-  xc <- x_grid - xbar
-
-  component <- rep(
-    0,
-    length(x_grid)
-  )
-
-  if (identical(model_name, "linear")) {
-
-    if ("X_CENTERED" %in% names(b)) {
-      component <-
-        component +
-        b[["X_CENTERED"]] * xc
+    .photo-center{
+      display:flex;
+      justify-content:center;
+      margin-bottom:14px;
     }
 
-  } else if (identical(model_name, "quadratic")) {
-
-    if ("X_CENTERED" %in% names(b)) {
-      component <-
-        component +
-        b[["X_CENTERED"]] * xc
+    .profile-photo{
+      width:230px !important;
+      height:230px !important;
+      border-radius:50%;
+      border:1px solid #cfd8e3;
+      object-fit:cover;
+      box-shadow:0 8px 24px rgba(0,0,0,.12);
+      margin:0 auto;
+      display:block;
     }
 
-    if ("X_SQ" %in% names(b)) {
-      component <-
-        component +
-        b[["X_SQ"]] * xc^2
+    .home-card h1{
+      font-size:1.78rem !important;
+      letter-spacing:-.018em;
+      margin:0 0 8px !important;
+      color:#111;
     }
 
-  } else if (identical(model_name, "cubic")) {
-
-    if ("X_CENTERED" %in% names(b)) {
-      component <-
-        component +
-        b[["X_CENTERED"]] * xc
+    .academic-roles{
+      margin:0 auto 11px !important;
+      text-align:center !important;
+      font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace !important;
+      font-size:.72rem !important;
+      line-height:1.55 !important;
+      letter-spacing:.035em !important;
+      color:var(--home-grey-soft) !important;
     }
 
-    if ("X_SQ" %in% names(b)) {
-      component <-
-        component +
-        b[["X_SQ"]] * xc^2
+    .academic-roles .role-row{
+      display:block !important;
+      margin-bottom:2px !important;
     }
 
-    if ("X_CUBE" %in% names(b)) {
-      component <-
-        component +
-        b[["X_CUBE"]] * xc^3
+    .academic-roles .role-title{
+      font-weight:800 !important;
+      text-transform:uppercase !important;
+      color:#1f2933 !important;
+      letter-spacing:.075em !important;
     }
 
-  } else if (
-    identical(model_name, "spline_df3") &&
-    isTRUE(attr(frozen_data, "ns3_ok"))
-  ) {
-
-    knots <- attr(
-      frozen_data,
-      "ns3_knots"
-    )
-
-    boundary <- attr(
-      frozen_data,
-      "ns3_boundary"
-    )
-
-    B <- tryCatch(
-      splines::ns(
-        xc,
-        knots = knots,
-        Boundary.knots = boundary,
-        intercept = FALSE
-      ),
-      error = function(e) NULL
-    )
-
-    if (is.null(B)) {
-      return(tibble::tibble())
+    .academic-roles .role-separator{
+      color:var(--home-grey-soft) !important;
+      font-weight:500 !important;
     }
 
-    B <- as.matrix(B)
+    .academic-roles a,
+    .home-bio a,
+    .email-line a,
+    .office-line a{
+      color:var(--home-blue) !important;
+      text-decoration:none !important;
+      border-bottom:1px solid rgba(0,87,217,.45) !important;
+      pointer-events:auto !important;
+    }
 
-    for (j in seq_len(ncol(B))) {
+    .academic-roles a{
+      font-weight:700 !important;
+    }
 
-      nm <- paste0(
-        "NS3_",
-        j
-      )
+    .academic-roles a:hover,
+    .home-bio a:hover,
+    .email-line a:hover,
+    .office-line a:hover{
+      color:var(--home-blue-dark) !important;
+      border-bottom-color:var(--home-blue-dark) !important;
+      text-decoration:none !important;
+    }
 
-      if (nm %in% names(b)) {
-        component <-
-          component +
-          b[[nm]] * B[, j]
+    .office-line{
+      max-width:620px;
+      margin:8px auto 11px;
+      text-align:center;
+      color:var(--home-grey);
+      font-size:.82rem;
+      line-height:1.5;
+    }
+
+    .office-line strong{
+      color:#111;
+      font-weight:700;
+    }
+
+    .logo-row.centered-logos{
+      display:flex !important;
+      justify-content:center !important;
+      align-items:center !important;
+      flex-wrap:nowrap !important;
+      max-width:none !important;
+      gap:8px !important;
+      margin:10px auto 8px !important;
+      overflow-x:auto !important;
+    }
+
+    .round-logo,
+    .round-logo img{
+      width:25px !important;
+      height:25px !important;
+      min-width:25px !important;
+      min-height:25px !important;
+      max-width:25px !important;
+      max-height:25px !important;
+      border-radius:50%;
+    }
+
+    .round-logo{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      filter:drop-shadow(0 1px 1px rgba(0,0,0,.08)) !important;
+      transition:transform .12s ease, opacity .12s ease;
+    }
+
+    .round-logo:hover{
+      transform:translateY(-1px);
+      opacity:.92;
+      text-decoration:none;
+    }
+
+    .email-line{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:4px;
+      color:var(--home-grey-soft);
+      font-size:.82rem;
+      margin:8px 0 20px;
+    }
+
+    .home-bio{
+      width:660px !important;
+      max-width:660px !important;
+      margin:0 auto !important;
+      padding:0 !important;
+      border:0 !important;
+      border-radius:0 !important;
+      background:transparent !important;
+      box-shadow:none !important;
+      text-align:left;
+    }
+
+    .home-bio p{
+      font-size:.94rem !important;
+      line-height:1.62 !important;
+      margin-bottom:13px !important;
+      color:#111827;
+    }
+
+    .home-bio .lead{
+      font-size:.99rem !important;
+      line-height:1.6 !important;
+      color:#111;
+      margin-bottom:15px !important;
+    }
+
+    .programming-line{
+      text-align:center;
+      margin-top:18px !important;
+      margin-bottom:0 !important;
+    }
+
+    .code-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size:.96em !important;
+      font-weight:800;
+      padding:3px 8px !important;
+      border-radius:6px;
+      line-height:1;
+      vertical-align:middle;
+    }
+
+    .r-code{
+      color:#fff;
+      background:#0096ff;
+    }
+
+    .python-code{
+      color:#1b1b1b;
+      background:#ffd43b;
+    }
+
+    @media (max-width:760px){
+      main.home-shell.home-centered{
+        width:auto !important;
+        max-width:100% !important;
+        padding-left:18px !important;
+        padding-right:18px !important;
+      }
+
+      .home-card{
+        padding:22px 18px 24px !important;
+      }
+
+      .profile-photo{
+        width:180px !important;
+        height:180px !important;
+      }
+
+      .home-bio{
+        width:auto !important;
+        max-width:100% !important;
+      }
+
+      .home-card h1{
+        font-size:1.44rem !important;
+      }
+
+      .logo-row.centered-logos{
+        flex-wrap:wrap !important;
+        justify-content:center !important;
       }
     }
-
-  } else if (
-    identical(model_name, "spline_df4") &&
-    isTRUE(attr(frozen_data, "ns4_ok"))
-  ) {
-
-    knots <- attr(
-      frozen_data,
-      "ns4_knots"
-    )
-
-    boundary <- attr(
-      frozen_data,
-      "ns4_boundary"
-    )
-
-    B <- tryCatch(
-      splines::ns(
-        xc,
-        knots = knots,
-        Boundary.knots = boundary,
-        intercept = FALSE
-      ),
-      error = function(e) NULL
-    )
-
-    if (is.null(B)) {
-      return(tibble::tibble())
-    }
-
-    B <- as.matrix(B)
-
-    for (j in seq_len(ncol(B))) {
-
-      nm <- paste0(
-        "NS4_",
-        j
-      )
-
-      if (nm %in% names(b)) {
-        component <-
-          component +
-          b[[nm]] * B[, j]
-      }
-    }
-  }
-
-  # Normalize the displayed component to zero at the first grid point.
-  component <- component - component[1]
-
-  tibble::tibble(
-    dataset = dataset_name,
-    y = y,
-    x = x,
-    spec = spec,
-    model = model_name,
-    pipeline = pipeline_name,
-    exposure = x_grid,
-    fitted_component = component
-  )
-}
-
-
-# ==============================================================================
-# 21. RUN ONE CELL
-# ==============================================================================
-
-run_one_cell <- function(
-    dataset_name,
-    DDESIGN,
-    y,
-    x,
-    spec) {
-
-  DB <- DDESIGN$DB
-
-  controls <- resolve_controls(
-    DDESIGN$spec_blocks[[spec]],
-    DB,
-    dataset = dataset_name,
-    spec = spec
-  )
-
-  controls <- setdiff(
-    controls,
-    c(
-      "Y_GINI_MAIN",
-      "Y_LOG_INCOME",
-      "Y_INCOME_LEVEL",
-      "Y_LOW_INCOME_SHARE",
-      y,
-      x
-    )
-  )
-
-  FROZEN <- freeze_sample(
-    DB = DB,
-    id = DDESIGN$id,
-    time = DDESIGN$time,
-    y = y,
-    x = x,
-    controls = controls,
-    panel_years =
-      DDESIGN$panel_years
-  )
-
-  if (nrow(FROZEN) == 0L) {
-    stop(
-      "Frozen sample is empty.",
-      call. = FALSE
-    )
-  }
-
-  FROZEN <- add_nonlinear_terms(
-    FROZEN,
-    x
-  )
-
-  PIPES <- make_three_pipelines(
-    D = FROZEN,
-    id = DDESIGN$id,
-    time = DDESIGN$time,
-    keep_years =
-      DDESIGN$keep_years
-  )
-
-  ridF <- sort(
-    as.character(
-      PIPES$FILTER$row_id
-    )
-  )
-
-  ridS <- sort(
-    as.character(
-      PIPES$SUBSET$row_id
-    )
-  )
-
-  if (!identical(ridF, ridS)) {
-    stop(
-      "FILTER and SUBSET do not contain identical row_id sets.",
-      call. = FALSE
-    )
-  }
-
-  TERMS_OUT <- list()
-  JOINT_OUT <- list()
-  DIAG_OUT <- list()
-  CURVE_OUT <- list()
-
-  for (model_name in names(NONLINEAR_MODELS)) {
-
-    # If a spline basis cannot be constructed because the exposure has
-    # insufficient usable variation, skip only that spline model.
-    # Linear, quadratic and cubic models continue normally.
-    if (
-      identical(model_name, "spline_df3") &&
-      !isTRUE(attr(FROZEN, "ns3_ok"))
-    ) {
-
-      cat(
-        "SKIP | ",
-        dataset_name,
-        " | Y=",
-        y,
-        " | X=",
-        x,
-        " | SPEC=",
-        spec,
-        " | MODEL=spline_df3 | insufficient variation for spline basis\n",
-        sep = ""
-      )
-
-      next
-    }
-
-    if (
-      identical(model_name, "spline_df4") &&
-      !isTRUE(attr(FROZEN, "ns4_ok"))
-    ) {
-
-      cat(
-        "SKIP | ",
-        dataset_name,
-        " | Y=",
-        y,
-        " | X=",
-        x,
-        " | SPEC=",
-        spec,
-        " | MODEL=spline_df4 | insufficient variation for spline basis\n",
-        sep = ""
-      )
-
-      next
-    }
-
-    model_terms <-
-      NONLINEAR_MODELS[[model_name]]
-
-    FORMULA <-
-      make_formula(
-        y = y,
-        terms = model_terms,
-        controls = controls
-      )
-
-    test_terms <- switch(
-      model_name,
-
-      linear =
-        "X_CENTERED",
-
-      quadratic =
-        "X_SQ",
-
-      cubic =
-        c(
-          "X_SQ",
-          "X_CUBE"
-        ),
-
-      spline_df3 =
-        c(
-          "NS3_1",
-          "NS3_2",
-          "NS3_3"
-        ),
-
-      spline_df4 =
-        c(
-          "NS4_1",
-          "NS4_2",
-          "NS4_3",
-          "NS4_4"
-        )
-    )
-
-    for (
-      pipeline_name in
-      c(
-        "FILTER",
-        "SUBSET",
-        "REBUILT"
-      )
-    ) {
-
-      P <- PIPES[[pipeline_name]]
-
-      cat(
-        "RUN | ",
-        dataset_name,
-        " | Y=",
-        y,
-        " | X=",
-        x,
-        " | SPEC=",
-        spec,
-        " | MODEL=",
-        model_name,
-        " | PIPE=",
-        pipeline_name,
-        "\n",
-        sep = ""
-      )
-
-      FIT <- fit_one_nonlinear(
-        P = P,
-        formula = FORMULA,
-        test_terms = test_terms,
-        dataset_name = dataset_name,
-        y = y,
-        x = x,
-        spec = spec,
-        model_name = model_name,
-        pipeline_name = pipeline_name
-      )
-
-      TERMS_OUT[[length(TERMS_OUT) + 1L]] <-
-        FIT$terms
-
-      JOINT_OUT[[length(JOINT_OUT) + 1L]] <-
-        FIT$joint
-
-      DIAG_OUT[[length(DIAG_OUT) + 1L]] <-
-        pipeline_diagnostic_one(
-          P = P,
-          pipeline_name = pipeline_name,
-          dataset_name = dataset_name,
-          y = y,
-          x = x,
-          spec = spec,
-          model_name = model_name
-        )
-
-      CURVE_OUT[[length(CURVE_OUT) + 1L]] <-
-        build_curve(
-          model_object = FIT$model_object,
-          model_name = model_name,
-          pipeline_name = pipeline_name,
-          dataset_name = dataset_name,
-          y = y,
-          x = x,
-          spec = spec,
-          frozen_data = FROZEN,
-          x_original = x
-        )
-    }
-  }
-
-  list(
-    terms =
-      dplyr::bind_rows(
-        TERMS_OUT
-      ),
-    joint =
-      dplyr::bind_rows(
-        JOINT_OUT
-      ),
-    diagnostics =
-      dplyr::bind_rows(
-        DIAG_OUT
-      ),
-    curves =
-      dplyr::bind_rows(
-        CURVE_OUT
-      )
-  )
-}
-
-
-# ==============================================================================
-# 22. CHOOSE SPECIFICATIONS
-# ==============================================================================
-
-get_specs_to_run <- function(
-    spec_blocks,
-    dataset_name) {
-
-  nm <- names(
-    spec_blocks
-  )
-
-  if (is.null(nm) || length(nm) == 0L) {
-
-    stop(
-      paste0(
-        dataset_name,
-        ": spec_blocks has no named specifications."
-      ),
-      call. = FALSE
-    )
-  }
-
-  baseline <- if ("S0_FE_ONLY" %in% nm) {
-
-    "S0_FE_ONLY"
-
-  } else {
-
-    warning(
-      paste0(
-        dataset_name,
-        ": S0_FE_ONLY not found. Using first specification: ",
-        nm[1]
-      )
-    )
-
-    nm[1]
-  }
-
-  full_spec <- tail(
-    nm,
-    1
-  )
-
-  unique(
-    c(
-      baseline,
-      full_spec
-    )
-  )
-}
-
-
-# ==============================================================================
-# 23. RUN EVERYTHING
-# ==============================================================================
-
-ALL_TERMS <- list()
-ALL_JOINT <- list()
-ALL_DIAG <- list()
-ALL_CURVES <- list()
-ALL_ERRORS <- list()
-
-counter <- 0L
-
-
-for (dataset_name in names(DESIGN)) {
-
-  DD <- DESIGN[[dataset_name]]
-
-  specs_to_run <-
-    get_specs_to_run(
-      DD$spec_blocks,
-      dataset_name
-    )
-
-  cat(
-    "\n============================================================\n",
-    "DATASET: ",
-    dataset_name,
-    "\n",
-    "SPECS: ",
-    paste(
-      specs_to_run,
-      collapse = " | "
-    ),
-    "\n",
-    "============================================================\n",
-    sep = ""
-  )
-
-  for (y_name in DD$outcomes) {
-
-    for (x_name in DD$exposures) {
-
-      for (spec_name in specs_to_run) {
-
-        counter <-
-          counter + 1L
-
-        cat(
-          "\nCELL ",
-          counter,
-          " | ",
-          dataset_name,
-          " | Y=",
-          y_name,
-          " | X=",
-          x_name,
-          " | SPEC=",
-          spec_name,
-          "\n",
-          sep = ""
-        )
-
-        OBJ <- tryCatch(
-
-          run_one_cell(
-            dataset_name = dataset_name,
-            DDESIGN = DD,
-            y = y_name,
-            x = x_name,
-            spec = spec_name
-          ),
-
-          error = function(e) {
-
-            ALL_ERRORS[[length(ALL_ERRORS) + 1L]] <<-
-              tibble::tibble(
-                dataset = dataset_name,
-                y = y_name,
-                x = x_name,
-                spec = spec_name,
-                error = e$message
-              )
-
-            cat(
-              "CELL ERROR | ",
-              e$message,
-              "\n",
-              sep = ""
-            )
-
-            NULL
-          }
-        )
-
-        if (is.null(OBJ)) {
-          next
-        }
-
-        ALL_TERMS[[length(ALL_TERMS) + 1L]] <-
-          OBJ$terms
-
-        ALL_JOINT[[length(ALL_JOINT) + 1L]] <-
-          OBJ$joint
-
-        ALL_DIAG[[length(ALL_DIAG) + 1L]] <-
-          OBJ$diagnostics
-
-        ALL_CURVES[[length(ALL_CURVES) + 1L]] <-
-          OBJ$curves
-      }
-    }
-  }
-}
-
-
-TERMS <- dplyr::bind_rows(
-  ALL_TERMS
-)
-
-JOINT <- dplyr::bind_rows(
-  ALL_JOINT
-)
-
-DIAGNOSTICS <- dplyr::bind_rows(
-  ALL_DIAG
-)
-
-CURVES <- dplyr::bind_rows(
-  ALL_CURVES
-)
-
-ERRORS <- dplyr::bind_rows(
-  ALL_ERRORS
-)
-
-
-# ==============================================================================
-# 24. SAVE ERRORS IMMEDIATELY
-# ==============================================================================
-
-write.csv(
-  ERRORS,
-  file.path(
-    OUT_DIR,
-    "04_NONLINEAR_ERRORS.csv"
-  ),
-  row.names = FALSE
-)
-
-
-# ==============================================================================
-# 25. FAIL FAST IF NOTHING WAS ESTIMATED
-# ==============================================================================
-
-if (nrow(TERMS) == 0L) {
-
-  cat(
-    "\n============================================================\n",
-    "NONLINEAR RUN FAILED BEFORE ESTIMATION OUTPUT\n",
-    "============================================================\n\n",
-    sep = ""
-  )
-
-  if (nrow(ERRORS) > 0L) {
-
-    print(
-      ERRORS,
-      n = Inf,
-      width = Inf
-    )
-
-  } else {
-
-    cat(
-      "No explicit cell error was recorded.\n"
-    )
-  }
-
-  stop(
-    paste0(
-      "TERMS is empty. Inspect: ",
-      file.path(
-        OUT_DIR,
-        "04_NONLINEAR_ERRORS.csv"
-      )
-    ),
-    call. = FALSE
-  )
-}
-
-
-# ==============================================================================
-# 26. SAVE RAW RESULTS
-# ==============================================================================
-
-write.csv(
-  TERMS,
-  file.path(
-    OUT_DIR,
-    "01_NONLINEAR_ALL_TERMS.csv"
-  ),
-  row.names = FALSE
-)
-
-write.csv(
-  JOINT,
-  file.path(
-    OUT_DIR,
-    "02_NONLINEAR_JOINT_TESTS.csv"
-  ),
-  row.names = FALSE
-)
-
-write.csv(
-  DIAGNOSTICS,
-  file.path(
-    OUT_DIR,
-    "03_NONLINEAR_INDEX_DIAGNOSTICS.csv"
-  ),
-  row.names = FALSE
-)
-
-write.csv(
-  CURVES,
-  file.path(
-    OUT_DIR,
-    "04B_NONLINEAR_PLOT_DATA.csv"
-  ),
-  row.names = FALSE
-)
-
-
-# ==============================================================================
-# 27. TERM-BY-TERM ROUTE COMPARISON
-#
-# Base column extraction is used here deliberately to avoid tidyselect
-# external-vector ambiguity.
-# ==============================================================================
-
-required_term_cols <- c(
-  "dataset",
-  "y",
-  "x",
-  "spec",
-  "model",
-  "term",
-  "pipeline",
-  "beta",
-  "se",
-  "p",
-  "n",
-  "error"
-)
-
-missing_term_cols <- setdiff(
-  required_term_cols,
-  names(TERMS)
-)
-
-if (length(missing_term_cols) > 0L) {
-
-  stop(
-    paste0(
-      "TERMS missing columns: ",
-      paste(
-        missing_term_cols,
-        collapse = ", "
-      )
-    ),
-    call. = FALSE
-  )
-}
-
-ROUTE_BASE <- TERMS[
-  ,
-  required_term_cols,
-  drop = FALSE
-]
-
-ROUTE_COMPARE <- ROUTE_BASE %>%
-
-  tidyr::pivot_wider(
-    names_from = pipeline,
-    values_from = c(
-      beta,
-      se,
-      p,
-      n,
-      error
-    )
-  ) %>%
-
-  dplyr::mutate(
-
-    delta_beta_FILTER_SUBSET =
-      beta_FILTER -
-      beta_SUBSET,
-
-    delta_beta_REBUILT_SUBSET =
-      beta_REBUILT -
-      beta_SUBSET,
-
-    abs_delta_FILTER_SUBSET =
-      abs(
-        delta_beta_FILTER_SUBSET
-      ),
-
-    abs_delta_REBUILT_SUBSET =
-      abs(
-        delta_beta_REBUILT_SUBSET
-      ),
-
-    sign_flip_FILTER_SUBSET =
-      dplyr::case_when(
-        is.finite(beta_FILTER) &
-          is.finite(beta_SUBSET) ~
-          sign(beta_FILTER) !=
-          sign(beta_SUBSET),
-        TRUE ~ NA
-      ),
-
-    sig_FILTER =
-      dplyr::case_when(
-        is.finite(p_FILTER) ~
-          p_FILTER < 0.05,
-        TRUE ~ NA
-      ),
-
-    sig_SUBSET =
-      dplyr::case_when(
-        is.finite(p_SUBSET) ~
-          p_SUBSET < 0.05,
-        TRUE ~ NA
-      ),
-
-    significance_flip_FILTER_SUBSET =
-      dplyr::case_when(
-        !is.na(sig_FILTER) &
-          !is.na(sig_SUBSET) ~
-          sig_FILTER !=
-          sig_SUBSET,
-        TRUE ~ NA
-      )
-  )
-
-write.csv(
-  ROUTE_COMPARE,
-  file.path(
-    OUT_DIR,
-    "05_NONLINEAR_ROUTE_COMPARISON.csv"
-  ),
-  row.names = FALSE
-)
-
-
-# ==============================================================================
-# 28. JOINT-TEST ROUTE COMPARISON
-# ==============================================================================
-
-required_joint_cols <- c(
-  "dataset",
-  "y",
-  "x",
-  "spec",
-  "model",
-  "pipeline",
-  "wald_stat",
-  "wald_df",
-  "wald_p",
-  "error"
-)
-
-missing_joint_cols <- setdiff(
-  required_joint_cols,
-  names(JOINT)
-)
-
-if (length(missing_joint_cols) > 0L) {
-
-  stop(
-    paste0(
-      "JOINT missing columns: ",
-      paste(
-        missing_joint_cols,
-        collapse = ", "
-      )
-    ),
-    call. = FALSE
-  )
-}
-
-JOINT_BASE <- JOINT[
-  ,
-  required_joint_cols,
-  drop = FALSE
-]
-
-JOINT_COMPARE <- JOINT_BASE %>%
-
-  tidyr::pivot_wider(
-    names_from = pipeline,
-    values_from = c(
-      wald_stat,
-      wald_df,
-      wald_p,
-      error
-    )
-  ) %>%
-
-  dplyr::mutate(
-
-    sig_FILTER =
-      ifelse(
-        is.finite(
-          wald_p_FILTER
-        ),
-        wald_p_FILTER < 0.05,
-        NA
-      ),
-
-    sig_SUBSET =
-      ifelse(
-        is.finite(
-          wald_p_SUBSET
-        ),
-        wald_p_SUBSET < 0.05,
-        NA
-      ),
-
-    joint_significance_flip =
-      ifelse(
-        !is.na(sig_FILTER) &
-          !is.na(sig_SUBSET),
-        sig_FILTER !=
-          sig_SUBSET,
-        NA
-      )
-  )
-
-write.csv(
-  JOINT_COMPARE,
-  file.path(
-    OUT_DIR,
-    "06_NONLINEAR_JOINT_ROUTE_COMPARISON.csv"
-  ),
-  row.names = FALSE
-)
-
-
-# ==============================================================================
-# 29. COMPACT SUMMARY
-# ==============================================================================
-
-SUMMARY_TERMS <- ROUTE_COMPARE %>%
-
-  dplyr::group_by(
-    dataset,
-    model,
-    spec
-  ) %>%
-
-  dplyr::summarise(
-
-    estimable_terms =
-      sum(
-        is.finite(beta_FILTER) &
-          is.finite(beta_SUBSET)
-      ),
-
-    nonzero_filter_subset =
-      sum(
-        abs_delta_FILTER_SUBSET >
-          1e-10,
-        na.rm = TRUE
-      ),
-
-    sign_flips =
-      sum(
-        sign_flip_FILTER_SUBSET
-          %in% TRUE,
-        na.rm = TRUE
-      ),
-
-    significance_flips =
-      sum(
-        significance_flip_FILTER_SUBSET
-          %in% TRUE,
-        na.rm = TRUE
-      ),
-
-    max_abs_filter_subset =
-      ifelse(
-        any(
-          is.finite(
-            abs_delta_FILTER_SUBSET
-          )
-        ),
-        max(
-          abs_delta_FILTER_SUBSET,
-          na.rm = TRUE
-        ),
-        NA_real_
-      ),
-
-    max_abs_rebuilt_subset =
-      ifelse(
-        any(
-          is.finite(
-            abs_delta_REBUILT_SUBSET
-          )
-        ),
-        max(
-          abs_delta_REBUILT_SUBSET,
-          na.rm = TRUE
-        ),
-        NA_real_
-      ),
-
-    .groups = "drop"
-  )
-
-write.csv(
-  SUMMARY_TERMS,
-  file.path(
-    OUT_DIR,
-    "07_NONLINEAR_SUMMARY.csv"
-  ),
-  row.names = FALSE
-)
-
-
-# ==============================================================================
-# 30. RECOVERY VALIDATION
-# ==============================================================================
-
-RECOVERY_SOURCE <- ROUTE_COMPARE[
-  is.finite(
-    ROUTE_COMPARE$delta_beta_REBUILT_SUBSET
-  ),
-  ,
-  drop = FALSE
-]
-
-if (nrow(RECOVERY_SOURCE) > 0L) {
-
-  RECOVERY_VALIDATION <- tibble::tibble(
-    estimable_comparisons =
-      nrow(
-        RECOVERY_SOURCE
-      ),
-    max_abs_rebuilt_subset =
-      max(
-        abs(
-          RECOVERY_SOURCE$delta_beta_REBUILT_SUBSET
-        ),
-        na.rm = TRUE
-      ),
-    rebuilt_equals_subset =
-      max(
-        abs(
-          RECOVERY_SOURCE$delta_beta_REBUILT_SUBSET
-        ),
-        na.rm = TRUE
-      ) < 1e-10
-  )
-
-} else {
-
-  RECOVERY_VALIDATION <- tibble::tibble(
-    estimable_comparisons = 0L,
-    max_abs_rebuilt_subset = NA_real_,
-    rebuilt_equals_subset = FALSE
-  )
-}
-
-write.csv(
-  RECOVERY_VALIDATION,
-  file.path(
-    OUT_DIR,
-    "08_NONLINEAR_RECOVERY_VALIDATION.csv"
-  ),
-  row.names = FALSE
-)
-
-
-# ==============================================================================
-# 31. INDEX DIAGNOSTIC SUMMARY
-# ==============================================================================
-
-INDEX_SUMMARY <- DIAGNOSTICS %>%
-
-  dplyr::distinct(
-    dataset,
-    y,
-    x,
-    spec,
-    pipeline,
-    .keep_all = TRUE
-  ) %>%
-
-  dplyr::arrange(
-    dataset,
-    y,
-    x,
-    spec,
-    pipeline
-  )
-
-write.csv(
-  INDEX_SUMMARY,
-  file.path(
-    OUT_DIR,
-    "09_NONLINEAR_INDEX_SUMMARY.csv"
-  ),
-  row.names = FALSE
-)
-
-
-# ==============================================================================
-# 32. CURVE PLOTS
-# ==============================================================================
-
-if (nrow(CURVES) > 0L) {
-
-  model_labels <- c(
-    linear = "Linear",
-    quadratic = "Quadratic",
-    cubic = "Cubic",
-    spline_df3 = "Natural spline (df = 3)",
-    spline_df4 = "Natural spline (df = 4)"
-  )
-
-  CURVES$model_label <-
-    unname(
-      model_labels[
-        CURVES$model
-      ]
-    )
-
-  CURVES$model_label <- factor(
-    CURVES$model_label,
-    levels = unname(
-      model_labels
-    )
-  )
-
-  plot_keys <- unique(
-    CURVES[
-      ,
-      c(
-        "dataset",
-        "y",
-        "x",
-        "spec"
-      ),
-      drop = FALSE
-    ]
-  )
-
-  for (i in seq_len(nrow(plot_keys))) {
-
-    key <- plot_keys[
-      i,
-      ,
-      drop = FALSE
-    ]
-
-    Z <- CURVES[
-      CURVES$dataset == key$dataset &
-        CURVES$y == key$y &
-        CURVES$x == key$x &
-        CURVES$spec == key$spec,
-      ,
-      drop = FALSE
-    ]
-
-    if (nrow(Z) == 0L) {
-      next
-    }
-
-    p <- ggplot2::ggplot(
-      Z,
-      ggplot2::aes(
-        x = exposure,
-        y = fitted_component,
-        linetype = pipeline
-      )
-    ) +
-      ggplot2::geom_line(
-        linewidth = 0.8
-      ) +
-      ggplot2::facet_wrap(
-        ~ model_label,
-        scales = "free_y",
-        ncol = 2
-      ) +
-      ggplot2::labs(
-        title = NULL,
-        subtitle = paste(
-          key$dataset,
-          "|",
-          key$y,
-          "|",
-          key$x,
-          "|",
-          key$spec
-        ),
-        x = key$x,
-        y = "Estimated exposure component",
-        linetype = "Pipeline"
-      ) +
-      ggplot2::theme_minimal(
-        base_size = 10
-      ) +
-      ggplot2::theme(
-        legend.position = "bottom"
-      )
-
-    stem <- safe_name(
-      paste(
-        "NONLINEAR_CURVES",
-        key$dataset,
-        key$y,
-        key$x,
-        key$spec,
-        sep = "__"
-      )
-    )
-
-    ggplot2::ggsave(
-      filename = file.path(
-        FIG_DIR,
-        paste0(
-          stem,
-          ".png"
-        )
-      ),
-      plot = p,
-      width = 10,
-      height = 8,
-      dpi = 300
-    )
-
-    ggplot2::ggsave(
-      filename = file.path(
-        FIG_DIR,
-        paste0(
-          stem,
-          ".pdf"
-        )
-      ),
-      plot = p,
-      width = 10,
-      height = 8
-    )
-  }
-}
-
-
-# ==============================================================================
-# 33. GLOBAL DIAGNOSTIC PLOT: FILTER-SUBSET MAXIMUM DIFFERENCE
-# ==============================================================================
-
-if (nrow(SUMMARY_TERMS) > 0L) {
-
-  P_DELTA <- SUMMARY_TERMS[
-    is.finite(
-      SUMMARY_TERMS$max_abs_filter_subset
-    ),
-    ,
-    drop = FALSE
-  ]
-
-  if (nrow(P_DELTA) > 0L) {
-
-    p_delta <- ggplot2::ggplot(
-      P_DELTA,
-      ggplot2::aes(
-        x = model,
-        y = max_abs_filter_subset,
-        shape = dataset
-      )
-    ) +
-      ggplot2::geom_point(
-        size = 2.5,
-        position = ggplot2::position_dodge(
-          width = 0.35
-        )
-      ) +
-      ggplot2::facet_wrap(
-        ~ spec,
-        scales = "free_y"
-      ) +
-      ggplot2::labs(
-        title = NULL,
-        x = NULL,
-        y = "Maximum |FILTER - SUBSET| coefficient difference",
-        shape = "Dataset"
-      ) +
-      ggplot2::theme_minimal(
-        base_size = 10
-      ) +
-      ggplot2::theme(
-        axis.text.x =
-          ggplot2::element_text(
-            angle = 30,
-            hjust = 1
-          ),
-        legend.position = "bottom"
-      )
-
-    ggplot2::ggsave(
-      filename = file.path(
-        FIG_DIR,
-        "NONLINEAR_SUMMARY_MAX_DELTA.png"
-      ),
-      plot = p_delta,
-      width = 9,
-      height = 6,
-      dpi = 300
-    )
-
-    ggplot2::ggsave(
-      filename = file.path(
-        FIG_DIR,
-        "NONLINEAR_SUMMARY_MAX_DELTA.pdf"
-      ),
-      plot = p_delta,
-      width = 9,
-      height = 6
-    )
-  }
-}
-
-
-# ==============================================================================
-# 34. GLOBAL DIAGNOSTIC PLOT: REBUILT-SUBSET RECOVERY
-# ==============================================================================
-
-RECOVERY_PLOT_DATA <- ROUTE_COMPARE[
-  is.finite(
-    ROUTE_COMPARE$abs_delta_REBUILT_SUBSET
-  ),
-  ,
-  drop = FALSE
-]
-
-if (nrow(RECOVERY_PLOT_DATA) > 0L) {
-
-  recovery_plot_summary <- RECOVERY_PLOT_DATA %>%
-
-    dplyr::group_by(
-      dataset,
-      model,
-      spec
-    ) %>%
-
-    dplyr::summarise(
-      max_abs_rebuilt_subset =
-        max(
-          abs_delta_REBUILT_SUBSET,
-          na.rm = TRUE
-        ),
-      .groups = "drop"
-    )
-
-  p_recovery <- ggplot2::ggplot(
-    recovery_plot_summary,
-    ggplot2::aes(
-      x = model,
-      y = max_abs_rebuilt_subset,
-      shape = dataset
-    )
-  ) +
-    ggplot2::geom_point(
-      size = 2.5,
-      position = ggplot2::position_dodge(
-        width = 0.35
-      )
-    ) +
-    ggplot2::geom_hline(
-      yintercept = 1e-10,
-      linetype = 2
-    ) +
-    ggplot2::facet_wrap(
-      ~ spec,
-      scales = "free_y"
-    ) +
-    ggplot2::labs(
-      title = NULL,
-      x = NULL,
-      y = "Maximum |REBUILT - SUBSET| coefficient difference",
-      shape = "Dataset"
-    ) +
-    ggplot2::theme_minimal(
-      base_size = 10
-    ) +
-    ggplot2::theme(
-      axis.text.x =
-        ggplot2::element_text(
-          angle = 30,
-          hjust = 1
-        ),
-      legend.position = "bottom"
-    )
-
-  ggplot2::ggsave(
-    filename = file.path(
-      FIG_DIR,
-      "NONLINEAR_RECOVERY_DIAGNOSTIC.png"
-    ),
-    plot = p_recovery,
-    width = 9,
-    height = 6,
-    dpi = 300
-  )
-
-  ggplot2::ggsave(
-    filename = file.path(
-      FIG_DIR,
-      "NONLINEAR_RECOVERY_DIAGNOSTIC.pdf"
-    ),
-    plot = p_recovery,
-    width = 9,
-    height = 6
-  )
-}
-
-
-# ==============================================================================
-# 35. FINAL CONSOLE SUMMARY
-# ==============================================================================
-
-cat(
-  "\n============================================================\n",
-  "NONLINEAR STANDALONE COMPLETED\n",
-  "============================================================\n",
-  sep = ""
-)
-
-cat(
-  "\nTABLE OUTPUT DIRECTORY:\n",
-  OUT_DIR,
-  "\n",
-  sep = ""
-)
-
-cat(
-  "\nFIGURE OUTPUT DIRECTORY:\n",
-  FIG_DIR,
-  "\n\n",
-  sep = ""
-)
-
-cat(
-  "Recovery validation:\n"
-)
-
-print(
-  RECOVERY_VALIDATION
-)
-
-cat(
-  "\nCompact summary:\n"
-)
-
-print(
-  SUMMARY_TERMS,
-  n = Inf,
-  width = Inf
-)
-
-if (nrow(ERRORS) > 0L) {
-
-  cat(
-    "\nATTENZIONE: alcune celle hanno prodotto errori.\n",
-    "Controllare:\n",
-    file.path(
-      OUT_DIR,
-      "04_NONLINEAR_ERRORS.csv"
-    ),
-    "\n",
-    sep = ""
-  )
-
-} else {
-
-  cat(
-    "\nNo cell-level technical errors recorded.\n"
-  )
-}
-
-cat(
-  "\nFiles created:\n",
-  "01_NONLINEAR_ALL_TERMS.csv\n",
-  "02_NONLINEAR_JOINT_TESTS.csv\n",
-  "03_NONLINEAR_INDEX_DIAGNOSTICS.csv\n",
-  "04_NONLINEAR_ERRORS.csv\n",
-  "04B_NONLINEAR_PLOT_DATA.csv\n",
-  "05_NONLINEAR_ROUTE_COMPARISON.csv\n",
-  "06_NONLINEAR_JOINT_ROUTE_COMPARISON.csv\n",
-  "07_NONLINEAR_SUMMARY.csv\n",
-  "08_NONLINEAR_RECOVERY_VALIDATION.csv\n",
-  "09_NONLINEAR_INDEX_SUMMARY.csv\n",
-  "\nPlots saved in:\n",
-  FIG_DIR,
-  "\n",
-  sep = ""
-)
+  </style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <a class="name" href="index.html">Gianluca Monturano, PhD</a>
+
+      <nav class="menu" aria-label="Primary navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="software.html">Software</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="dissemination.html">Dissemination</a>
+        <a href="cv.html">CV</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="home-shell home-centered">
+  <section class="home-card">
+    <div class="photo-center">
+      <img class="profile-photo" src="assets/rofile-photo.sv.jpg" alt="Gianluca Monturano">
+    </div>
+
+    <h1>Gianluca Monturano</h1>
+
+    <div class="academic-roles" aria-label="Academic roles">
+      <div class="role-row">
+        <span class="role-title">Assistant Professor</span><span class="role-separator"> · </span><a href="https://www.unisalento.it/scheda-utente/-/people/gianluca.monturano/biografia" target="_blank" rel="noopener">University of Salento</a>
+      </div>
+      <div class="role-row">
+        <span class="role-title">Senior Researcher</span><span class="role-separator"> · </span><a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">Fondazione Eni Enrico Mattei</a>
+      </div>
+    </div>
+
+    <div class="office-line" aria-label="Office address">
+      <strong>Office:</strong>
+      <a href="https://maps.app.goo.gl/ydmHbmiB5CQFaNb48" target="_blank" rel="noopener">Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.</a>
+    </div>
+
+    <div class="logo-row primary-logos centered-logos" aria-label="Academic and social profiles">
+      <a class="round-logo" href="https://www.linkedin.com/in/gianluca-monturano93/" target="_blank" rel="noopener" title="LinkedIn">
+        <img src="assets/icons/LinkeIn.png" alt="LinkedIn">
+      </a>
+
+      <a class="round-logo" href="https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB" target="_blank" rel="noopener" title="Microsoft Teams">
+        <img src="assets/icons/teams.jpg" alt="Microsoft Teams">
+      </a>
+
+      <a class="round-logo" href="https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" title="Google Scholar">
+        <img src="assets/icons/Scholar.png" alt="Google Scholar">
+      </a>
+
+      <a class="round-logo" href="https://github.com/gmonturano" target="_blank" rel="noopener" title="GitHub">
+        <img src="assets/icons/github.svg" alt="GitHub">
+      </a>
+
+      <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" target="_blank" rel="noopener" title="ResearchGate">
+        <img src="assets/icons/Research_gate.png" alt="ResearchGate">
+      </a>
+
+      <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" target="_blank" rel="noopener" title="ORCID">
+        <img src="assets/icons/Orcid.png" alt="ORCID">
+      </a>
+
+      <a class="round-logo" href="https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage" target="_blank" rel="noopener" title="Scopus">
+        <img src="assets/icons/Socups.jpg" alt="Scopus">
+      </a>
+
+      <a class="round-logo" href="https://x.com/monturano" target="_blank" rel="noopener" title="X">
+        <img src="assets/icons/x.svg" alt="X">
+      </a>
+
+      <a class="round-logo" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=all" target="_blank" rel="noopener" title="arXiv">
+        <img src="assets/icons/ArXiv.png" alt="arXiv">
+      </a>
+
+      <a class="round-logo" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6928475" target="_blank" rel="noopener" title="SSRN">
+        <img src="assets/icons/ssrn.svg" alt="SSRN">
+      </a>
+    </div>
+
+    <div class="email-line">
+      <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>
+      <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
+    </div>
+
+    <div class="home-bio">
+<p class="lead">
+      I am currently an Assistant Professor (RTDA) in Political Economy at the Department of Economics of the University of Salento
+      (<a href="https://www.dse.unisalento.it/organizzazione/personale-docente" target="_blank" rel="noopener">Unisalento</a>)
+      and a Senior Researcher at the Fondazione Eni Enrico Mattei
+      (<a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">FEEM</a>)
+      in Milan.
+    </p>
+
+    <p>
+      Previously, I was a Postdoctoral Research Fellow in Applied Economics at the Department of Economics, Management and Business Law
+      (<a href="https://www.uniba.it/it/ricerca/dipartimenti/demdi/dipartimento/personale-demdi/docenti-esterni-1/2025-2026/monturano-gianluca" target="_blank" rel="noopener">DEMDI</a>)
+      of the University of Bari, where I remain affiliated as a researcher at the Laboratory of Applied Economics
+      (<a href="https://www.laboratorioeconomiapplicata.it/" target="_blank" rel="noopener">LEA</a>).
+      I hold a Ph.D. in Economics from the Department of Economics (DEMB) of the University of Modena and Reggio Emilia.
+      I was also a Visiting Research Fellow at the Solvay Brussels School of Economics and Management, Université Libre de Bruxelles (ULB).
+    </p>
+
+    <p>
+      I have teaching experience in economics and statistics at several universities and collaborate on research projects with a range of academic and policy institutions.
+    </p>
+
+    <p>
+      My research focuses on public economics, regional development, cohesion policies, socioeconomic inequalities, and the labour market, with a particular emphasis on granular data at the micro-territorial and individual level. My main scientific interests include causal inference, spatial econometrics, network analysis, and predictive estimation using machine learning algorithms, text analysis, and web scraping for public policy evaluation.
+    </p>
+
+      <p class="programming-line">
+        Main programming languages:
+        <span class="code-badge r-code">R</span>
+        <span class="code-badge python-code">Python</span>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© Gianluca Monturano</span>
+    <span><a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a></span>
+  </div>
+</footer>
+</body>
+</html>
