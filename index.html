@@ -301,6 +301,93 @@
       text-decoration:none !important;
     }
 
+
+    /* FINAL VISUAL FIX: larger photo, centered logos, cleaner role lines */
+    .profile-photo{
+      width:270px !important;
+      height:270px !important;
+    }
+
+    .academic-roles{
+      margin:0 auto 12px !important;
+      text-align:center !important;
+      font-size:.76rem !important;
+      line-height:1.75 !important;
+      letter-spacing:.035em !important;
+    }
+
+    .academic-roles .role-row{
+      display:block !important;
+      text-align:center !important;
+      margin-bottom:3px !important;
+    }
+
+    .academic-roles .role-title,
+    .academic-roles .role-separator,
+    .academic-roles a{
+      display:inline !important;
+      vertical-align:baseline !important;
+    }
+
+    .academic-roles .role-title{
+      font-weight:800 !important;
+      text-transform:uppercase !important;
+      color:#1f2933 !important;
+      letter-spacing:.075em !important;
+    }
+
+    .academic-roles a{
+      font-weight:700 !important;
+      color:#0057d9 !important;
+      border-bottom:1px solid rgba(0,87,217,.42) !important;
+      text-decoration:none !important;
+    }
+
+    .logo-row.centered-logos,
+    .primary-logos.centered-logos{
+      display:flex !important;
+      flex-direction:row !important;
+      justify-content:center !important;
+      align-items:center !important;
+      flex-wrap:nowrap !important;
+      gap:9px !important;
+      width:100% !important;
+      max-width:360px !important;
+      margin:12px auto 12px !important;
+      padding:0 !important;
+      overflow:visible !important;
+      text-align:center !important;
+    }
+
+    .logo-row.centered-logos .round-logo,
+    .logo-row.centered-logos .round-logo img{
+      width:26px !important;
+      height:26px !important;
+      min-width:26px !important;
+      min-height:26px !important;
+      max-width:26px !important;
+      max-height:26px !important;
+    }
+
+    .email-line{
+      margin-top:8px !important;
+      margin-bottom:22px !important;
+      text-align:center !important;
+    }
+
+    @media (max-width:760px){
+      .profile-photo{
+        width:200px !important;
+        height:200px !important;
+      }
+
+      .logo-row.centered-logos,
+      .primary-logos.centered-logos{
+        flex-wrap:wrap !important;
+        max-width:260px !important;
+      }
+    }
+
   </style>
 </head>
 
