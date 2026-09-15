@@ -3,212 +3,242 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gianluca Monturano, PhD</title>
-  <meta name="description" content="Academic website of Gianluca Monturano, quantitative economist and data scientist.">
+  <title>Gianluca Monturano | Assistant Professor · Senior Researcher</title>
+  <meta name="description" content="Gianluca Monturano is Assistant Professor at the University of Salento and Senior Researcher at Fondazione Eni Enrico Mattei. His research focuses on public policy evaluation, regional economics, spatial econometrics, transport, innovation and applied economics.">
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Home page only */
-    .home-centered{
-      max-width:760px !important;
-      width:auto !important;
-      margin:0 auto !important;
-      padding:0 18px !important;
-      display:block !important;
+    /* Home page refinement */
+    main.home-shell{
+      width:960px !important;
+      max-width:960px !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      display:grid !important;
+      grid-template-columns:180px minmax(0,690px) !important;
+      column-gap:80px !important;
+      align-items:start !important;
+      justify-content:center !important;
     }
 
-    .home-top{
-      text-align:center;
-      margin:0 auto 28px;
+    main.home-shell .sidebar{
+      width:180px !important;
+      max-width:180px !important;
     }
 
-    .home-name{
-      margin:0 0 5px;
-      font-size:1.72rem;
-      line-height:1.15;
-      font-weight:700;
+    main.home-shell .home-bio,
+    main.home-shell .content{
+      width:690px !important;
+      max-width:690px !important;
+    }
+
+    main.home-shell .profile-photo{
+      width:142px !important;
+      height:142px !important;
+      border-radius:50%;
+      border:1px solid var(--rule);
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      object-fit:cover;
+    }
+
+    main.home-shell .logo-row,
+    main.home-shell .primary-logos{
+      max-width:150px !important;
+      gap:6px !important;
+      margin:8px 0 10px !important;
+    }
+
+    main.home-shell .round-logo,
+    main.home-shell .round-logo img{
+      width:22px !important;
+      height:22px !important;
+      min-width:22px !important;
+      min-height:22px !important;
+      max-width:22px !important;
+      max-height:22px !important;
+    }
+
+    main.home-shell .home-bio{
+      border:1px solid #d8e1ea;
+      border-left:5px solid #0057d9;
+      border-radius:14px;
+      background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%);
+      padding:22px 24px;
+      box-shadow:0 8px 24px rgba(0,0,0,.055);
+    }
+
+    main.home-shell .home-bio h1{
+      font-size:1.72rem !important;
+      letter-spacing:-.018em;
+      margin-bottom:8px !important;
       color:#111;
     }
 
-    .home-role{
-      margin:0 auto 20px;
-      font-size:.78rem;
-      font-weight:700;
-      color:#555;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-variant:small-caps;
-    }
-
-    .home-top .profile-photo{
-      width:255px !important;
-      height:255px !important;
-      margin:0 auto 18px !important;
-      display:block !important;
-      border-radius:50%;
-      object-fit:cover;
-      box-shadow:0 8px 22px rgba(0,0,0,.11);
-    }
-
-    .scientific-profile-title{
-      text-align:center;
-      margin:0 0 10px;
+    main.home-shell .academic-roles{
+      margin:0 0 18px !important;
+      font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
       font-size:.72rem !important;
-      letter-spacing:.13em !important;
+      line-height:1.55 !important;
+      letter-spacing:.035em;
+      color:#5b6572;
+    }
+
+    main.home-shell .academic-roles div{
+      margin-bottom:3px;
+    }
+
+    main.home-shell .role-title{
+      font-weight:800;
       text-transform:uppercase;
-      color:#555;
-      font-weight:700;
+      color:#1f2933;
+      letter-spacing:.075em;
     }
 
-    .profile-links{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      align-items:center;
-      gap:10px;
-      margin:0 auto 16px;
-      max-width:760px;
+    main.home-shell .role-meta{
+      font-weight:500;
+      color:#5f6b7a;
+      letter-spacing:.025em;
     }
 
-    .profile-link{
-      width:24px;
-      height:24px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:0;
-      border:0;
-      border-radius:0;
-      background:transparent;
-      box-shadow:none;
-      transition:transform .15s ease, opacity .15s ease;
+    main.home-shell .academic-roles a{
+      color:#0057d9 !important;
+      text-decoration:none !important;
+      border-bottom:1px solid rgba(0,87,217,.45) !important;
+      pointer-events:auto !important;
     }
 
-    .profile-link:hover{
-      transform:translateY(-2px);
-      opacity:.82;
+    main.home-shell .academic-roles a:hover{
+      color:#003fa3 !important;
+      border-bottom-color:#003fa3 !important;
+      text-decoration:none !important;
     }
 
-    .profile-link img{
-      max-width:24px;
-      max-height:24px;
-      width:auto;
-      height:auto;
-      object-fit:contain;
-      display:block;
+    main.home-shell .home-bio p{
+      font-size:.94rem !important;
+      line-height:1.62 !important;
+      margin-bottom:13px !important;
+      color:#111827;
     }
 
-    .profile-link.wide img{
-      max-width:28px;
-      max-height:22px;
+    main.home-shell .home-bio .lead{
+      font-size:.98rem !important;
+      line-height:1.6 !important;
+      color:#111;
+      margin-bottom:15px !important;
     }
 
-    .home-contact{
-      margin:10px auto 0;
-      text-align:center;
-      font-size:.80rem;
-      line-height:1.6;
-    }
-
-    .home-contact a{
+    main.home-shell .home-bio a,
+    main.home-shell .contact-block a{
       color:#0057d9 !important;
       text-decoration:none;
       border-bottom:1px solid rgba(0,87,217,.45);
     }
 
-    .home-contact a:hover{
+    main.home-shell .home-bio a:hover,
+    main.home-shell .contact-block a:hover{
       color:#003fa3 !important;
       border-bottom-color:#003fa3;
       text-decoration:none;
     }
 
-    .home-bio{
-      width:auto !important;
-      max-width:760px !important;
-      margin:0 auto !important;
-      text-align:justify;
-      text-justify:inter-word;
+    main.home-shell .side-title{
+      font-size:.72rem !important;
+      letter-spacing:.12em !important;
+      color:#2f3a45;
     }
 
-    .home-bio .lead{
-      text-align:justify;
-      font-size:.97rem !important;
-      line-height:1.62 !important;
-    }
-
-    .home-bio p{
-      text-align:justify;
-      font-size:.93rem !important;
-      line-height:1.62 !important;
-      margin-bottom:12px !important;
+    main.home-shell .side-small,
+    main.home-shell .contact-block .side-small{
+      font-size:.72rem !important;
+      line-height:1.45 !important;
     }
 
     .programming-line{
-      text-align:left !important;
+      margin-top:16px;
     }
 
-    .inline-tech{
-      display:inline-block;
-      border:1px solid var(--rule);
-      background:#f6f6f6;
-      padding:1px 7px;
-      border-radius:4px;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:.84em;
-      line-height:1.4;
-      vertical-align:baseline;
-      white-space:nowrap;
+    .code-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size:.80em !important;
+      font-weight:800;
+      padding:2px 6px !important;
+      border-radius:5px;
+      line-height:1;
+      vertical-align:middle;
     }
 
-    .inline-tech.r{
-      color:#276dc3;
+    .r-code{
+      color:#fff;
+      background:#0096ff;
     }
 
-    .inline-tech.py{
-      color:#b8860b;
+    .python-code{
+      color:#1b1b1b;
+      background:#ffd43b;
+    }
+
+    .office-note{
+      max-width:960px;
+      margin:30px auto 0;
+      padding:14px 18px;
+      text-align:center;
+      color:#4f5a66;
+      font-size:.82rem;
+      line-height:1.5;
+      border-top:1px solid var(--rule);
+    }
+
+    .office-note strong{
+      color:#111;
+      font-weight:700;
     }
 
     @media (max-width:760px){
-      .home-centered{
+      main.home-shell{
+        width:auto !important;
         max-width:100% !important;
-        padding:0 18px !important;
+        display:block !important;
+        padding-left:18px !important;
+        padding-right:18px !important;
       }
 
-      .home-name{
-        font-size:1.55rem;
-      }
-
-      .home-role{
-        font-size:.72rem;
-        letter-spacing:.12em;
-      }
-
-      .home-top .profile-photo{
-        width:220px !important;
-        height:220px !important;
-      }
-
-      .profile-links{
-        gap:9px;
-      }
-
-      .profile-link{
-        width:23px;
-        height:23px;
-      }
-
-      .profile-link img{
-        max-width:23px;
-        max-height:23px;
-      }
-
-      .profile-link.wide img{
-        max-width:27px;
-        max-height:21px;
-      }
-
-      .home-bio{
+      main.home-shell .sidebar,
+      main.home-shell .home-bio,
+      main.home-shell .content{
+        width:auto !important;
         max-width:100% !important;
+      }
+
+      main.home-shell .sidebar{
+        margin-bottom:20px;
+      }
+
+      main.home-shell .profile-photo{
+        width:118px !important;
+        height:118px !important;
+      }
+
+      main.home-shell .home-bio{
+        padding:18px 18px;
+      }
+
+      main.home-shell .home-bio h1{
+        font-size:1.42rem !important;
+      }
+
+      main.home-shell .round-logo,
+      main.home-shell .round-logo img{
+        width:22px !important;
+        height:22px !important;
+      }
+
+      .office-note{
+        margin-top:24px;
+        padding-left:18px;
+        padding-right:18px;
       }
     }
   </style>
@@ -232,101 +262,130 @@
   </div>
 </header>
 
-<main class="home-centered">
-  <section class="home-top">
-    <h1 class="home-name">Gianluca Monturano</h1>
-    <div class="home-role">Assistant Professor · Senior Researcher</div>
+<main class="home-shell">
+  <aside class="sidebar" aria-label="Profile links and contact details">
+    <img class="profile-photo" src="assets/rofile-photo.sv.jpg" alt="Gianluca Monturano">
 
-    <img class="profile-photo" src="assets/rofile-photo.sv.jpg" alt="Profile photo of Gianluca Monturano">
+    <div class="side-block">
+      <div class="side-title">Profiles</div>
 
-    <div class="scientific-profile-title">Scientific profiles</div>
+      <div class="logo-row primary-logos" aria-label="Academic and social profiles">
+        <a class="round-logo" href="https://www.linkedin.com/in/gianluca-monturano93/" target="_blank" rel="noopener" title="LinkedIn">
+          <img src="assets/icons/LinkeIn.png" alt="LinkedIn">
+        </a>
 
-    <div class="profile-links" aria-label="Academic and professional profiles">
-      <a class="profile-link" href="https://www.linkedin.com/in/gianluca-monturano93/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
-        <img src="assets/icons/LinkeIn.png" alt="LinkedIn">
-      </a>
+        <a class="round-logo" href="https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB" target="_blank" rel="noopener" title="Microsoft Teams">
+          <img src="assets/icons/teams.jpg" alt="Microsoft Teams">
+        </a>
 
-      <a class="profile-link wide" href="https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB" title="Microsoft Teams" aria-label="Microsoft Teams" target="_blank" rel="noopener">
-        <img src="assets/icons/teams.jpg" alt="Teams">
-      </a>
+        <a class="round-logo" href="https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" title="Google Scholar">
+          <img src="assets/icons/Scholar.png" alt="Google Scholar">
+        </a>
 
-      <a class="profile-link wide" href="https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener">
-        <img src="assets/icons/Scholar.png" alt="Google Scholar">
-      </a>
+        <a class="round-logo" href="https://github.com/gmonturano" target="_blank" rel="noopener" title="GitHub">
+          <img src="assets/icons/github.svg" alt="GitHub">
+        </a>
 
-      <a class="profile-link" href="https://github.com/gmonturano" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
-        <img src="assets/icons/github.svg" alt="GitHub">
-      </a>
+        <a class="round-logo" href="https://www.researchgate.net/profile/Gianluca-Monturano" target="_blank" rel="noopener" title="ResearchGate">
+          <img src="assets/icons/Research_gate.png" alt="ResearchGate">
+        </a>
 
-      <a class="profile-link" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate" target="_blank" rel="noopener">
-        <img src="assets/icons/Research_gate.png" alt="ResearchGate">
-      </a>
+        <a class="round-logo" href="https://orcid.org/0009-0003-0728-1423" target="_blank" rel="noopener" title="ORCID">
+          <img src="assets/icons/Orcid.png" alt="ORCID">
+        </a>
 
-      <a class="profile-link" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
-        <img src="assets/icons/Orcid.png" alt="ORCID">
-      </a>
+        <a class="round-logo" href="https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage" target="_blank" rel="noopener" title="Scopus">
+          <img src="assets/icons/Socups.jpg" alt="Scopus">
+        </a>
 
-      <a class="profile-link" href="https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage" title="Scopus" aria-label="Scopus" target="_blank" rel="noopener">
-        <img src="assets/icons/Socups.jpg" alt="Scopus">
-      </a>
+        <a class="round-logo" href="https://x.com/monturano" target="_blank" rel="noopener" title="X">
+          <img src="assets/icons/x.svg" alt="X">
+        </a>
 
-      <a class="profile-link" href="https://x.com/GMonturano" title="X" aria-label="X" target="_blank" rel="noopener">
-        <img src="assets/icons/x.svg" alt="X">
-      </a>
+        <a class="round-logo" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=all" target="_blank" rel="noopener" title="arXiv">
+          <img src="assets/icons/ArXiv.png" alt="arXiv">
+        </a>
 
-      <a class="profile-link wide" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv" target="_blank" rel="noopener">
-        <img src="assets/icons/ArXiv.png" alt="arXiv">
-      </a>
-
-      <a class="profile-link" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6299055" title="SSRN" aria-label="SSRN" target="_blank" rel="noopener">
-        <img src="assets/icons/ssrn.svg" alt="SSRN">
-      </a>
+        <a class="round-logo" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6928475" target="_blank" rel="noopener" title="SSRN">
+          <img src="assets/icons/ssrn.svg" alt="SSRN">
+        </a>
+      </div>
     </div>
 
-    <div class="home-contact">
-      <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a><br>
-      <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
+    <div class="side-block contact-block">
+      <div class="side-title">Email</div>
+      <p class="side-small">
+        <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>
+      </p>
+      <p class="side-small">
+        <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
+      </p>
     </div>
-  </section>
+  </aside>
 
-  <section class="content home-bio">
+  <section class="home-bio">
+    <h1>Gianluca Monturano</h1>
+
+    <div class="academic-roles" aria-label="Academic roles">
+      <div>
+        <span class="role-title">Assistant Professor</span>
+        <span class="role-meta"> · <a href="https://www.unisalento.it/scheda-utente/-/people/gianluca.monturano/biografia" target="_blank" rel="noopener">University of Salento</a></span>
+      </div>
+      <div>
+        <span class="role-title">Senior Researcher</span>
+        <span class="role-meta"> · <a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">Fondazione Eni Enrico Mattei</a></span>
+      </div>
+    </div>
+
     <p class="lead">
-      I am currently an Assistant Professor (RTDA) in Political Economy at the Department of Economics of the University of Salento
-      (<a href="https://www.dse.unisalento.it/organizzazione/personale-docente" target="_blank" rel="noopener">Unisalento</a>)
-      and a Senior Researcher at the Fondazione Eni Enrico Mattei
-      (<a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">FEEM</a>)
-      in Milan.
+      I am an Assistant Professor (RTDA) at the
+      <a href="https://www.unisalento.it/scheda-utente/-/people/gianluca.monturano/biografia" target="_blank" rel="noopener">University of Salento</a>
+      and a Senior Researcher at
+      <a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">Fondazione Eni Enrico Mattei</a>.
     </p>
 
     <p>
-      Previously, I was a Postdoctoral Research Fellow in Applied Economics at the Department of Economics, Management and Business Law
-      (<a href="https://www.uniba.it/it/ricerca/dipartimenti/demdi/dipartimento/personale-demdi/docenti-esterni-1/2025-2026/monturano-gianluca" target="_blank" rel="noopener">DEMDI</a>)
-      of the University of Bari, where I remain affiliated as a researcher at the Laboratory of Applied Economics
-      (<a href="https://www.laboratorioeconomiapplicata.it/" target="_blank" rel="noopener">LEA</a>).
-      I hold a Ph.D. in Economics from the Department of Economics (DEMB) of the University of Modena and Reggio Emilia.
-      I was also a Visiting Research Fellow at the Solvay Brussels School of Economics and Management, Université Libre de Bruxelles (ULB).
+      Previously, I was a Postdoctoral Research Fellow at the Department of Economics,
+      Management and Business Law, University of Bari Aldo Moro, and a researcher at the
+      Laboratory of Applied Economics. I obtained my PhD from the Department of Economics
+      Marco Biagi, University of Modena and Reggio Emilia.
     </p>
 
     <p>
-      I have teaching experience in economics and statistics at several universities and collaborate on research projects with a range of academic and policy institutions.
+      I was also a Visiting Research Fellow at the Solvay Brussels School of Economics and
+      Management, Université Libre de Bruxelles (ULB).
     </p>
 
     <p>
-      My research focuses on public economics, regional development, cohesion policies, socioeconomic inequalities, and the labour market, with a particular emphasis on granular data at the micro-territorial and individual level. My main scientific interests include causal inference, spatial econometrics, network analysis, and predictive estimation using machine learning algorithms, text analysis, and web scraping for public policy evaluation.
+      My research focuses on public policy evaluation, regional and spatial economics,
+      applied econometrics, transport accessibility, innovation, inequality and territorial
+      development. I work with administrative, spatial and longitudinal data, combining
+      econometric methods, machine learning tools and reproducible computational workflows.
+    </p>
+
+    <p>
+      I teach courses in economics, empirical methods, public policy, statistics,
+      econometrics and data analysis. I also contribute to research projects on territorial
+      inequalities, productivity, transport, digital infrastructure and innovation policy.
     </p>
 
     <p class="programming-line">
-      I program mainly in <span class="inline-tech r">R</span> and <span class="inline-tech py">Python</span>.
+      Main programming languages:
+      <span class="code-badge r-code">R</span>
+      <span class="code-badge python-code">Python</span>
     </p>
   </section>
 </main>
 
-<footer class="footer academic-footer">
-  <div class="wrap footer-inner academic-footer-inner">
-    <span class="footer-name">Gianluca Monturano</span>
-    <span class="footer-meta">
-      Quantitative Economics · Econometrics · <code>R</code> · <code>Python</code>
-    </span>
+<div class="office-note" aria-label="Office address">
+  <strong>Office:</strong>
+  Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.
+</div>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© Gianluca Monturano</span>
+    <span><a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a></span>
   </div>
 </footer>
 </body>
