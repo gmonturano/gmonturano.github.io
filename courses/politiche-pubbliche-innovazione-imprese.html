@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,14 +68,14 @@
       margin-top:10px;
     }
 
-    .course-actions{
+    .quick-links{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
       margin-top:14px;
     }
 
-    .course-actions a{
+    .quick-links a{
       display:inline-block;
       border:1px solid var(--rule);
       background:white;
@@ -87,7 +87,7 @@
       font-weight:700;
     }
 
-    .course-actions a:hover{
+    .quick-links a:hover{
       text-decoration:underline;
       text-underline-offset:2px;
     }
@@ -132,6 +132,7 @@
       color:#0057d9;
       text-decoration:underline;
       text-underline-offset:2px;
+      font-weight:700;
     }
 
     .course-list{
@@ -141,6 +142,14 @@
     .course-list li{
       margin-bottom:7px;
       line-height:1.5;
+    }
+
+    .file-actions{
+      white-space:nowrap;
+    }
+
+    .file-actions a{
+      margin-right:8px;
     }
 
     .page-index{
@@ -207,6 +216,10 @@
       .page-index li{
         margin:0;
       }
+
+      .file-actions{
+        white-space:normal;
+      }
     }
   </style>
 </head>
@@ -217,7 +230,7 @@
     <div class="nav">
       <a class="name" href="../index.html">Gianluca Monturano, PhD</a>
 
-      <nav class="menu" aria-label="Primary navigation">
+      <nav class="menu" aria-label="Navigazione principale">
         <a href="../index.html">Home</a>
         <a href="../research.html">Research</a>
         <a href="../software.html">Software</a>
@@ -233,184 +246,344 @@
   <section class="course-content">
 
     <section class="course-hero">
-      <span class="course-label">Current course</span>
+      <span class="course-label">Corso attuale</span>
 
       <h1>Politiche Pubbliche per l’Innovazione e le Imprese</h1>
 
       <p class="position">
-        Course materials, notices, slides and teaching resources.
+        Pagina del corso con avvisi, lezioni, programma, syllabus, slide e materiali didattici.
       </p>
 
       <p>
-        The course introduces the economic rationale, instruments and evaluation methods
-        of public policies for innovation and firms. Topics include market failures,
-        knowledge spillovers, public intervention, financing of innovation, industrial policy,
-        territorial policy and empirical approaches to policy evaluation.
+        Il corso introduce il razionale economico, gli strumenti e i metodi di valutazione
+        delle politiche pubbliche per l’innovazione e le imprese. I temi principali includono
+        fallimenti di mercato, spillover di conoscenza, intervento pubblico, finanziamento
+        dell’innovazione, politica industriale, politiche territoriali e valutazione empirica
+        delle politiche.
       </p>
 
       <p class="course-meta">
-        University of Salento · Department of Economics · Academic year 2025–2026 · Instructor: Gianluca Monturano
+        Università del Salento · Dipartimento di Scienze dell’Economia · Anno accademico 2026–2026 · Professore: Gianluca Monturano
       </p>
 
-      <div class="course-actions">
-        <a href="#notices">Notices</a>
-        <a href="#slides">Slides</a>
-        <a href="#programme">Programme</a>
-        <a href="#materials">Materials</a>
-        <a href="#exam">Assessment</a>
+      <div class="quick-links">
+        <a href="#avvisi">Avvisi</a>
+        <a href="#lezioni">Lezioni</a>
+        <a href="#ricevimento">Ricevimento</a>
+        <a href="#programma-syllabus">Programma/Syllabus</a>
+        <a href="#slide">Slide</a>
+        <a href="#valutazione">Valutazione</a>
       </div>
     </section>
 
-    <h2 id="notices">Notices</h2>
+    <h2 id="avvisi">Avvisi</h2>
 
     <div class="notice-box">
-      <div class="notice-date">Latest notice</div>
+      <div class="notice-date">Avviso</div>
       <p>
-        Course materials and lecture slides will be uploaded progressively during the semester.
+        Le slide e gli altri materiali del corso saranno caricati progressivamente durante il semestre.
       </p>
     </div>
 
     <div class="notice-box">
-      <div class="notice-date">Teaching materials</div>
+      <div class="notice-date">Materiali didattici</div>
       <p>
-        Slides, readings and additional materials will be made available in the dedicated sections below.
+        Per ogni lezione saranno disponibili, ove previsti, il link per aprire il PDF e il link per scaricarlo.
       </p>
     </div>
 
-    <h2 id="slides">Slides</h2>
+    <h2 id="lezioni">Lezioni</h2>
+
+    <p>
+      Le informazioni su calendario, aula e orari saranno aggiornate in questa sezione.
+    </p>
 
     <table class="course-table">
       <thead>
         <tr>
-          <th>Lecture</th>
-          <th>Topic</th>
-          <th>File</th>
+          <th>Lezione</th>
+          <th>Argomento</th>
+          <th>Materiale</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td>Lecture 1</td>
-          <td>Course introduction and syllabus</td>
-          <td>Coming soon</td>
+          <td>Lezione 1</td>
+          <td>Introduzione al corso e presentazione del syllabus</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 2</td>
+          <td>Lezione 2</td>
           <td>Economia pubblica dell’innovazione: fallimenti di mercato, spillover e intervento pubblico</td>
-          <td>Coming soon</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 3</td>
-          <td>Financing innovation, information asymmetries and public support</td>
-          <td>Coming soon</td>
+          <td>Lezione 3</td>
+          <td>Finanziamento dell’innovazione, asimmetrie informative e vincoli finanziari</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 4</td>
-          <td>Public incentives, additionality and policy design</td>
-          <td>Coming soon</td>
+          <td>Lezione 4</td>
+          <td>Incentivi pubblici, additionality e disegno delle politiche</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 5</td>
-          <td>Industrial policy, firms and productivity</td>
-          <td>Coming soon</td>
+          <td>Lezione 5</td>
+          <td>Politica industriale, imprese e produttività</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 6</td>
-          <td>Territorial policies, local development and innovation ecosystems</td>
-          <td>Coming soon</td>
+          <td>Lezione 6</td>
+          <td>Politiche territoriali, sviluppo locale ed ecosistemi dell’innovazione</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 7</td>
-          <td>Empirical approaches to policy evaluation</td>
-          <td>Coming soon</td>
+          <td>Lezione 7</td>
+          <td>Approcci empirici alla valutazione delle politiche pubbliche</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 8</td>
-          <td>Difference-in-differences and counterfactual methods</td>
-          <td>Coming soon</td>
+          <td>Lezione 8</td>
+          <td>Difference-in-differences e metodi controfattuali</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 9</td>
-          <td>Spatial and territorial dimensions of public policies</td>
-          <td>Coming soon</td>
+          <td>Lezione 9</td>
+          <td>Dimensione spaziale e territoriale delle politiche pubbliche</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 10</td>
-          <td>Data, indicators and evidence for innovation policies</td>
-          <td>Coming soon</td>
+          <td>Lezione 10</td>
+          <td>Dati, indicatori ed evidenza empirica per le politiche dell’innovazione</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 11</td>
-          <td>Case studies and empirical applications</td>
-          <td>Coming soon</td>
+          <td>Lezione 11</td>
+          <td>Casi studio e applicazioni empiriche</td>
+          <td>Disponibile a breve</td>
         </tr>
 
         <tr>
-          <td>Lecture 12</td>
-          <td>Final discussion and course review</td>
-          <td>Coming soon</td>
+          <td>Lezione 12</td>
+          <td>Discussione finale e riepilogo del corso</td>
+          <td>Disponibile a breve</td>
         </tr>
       </tbody>
     </table>
 
-    <h2 id="programme">Programme</h2>
-
-    <ul class="pubs course-list">
-      <li>Public economics of innovation and the rationale for public intervention.</li>
-      <li>Knowledge as an economic good: non-rivalry, imperfect excludability and appropriability.</li>
-      <li>Externalities, knowledge spillovers and the divergence between private and social returns.</li>
-      <li>Public instruments for innovation: patents, subsidies, tax credits, public research and public demand.</li>
-      <li>Additionality, deadweight, crowding-in and crowding-out.</li>
-      <li>Financing constraints, information asymmetries and innovation investment.</li>
-      <li>Industrial policy and firm-level competitiveness.</li>
-      <li>Territorial policies, regional development and innovation systems.</li>
-      <li>Empirical methods for policy evaluation and causal inference.</li>
-      <li>Applications to Italian and European public policies.</li>
-    </ul>
-
-    <h2 id="materials">Materials</h2>
-
-    <ul class="pubs course-list">
-      <li>Syllabus: coming soon.</li>
-      <li>Reading list: coming soon.</li>
-      <li>Datasets and empirical materials: coming soon.</li>
-      <li>Code and replication examples: coming soon.</li>
-    </ul>
-
-    <h2 id="exam">Assessment</h2>
+    <h2 id="ricevimento">Ricevimento</h2>
 
     <p>
-      Assessment information, exam rules and additional instructions will be communicated during the course
-      and updated on this page.
+      Il ricevimento studenti si svolge previo appuntamento. Gli studenti possono contattare il professore
+      all’indirizzo email indicato nella sezione Contatti.
     </p>
 
-    <h2 id="contacts">Contacts</h2>
+    <h2 id="programma-syllabus">Programma e syllabus</h2>
 
     <p>
-      For course-related questions, students may contact the instructor by email:
+      Il programma/syllabus del corso sarà disponibile in formato PDF.
+    </p>
+
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th>Documento</th>
+          <th>Descrizione</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Programma/Syllabus</td>
+          <td>Programma del corso, obiettivi formativi, struttura delle lezioni e modalità di valutazione.</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="programma-sintetico">Programma sintetico</h2>
+
+    <ul class="pubs course-list">
+      <li>Economia pubblica dell’innovazione e razionale dell’intervento pubblico.</li>
+      <li>Conoscenza come bene economico: non rivalità, escludibilità imperfetta e appropriabilità.</li>
+      <li>Esternalità, spillover di conoscenza e divergenza tra rendimento privato e rendimento sociale.</li>
+      <li>Strumenti pubblici per l’innovazione: brevetti, sussidi, crediti d’imposta, ricerca pubblica e domanda pubblica.</li>
+      <li>Additionality, deadweight, crowding-in e crowding-out.</li>
+      <li>Vincoli finanziari, asimmetrie informative e investimento in innovazione.</li>
+      <li>Politica industriale e competitività delle imprese.</li>
+      <li>Politiche territoriali, sviluppo regionale ed ecosistemi dell’innovazione.</li>
+      <li>Metodi empirici per la valutazione delle politiche pubbliche e inferenza causale.</li>
+      <li>Applicazioni a politiche pubbliche italiane ed europee.</li>
+    </ul>
+
+    <h2 id="slide">Slide</h2>
+
+    <p>
+      Le slide saranno caricate progressivamente. Per ogni lezione, il primo link apre il PDF nel browser,
+      mentre il secondo consente di scaricarlo.
+    </p>
+
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th>Lezione</th>
+          <th>Argomento</th>
+          <th>PDF</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Lezione 1</td>
+          <td>Introduzione al corso e presentazione del syllabus</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 2</td>
+          <td>Economia pubblica dell’innovazione: fallimenti di mercato, spillover e intervento pubblico</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 3</td>
+          <td>Finanziamento dell’innovazione, asimmetrie informative e vincoli finanziari</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 4</td>
+          <td>Incentivi pubblici, additionality e disegno delle politiche</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 5</td>
+          <td>Politica industriale, imprese e produttività</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 6</td>
+          <td>Politiche territoriali, sviluppo locale ed ecosistemi dell’innovazione</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 7</td>
+          <td>Approcci empirici alla valutazione delle politiche pubbliche</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 8</td>
+          <td>Difference-in-differences e metodi controfattuali</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 9</td>
+          <td>Dimensione spaziale e territoriale delle politiche pubbliche</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 10</td>
+          <td>Dati, indicatori ed evidenza empirica per le politiche dell’innovazione</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 11</td>
+          <td>Casi studio e applicazioni empiriche</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lezione 12</td>
+          <td>Discussione finale e riepilogo del corso</td>
+          <td class="file-actions">
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf" target="_blank" rel="noopener">Apri PDF</a>
+            <a href="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf" download>Scarica PDF</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="valutazione">Valutazione</h2>
+
+    <p>
+      Le modalità di valutazione, le regole d’esame e le ulteriori indicazioni operative saranno comunicate
+      durante il corso e aggiornate in questa pagina.
+    </p>
+
+    <h2 id="contatti">Contatti</h2>
+
+    <p>
+      Per domande relative al corso, gli studenti possono contattare il professore al seguente indirizzo:
       <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>.
     </p>
   </section>
 
-  <aside class="page-index" aria-label="Course page index">
-    <h2>Course index</h2>
+  <aside class="page-index" aria-label="Indice della pagina del corso">
+    <h2>Indice</h2>
     <ul>
-      <li><a href="#notices">Notices</a></li>
-      <li><a href="#slides">Slides</a></li>
-      <li><a href="#programme">Programme</a></li>
-      <li><a href="#materials">Materials</a></li>
-      <li><a href="#exam">Assessment</a></li>
-      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#avvisi">Avvisi</a></li>
+      <li><a href="#lezioni">Lezioni</a></li>
+      <li><a href="#ricevimento">Ricevimento</a></li>
+      <li><a href="#programma-syllabus">Programma/Syllabus</a></li>
+      <li><a href="#programma-sintetico">Programma sintetico</a></li>
+      <li><a href="#slide">Slide</a></li>
+      <li><a href="#valutazione">Valutazione</a></li>
+      <li><a href="#contatti">Contatti</a></li>
     </ul>
   </aside>
 </main>
@@ -418,7 +591,7 @@
 <footer class="footer">
   <div class="wrap footer-inner">
     <span>© Gianluca Monturano</span>
-    <span>Teaching</span>
+    <span>Politiche Pubbliche per l’Innovazione e le Imprese</span>
   </div>
 </footer>
 </body>
