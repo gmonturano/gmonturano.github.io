@@ -295,6 +295,42 @@
         font-size:1.46rem !important;
       }
     }
+
+    /* ABSOLUTE FINAL PHOTO OVERRIDE */
+    .photo-center{
+      display:flex !important;
+      justify-content:center !important;
+      align-items:center !important;
+      width:100% !important;
+      margin:0 auto 18px !important;
+    }
+
+    img.hero-profile-photo{
+      width:360px !important;
+      height:360px !important;
+      min-width:360px !important;
+      min-height:360px !important;
+      max-width:360px !important;
+      max-height:360px !important;
+      border-radius:50% !important;
+      object-fit:cover !important;
+      display:block !important;
+      margin:0 auto !important;
+      border:1px solid #c7cdd4 !important;
+      box-shadow:0 10px 28px rgba(0,0,0,.13) !important;
+    }
+
+    @media (max-width:760px){
+      img.hero-profile-photo{
+        width:240px !important;
+        height:240px !important;
+        min-width:240px !important;
+        min-height:240px !important;
+        max-width:240px !important;
+        max-height:240px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -319,7 +355,7 @@
 <main class="home-shell home-centered">
   <section class="home-card">
     <div class="photo-center">
-      <img class="profile-photo" src="assets/rofile-photo.sv.jpg" alt="Gianluca Monturano">
+      <img class="hero-profile-photo" src="assets/rofile-photo.sv.jpg" alt="Gianluca Monturano" style="width:360px !important;height:360px !important;max-width:360px !important;max-height:360px !important;">
     </div>
 
     <h1>Gianluca Monturano</h1>
