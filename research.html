@@ -1,83 +1,540 @@
-<h2 id="peer-reviewed-articles">Peer-reviewed articles <span class="muted">(ANVUR A-class 13 journals)</span></h2>
-<ol class="pubs">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research | Gianluca Monturano</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .red-title{color:#b00020;font-weight:700}
+    .journal{color:#b00020;font-weight:700;font-style:italic}
+    .orange-title{color:#d97706;font-weight:700}
+    .violet-link{
+      color:#6b4fa3 !important;
+      font-weight:700;
+      font-style:italic;
+      text-decoration:underline !important;
+      text-underline-offset:2px;
+    }
+    .violet-link:hover{
+      color:#51377f !important;
+    }
 
-  <li><strong>Monturano, G.</strong>, Ciccarelli, C. &amp; Mastronardi, L. <span class="paper-title">Do Protected Areas Affect Income Levels in Remote Regions? Evidence from Italian Inner Areas</span>. <span class="journal">Environmental and Resource Economics</span>. <strong>Accepted for publication</strong>.</li>
+    .orange-link{
+      color:#d97706 !important;
+      font-weight:700;
+      font-style:italic;
+      text-decoration:underline !important;
+      text-underline-offset:2px;
+    }
+    .orange-link:hover{
+      color:#b45309 !important;
+    }
 
-  <li>Argentiero, A., Maranzano, P., Pedrini, G. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Spatial Consequences of Tax Reforms on Tax Compliance: Econometric Evidence from the Italian Minimum Taxpayer Regime</span>. <span class="journal">The Annals of Regional Science</span>. DOI: <a href="https://doi.org/10.1007/s00168-026-01546-y" target="_blank" rel="noopener">10.1007/s00168-026-01546-y</a>. <strong>Accepted for publication</strong>.</li>
+    .highlight-section{
+      border-left:3px solid #b00020;
+      padding-left:14px;
+      margin-top:24px;
+    }
+    .grant-list li{margin-bottom:11px}
+    .service-box{
+      border:1px solid var(--rule);
+      background:#fafafa;
+      padding:10px 12px;
+      margin:8px 0 18px;
+      font-size:.92rem;
+    }
+    .service-title{font-weight:700;color:#111}
+    .service-box p{
+      margin:0 0 8px;
+      line-height:1.5;
+    }
+    .service-box p:last-child{
+      margin-bottom:0;
+    }
+  
+    /* ABSOLUTE FINAL: paper titles normal, only journals italic/red */
+    .journal{
+      color:#b00020 !important;
+      font-weight:700 !important;
+      font-style:italic !important;
+    }
+    .paper-title{
+      font-style:normal !important;
+      color:inherit !important;
+      font-weight:400 !important;
+    }
+    ol.pubs em,
+    ol.pubs .paper-title{
+      font-style:normal !important;
+    }
+    ol.pubs .journal{
+      color:#b00020 !important;
+      font-weight:700 !important;
+      font-style:italic !important;
+    }
+    .content-link{
+      color:#0057d9 !important;
+      text-decoration:underline !important;
+      text-underline-offset:2px;
+      font-weight:600;
+    }
+    .content-link:hover{
+      color:#003fa3 !important;
+    }
 
-  <li>Bergantino, A.S., Coluccia, B., Fusco, G. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Digital Infrastructure and Territorial Heterogeneity in Quality-of-Life Outcomes</span>. <span class="journal">Socio-Economic Planning Sciences</span>. DOI: <a href="https://doi.org/10.1016/j.seps.2026.102545" target="_blank" rel="noopener">10.1016/j.seps.2026.102545</a>.</li>
+    /* Research page only: wider writing area and smaller text */
+    .research-page{
+      max-width:1000px !important;
+      width:auto !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      font-size:.88rem;
+      line-height:1.48;
+    }
 
-  <li>Amaddeo, E., Bergantino, A.S., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Insights from Fuel Prices: A Local Projection Time-Series Analysis with Exogenous Structural Breaks</span>. <span class="journal">Italian Economic Journal</span>. DOI: <a href="https://doi.org/10.1007/s40797-026-00392-3" target="_blank" rel="noopener">10.1007/s40797-026-00392-3</a>.</li>
+    .research-page h1{
+      font-size:1.55rem;
+      margin-bottom:7px;
+    }
 
-  <li>Bergantino, A.S., Buongiorno, A., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Fuel costs and spatial rail accessibility: Econometric evidence from an empirically-weighted network-based 3SFCA model</span>. <span class="journal">Research in Transportation Business &amp; Management</span>, 67, 101693. DOI: <a href="https://doi.org/10.1016/j.rtbm.2026.101693" target="_blank" rel="noopener">10.1016/j.rtbm.2026.101693</a>.</li>
+    .research-page h2{
+      font-size:.98rem;
+      margin-top:20px;
+      margin-bottom:7px;
+      padding-bottom:3px;
+    }
 
-  <li>Bergantino, A.S., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Digital divide and income inequality: causal evidence from Italian provinces</span>. <span class="journal">The Annals of Regional Science</span>, 75(1), 11. DOI: <a href="https://doi.org/10.1007/s00168-025-01440-z" target="_blank" rel="noopener">10.1007/s00168-025-01440-z</a>.</li>
+    .research-page .position{
+      font-size:.86rem;
+      margin-bottom:17px;
+    }
 
-  <li><strong>Monturano, G.</strong>, Resce, G. &amp; Sonzogno, G.V. (2025). <span class="paper-title">Income Support and Voting with Territorial Disparities</span>. <span class="journal">Socio-Economic Review</span>. DOI: <a href="https://doi.org/10.1093/ser/mwaf035" target="_blank" rel="noopener">10.1093/ser/mwaf035</a>.</li>
+    .research-page .pubs{
+      max-width:none;
+    }
 
-  <li>Bellantuono, L., Bellotti, R., Bergantino, A.S., Gardelli, A., Intini, M., Kheirkhahan, N. &amp; <strong>Monturano, G.</strong> (2025). <span class="paper-title">Analyzing the Accessibility of Rome's Healthcare Services via Public Transportation: A Complex Network Approach</span>. <span class="journal">Scientific Reports</span>, 15(1), 22880. DOI: <a href="https://doi.org/10.1038/s41598-025-05060-7" target="_blank" rel="noopener">10.1038/s41598-025-05060-7</a>.</li>
+    .research-page ol.pubs,
+    .research-page ul.pubs{
+      padding-left:20px;
+    }
 
-  <li>Maranzano, P., <strong>Monturano, G.</strong> &amp; Tridico, P. (2025). <span class="paper-title">The Geography of the Italian Citizenship Income: The Role of Poverty and Inequality in Determining Spatial Heterogeneity Across the Italian Municipalities</span>. <span class="journal">Italian Economic Journal</span>. DOI: <a href="https://doi.org/10.1007/s40797-025-00327-4" target="_blank" rel="noopener">10.1007/s40797-025-00327-4</a>.</li>
+    .research-page .pubs li{
+      margin-bottom:6px;
+      line-height:1.47;
+    }
 
-  <li><strong>Monturano, G.</strong>, Resce, G. &amp; Ventura, M. (2025). <span class="paper-title">Short-term Impact of Financial Support to Inner Areas</span>. <span class="journal">Italian Economic Journal</span>, 1–40. DOI: <a href="https://doi.org/10.1007/s40797-025-00313-w" target="_blank" rel="noopener">10.1007/s40797-025-00313-w</a>.</li>
+    .research-page p{
+      line-height:1.47;
+    }
 
-</ol>
+    .research-page .service-box{
+      font-size:.84rem;
+    }
 
-<h2 id="scientific-journals">Articles in ANVUR scientific journals for Area 13</h2>
-<ol class="pubs">
+    .research-page .highlight-section{
+      margin-top:20px;
+      padding-left:12px;
+    }
 
-  <li>Buongiorno, A. &amp; <strong>Monturano, G.</strong> (2025). <span class="paper-title">I dati sulla mobilità come strumento di governo del turismo</span>. <span class="journal">Urbanistica Informazioni</span>, luglio-agosto (322).</li>
+    @media (max-width:760px){
+      .research-page{
+        max-width:100% !important;
+        font-size:.93rem;
+      }
+    }
 
-  <li><strong>Monturano, G.</strong> (2022). <span class="paper-title">Il prodotto turistico e la sua promozione. Il caso dell’Arcipelago delle Isole Tremiti</span>. <span class="journal">Turistica. The Italian Journal of Tourism</span>, (3).</li>
+    /* Two-column Research layout with sticky index */
+    .research-shell{
+      max-width:1320px !important;
+      width:auto !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 190px;
+      gap:34px;
+      align-items:start;
+      font-size:.86rem;
+      line-height:1.46;
+    }
 
-</ol>
+    .research-content{
+      min-width:0;
+    }
 
-<h2 id="submitted-ongoing-papers">Submitted and ongoing papers</h2>
-<ol class="pubs">
+    .research-content h1{
+      font-size:1.52rem;
+      margin-bottom:7px;
+    }
 
-  <li>Coco, G., <strong>Monturano, G.</strong> &amp; Resce, G. <span class="paper-title">Delays in Cohesion Infrastructure Projects. A Machine Learning Approach</span> — <span class="journal">Oxford Bulletin of Economics and Statistics</span>, 3rd round of revision.</li>
+    .research-content h2{
+      font-size:.96rem;
+      margin-top:20px;
+      margin-bottom:7px;
+      padding-bottom:3px;
+      scroll-margin-top:86px;
+    }
 
-  <li>Bergantino, A.S., <strong>Monturano, G.</strong> &amp; Pedrini, G. <span class="paper-title">Cohesion Policies for the Tourism Industry</span> — <span class="journal">Regional Studies</span>, 2nd round of revision.</li>
+    .research-content .position{
+      font-size:.85rem;
+      margin-bottom:17px;
+    }
 
-  <li><strong>Monturano, G.</strong>, Ciccarelli, C. &amp; Mastronardi, L. <span class="paper-title">Consumer Food Cooperatives as Tools for Food Access and Community Support in Italian Inner Areas</span> — <span class="journal">Journal of Rural Studies</span>, Under Review.</li>
+    .research-content .pubs{
+      max-width:none;
+    }
 
-  <li>Bergantino, A.S., Intini, M. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Accessibility as a Territorial Equilibrium: Evidence from Italian Municipalities</span> — <span class="journal">Spatial Economic Analysis</span>, Under Review.</li>
+    .research-content ol.pubs,
+    .research-content ul.pubs{
+      padding-left:20px;
+    }
 
-  <li>De Castris, M., Fusco, G. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Employment Protection Reforms and Workers' Health and Well-Being: An Individual Quasi-Experimental Study</span> — <span class="journal">Health Policy</span>, 2nd round of revision.</li>
+    .research-content .pubs li{
+      margin-bottom:6px;
+      line-height:1.46;
+    }
 
-  <li>Marcis, L., Maranzano, P., <strong>Monturano, G.</strong> &amp; Salvatore, R. <span class="paper-title">The Italian Citizens' Income Program: An Analysis of its Impact on the Territorial Distribution of Some Economic Indicators</span> — <span class="journal">Socio-Economic Planning Sciences</span>, Under Review.</li>
+    .research-content p{
+      line-height:1.46;
+    }
 
-  <li>Chiodin, A., Manera, M., Maranzano, P. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Mapping Socio-Economic Fragility in Italy through Municipal-Level Spatial Clustering of COVID-19 Data</span> — <span class="journal">Networks and Spatial Economics</span>, Under Review.</li>
+    .research-content .service-box{
+      font-size:.84rem;
+    }
 
-  <li>Brascia, D., <strong>Monturano, G.</strong>, Mangiameli, G., Congedo, M.T., Mastromarino, M.G., Catelli, C., Bonis, A., Wu, C.F., Ağkoç, M., Fra, S., Maiolino, E., Onorati, I., Intini, M., Bergantino, A.S., Lucchi, M., Luzzi, L., Margaritora, S., Schiavon, M., Wu, C.Y., Turna, A., Moreno-Mata, N., Martinod, E. &amp; Marulli, G. <span class="paper-title">AI-Guided Brain MRI Intensification in Resected Young NSCLC: Global Multicenter Risk Model</span> — <span class="journal">Journal of Thoracic Oncology</span>, Submitted.</li>
+    .research-content .highlight-section{
+      margin-top:20px;
+      padding-left:12px;
+    }
 
-  <li>Bergantino, A.S., Intini, M., Pedrini, G., Scudieri, R. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Spatial Spillovers and Connectivity in Italian Service Industries</span> — Ongoing.</li>
+    .page-index{
+      position:sticky;
+      top:74px;
+      align-self:start;
+      font-size:.82rem;
+      border-left:1px solid var(--rule);
+      padding-left:12px;
+      color:#333;
+    }
 
-  <li>Bourdin, S. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Urban Left-Behindness within Metropolitan Italy: A Sub-Municipal Spatial Panel Econometric Analysis of Electoral Discontent</span> — Ongoing.</li>
+    .page-index h2{
+      font-size:.95rem;
+      margin:0 0 9px;
+      padding:0;
+      border:0;
+    }
 
-  <li>Bergantino, A.S., Erasmo, V., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Investigating the Impact of PRIN on Higher Education Performance in Italy: A Spatial-Econometric Analysis</span> — Ongoing.</li>
+    .page-index ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
 
-  <li>Fusco, G., Gallo, G. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Population Trends in a Medium-Sized City: Shock and Local Projection</span> — Ongoing.</li>
+    .page-index li{
+      margin:0 0 7px;
+      line-height:1.25;
+    }
 
-  <li>Coluccia, B., <strong>Monturano, G.</strong> &amp; Perugini, F. <span class="paper-title">Firm Productivity and Certification: Evidence from Italian Firms</span> — Ongoing.</li>
+    .page-index a{
+      color:#333;
+      text-decoration:none;
+    }
 
-</ol>
+    .page-index a:hover{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
 
-<h2 id="book-chapters">Book chapters</h2>
-<ul class="pubs">
+    @media (max-width:900px){
+      .research-shell{
+        display:block;
+        max-width:100% !important;
+        font-size:.93rem;
+      }
 
-  <li>Maranzano, P., Marcis, L., <strong>Monturano, G.</strong>, Pagliarella, M.C. &amp; Salvatore, R. (2025). <em>A study on the impact of “Reddito di Cittadinanza” using a multivariate linear mixed model</em>. In Rosalia, C., De Luca, G. &amp; Bruno, E. (eds.), <em>V Book of Short Papers 3rd Italian Conference on Economic Statistics (ICES 2025) Sustainability, Innovation and Digitalization: Statistical Measurement for Economic Analysis</em>, pp. 197–200, Enzo Albano Edizioni. ISBN: 979-12-80655-52-3.</li>
+      .page-index{
+        position:static;
+        border-left:0;
+        border-bottom:1px solid var(--rule);
+        padding-left:0;
+        padding-bottom:12px;
+        margin-bottom:18px;
+      }
 
-  <li><strong>Monturano, G.</strong> &amp; Sonzogno, G.V. (2024). <em>Spesa amministrativa e allocazione progetti PNRR</em>. In Degni, M. (ed.), <em>VII Rapporto Ca’ Foscari sui comuni</em>, Castelvecchi Editore, pp. 244–265.</li>
+      .page-index ul{
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px 12px;
+      }
 
-  <li>Argentiero, A., Maranzano, P., <strong>Monturano, G.</strong> &amp; Pedrini, G. (2024). <em>Self-employment and Tax Evasion: A Descriptive Analysis of Italian Provinces</em>. In Germana, A. &amp; Piacentino, D. (eds.), <em>Conflict Scenarios and Transitions: Opportunities and Risks for Regions and Territories</em>, pp. 59–90, FrancoAngeli.</li>
+      .page-index li{
+        margin:0;
+      }
+    }
 
-  <li>Coco, G., <strong>Monturano, G.</strong> &amp; Resce, G. (2023). <em>Assessing the effectiveness of coordination among public authorities in cohesion expenditure</em>. In Bucci, A., Cartone, A., Evangelista, A. &amp; Marletta, A. (eds.), <em>IES 2023 - Statistical Methods for Evaluation and Quality: Techniques, Technologies and Trends (T3). Book of Short Papers</em>, Edizioni Il Viandante.</li>
 
-  <li><strong>Monturano, G.</strong> (2023). <em>Comunicare e percepire le politiche economiche e fiscali. L’asimmetria informativa nelle misure di contrasto alla povertà e nelle imposte sui patrimoni</em>. In Corsi, C. &amp; Coen, P. (eds.), <em>Le professioni del comunicare: passato, presente, futuro</em>, Quasar, Roma.</li>
+    /* Publication blocks: cleaner academic card style */
+    .research-content > h2{
+      background:#fafafa;
+      border:1px solid var(--rule);
+      border-left:4px solid #b00020;
+      border-radius:9px;
+      padding:8px 11px !important;
+      margin-top:22px !important;
+      margin-bottom:10px !important;
+    }
 
-  <li>Mastronardi, L., <strong>Monturano, G.</strong>, Romagnoli, L., Vasile, M. &amp; Zingaro, M. (2020). <em>L'approccio metodologico</em>. In Mastronardi, L. &amp; Romagnoli, L. (eds.), <em>Metodologie, percorsi operativi e strumenti per lo sviluppo delle cooperative di comunità nelle aree interne italiane</em>, pp. 59–90, Firenze University Press. DOI: <a href="https://doi.org/10.36253/978-88-5518-168-6.03" target="_blank" rel="noopener">10.36253/978-88-5518-168-6.03</a>.</li>
+    .research-content > ol.pubs,
+    .research-content > ul.pubs{
+      background:#fff;
+      border:1px solid var(--rule);
+      border-radius:10px;
+      padding:14px 18px 14px 34px !important;
+      box-shadow:0 4px 14px rgba(0,0,0,.025);
+      margin-bottom:18px;
+    }
 
-  <li>Mastronardi, L., <strong>Monturano, G.</strong>, Romagnoli, L., Vasile, M. &amp; Zingaro, M. (2020). <em>Il caso studio del Molise</em>. In Mastronardi, L. &amp; Romagnoli, L. (eds.), <em>Metodologie, percorsi operativi e strumenti per lo sviluppo delle cooperative di comunità nelle aree interne italiane</em>, pp. 91–130, Firenze University Press. DOI: <a href="https://doi.org/10.36253/978-88-5518-168-6.04" target="_blank" rel="noopener">10.36253/978-88-5518-168-6.04</a>.</li>
+    .research-content > ol.pubs li,
+    .research-content > ul.pubs li{
+      padding-bottom:7px;
+      margin-bottom:7px !important;
+      border-bottom:1px solid #f0f0f0;
+    }
 
-</ul>
+    .research-content > ol.pubs li:last-child,
+    .research-content > ul.pubs li:last-child{
+      border-bottom:0;
+      padding-bottom:0;
+      margin-bottom:0 !important;
+    }
+
+    .pub-status{
+      font-weight:700;
+      color:#111;
+    }
+
+    .doi-link{
+      color:#0057d9 !important;
+      text-decoration:underline !important;
+      text-underline-offset:2px;
+      font-weight:600;
+    }
+
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <a class="name" href="index.html">Gianluca Monturano, PhD</a>
+<nav class="menu" aria-label="Primary navigation">
+  <a href="index.html">Home</a>
+  <a class="active" href="research.html">Research</a>
+  <a href="software.html">Software</a>
+  <a href="teaching.html">Teaching</a>
+  <a href="dissemination.html">Dissemination</a>
+  <a href="cv.html">CV</a>
+</nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap page research-shell">
+  <section class="research-content">
+  <h1>Research</h1>
+  <p class="position">Publications, submitted and ongoing research, grants, projects and academic service.</p>
+
+  <h2 id="peer-reviewed-articles">Peer-reviewed articles <span class="muted">(ANVUR A-class 13 journals)</span></h2>
+  <ol class="pubs">
+
+    <li><strong>Monturano, G.</strong>, Ciccarelli, C. &amp; Mastronardi, L. <span class="paper-title">Do Protected Areas Affect Income Levels in Remote Regions? Evidence from Italian Inner Areas</span>. <span class="journal">Environmental and Resource Economics</span>. <span class="pub-status">Accepted for publication</span>.</li>
+
+    <li>Argentiero, A., Maranzano, P., Pedrini, G. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Spatial consequences of tax reforms on tax compliance: Econometric evidence from the Italian Minimum Taxpayer Regime</span>. <span class="journal">The Annals of Regional Science</span>. DOI: <a class="doi-link" href="https://doi.org/10.1007/s00168-026-01546-y" target="_blank" rel="noopener">10.1007/s00168-026-01546-y</a>. <span class="pub-status">Accepted for publication</span>.</li>
+
+    <li>Bergantino, A.S., Coluccia, B., Fusco, G. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Digital Infrastructure and Territorial Heterogeneity in Quality-of-Life Outcomes</span>. <span class="journal">Socio-Economic Planning Sciences</span>. DOI: <a class="doi-link" href="https://doi.org/10.1016/j.seps.2026.102545" target="_blank" rel="noopener">10.1016/j.seps.2026.102545</a>.</li>
+
+    <li>Amaddeo, E., Bergantino, A.S., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Insights from Fuel Prices: A Local Projection Time-Series Analysis with Exogenous Structural Breaks</span>. <span class="journal">Italian Economic Journal</span>. DOI: <a class="doi-link" href="https://doi.org/10.1007/s40797-026-00392-3" target="_blank" rel="noopener">10.1007/s40797-026-00392-3</a>.</li>
+
+    <li>Bergantino, A.S., Buongiorno, A., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Fuel costs and spatial rail accessibility: Econometric evidence from an empirically-weighted network-based 3SFCA model</span>. <span class="journal">Research in Transportation Business &amp; Management</span>, 67, 101693. DOI: <a class="doi-link" href="https://doi.org/10.1016/j.rtbm.2026.101693" target="_blank" rel="noopener">10.1016/j.rtbm.2026.101693</a>.</li>
+
+    <li>Bergantino, A.S., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Digital divide and income inequality: causal evidence from Italian provinces</span>. <span class="journal">The Annals of Regional Science</span>, 75(1), 11. DOI: <a class="doi-link" href="https://doi.org/10.1007/s00168-025-01440-z" target="_blank" rel="noopener">10.1007/s00168-025-01440-z</a>.</li>
+
+    <li><strong>Monturano, G.</strong>, Resce, G. &amp; Sonzogno, G.V. (2025). <span class="paper-title">Income Support and Voting with Territorial Disparities</span>. <span class="journal">Socio-Economic Review</span>. DOI: <a class="doi-link" href="https://doi.org/10.1093/ser/mwaf035" target="_blank" rel="noopener">10.1093/ser/mwaf035</a>.</li>
+
+    <li>Bellantuono, L., Bellotti, R., Bergantino, A.S., Gardelli, A., Intini, M., Kheirkhahan, N. &amp; <strong>Monturano, G.</strong> (2025). <span class="paper-title">Analyzing the Accessibility of Rome's Healthcare Services via Public Transportation: A Complex Network Approach</span>. <span class="journal">Scientific Reports</span>, 15(1), 22880. DOI: <a class="doi-link" href="https://doi.org/10.1038/s41598-025-05060-7" target="_blank" rel="noopener">10.1038/s41598-025-05060-7</a>.</li>
+
+    <li>Maranzano, P., <strong>Monturano, G.</strong> &amp; Tridico, P. (2025). <span class="paper-title">The Geography of the Italian Citizenship Income: The Role of Poverty and Inequality in Determining Spatial Heterogeneity Across the Italian Municipalities</span>. <span class="journal">Italian Economic Journal</span>. DOI: <a class="doi-link" href="https://doi.org/10.1007/s40797-025-00327-4" target="_blank" rel="noopener">10.1007/s40797-025-00327-4</a>.</li>
+
+    <li><strong>Monturano, G.</strong>, Resce, G. &amp; Ventura, M. (2025). <span class="paper-title">Short-term Impact of Financial Support to Inner Areas</span>. <span class="journal">Italian Economic Journal</span>, 1–40. DOI: <a class="doi-link" href="https://doi.org/10.1007/s40797-025-00313-w" target="_blank" rel="noopener">10.1007/s40797-025-00313-w</a>.</li>
+
+  </ol>
+
+  <h2 id="scientific-journals">Articles in ANVUR scientific journals for Area 13</h2>
+  <ol class="pubs">
+
+    <li>Buongiorno, A. &amp; <strong>Monturano, G.</strong> (2025). <span class="paper-title">I dati sulla mobilità come strumento di governo del turismo</span>. <span class="journal">Urbanistica Informazioni</span>, luglio-agosto (322).</li>
+
+    <li><strong>Monturano, G.</strong> (2022). <span class="paper-title">Il prodotto turistico e la sua promozione. Il caso dell’Arcipelago delle Isole Tremiti</span>. <span class="journal">Turistica. The Italian Journal of Tourism</span>, (3).</li>
+
+  </ol>
+
+  <h2 id="submitted-ongoing-papers">Submitted and ongoing papers</h2>
+  <ol class="pubs">
+
+    <li>Coco, G., <strong>Monturano, G.</strong> &amp; Resce, G. <span class="paper-title">Delays in Cohesion Infrastructure Projects. A Machine Learning Approach</span> — <span class="journal">Oxford Bulletin of Economics and Statistics</span>, 3rd round of revision.</li>
+
+    <li>Bergantino, A.S., <strong>Monturano, G.</strong> &amp; Pedrini, G. <span class="paper-title">Cohesion Policies for the Tourism Industry</span> — <span class="journal">Regional Studies</span>, 2nd round of revision.</li>
+
+    <li><strong>Monturano, G.</strong>, Ciccarelli, C. &amp; Mastronardi, L. <span class="paper-title">Consumer Food Cooperatives as Tools for Food Access and Community Support in Italian Inner Areas</span> — <span class="journal">Journal of Rural Studies</span>, Under Review.</li>
+
+    <li>Bergantino, A.S., Intini, M. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Accessibility as a Territorial Equilibrium: Evidence from Italian Municipalities</span> — <span class="journal">Spatial Economic Analysis</span>, Under Review.</li>
+
+    <li>De Castris, M., Fusco, G. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Employment Protection Reforms and Workers' Health and Well-Being: An Individual Quasi-Experimental Study</span> — <span class="journal">Health Policy</span>, 2nd round of revision.</li>
+
+    <li>Marcis, L., Maranzano, P., <strong>Monturano, G.</strong> &amp; Salvatore, R. <span class="paper-title">The Italian Citizens' Income Program: An Analysis of its Impact on the Territorial Distribution of Some Economic Indicators</span> — <span class="journal">Socio-Economic Planning Sciences</span>, Under Review.</li>
+
+    <li>Chiodin, A., Manera, M., Maranzano, P. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Mapping Socio-Economic Fragility in Italy through Municipal-Level Spatial Clustering of COVID-19 Data</span> — <span class="journal">Networks and Spatial Economics</span>, Under Review.</li>
+
+    <li>Brascia, D., <strong>Monturano, G.</strong>, Mangiameli, G., Congedo, M.T., Mastromarino, M.G., Catelli, C., Bonis, A., Wu, C.F., Ağkoç, M., Fra, S., Maiolino, E., Onorati, I., Intini, M., Bergantino, A.S., Lucchi, M., Luzzi, L., Margaritora, S., Schiavon, M., Wu, C.Y., Turna, A., Moreno-Mata, N., Martinod, E. &amp; Marulli, G. <span class="paper-title">AI-Guided Brain MRI Intensification in Resected Young NSCLC: Global Multicenter Risk Model</span> — <span class="journal">Journal of Thoracic Oncology</span>, Submitted.</li>
+
+    <li>Bergantino, A.S., Intini, M., Pedrini, G., Scudieri, R. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Spatial Spillovers and Connectivity in Italian Service Industries</span> — Ongoing.</li>
+
+    <li>Bourdin, S. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Urban Left-Behindness within Metropolitan Italy: A Sub-Municipal Spatial Panel Econometric Analysis of Electoral Discontent</span> — Ongoing.</li>
+
+    <li>Bergantino, A.S., Erasmo, V., Fusco, G., Intini, M. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Investigating the Impact of PRIN on Higher Education Performance in Italy: A Spatial-Econometric Analysis</span> — Ongoing.</li>
+
+    <li>Fusco, G., Gallo, G. &amp; <strong>Monturano, G.</strong> <span class="paper-title">Population Trends in a Medium-Sized City: Shock and Local Projection</span> — Ongoing.</li>
+
+    <li>Coluccia, B., <strong>Monturano, G.</strong> &amp; Perugini, F. <span class="paper-title">Firm Productivity and Certification: Evidence from Italian Firms</span> — Ongoing.</li>
+
+  </ol>
+
+  <h2 id="book-chapters">Scientific contributions in edited volumes</h2>
+  <ol class="pubs">
+
+    <li>Maranzano, P., Marcis, L., <strong>Monturano, G.</strong>, Pagliarella, M.C. &amp; Salvatore, R. (2025). <span class="paper-title">A study on the impact of “Reddito di Cittadinanza” using a multivariate linear mixed model</span>. In: Rosalia, C., De Luca, G. &amp; Bruno, E. (eds.), <em>V Book of Short Papers 3rd Italian Conference on Economic Statistics (ICES 2025) Sustainability, Innovation and Digitalization: Statistical Measurement for Economic Analysis</em>, pp. 197–200, Enzo Albano Edizioni. ISBN: 979-12-80655-52-3.</li>
+
+    <li><strong>Monturano, G.</strong> &amp; Sonzogno, G.V. (2024). <span class="paper-title">Spesa amministrativa e allocazione progetti PNRR</span>. In: Degni, M. (ed.), <em>VII Rapporto Ca’ Foscari sui comuni</em>, Castelvecchi Editore, pp. 244–265.</li>
+
+    <li>Argentiero, A., Maranzano, P., <strong>Monturano, G.</strong> &amp; Pedrini, G. (2024). <span class="paper-title">Self-employment and Tax Evasion: A Descriptive Analysis of Italian Provinces</span>. In: Germana, A. &amp; Piacentino, D. (eds.), <em>Conflict scenarios and transitions: opportunities and risks for regions and territories</em>, pp. 59–90, FrancoAngeli.</li>
+
+    <li>Coco, G., <strong>Monturano, G.</strong> &amp; Resce, G. (2023). <span class="paper-title">Assessing the effectiveness of coordination among public authorities in cohesion expenditure</span>. In: Bucci, A., Cartone, A., Evangelista, A. &amp; Marletta, A. (eds.), <em>IES 2023 - Statistical Methods for Evaluation and Quality: Techniques, Technologies and Trends (T3). BOOK OF SHORT PAPERS</em>, Edizioni Il Viandante.</li>
+
+    <li><strong>Monturano, G.</strong> (2023). <span class="paper-title">Comunicare e percepire le politiche economiche e fiscali. L’asimmetria informativa nelle misure di contrasto alla povertà e nelle imposte sui patrimoni</span>. In: Corsi, C. &amp; Coen, P. (eds.), <em>Le professioni del comunicare: passato, presente, futuro</em>, Quasar, Roma.</li>
+
+  </ol>
+
+  <h2 id="working-papers">Working papers</h2>
+  <ul class="pubs">
+
+    <li>Chiodin, A., Manera, M., Maranzano, P. &amp; <strong>Monturano, G.</strong> (2026). <span class="paper-title">Identifying Spatial Regimes of Economic Fragility through Spatially Constrained Clustering: Evidence from Italian Municipalities</span>. Nota di Lavoro 10.2026, Fondazione Eni Enrico Mattei, Milan, Italy.</li>
+
+    <li>Coco, G., <strong>Monturano, G.</strong> &amp; Resce, G. (2025). <span class="paper-title">Predicting Delays in Cohesion Infrastructure Projects</span>. University of Molise, Department of Economics Working Paper, no. esdp25099.</li>
+
+  </ul>
+
+  <section class="highlight-section">
+    <h2 id="grants-awards"><span class="red-title">Grants and awards</span></h2>
+    <ul class="pubs grant-list">
+      <li><strong>2026.</strong> <strong>Winner</strong> of the <strong>Giorgio Leonardi Doctoral Award — XLI Edition</strong>, national award for the best doctoral dissertations in regional science promoted by the Italian Association of Regional Science (AISRe). Dissertation title: <em>Granular Policy Evaluation: Socio-Economic and Spatial Analysis in an Unequal Country</em>.</li>
+
+      <li><strong>2026.</strong> European Commission, <strong>Marie Skłodowska-Curie Postdoctoral Fellowship</strong> (HORIZON-MSCA-2025-PF). <em>InterNetImpact — Interdisciplinary Research, Network Structure and Impact of Science</em>. <strong>Evaluation: 88.6/100</strong> — above funding threshold; highly evaluated proposal.</li>
+
+      <li><strong>2025.</strong> <strong>Winner of the “Valutare Premia” Award — VII edition</strong>, awarded to the best doctoral dissertations on public policy evaluation in economics, promoted by the Regional Council of Lombardy. Dissertation title: <em>Granular Policy Evaluation: Socio-Economic and Spatial Analysis in an Unequal Country</em>.</li>
+
+      <li><strong>2025.</strong> Regional Studies Association (RSA), <strong>Research Travel Grant</strong>. Funding for participation in the <em>65th WRSA Meeting</em>, Santa Fe, New Mexico, USA, 2026, in recognition of the scientific quality of the paper <em>Spatial Spillovers and Connectivity between Service Companies and Service Institutions in Italy: A Gravity-Based Approach</em>.</li>
+    </ul>
+  </section>
+
+  <h2 id="research-projects">Participation in research projects at research institutes and universities</h2>
+  <ul class="pubs">
+    <li><strong>2025–ongoing.</strong> Project funded by the Ministry of University and Research through Fondazione Eni Enrico Mattei, Milan, entitled <a class="content-link" href="https://www.feem.it/ricerca/progetti/una-sola-indivisibile-le-tante-italie-nel-covid/" target="_blank" rel="noopener">“MUR-FRES — One, alone, indivisible: the many Italies during COVID”</a>. The project aims to analyse territorial socioeconomic inequalities in Italy and the role of COVID-19 in widening them, using granular municipal data and advanced statistical techniques, with a European-wide comparison.</li>
+
+    <li><strong>2025–ongoing.</strong> Research activity for <em>ProduttivItalia — Centro Studi dell’Associazione Entrobordo</em>, in collaboration with the Department of Economics of the University of Molise, within the project <a class="content-link" href="https://www.produttivitalia.org/universita-degli-studi-del-molise/" target="_blank" rel="noopener">“La produttività nel mondo dei servizi”</a>. The activity concerns the analysis of productivity dynamics in the Italian service sector, with particular attention to micro, small and medium-sized enterprises, sectoral performance over 2005–2025, intra-sectoral differences, firm size, digital innovation and internationalisation. The final output consists of a report with empirical evidence, international benchmarks and policy and managerial implications.</li>
+
+    <li><strong>2024–2026.</strong> <a class="content-link" href="https://grins.it/spoke/spoke-7" target="_blank" rel="noopener">GRINS Project — Spoke 7: Sustainable and Inclusive Growth</a>. Research activity within the scope of the research grant, contributing to project reports, work packages, deliverables and scientific papers.</li>
+
+    <li><strong>2023.</strong> Research project funded by the International Center for Tropical Agriculture (CIAT), through the University of Molise, entitled <em>“Support Food Insecurity Early Warning Through Conflict Analysis — Phase 3”</em>.</li>
+
+    <li><strong>2023.</strong> Research project funded by the International Center for Tropical Agriculture (CIAT), through the University of Molise, entitled <em>“Attività di Innovazione Digitale”</em>.</li>
+
+    <li><strong>2022–2023.</strong> Research project of the Department of Economics “Marco Biagi”, funded through university research funds 2022, entitled <a class="content-link" href="https://www.economia.unimore.it/en/research/research-projects" target="_blank" rel="noopener">“The roles of instructor-student similarities, surnames, and beauty on UNIMORE students’ outcomes and early career jobs”</a>.</li>
+  </ul>
+
+  <h2 id="research-appointments">Formal research appointments from institutions and organizations</h2>
+  <ul class="pubs">
+    <li><strong>2026.</strong> Paid research appointment for <em>WITHUB S.p.A.</em>, within the project entitled <em>“La transizione ecologica nell’automotive e il ruolo della domanda pubblica: evidenze empiriche dalla pubblica amministrazione italiana (2019–2025)”</em>. The activity concerns the statistical evaluation of vehicle registration data from Italian public administrations, with the aim of analysing the direction and speed of change in the ecological transition of the automotive sector.</li>
+
+    <li><strong>2026.</strong> Paid research appointment for <em>A.P.S. Entrobordo</em> and <em>Mama Industry S.r.l.</em>, concerning the analysis of productivity in the service sector with reference to micro, small and medium-sized enterprises with 4–9 employees. The appointment includes data collection and processing, statistical-economic analysis and the preparation of summary reports, with both a national study and a territorial study focused on the Abruzzo Region.</li>
+  </ul>
+
+  <h2 id="conference-organization">Conference organization and organized sessions</h2>
+  <ul class="pubs">
+    <li><strong>2026.</strong> Co-organizer and co-chair of the organized session <em>“Shocks and Inequalities in the Energy Transition: New Econometric Evidence Across Markets, Regions and Countries”</em>, 67th Annual Scientific Meeting of the Italian Economic Association (SIE), University of Cagliari, 22–24 October 2026.</li>
+
+    <li><strong>2025.</strong> Member of the <strong>Scientific Committee</strong> of the XXXVIII Conference of the Italian Society of Public Economics (SIEP), <em>“Politica fiscale, rappresentanza e partecipazione politica”</em>, Department of Economics, University of Modena and Reggio Emilia, Modena, 10–11 September 2026.</li>
+
+    <li><strong>2025.</strong> Member of the local organizing committee of the XXIII Scientific Meeting of the Italian Society of Transport and Logistics Economics (SIET), <em>“Resilience, Innovation and Behaviour Change in Transport”</em>.</li>
+
+    <li><strong>2023.</strong> Collaboration with the Local Scientific Committee for the preparation of the Call for Papers of the XX International Conference in Commemoration of Professor Marco Biagi, <em>“The Green Transition and the Quality of Work: Linkages, Implications and Perspectives”</em>, Marco Biagi Foundation, University of Modena and Reggio Emilia, 16–17 March 2023.</li>
+
+    <li><strong>2022.</strong> Collaboration with the Local Scientific Committee for the organization of the 19th International Conference in Commemoration of Professor Marco Biagi, <em>“Work Beyond the Pandemic: Towards a Human-Centered Recovery”</em>, Marco Biagi Foundation, University of Modena and Reggio Emilia, 16–17 May 2022.</li>
+  </ul>
+
+<h2 id="editorial-activity">Editorial activity</h2>
+  <div class="service-box">
+    <p>
+      <span class="service-title">Academic Editor</span> of
+      <a class="violet-link" href="https://journals.plos.org/plosone/" target="_blank" rel="noopener">PLOS ONE</a>.
+      <strong>ISSN:</strong> 932-6203.
+    </p>
+
+    <p>
+      <span class="service-title">Managing Editor</span> of
+      <a class="orange-link" href="https://www.turistica.it/journal/index.php/turistica/about/editorialTeam" target="_blank" rel="noopener">Turistica — The Italian Journal of Tourism</a>.
+      <strong>ISSN:</strong> 1974-2207.
+    </p>
+  </div>
+
+  <h2 id="scientific-dissemination">Scientific dissemination</h2>
+  <ul class="pubs">
+    <li><strong>Monturano, G.</strong>, Resce, G. &amp; Ventura, M. (2023). <a class="content-link" href="https://www.senato.it/4746?dossier=37311" target="_blank" rel="noopener">Come far rinascere i paesi spopolati? I primi risultati della Strategia nazionale per le aree interne</a>. <em>Ufficio Valutazione Impatto, Senato della Repubblica</em>.</li>
+
+    <li><strong>Monturano, G.</strong>, Sonzogno, G.V. &amp; Resce, G. (2023). <a class="content-link" href="https://eticaeconomia.it/lacapacita-di-target-territoriale-del-reddito-di-cittadinanza/" target="_blank" rel="noopener">La capacità di target territoriale del reddito di cittadinanza</a>. <em>Menabò di Etica ed Economia</em>, 186.</li>
+
+    <li><strong>Monturano, G.</strong>, Resce, G. &amp; Ventura, M. (2022). <a class="content-link" href="https://www.civiltaappennino.it/2022/10/05" target="_blank" rel="noopener">SNAI. La coesione territoriale tra ritardi e opportunità da cogliere</a>. <em>Civiltà Appennino</em>.</li>
+  </ul>
+
+  <h2 id="review-activity">Review activity</h2>
+  <p>Scientific Reports; Journal of Agricultural, Biological, and Environmental Statistics; International Journal of Climate Change Strategies and Management; International Journal of Computational Economics and Econometrics; PLOS ONE; The Annals of Regional Science; Case Studies on Transport Policy; Italian Economic Journal; Applied Spatial Analysis and Policy; Health Policy; Socio-Economic Planning Sciences; Quality &amp; Quantity; BMC Health Services Research; Scienze Regionali; Studies in Higher Education.</p>
+  </section>
+
+  <aside class="page-index" aria-label="Research page index">
+    <h2>Index</h2>
+    <ul>
+      <li><a href="#peer-reviewed-articles">Peer-reviewed articles</a></li>
+      <li><a href="#scientific-journals">Scientific journals</a></li>
+      <li><a href="#submitted-ongoing-papers">Submitted and ongoing papers</a></li>
+      <li><a href="#book-chapters">Book chapters</a></li>
+      <li><a href="#working-papers">Working papers</a></li>
+      <li><a href="#grants-awards">Grants and awards</a></li>
+      <li><a href="#research-projects">Research projects</a></li>
+      <li><a href="#research-appointments">Research appointments</a></li>
+      <li><a href="#conference-organization">Conference organization</a></li>
+      <li><a href="#editorial-activity">Editorial activity</a></li>
+      <li><a href="#scientific-dissemination">Scientific dissemination</a></li>
+      <li><a href="#review-activity">Review activity</a></li>
+    </ul>
+  </aside>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© Gianluca Monturano</span>
+    <span><a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a></span>
+  </div>
+</footer>
+</body>
+</html>
