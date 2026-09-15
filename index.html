@@ -47,8 +47,8 @@
     }
 
     .profile-photo{
-      width: 340px !important;
-      height: 340px !important;
+      width:300px !important;
+      height:300px !important;
       border-radius:50% !important;
       border:1px solid #c7cdd4 !important;
       object-fit:cover !important;
@@ -272,8 +272,8 @@
       }
 
       .profile-photo{
-        width: 230px !important;
-        height: 230px !important;
+        width:200px !important;
+        height:200px !important;
       }
 
       .academic-roles .role-row{
@@ -331,6 +331,28 @@
       }
     }
 
+
+    /* FINAL PHOTO SIZE FIX */
+    img.hero-profile-photo{
+      width:300px !important;
+      height:300px !important;
+      min-width:300px !important;
+      min-height:300px !important;
+      max-width:300px !important;
+      max-height:300px !important;
+    }
+
+    @media (max-width:760px){
+      img.hero-profile-photo{
+        width:200px !important;
+        height:200px !important;
+        min-width:200px !important;
+        min-height:200px !important;
+        max-width:200px !important;
+        max-height:200px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -355,7 +377,7 @@
 <main class="home-shell home-centered">
   <section class="home-card">
     <div class="photo-center">
-      <img class="hero-profile-photo" src="assets/rofile-photo.sv.jpg" alt="Gianluca Monturano" style="width:330px !important;height:330px !important;max-width:330px !important;max-height:330px !important;">
+      <img class="hero-profile-photo" src="assets/rofile-photo.sv.jpg" alt="Gianluca Monturano" style="width:300px !important;height:300px !important;max-width:300px !important;max-height:300px !important;">
     </div>
 
     <h1>Gianluca Monturano</h1>
