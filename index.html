@@ -470,6 +470,89 @@
       }
     }
 
+
+    /* FINAL CORRECTION: roles on two lines and office as footer footnote */
+    main.home-shell.home-centered .academic-roles{
+      margin:0 auto 13px !important;
+      text-align:center !important;
+      font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace !important;
+      font-size:.72rem !important;
+      line-height:1.55 !important;
+      letter-spacing:.035em !important;
+      color:#5b6572 !important;
+    }
+
+    main.home-shell.home-centered .academic-roles .role-row{
+      display:block !important;
+      margin-bottom:2px !important;
+    }
+
+    main.home-shell.home-centered .academic-roles .role-title{
+      font-weight:800 !important;
+      text-transform:uppercase !important;
+      color:#1f2933 !important;
+      letter-spacing:.075em !important;
+    }
+
+    main.home-shell.home-centered .academic-roles .role-separator{
+      color:#5f6b7a !important;
+      font-weight:500 !important;
+    }
+
+    main.home-shell.home-centered .academic-roles a{
+      color:#0057d9 !important;
+      text-decoration:none !important;
+      border-bottom:1px solid rgba(0,87,217,.45) !important;
+      pointer-events:auto !important;
+      font-weight:700 !important;
+    }
+
+    main.home-shell.home-centered .academic-roles a:hover{
+      color:#003fa3 !important;
+      border-bottom-color:#003fa3 !important;
+      text-decoration:none !important;
+    }
+
+    .office-inline{
+      display:none !important;
+    }
+
+    .office-footnote{
+      max-width:820px !important;
+      margin:24px auto 0 !important;
+      padding:13px 18px 0 !important;
+      text-align:center !important;
+      color:#4f5a66 !important;
+      font-size:.82rem !important;
+      line-height:1.5 !important;
+      border-top:1px solid var(--rule) !important;
+    }
+
+    .office-footnote strong{
+      color:#111 !important;
+      font-weight:700 !important;
+    }
+
+    .office-footnote a{
+      color:#0057d9 !important;
+      text-decoration:none !important;
+      border-bottom:1px solid rgba(0,87,217,.45) !important;
+    }
+
+    .office-footnote a:hover{
+      color:#003fa3 !important;
+      border-bottom-color:#003fa3 !important;
+      text-decoration:none !important;
+    }
+
+    @media (max-width:760px){
+      .office-footnote{
+        margin-top:22px !important;
+        padding-left:18px !important;
+        padding-right:18px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -500,21 +583,14 @@
     <h1>Gianluca Monturano</h1>
 
     <div class="academic-roles" aria-label="Academic roles">
-      <div>
-        <span class="role-title">Assistant Professor</span>
-        <span class="role-meta"> · <a href="https://www.unisalento.it/scheda-utente/-/people/gianluca.monturano/biografia" target="_blank" rel="noopener">University of Salento</a></span>
+      <div class="role-row">
+        <span class="role-title">Assistant Professor</span><span class="role-separator"> · </span><a href="https://www.unisalento.it/scheda-utente/-/people/gianluca.monturano/biografia" target="_blank" rel="noopener">University of Salento</a>
       </div>
-      <div>
-        <span class="role-title">Senior Researcher</span>
-        <span class="role-meta"> · <a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">Fondazione Eni Enrico Mattei</a></span>
+      <div class="role-row">
+        <span class="role-title">Senior Researcher</span><span class="role-separator"> · </span><a href="https://www.feem.it/en/chi-siamo/persone/gianluca-monturano/" target="_blank" rel="noopener">Fondazione Eni Enrico Mattei</a>
       </div>
     </div>
-
-    <div class="office-inline" aria-label="Office address">
-      <strong>Office:</strong> Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.
-    </div>
-
-    <div class="logo-row primary-logos centered-logos" aria-label="Academic and social profiles">
+<div class="logo-row primary-logos centered-logos" aria-label="Academic and social profiles">
       <a class="round-logo" href="https://www.linkedin.com/in/gianluca-monturano93/" target="_blank" rel="noopener" title="LinkedIn">
         <img src="assets/icons/LinkeIn.png" alt="LinkedIn">
       </a>
@@ -603,6 +679,13 @@
   </section>
 </main>
 
+
+<div class="office-footnote" aria-label="Office address">
+  <strong>Office:</strong>
+  <a href="https://maps.app.goo.gl/ydmHbmiB5CQFaNb48" target="_blank" rel="noopener">
+    Centro Ecotekne Pal. C - S.P. 6, Lecce - Monteroni - LECCE (LE) · Office, Ground floor.
+  </a>
+</div>
 
 <footer class="footer">
   <div class="wrap footer-inner">
