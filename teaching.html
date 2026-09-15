@@ -3,56 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Politiche Pubbliche per l’Innovazione e le Imprese | Gianluca Monturano</title>
-  <link rel="stylesheet" href="../styles.css">
+  <title>Teaching | Gianluca Monturano</title>
+  <link rel="stylesheet" href="styles.css">
 
   <style>
-    .course-shell{
+    /* Teaching page only: wider writing area, smaller text, sticky index */
+    .teaching-shell{
       max-width:1180px !important;
       width:auto !important;
       margin-left:auto !important;
       margin-right:auto !important;
       display:grid;
-      grid-template-columns:minmax(0,1fr) 210px;
+      grid-template-columns:minmax(0,1fr) 190px;
       gap:34px;
       align-items:start;
-      font-size:.88rem;
-      line-height:1.5;
+      font-size:.86rem;
+      line-height:1.46;
     }
 
-    .course-content{
+    .teaching-content{
       min-width:0;
     }
 
-    .course-content h1{
-      font-size:1.58rem;
+    .teaching-content h1{
+      font-size:1.52rem;
       margin-bottom:7px;
     }
 
-    .course-content h2{
-      font-size:1rem;
-      margin-top:24px;
-      margin-bottom:9px;
-      padding-bottom:5px;
-      border-bottom:1px solid var(--rule);
+    .teaching-content h2{
+      font-size:.96rem;
+      margin-top:20px;
+      margin-bottom:7px;
+      padding-bottom:3px;
       scroll-margin-top:86px;
     }
 
-    .course-content .position{
-      font-size:.86rem;
-      margin-bottom:18px;
+    .teaching-content .position{
+      font-size:.85rem;
+      margin-bottom:17px;
     }
 
-    .course-hero{
+    .teaching-year{
+      font-weight:700;
+      color:#111;
+      white-space:nowrap;
+    }
+
+    .teaching-list{
+      max-width:none;
+    }
+
+    .teaching-list li{
+      margin-bottom:7px;
+      line-height:1.46;
+    }
+
+    .teaching-role{
+      font-weight:700;
+      color:#111;
+    }
+
+    .teaching-course{
+      font-weight:700;
+      color:#111;
+    }
+
+    /* Current course foreground box */
+    .current-course-box{
       border:1px solid var(--rule);
       background:#fafafa;
-      border-radius:12px;
       padding:18px 20px;
-      margin-bottom:24px;
+      margin:0 0 26px;
+      border-radius:12px;
       box-shadow:0 6px 18px rgba(0,0,0,.04);
     }
 
-    .course-label{
+    .current-course-label{
       display:inline-block;
       font-size:.72rem;
       font-weight:700;
@@ -62,20 +88,32 @@
       margin-bottom:7px;
     }
 
-    .course-meta{
-      color:#555;
-      font-size:.84rem;
-      margin-top:10px;
+    .current-course-box h2{
+      margin-top:0 !important;
+      margin-bottom:7px !important;
+      padding-bottom:0 !important;
+      border-bottom:0 !important;
+      font-size:1.08rem !important;
     }
 
-    .course-actions{
+    .current-course-box p{
+      margin:0 0 10px;
+      line-height:1.55;
+    }
+
+    .current-course-meta{
+      color:#555;
+      font-size:.83rem;
+    }
+
+    .current-course-links{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      margin-top:14px;
+      margin-top:13px;
     }
 
-    .course-actions a{
+    .current-course-links a{
       display:inline-block;
       border:1px solid var(--rule);
       background:white;
@@ -87,60 +125,9 @@
       font-weight:700;
     }
 
-    .course-actions a:hover{
+    .current-course-links a:hover{
       text-decoration:underline;
       text-underline-offset:2px;
-    }
-
-    .notice-box{
-      border:1px solid var(--rule);
-      background:#fff;
-      border-radius:10px;
-      padding:13px 15px;
-      margin-bottom:10px;
-    }
-
-    .notice-date{
-      font-weight:700;
-      color:#111;
-      font-size:.82rem;
-      margin-bottom:4px;
-    }
-
-    .course-table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:8px;
-      font-size:.86rem;
-    }
-
-    .course-table th,
-    .course-table td{
-      border-bottom:1px solid var(--rule);
-      padding:8px 7px;
-      vertical-align:top;
-      text-align:left;
-    }
-
-    .course-table th{
-      font-weight:700;
-      color:#111;
-      background:#fafafa;
-    }
-
-    .course-table a{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-    }
-
-    .course-list{
-      max-width:none;
-    }
-
-    .course-list li{
-      margin-bottom:7px;
-      line-height:1.5;
     }
 
     .page-index{
@@ -183,7 +170,7 @@
     }
 
     @media (max-width:900px){
-      .course-shell{
+      .teaching-shell{
         display:block;
         max-width:100% !important;
         font-size:.93rem;
@@ -215,212 +202,193 @@
 <header class="topbar">
   <div class="wrap">
     <div class="nav">
-      <a class="name" href="../index.html">Gianluca Monturano, PhD</a>
+      <a class="name" href="index.html">Gianluca Monturano, PhD</a>
 
       <nav class="menu" aria-label="Primary navigation">
-        <a href="../index.html">Home</a>
-        <a href="../research.html">Research</a>
-        <a href="../software.html">Software</a>
-        <a class="active" href="../teaching.html">Teaching</a>
-        <a href="../dissemination.html">Dissemination</a>
-        <a href="../cv.html">CV</a>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="software.html">Software</a>
+        <a class="active" href="teaching.html">Teaching</a>
+        <a href="dissemination.html">Dissemination</a>
+        <a href="cv.html">CV</a>
       </nav>
     </div>
   </div>
 </header>
 
-<main class="wrap page course-shell">
-  <section class="course-content">
-    <section class="course-hero">
-      <span class="course-label">Current course</span>
+<main class="wrap page teaching-shell">
+  <section class="teaching-content">
+    <h1>Teaching</h1>
+    <p class="position">Economics, statistics, econometrics, empirical methods and data analysis.</p>
 
-      <h1>Politiche Pubbliche per l’Innovazione e le Imprese</h1>
+    <section id="current-course" class="current-course-box">
+      <span class="current-course-label">Current course</span>
 
-      <p class="position">
-        Course materials, notices, slides and teaching resources.
-      </p>
+      <h2>Politiche Pubbliche per l’Innovazione e le Imprese</h2>
 
       <p>
-        The course introduces the economic rationale, instruments and evaluation methods
-        of public policies for innovation and firms. Topics include market failures,
-        knowledge spillovers, public intervention, financing of innovation, industrial policy,
-        territorial policy and empirical approaches to policy evaluation.
+        Course on the economics and evaluation of public policies for innovation and firms.
+        The course covers market failures, knowledge spillovers, public intervention,
+        financing of innovation, industrial and territorial policy, and empirical approaches
+        to policy evaluation.
       </p>
 
-      <p class="course-meta">
-        University of Salento · Department of Economics · Academic year 2025–2026 · Instructor: Gianluca Monturano
+      <p class="current-course-meta">
+        University of Salento · Department of Economics · Academic year 2025–2026
       </p>
 
-      <div class="course-actions">
-        <a href="#notices">Notices</a>
-        <a href="#slides">Slides</a>
-        <a href="#programme">Programme</a>
-        <a href="#materials">Materials</a>
-        <a href="#exam">Assessment</a>
+      <div class="current-course-links">
+        <a href="courses/politiche-pubbliche-innovazione-imprese.html">Course page</a>
+        <a href="courses/politiche-pubbliche-innovazione-imprese.html#notices">Notices</a>
+        <a href="courses/politiche-pubbliche-innovazione-imprese.html#slides">Slides</a>
+        <a href="courses/politiche-pubbliche-innovazione-imprese.html#materials">Materials</a>
+        <a href="courses/politiche-pubbliche-innovazione-imprese.html#exam">Assessment</a>
       </div>
     </section>
 
-    <h2 id="notices">Notices</h2>
-
-    <div class="notice-box">
-      <div class="notice-date">Latest notice</div>
-      <p>
-        Course materials and lecture slides will be uploaded progressively during the semester.
-      </p>
-    </div>
-
-    <div class="notice-box">
-      <div class="notice-date">Teaching materials</div>
-      <p>
-        Slides, readings and additional materials will be made available in the dedicated sections below.
-      </p>
-    </div>
-
-    <h2 id="slides">Slides</h2>
-
-    <table class="course-table">
-      <thead>
-        <tr>
-          <th>Lecture</th>
-          <th>Topic</th>
-          <th>File</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Lecture 1</td>
-          <td>Course introduction and syllabus</td>
-          <td><a href="politiche-pubbliche-innovazione-imprese/slides/lecture-01.pdf">Download slides</a></td>
-        </tr>
-
-        <tr>
-          <td>Lecture 2</td>
-          <td>Economia pubblica dell’innovazione: fallimenti di mercato, spillover e intervento pubblico</td>
-          <td><a href="politiche-pubbliche-innovazione-imprese/slides/lecture-02.pdf">Download slides</a></td>
-        </tr>
-
-        <tr>
-          <td>Lecture 3</td>
-          <td>Financing innovation, information asymmetries and public support</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 4</td>
-          <td>Public incentives, additionality and policy design</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 5</td>
-          <td>Industrial policy, firms and productivity</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 6</td>
-          <td>Territorial policies, local development and innovation ecosystems</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 7</td>
-          <td>Empirical approaches to policy evaluation</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 8</td>
-          <td>Difference-in-differences and counterfactual methods</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 9</td>
-          <td>Spatial and territorial dimensions of public policies</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 10</td>
-          <td>Data, indicators and evidence for innovation policies</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 11</td>
-          <td>Case studies and empirical applications</td>
-          <td>Coming soon</td>
-        </tr>
-
-        <tr>
-          <td>Lecture 12</td>
-          <td>Final discussion and course review</td>
-          <td>Coming soon</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2 id="programme">Programme</h2>
-
-    <ul class="pubs course-list">
-      <li>Public economics of innovation and the rationale for public intervention.</li>
-      <li>Knowledge as an economic good: non-rivalry, imperfect excludability and appropriability.</li>
-      <li>Externalities, knowledge spillovers and the divergence between private and social returns.</li>
-      <li>Public instruments for innovation: patents, subsidies, tax credits, public research and public demand.</li>
-      <li>Additionality, deadweight, crowding-in and crowding-out.</li>
-      <li>Financing constraints, information asymmetries and innovation investment.</li>
-      <li>Industrial policy and firm-level competitiveness.</li>
-      <li>Territorial policies, regional development and innovation systems.</li>
-      <li>Empirical methods for policy evaluation and causal inference.</li>
-      <li>Applications to Italian and European public policies.</li>
-    </ul>
-
-    <h2 id="materials">Materials</h2>
-
-    <ul class="pubs course-list">
+    <h2 id="phd-teaching">PhD teaching</h2>
+    <ul class="pubs teaching-list">
       <li>
-        <a href="politiche-pubbliche-innovazione-imprese/syllabus.pdf">Syllabus</a>
-      </li>
-
-      <li>
-        <a href="politiche-pubbliche-innovazione-imprese/readings.pdf">Reading list</a>
-      </li>
-
-      <li>
-        <a href="politiche-pubbliche-innovazione-imprese/datasets/">Datasets and empirical materials</a>
-      </li>
-
-      <li>
-        <a href="politiche-pubbliche-innovazione-imprese/code/">Code and replication examples</a>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span> for the PhD course in transversal skills,
+        <span class="teaching-course">Strumenti informatici e software statistici per l’analisi dei dati</span>,
+        addressed to PhD students and postgraduate trainees, <em>University of Bari Aldo Moro</em>.
       </li>
     </ul>
 
-    <h2 id="exam">Assessment</h2>
+    <h2 id="undergraduate-graduate-courses">Undergraduate and graduate courses</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Empirical Industrial Organization Competitive Analysis</span>,
+        SECS-P/06, Master’s Degree in Economics and Management, <em>University of Bari</em>.
+      </li>
 
-    <p>
-      Assessment information, exam rules and additional instructions will be communicated during the course
-      and updated on this page.
-    </p>
+      <li>
+        <span class="teaching-year">2025–2026.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Business Economics, <em>University of Bari</em>.
+      </li>
 
-    <h2 id="contacts">Contacts</h2>
+      <li>
+        <span class="teaching-year">2024–2025.</span>
+        <span class="teaching-role">Adjunct Professor</span>,
+        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Marketing and Business Administration, <em>University of Bari</em>.
+      </li>
 
-    <p>
-      For course-related questions, students may contact the instructor by email:
-      <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>.
-    </p>
+      <li>
+        <span class="teaching-year">2022.</span>
+        <span class="teaching-role">Lecturer</span> in the academic training course
+        <span class="teaching-course">Turismo sostenibile in area marina protetta — TuSAMP</span>,
+        <em>University of Foggia</em>.
+      </li>
+    </ul>
+
+    <h2 id="tutoring">Tutoring</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Introduction to Macroeconomics</span>,
+        SECS-P/01, Bachelor’s Degree in Economics and Finance,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Business Economics and Management,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Economics and Finance,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2023.</span>
+        <span class="teaching-role">Tutoring grant</span> for
+        <span class="teaching-course">Statistics</span>,
+        SECS-S/01, Bachelor’s Degree in Economics and International Marketing,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+    </ul>
+
+    <h2 id="teaching-assistance-tutorials">Teaching assistance and tutorials</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2022–2023.</span>
+        <span class="teaching-role">Teaching assistance grant</span> for
+        <span class="teaching-course">Economic and Competitive Scenarios</span>,
+        SECS-P/01, Master’s Degree in Business Management and Communication,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2022–2024.</span>
+        <span class="teaching-role">Teaching assistance grant</span> for
+        <span class="teaching-course">Industrial Economics</span>,
+        SECS-P/01, Master’s Degree in Business Management and Consulting,
+        <em>University of Modena and Reggio Emilia</em>.
+      </li>
+    </ul>
+
+    <h2 id="lectures-invited-speaking">Lectures and invited speaking</h2>
+    <ul class="pubs teaching-list">
+      <li>
+        <span class="teaching-year">2026.</span>
+        <span class="teaching-role">Lecturer</span> at the
+        <span class="teaching-course">Crash Course in Machine Learning per l’analisi dei dati</span>,
+        organized by the Laboratory of Applied Economics of the University of Bari within the GRINS Spoke 7 Project,
+        in collaboration with the Italian Society of Transport and Logistics Economics (SIET), 2–4 February 2026.
+      </li>
+
+      <li>
+        <span class="teaching-year">2024.</span>
+        <span class="teaching-role">Lecturer</span> for
+        <span class="teaching-course">Big Data Analytics</span> and
+        <span class="teaching-course">Real-Time Big Data Processing</span>
+        within the MTDS Master’s Programme in Data Science and Data Management,
+        University of Padua, 15–16 May 2024.
+      </li>
+
+      <li>
+        <span class="teaching-year">2023.</span>
+        <span class="teaching-role">Invited seminar</span> for the university course in
+        <span class="teaching-course">Business Intelligence and Management Information Systems</span>,
+        Bachelor’s Degree in Digital Business Administration and Management,
+        Department of Management, University of Turin, 8 May 2023.
+        Seminar title: <em>Introduction to R. Application and Manipulation</em>.
+      </li>
+
+      <li>
+        <span class="teaching-year">2023.</span>
+        <span class="teaching-role">Invited seminar</span> for the university course in
+        <span class="teaching-course">Economics of Local Development</span>,
+        Bachelor’s Degree in Economics and Management,
+        Department of Management, University of Enna “Kore”, 30 March 2023.
+        Seminar title: <em>Accrescere la resilienza dei sistemi economici locali: la Strategia Nazionale per le Aree Interne</em>.
+      </li>
+    </ul>
   </section>
 
-  <aside class="page-index" aria-label="Course page index">
-    <h2>Course index</h2>
+  <aside class="page-index" aria-label="Teaching page index">
+    <h2>Index</h2>
     <ul>
-      <li><a href="#notices">Notices</a></li>
-      <li><a href="#slides">Slides</a></li>
-      <li><a href="#programme">Programme</a></li>
-      <li><a href="#materials">Materials</a></li>
-      <li><a href="#exam">Assessment</a></li>
-      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#current-course">Current course</a></li>
+      <li><a href="#phd-teaching">PhD teaching</a></li>
+      <li><a href="#undergraduate-graduate-courses">Undergraduate and graduate courses</a></li>
+      <li><a href="#tutoring">Tutoring</a></li>
+      <li><a href="#teaching-assistance-tutorials">Teaching assistance and tutorials</a></li>
+      <li><a href="#lectures-invited-speaking">Lectures and invited speaking</a></li>
     </ul>
   </aside>
 </main>
