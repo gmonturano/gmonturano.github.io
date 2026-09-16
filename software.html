@@ -9,7 +9,7 @@
   <style>
     .software-layout{
       display:grid;
-      grid-template-columns:minmax(0,1fr) 210px;
+      grid-template-columns:minmax(0,1fr) 260px;
       gap:34px;
       align-items:start;
     }
@@ -99,10 +99,57 @@
       color:#111;
     }
 
+    .paper-year{
+      border:1px solid var(--rule);
+      background:#fff;
+      margin-top:10px;
+    }
+
+    .paper-year summary{
+      list-style:none;
+      cursor:pointer;
+      user-select:none;
+      padding:10px 13px;
+      background:#f5f5f5;
+      border-bottom:1px solid var(--rule);
+      font-weight:800;
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .paper-year summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .paper-year summary::after{
+      content:"−";
+      font-weight:800;
+      color:#555;
+      border:1px solid var(--rule);
+      background:#fff;
+      width:22px;
+      height:22px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      line-height:1;
+    }
+
+    .paper-year:not([open]) summary{
+      border-bottom:0;
+    }
+
+    .paper-year:not([open]) summary::after{
+      content:"+";
+    }
+
     .repo-list{
       display:grid;
       gap:14px;
-      margin-top:10px;
+      padding:14px;
     }
 
     .repo-card{
@@ -166,7 +213,6 @@
       font-weight:700;
     }
 
-
     .paper-logo-under-links{
       margin-top:14px;
       display:flex;
@@ -207,81 +253,6 @@
       white-space:pre;
       max-height:250px;
       color:#222;
-    }
-
-    .package-list{
-      margin-top:6px;
-    }
-
-    .package-item{
-      display:grid;
-      grid-template-columns:120px minmax(0,1fr);
-      gap:22px;
-      padding:22px 0 26px;
-      border-bottom:1px solid var(--rule);
-    }
-
-    .package-icon{
-      width:120px;
-      height:110px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .package-icon img{
-      max-width:96px;
-      max-height:96px;
-      display:block;
-      object-fit:contain;
-    }
-
-    .package-icon.multi{
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .package-icon.multi img{
-      max-width:46px;
-      max-height:46px;
-    }
-
-    .package-icon.wide img{
-      max-width:102px;
-      max-height:82px;
-    }
-
-    .package-content{
-      border-left:3px solid #111;
-      padding-left:13px;
-    }
-
-    .package-title{
-      display:flex;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:6px;
-      margin-bottom:5px;
-    }
-
-    .package-title h2{
-      font-size:1.02rem;
-      margin:0;
-      line-height:1.15;
-    }
-
-    .package-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:5px;
-      margin:4px 0 8px;
-      font-size:.76rem;
-    }
-
-    .package-content p{
-      margin:0;
-      font-size:.93rem;
-      line-height:1.56;
     }
 
     .badge{
@@ -330,62 +301,22 @@
       font-size:.88rem;
     }
 
-    .software-sidebar h2{
+    .sidebar-block{
+      border:1px solid var(--rule);
+      background:#fafafa;
+      padding:12px 12px;
+      margin-bottom:14px;
+    }
+
+    .sidebar-block h2{
       font-size:.98rem;
       margin:0 0 10px;
     }
 
-    .cat-list{
-      list-style:none;
-      padding:0;
-      margin:0;
-      border-left:1px solid var(--rule);
-      padding-left:12px;
-    }
-
-    .cat-list li{
-      margin-bottom:8px;
-      color:#333;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      line-height:1.25;
-    }
-
-    .cat-list a{
-      color:#333;
-      text-decoration:none;
-    }
-
-    .cat-list a:hover{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-    }
-
-    .cat-list img{
-      width:18px;
-      height:18px;
-      object-fit:contain;
-      display:block;
-      flex:0 0 18px;
-    }
-
     .sidebar-note{
-      margin-top:16px;
-      border:1px solid var(--rule);
-      background:#fafafa;
-      padding:11px 12px;
       font-size:.82rem;
       line-height:1.5;
       color:#555;
-    }
-
-    .github-box{
-      margin-top:16px;
-      border:1px solid var(--rule);
-      background:#fafafa;
-      padding:10px 12px;
     }
 
     .github-box a{
@@ -402,6 +333,76 @@
       width:24px;
       height:24px;
       object-fit:contain;
+    }
+
+    .sidebar-materials{
+      display:grid;
+      gap:10px;
+    }
+
+    .sidebar-material-card{
+      border:1px solid var(--rule);
+      background:#fff;
+      padding:10px 10px;
+    }
+
+    .sidebar-material-head{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:7px;
+    }
+
+    .sidebar-material-head img{
+      width:24px;
+      height:24px;
+      object-fit:contain;
+      flex:0 0 24px;
+    }
+
+    .sidebar-material-head h3{
+      margin:0;
+      font-size:.86rem;
+      line-height:1.2;
+    }
+
+    .sidebar-material-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:4px;
+      margin:5px 0 7px;
+      font-size:.67rem;
+    }
+
+    .sidebar-material-card p{
+      margin:0;
+      font-size:.76rem;
+      line-height:1.45;
+      color:#444;
+    }
+
+    .sidebar-mini-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:8px;
+    }
+
+    .sidebar-mini-list li{
+      border:1px solid var(--rule);
+      background:#fff;
+      padding:8px 9px;
+      font-size:.76rem;
+      line-height:1.45;
+      color:#444;
+    }
+
+    .sidebar-mini-list strong{
+      color:#111;
+      display:block;
+      margin-bottom:2px;
+      font-size:.8rem;
     }
 
     @media (max-width:980px){
@@ -433,26 +434,6 @@
       .github-hub-icon img{
         width:70px;
         height:70px;
-      }
-
-      .package-item{
-        grid-template-columns:88px minmax(0,1fr);
-        gap:16px;
-      }
-
-      .package-icon{
-        width:88px;
-        height:80px;
-      }
-
-      .package-icon img{
-        max-width:66px;
-        max-height:66px;
-      }
-
-      .package-icon.multi img{
-        max-width:31px;
-        max-height:31px;
       }
     }
   </style>
@@ -519,134 +500,48 @@
         </div>
       </section>
 
+      <h2 class="package-section-title" id="paper-code">Papers with code and replication repositories</h2>
 
+      <details class="paper-year" open>
+        <summary>2026</summary>
 
-      <h2 class="package-section-title" id="technical-materials">Research materials by language and format</h2>
+        <div class="repo-list">
+          <article class="repo-card featured">
+            <div>
+              <h2 class="repo-title">
+                <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">
+                  Fuel Costs and Spatial Rail Accessibility
+                </a>
+              </h2>
 
-      <div class="package-list">
-        <article class="package-item" id="r-routines">
-          <div class="package-icon wide">
-            <img src="assets/icons/R.svg.png" alt="R">
-          </div>
+              <div class="repo-tags">
+                <span class="badge badge-paper">Published paper</span>
+                <span class="badge badge-r">R</span>
+                <span class="badge">TWFE</span>
+                <span class="badge">IV / 2SLS</span>
+                <span class="badge">DML</span>
+                <span class="badge">Replication repository</span>
+              </div>
 
-          <div class="package-content">
-            <div class="package-title">
-              <h2>R code, statistical workflows and package-oriented material</h2>
+              <p>
+                Replication repository for the article
+                <em>Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</em>.
+                The repository is organised around three estimation blocks — TWFE, IV/2SLS and Double Machine Learning —
+                with metadata-driven specifications and a compact sample dataset for repository validation.
+              </p>
+
+              <div class="repo-links">
+                <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">GitHub repository</a>
+                <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
+              </div>
+
+              <div class="paper-logo-under-links">
+                <img src="assets/loghi_paper/spatial_fuel_rail.png" alt="Fuel Costs and Spatial Rail Accessibility logo">
+              </div>
             </div>
 
-            <div class="package-meta">
-              <span class="badge badge-r">R</span>
-              <span class="badge badge-cran">CRAN</span>
-              <span class="badge">Data analysis</span>
-              <span class="badge">Data manipulation</span>
-              <span class="badge">Spatial econometrics</span>
-              <span class="badge">Causal inference</span>
-            </div>
-
-            <p>
-              R material for empirical analysis, replication exercises and applied research:
-              estimation scripts, analytical workflows, reusable functions, causal and spatial models,
-              policy evaluation routines and package-oriented code that can later evolve into more structured tools.
-            </p>
-          </div>
-        </article>
-
-        <article class="package-item" id="python-workflows">
-          <div class="package-icon wide">
-            <img src="assets/icons/Python.svg.png" alt="Python">
-          </div>
-
-          <div class="package-content">
-            <div class="package-title">
-              <h2>Python code, workflows and package-oriented material</h2>
-            </div>
-
-            <div class="package-meta">
-              <span class="badge badge-py">Python</span>
-              <span class="badge badge-pypi">PyPI</span>
-              <span class="badge">Machine learning</span>
-              <span class="badge">Network analysis</span>
-              <span class="badge">Scraping</span>
-              <span class="badge">Text analysis</span>
-            </div>
-
-            <p>
-              Python material for machine learning, network analysis, automated data collection,
-              scraping, text analysis and reproducible research pipelines. This section can host both
-              standalone workflows and modular code that may later be organised as structured Python tools.
-            </p>
-          </div>
-        </article>
-
-        <article class="package-item" id="latex-markdown-quarto">
-          <div class="package-icon multi">
-            <img src="assets/icons/Latex.svg" alt="LaTeX">
-            <img src="assets/icons/markdown.png" alt="Markdown">
-            <img src="assets/icons/logo.png" alt="Quarto">
-          </div>
-
-          <div class="package-content">
-            <div class="package-title">
-              <h2>LaTeX, Markdown and Quarto materials</h2>
-            </div>
-
-            <div class="package-meta">
-              <span class="badge badge-tex">LaTeX</span>
-              <span class="badge">Markdown</span>
-              <span class="badge">Quarto</span>
-              <span class="badge">CV</span>
-              <span class="badge">Slides</span>
-              <span class="badge">Reports</span>
-            </div>
-
-            <p>
-              Writing and presentation material for academic work: CV templates, teaching notes,
-              conference slides, article drafts, reproducible reports and other documents used to
-              organise and present research outputs.
-            </p>
-          </div>
-        </article>
-      </div>
-
-
-            <h2 class="package-section-title" id="paper-code">Papers with code and replication repositories</h2>
-
-      <div class="repo-list">
-        <article class="repo-card featured">
-          <div>
-            <h2 class="repo-title">
-              <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">
-                Fuel Costs and Spatial Rail Accessibility
-              </a>
-            </h2>
-
-            <div class="repo-tags">
-              <span class="badge badge-paper">Published paper</span>
-              <span class="badge badge-r">R</span>
-              <span class="badge">TWFE</span>
-              <span class="badge">IV / 2SLS</span>
-              <span class="badge">DML</span>
-              <span class="badge">Replication repository</span>
-            </div>
-
-            <p>
-              Replication repository for the article
-              <em>Fuel Costs and Spatial Rail Accessibility: Econometric Evidence from an Empirically-Weighted Network-Based 3SFCA Model</em>.
-              The repository is organised around three estimation blocks — TWFE, IV/2SLS and Double Machine Learning —
-              with metadata-driven specifications and a compact sample dataset for repository validation.
-            </p>
-
-            <div class="repo-links">
-              <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility" target="_blank" rel="noopener">GitHub repository</a>
-              <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994" target="_blank" rel="noopener">Published article</a>
-            </div>
-            <div class="paper-logo-under-links">
-              <img src="assets/loghi_paper/spatial_fuel_rail.png" alt="Fuel Costs and Spatial Rail Accessibility logo">
-            </div>
-          </div>
-
-          <div class="repo-preview">
-            <div class="repo-preview-head">Repository structure</div>
+            <div class="repo-preview">
+              <div class="repo-preview-head">Repository structure</div>
 <pre>Fuel-Costs-and-Spatial-Rail-Accessibility/
 │
 ├── README.md
@@ -661,37 +556,90 @@
 └── output/
     ├── tables/
     └── models/</pre>
-          </div>
-        </article>
-      </div>
-
-      
+            </div>
+          </article>
+        </div>
+      </details>
     </section>
 
     <aside class="software-sidebar">
-      <h2>Sections</h2>
+      <div class="sidebar-block github-box">
+        <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
+          <img src="assets/icons/Ghithub.png" alt="GitHub">
+          <span>GitHub</span>
+        </a>
+      </div>
 
-      <ul class="cat-list">
-        <li><img src="assets/icons/Ghithub.png" alt=""><a href="#github-code-hub">GitHub hub</a></li>
-        <li><span class="badge badge-rep">Code</span><a href="#paper-code">Papers with code</a></li>
-        <li><img src="assets/icons/R.svg.png" alt=""><a href="#r-routines">R material</a></li>
-        <li><img src="assets/icons/Python.svg.png" alt=""><a href="#python-workflows">Python material</a></li>
-        <li><img src="assets/icons/Latex.svg" alt=""><a href="#latex-markdown-quarto">LaTeX material</a></li>
-        <li><img src="assets/icons/markdown.png" alt=""><a href="#latex-markdown-quarto">Markdown</a></li>
-        <li><img src="assets/icons/logo.png" alt=""><a href="#latex-markdown-quarto">Quarto</a></li>
-      </ul>
-
-      <div class="sidebar-note">
+      <div class="sidebar-block sidebar-note">
         This page combines two types of content:
         <strong>paper replication repositories</strong> and
         <strong>general research materials</strong>.
       </div>
 
-      <div class="github-box">
-        <a href="https://github.com/gmonturano" target="_blank" rel="noopener">
-          <img src="assets/icons/Ghithub.png" alt="GitHub">
-          <span>GitHub</span>
-        </a>
+      <div class="sidebar-block">
+        <h2>Research materials</h2>
+
+        <div class="sidebar-materials">
+          <article class="sidebar-material-card">
+            <div class="sidebar-material-head">
+              <img src="assets/icons/R.svg.png" alt="R">
+              <h3>R code and statistical workflows</h3>
+            </div>
+
+            <div class="sidebar-material-tags">
+              <span class="badge badge-r">R</span>
+              <span class="badge badge-cran">CRAN</span>
+              <span class="badge">Data analysis</span>
+              <span class="badge">Spatial econometrics</span>
+              <span class="badge">Causal inference</span>
+            </div>
+
+            <p>
+              Estimation scripts, applied workflows, reusable functions, spatial models,
+              causal inference routines and policy evaluation code.
+            </p>
+          </article>
+
+          <article class="sidebar-material-card">
+            <div class="sidebar-material-head">
+              <img src="assets/icons/Python.svg.png" alt="Python">
+              <h3>Python code and research pipelines</h3>
+            </div>
+
+            <div class="sidebar-material-tags">
+              <span class="badge badge-py">Python</span>
+              <span class="badge badge-pypi">PyPI</span>
+              <span class="badge">Machine learning</span>
+              <span class="badge">Network analysis</span>
+              <span class="badge">Scraping</span>
+              <span class="badge">Text analysis</span>
+            </div>
+
+            <p>
+              Material for machine learning, network analysis, automated data collection,
+              scraping, text analysis and reproducible research pipelines.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <h2>Writing and presentation</h2>
+
+        <ul class="sidebar-mini-list">
+          <li>
+            <strong>LaTeX</strong>
+            CV templates, academic papers, working papers, teaching notes and formal documents.
+          </li>
+          <li>
+            <strong>Markdown</strong>
+            README files, repository documentation, notes and lightweight research documentation.
+          </li>
+          <li>
+            <strong>Quarto</strong>
+            Reproducible reports, slides, article drafts and mixed code-text research outputs.
+          </li>
+        </ul>
       </div>
     </aside>
 
