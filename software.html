@@ -1,11 +1,13 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Research software, R code and replication packages for academic papers by Gianluca Monturano.">
-  <title>Software and Replication Code | Gianluca Monturano</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Software | Gianluca Monturano</title>
+
   <link rel="stylesheet" href="styles.css">
 
   <style>
@@ -18,321 +20,409 @@
 
     .software-head {
       border-bottom: 1px solid var(--rule, #ddd);
-      padding-bottom: 20px;
-      margin-bottom: 25px;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
     }
 
     .software-head h1 {
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .software-head p {
+      max-width: 860px;
       color: var(--muted, #666);
-      line-height: 1.7;
-      max-width: 850px;
+      margin-bottom: 0;
+      line-height: 1.6;
     }
+
+    .github-main-link,
+    .github-hub-link {
+      color: #0057d9;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 700;
+    }
+
+    /* GitHub hub — original logos retained */
 
     .github-hub {
-      background: #f8fafc;
-      border: 1px solid #dce5ed;
-      padding: 24px;
-      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: 124px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      border: 1px solid var(--rule, #ddd);
+      background: #fafafa;
+      padding: 18px;
+      margin: 16px 0 18px;
     }
 
-    .github-hub h2 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
+    .github-hub-icon {
+      width: 124px;
+      height: 124px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .github-hub p {
+    .github-hub-icon img {
+      width: 104px;
+      height: 104px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .github-hub-content h2 {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+    }
+
+    .github-hub-content p {
+      margin: 0;
       font-size: .94rem;
-      line-height: 1.7;
-      margin-bottom: 12px;
+      line-height: 1.58;
     }
 
-    .github-hub a,
-    .repo-links a,
-    .repo-title a {
-      color: #0057d9;
-      text-decoration: none;
+    .github-hub-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 8px 0 10px;
     }
 
-    .github-hub a:hover,
-    .repo-links a:hover,
-    .repo-title a:hover {
-      text-decoration: underline;
+    .github-hub-link {
+      display: inline-flex;
+      margin-top: 8px;
     }
+
+    /* Section 2026 */
 
     .package-section-title {
-      font-size: 1.25rem;
-      margin-bottom: 18px;
-      color: #183653;
+      margin: 22px 0 8px;
+      font-size: 1rem;
+      color: #111;
     }
 
     .paper-year {
-      border: 1px solid #dde4eb;
+      border: 1px solid var(--rule, #ddd);
       background: #fff;
-      margin-bottom: 25px;
+      margin-top: 10px;
     }
 
     .paper-year > summary {
-      padding: 15px 18px;
-      background: #f1f5f9;
-      font-weight: 800;
-      font-size: 1.1rem;
       cursor: pointer;
-      color: #183653;
+      user-select: none;
+      padding: 12px 14px;
+      background: #f5f5f5;
+      border-bottom: 1px solid var(--rule, #ddd);
+      font-weight: 800;
+      color: #111;
     }
 
     .repo-list {
-      padding: 16px;
       display: grid;
-      gap: 22px;
+      gap: 16px;
+      padding: 14px;
     }
 
-    .repo-card {
+    /* Paper cards — social link preview */
+
+    .paper-card {
+      border: 1px solid var(--rule, #ddd);
       background: #fff;
-      border: 1px solid #dce4eb;
       overflow: hidden;
-      transition: border-color .2s, box-shadow .2s;
     }
 
-    .repo-card:hover {
-      border-color: #9ab6d1;
-      box-shadow: 0 4px 18px rgba(0,0,0,.06);
+    .paper-card:hover {
+      border-color: #a2b4c7;
+      box-shadow: 0 3px 14px rgba(0,0,0,.05);
     }
 
-    /* Social-media-style preview, without external images */
+    .paper-link-preview {
+      display: grid;
+      grid-template-columns: 225px minmax(0,1fr);
+      background: #fbfbfb;
+      border-bottom: 1px solid var(--rule, #ddd);
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+    }
 
-    .paper-preview {
-      background: linear-gradient(125deg, #17324e, #285c83);
-      color: white;
-      padding: 26px;
-      min-height: 170px;
+    .paper-preview-image {
+      background: #f0f3f6;
+      min-height: 165px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .paper-preview-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 165px;
+      max-height: 235px;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .paper-preview-content {
+      min-width: 0;
+      padding: 18px 20px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 24px;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .paper-preview .preview-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .paper-preview .preview-label {
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .12em;
+    .paper-journal {
+      color: #64717c;
       text-transform: uppercase;
-      opacity: .85;
-    }
-
-    .paper-preview .preview-year {
-      border: 1px solid rgba(255,255,255,.4);
-      padding: 4px 9px;
+      letter-spacing: .055em;
       font-size: .72rem;
       font-weight: 700;
     }
 
-    .paper-preview h2 {
-      color: white;
-      margin: 0;
-      font-size: clamp(1.18rem, 2vw, 1.55rem);
-      line-height: 1.35;
-      max-width: 700px;
+    .paper-title {
+      color: #172e42;
+      font-size: 1.08rem;
+      font-weight: 800;
+      line-height: 1.38;
     }
 
-    .paper-preview p {
-      color: #d7e6f2;
-      font-size: .83rem;
-      margin: 8px 0 0;
+    .paper-link-preview:hover .paper-title {
+      color: #0057d9;
+      text-decoration: underline;
     }
 
-    .repo-body {
-      padding: 22px;
+    .paper-preview-description {
+      color: #64717c;
+      font-size: .82rem;
+      line-height: 1.5;
     }
 
-    .repo-title {
-      margin: 0 0 12px;
-      font-size: 1.05rem;
+    .paper-details {
+      padding: 17px 19px;
     }
 
-    .repo-tags {
+    .paper-details p {
+      margin: 9px 0 0;
+      font-size: .90rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .paper-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .badge {
-      font-family: inherit;
-      font-size: .7rem;
-      font-weight: 650;
-      padding: 4px 8px;
-      border: 1px solid #dae2e9;
-      background: #f7f9fb;
-      color: #304b63;
-      border-radius: 3px;
-    }
-
-    .badge-paper {
-      color: #7b4226;
-      background: #fff7ef;
-      border-color: #ecd5be;
+      border: 1px solid var(--rule, #ddd);
+      background: #f6f6f6;
+      padding: 3px 7px;
+      border-radius: 4px;
+      font-size: .72rem;
+      font-weight: 600;
+      color: #444;
     }
 
     .badge-r {
       color: #276dc3;
-      background: #f0f6ff;
     }
 
-    .repo-description {
-      font-size: .93rem;
-      line-height: 1.75;
-      color: #344454;
-      margin-bottom: 15px;
+    .badge-paper {
+      color: #7a2e12;
+      font-weight: 700;
     }
 
-    .repo-links {
+    .badge-cran {
+      color: #276dc3;
+    }
+
+    .badge-pypi {
+      color: #b8860b;
+    }
+
+    .paper-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
-      margin: 16px 0;
-      font-size: .87rem;
+      gap: 16px;
+      margin-top: 13px;
+      font-size: .86rem;
+    }
+
+    .paper-links a {
+      color: #0057d9;
+      text-decoration: underline;
+      text-underline-offset: 2px;
       font-weight: 700;
     }
 
-    .workflow {
-      margin-top: 20px;
-      border-top: 1px solid #e2e7ed;
-      padding-top: 15px;
-    }
-
-    .workflow summary {
-      cursor: pointer;
-      font-size: .88rem;
-      font-weight: 750;
-      color: #234a6c;
-      padding: 4px 0;
-    }
-
-    .workflow-content {
-      margin-top: 14px;
-    }
-
-    .workflow-flow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      padding: 16px;
-      background: #f7f9fc;
-      border: 1px solid #e2e9ef;
-    }
-
-    .workflow-step {
-      width: min(100%, 490px);
-      background: white;
-      border: 1px solid #cfdce7;
-      padding: 11px 15px;
-      font-size: .82rem;
-      text-align: center;
-      font-weight: 600;
-      color: #23445d;
-    }
-
-    .workflow-arrow {
-      color: #6086a7;
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .workflow-step.output {
-      background: #eaf2f9;
-      border-color: #b4cadc;
-    }
-
-    .repo-structure {
-      margin-top: 18px;
-    }
-
-    .repo-structure summary {
-      font-size: .85rem;
-      font-weight: 700;
-      cursor: pointer;
-      color: #355873;
-    }
-
-    .repo-structure pre {
-      background: #f4f6f8;
-      padding: 15px;
-      overflow-x: auto;
-      white-space: pre;
-      color: #303b46;
-      font-size: .75rem;
-      line-height: 1.6;
-      border: 1px solid #e2e6ea;
-    }
+    /* Original sidebar */
 
     .software-sidebar {
       position: sticky;
       top: 74px;
-      font-size: .87rem;
+      font-size: .88rem;
     }
 
     .sidebar-block {
-      background: #fafafa;
       border: 1px solid var(--rule, #ddd);
-      padding: 14px;
-      margin-bottom: 15px;
+      background: #fafafa;
+      padding: 12px;
+      margin-bottom: 14px;
     }
 
     .sidebar-block h2 {
-      font-size: 1rem;
+      font-size: .98rem;
       margin: 0 0 10px;
     }
 
-    .sidebar-block p {
-      font-size: .83rem;
-      line-height: 1.65;
-      margin: 0;
+    .sidebar-note {
+      font-size: .82rem;
+      line-height: 1.5;
+      color: #555;
     }
 
-    .sidebar-block a {
+    .github-box a {
       color: #0057d9;
-      text-decoration: none;
+      text-decoration: underline;
       font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
     }
 
-    .sidebar-block ul {
-      padding-left: 18px;
+    .github-box img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .sidebar-materials {
+      display: grid;
+      gap: 10px;
+    }
+
+    .sidebar-material-card {
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
+      padding: 10px;
+    }
+
+    .sidebar-material-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+
+    .sidebar-material-head img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .sidebar-material-head h3 {
       margin: 0;
-      line-height: 2;
+      font-size: .86rem;
     }
 
-    @media (max-width: 900px) {
+    .sidebar-material-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin: 5px 0 7px;
+    }
+
+    .sidebar-material-card p {
+      margin: 0;
+      font-size: .76rem;
+      line-height: 1.45;
+      color: #444;
+    }
+
+    .sidebar-mini-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .sidebar-mini-list li {
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
+      padding: 9px;
+      font-size: .76rem;
+      line-height: 1.45;
+      color: #444;
+    }
+
+    .sidebar-mini-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-mini-title img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .sidebar-mini-title strong {
+      color: #111;
+    }
+
+    @media (max-width: 850px) {
       .software-layout {
         grid-template-columns: 1fr;
       }
 
       .software-sidebar {
         position: static;
+        order: -1;
+      }
+
+      .github-hub {
+        grid-template-columns: 82px minmax(0,1fr);
+      }
+
+      .github-hub-icon {
+        width: 82px;
+        height: 82px;
+      }
+
+      .github-hub-icon img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .paper-link-preview {
+        grid-template-columns: 1fr;
+      }
+
+      .paper-preview-image {
+        max-height: 210px;
+      }
+
+      .paper-preview-image img {
+        max-height: 210px;
+      }
+
+      .paper-preview-content {
+        padding: 14px;
       }
 
       .repo-list {
         padding: 10px;
-      }
-
-      .paper-preview {
-        padding: 20px;
-      }
-
-      .repo-body {
-        padding: 16px;
       }
     }
   </style>
@@ -343,6 +433,7 @@
 <header class="topbar">
   <div class="wrap">
     <div class="nav">
+
       <a class="name" href="index.html">
         Gianluca Monturano, PhD
       </a>
@@ -355,6 +446,7 @@
         <a href="dissemination.html">Dissemination</a>
         <a href="cv.html">CV</a>
       </nav>
+
     </div>
   </div>
 </header>
@@ -366,27 +458,57 @@
 
       <div class="software-head">
         <h1>Software and replication code</h1>
+
         <p>
-          Replication materials, econometric estimation scripts,
-          statistical workflows and research software accompanying
-          my academic publications.
-          The repositories provide the principal code associated
-          with the empirical analyses presented in the corresponding
-          research articles.
+          Reproducible code, statistical workflows,
+          paper replication repositories and academic materials
+          for empirical research, data manipulation,
+          policy evaluation, machine learning and scientific writing.
+
+          My repositories are collected on
+          <a class="github-main-link"
+             href="https://github.com/gmonturano"
+             target="_blank" rel="noopener">
+            GitHub
+          </a>.
         </p>
       </div>
 
-      <section class="github-hub">
-        <h2>GitHub Research Code Hub</h2>
-        <p>
-          My GitHub profile collects research replication packages,
-          R econometric scripts, panel-data workflows, spatial
-          analysis and computational materials for academic research.
-        </p>
-        <a href="https://github.com/gmonturano"
-           target="_blank" rel="noopener noreferrer">
-          Visit my GitHub profile
-        </a>
+      <!-- GITHUB HUB -->
+
+      <section class="github-hub" id="github-code-hub">
+
+        <div class="github-hub-icon">
+          <img src="assets/icons/Ghithub.png" alt="GitHub">
+        </div>
+
+        <div class="github-hub-content">
+
+          <h2>GitHub code hub</h2>
+
+          <div class="github-hub-tags">
+            <span class="badge">Replication code</span>
+            <span class="badge badge-r">R</span>
+            <span class="badge">Python</span>
+            <span class="badge">LaTeX</span>
+            <span class="badge">Markdown</span>
+            <span class="badge">Quarto</span>
+          </div>
+
+          <p>
+            My GitHub profile is the central place where I collect
+            code for published papers, estimation scripts,
+            replication repositories, reusable research workflows,
+            and writing materials in LaTeX, Markdown and Quarto.
+          </p>
+
+          <a class="github-hub-link"
+             href="https://github.com/gmonturano"
+             target="_blank" rel="noopener">
+            Open GitHub profile
+          </a>
+
+        </div>
       </section>
 
       <h2 class="package-section-title" id="paper-code">
@@ -394,509 +516,380 @@
       </h2>
 
       <details class="paper-year" open>
-        <summary>2026 — Research Articles and Replication Packages</summary>
+        <summary>2026</summary>
 
         <div class="repo-list">
 
-          <!-- PAPER 1: 3SFCA -->
+          <!-- PAPER 1 -->
 
-          <article class="repo-card">
+          <article class="paper-card">
 
-            <div class="paper-preview">
-              <div class="preview-top">
-                <span class="preview-label">Research Article · Replication</span>
-                <span class="preview-year">2026</span>
+            <a class="paper-link-preview"
+               href="https://www.sciencedirect.com/science/article/pii/S2210539526000994"
+               target="_blank" rel="noopener noreferrer">
+
+              <div class="paper-preview-image">
+                <img
+                  src="https://raw.githubusercontent.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility/main/Mappe_descrnetwork_EN3SFCA_DIRECTIONAL_FINAL_WITH_BORDER_page-0001.jpg"
+                  alt="Fuel Costs and Spatial Rail Accessibility">
               </div>
-              <div>
-                <h2>Fuel Costs and Spatial Rail Accessibility</h2>
-                <p>Network-Based 3SFCA · Spatial Econometrics · Rail Accessibility</p>
+
+              <div class="paper-preview-content">
+                <span class="paper-journal">
+                  Research in Transportation Business &amp; Management · Elsevier · 2026
+                </span>
+
+                <span class="paper-title">
+                  Fuel Costs and Spatial Rail Accessibility:
+                  Econometric Evidence from an Empirically-Weighted
+                  Network-Based 3SFCA Model
+                </span>
+
+                <span class="paper-preview-description">
+                  View published article
+                </span>
               </div>
-            </div>
 
-            <div class="repo-body">
+            </a>
 
-              <h3 class="repo-title">
-                Fuel Costs and Spatial Rail Accessibility:
-                Econometric Evidence from an Empirically-Weighted
-                Network-Based 3SFCA Model
-              </h3>
+            <div class="paper-details">
 
-              <div class="repo-tags">
-                <span class="badge badge-paper">Published Article</span>
+              <div class="paper-tags">
+                <span class="badge badge-paper">2026</span>
                 <span class="badge badge-r">R</span>
                 <span class="badge">TWFE</span>
                 <span class="badge">IV / 2SLS</span>
                 <span class="badge">DML</span>
-                <span class="badge">Spatial Accessibility</span>
               </div>
 
-              <p class="repo-description">
-                The paper develops an empirically weighted,
-                network-based Three-Step Floating Catchment Area
-                approach to investigate spatial rail accessibility
-                and fuel costs. The replication package contains
-                the main TWFE, IV/2SLS and Double Machine Learning
-                estimation scripts, a metadata workbook and
-                supporting panel-data material.
+              <p>
+                Main estimation scripts and metadata-driven specifications
+                for network-based spatial rail accessibility analysis.
               </p>
 
-              <div class="repo-links">
+              <div class="paper-links">
                 <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility"
-                   target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                   target="_blank" rel="noopener">
+                  GitHub repository
                 </a>
 
                 <a href="https://www.sciencedirect.com/science/article/pii/S2210539526000994"
-                   target="_blank" rel="noopener noreferrer">
-                  Published Article
+                   target="_blank" rel="noopener">
+                  Published article
                 </a>
               </div>
-
-              <details class="workflow">
-                <summary>Empirical and replication workflow</summary>
-                <div class="workflow-content">
-                  <div class="workflow-flow">
-                    <div class="workflow-step">Processed Spatial Accessibility Panel</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Metadata-Driven Model Specifications</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Two-Way Fixed Effects (TWFE)</div>
-                    <div class="workflow-step">Instrumental Variables (IV / 2SLS)</div>
-                    <div class="workflow-step">Double / Debiased Machine Learning</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step output">Econometric Estimates and Replication Results</div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="repo-structure">
-                <summary>Repository structure</summary>
-                <pre>Fuel-Costs-and-Spatial-Rail-Accessibility/
-├── README.md
-├── code/
-│   ├── 00_functions.R
-│   ├── 01_twfe_metadata.R
-│   ├── 02_iv_metadata.R
-│   ├── 03_dml_metadata.R
-│   ├── 99_run_all.R
-│   └── Meta_fusco_dm.xlsx
-└── db/
-    └── Access_norm_cut.RData</pre>
-              </details>
 
             </div>
           </article>
 
+          <!-- PAPER 2 -->
 
-          <!-- PAPER 2: TAX REFORM -->
+          <article class="paper-card">
 
-          <article class="repo-card">
+            <a class="paper-link-preview"
+               href="https://link.springer.com/article/10.1007/s00168-026-01546-y"
+               target="_blank" rel="noopener noreferrer">
 
-            <div class="paper-preview">
-              <div class="preview-top">
-                <span class="preview-label">Research Article · Replication</span>
-                <span class="preview-year">2026</span>
+              <div class="paper-preview-image">
+                <img
+                  src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs00168-026-01546-y/MediaObjects/168_2026_1546_Fig1_HTML.png"
+                  alt="Spatial Tax Reform Compliance">
               </div>
-              <div>
-                <h2>Spatial Consequences of Tax Reforms</h2>
-                <p>Tax Compliance · Difference-in-Differences · Spatial Heterogeneity</p>
+
+              <div class="paper-preview-content">
+
+                <span class="paper-journal">
+                  The Annals of Regional Science · Springer Nature · 2026
+                </span>
+
+                <span class="paper-title">
+                  Spatial consequences of tax reforms on tax compliance:
+                  econometric evidence from the Italian Minimum Taxpayer Regime
+                </span>
+
+                <span class="paper-preview-description">
+                  View published article
+                </span>
+
               </div>
-            </div>
+            </a>
 
-            <div class="repo-body">
+            <div class="paper-details">
 
-              <h3 class="repo-title">
-                Spatial consequences of tax reforms on tax compliance:
-                econometric evidence from the Italian Minimum Taxpayer Regime
-              </h3>
-
-              <div class="repo-tags">
-                <span class="badge badge-paper">Published Article</span>
+              <div class="paper-tags">
+                <span class="badge badge-paper">2026</span>
                 <span class="badge badge-r">R</span>
-                <span class="badge">Continuous DiD</span>
-                <span class="badge">TWFE</span>
-                <span class="badge">Tax Compliance</span>
-                <span class="badge">Restricted Data</span>
+                <span class="badge">Continuous-treatment DiD</span>
+                <span class="badge">Tax compliance</span>
               </div>
 
-              <p class="repo-description">
-                The study investigates how the Italian Minimum
-                Taxpayer Regime affects tax compliance across
-                provinces, considering heterogeneous policy exposure,
-                self-employment and territorial characteristics.
-                The repository provides selected estimation code
-                and simulated data for methodological inspection.
-                Confidential tax data are not publicly distributed.
+              <p>
+                Main estimation procedures for the Italian Minimum
+                Taxpayer Regime. The replication material includes
+                simulated data in place of confidential administrative records.
               </p>
 
-              <div class="repo-links">
+              <div class="paper-links">
+
                 <a href="https://github.com/gmonturano/tax_evation_self_employed"
-                   target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                   target="_blank" rel="noopener">
+                  GitHub repository
                 </a>
 
                 <a href="https://doi.org/10.1007/s00168-026-01546-y"
-                   target="_blank" rel="noopener noreferrer">
-                  Published Article
+                   target="_blank" rel="noopener">
+                  Published article
                 </a>
+
               </div>
-
-              <details class="workflow">
-                <summary>Empirical and replication workflow</summary>
-                <div class="workflow-content">
-                  <div class="workflow-flow">
-                    <div class="workflow-step">Provincial Panel and Tax Reform Exposure</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Pre-Reform Characteristics and Treatment Intensity</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Continuous-Treatment Difference-in-Differences</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Fixed Effects and Territorial Heterogeneity</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step output">Tax Compliance Estimates</div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="repo-structure">
-                <summary>Repository materials</summary>
-                <pre>tax_evation_self_employed/
-├── README.md
-├── code/
-│   ├── Main DID estimation
-│   └── Main model metadata
-└── db/
-    └── Simulated data</pre>
-              </details>
-
             </div>
           </article>
 
+          <!-- PAPER 3 -->
 
-          <!-- PAPER 3: DIGITAL DIVIDE -->
+          <article class="paper-card">
 
-          <article class="repo-card">
+            <a class="paper-link-preview"
+               href="https://link.springer.com/article/10.1007/s00168-025-01440-z"
+               target="_blank" rel="noopener noreferrer">
 
-            <div class="paper-preview">
-              <div class="preview-top">
-                <span class="preview-label">Research Article · Replication</span>
-                <span class="preview-year">2026</span>
+              <div class="paper-preview-image">
+                <img
+                  src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs00168-025-01440-z/MediaObjects/168_2025_1440_Fig2_HTML.png"
+                  alt="Digital Divide and Income Inequality">
               </div>
-              <div>
-                <h2>Digital Divide and Income Inequality</h2>
-                <p>Broadband Infrastructure · Inequality · Causal Inference</p>
+
+              <div class="paper-preview-content">
+
+                <span class="paper-journal">
+                  The Annals of Regional Science · Springer Nature · 2026
+                </span>
+
+                <span class="paper-title">
+                  Digital divide and income inequality:
+                  causal evidence from Italian provinces
+                </span>
+
+                <span class="paper-preview-description">
+                  View published article
+                </span>
+
               </div>
-            </div>
+            </a>
 
-            <div class="repo-body">
+            <div class="paper-details">
 
-              <h3 class="repo-title">
-                Digital divide and income inequality:
-                causal evidence from Italian provinces
-              </h3>
-
-              <div class="repo-tags">
-                <span class="badge badge-paper">Published Article</span>
+              <div class="paper-tags">
+                <span class="badge badge-paper">2026</span>
                 <span class="badge badge-r">R</span>
                 <span class="badge">DiD</span>
                 <span class="badge">Broadband</span>
-                <span class="badge">Income Inequality</span>
-                <span class="badge">Panel Data</span>
+                <span class="badge">Inequality</span>
               </div>
 
-              <p class="repo-description">
-                The paper evaluates the relationship between
-                broadband infrastructure expansion and income
-                inequality across Italian provinces. The empirical
-                framework investigates continuous treatment
-                intensity, provincial heterogeneity and alternative
-                measures of inequality, using panel-data methods
-                and causal identification strategies.
+              <p>
+                Selected econometric code for the analysis of
+                broadband infrastructure and income inequality
+                across Italian provinces.
               </p>
 
-              <div class="repo-links">
+              <div class="paper-links">
+
                 <a href="https://github.com/gmonturano/digital_divide_income_ineq"
-                   target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                   target="_blank" rel="noopener">
+                  GitHub repository
                 </a>
 
                 <a href="https://doi.org/10.1007/s00168-025-01440-z"
-                   target="_blank" rel="noopener noreferrer">
-                  Published Article
+                   target="_blank" rel="noopener">
+                  Published article
                 </a>
+
               </div>
-
-              <details class="workflow">
-                <summary>Empirical and replication workflow</summary>
-                <div class="workflow-content">
-                  <div class="workflow-flow">
-                    <div class="workflow-step">Italian Provincial Panel Data</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Broadband Coverage and Inequality Indicators</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Treatment Intensity and Control Variables</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Difference-in-Differences Estimation</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step output">Income Inequality Effects</div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="repo-structure">
-                <summary>Repository materials</summary>
-                <pre>digital_divide_income_ineq/
-├── README.md
-├── code/
-│   ├── Main estimation script
-│   └── Main model metadata
-└── db/
-    └── Processed estimation data</pre>
-              </details>
-
             </div>
           </article>
 
+          <!-- PAPER 4 -->
 
-          <!-- PAPER 4: DIGITAL INFRASTRUCTURE AND QOL -->
+          <article class="paper-card">
 
-          <article class="repo-card">
+            <a class="paper-link-preview"
+               href="https://github.com/gmonturano/Digital_and_quality_of_life"
+               target="_blank" rel="noopener noreferrer">
 
-            <div class="paper-preview">
-              <div class="preview-top">
-                <span class="preview-label">Research Article · Replication</span>
-                <span class="preview-year">2026</span>
+              <div class="paper-preview-image">
+                <img
+                  src="https://opengraph.githubassets.com/1/gmonturano/Digital_and_quality_of_life"
+                  alt="Digital Infrastructure and Quality of Life">
               </div>
-              <div>
-                <h2>Digital Infrastructure and Quality of Life</h2>
-                <p>Broadband Diffusion · Regional Development · Quality of Life</p>
+
+              <div class="paper-preview-content">
+
+                <span class="paper-journal">
+                  Research Article · 2026
+                </span>
+
+                <span class="paper-title">
+                  Digital infrastructure and territorial heterogeneity
+                  in quality-of-life outcomes
+                </span>
+
+                <span class="paper-preview-description">
+                  Open replication repository
+                </span>
+
               </div>
-            </div>
+            </a>
 
-            <div class="repo-body">
+            <div class="paper-details">
 
-              <h3 class="repo-title">
-                Digital infrastructure and territorial heterogeneity
-                in quality-of-life outcomes
-              </h3>
-
-              <div class="repo-tags">
-                <span class="badge badge-paper">Research Article</span>
+              <div class="paper-tags">
+                <span class="badge badge-paper">2026</span>
                 <span class="badge badge-r">R</span>
                 <span class="badge">DiD</span>
                 <span class="badge">Quality of Life</span>
-                <span class="badge">Broadband</span>
-                <span class="badge">Territorial Effects</span>
+                <span class="badge">Digital Infrastructure</span>
               </div>
 
-              <p class="repo-description">
-                The analysis examines the role of digital
-                infrastructure in shaping quality-of-life outcomes
-                across Italian territories. The empirical approach
-                considers the diffusion of broadband connectivity,
-                treatment heterogeneity and panel-data estimation
-                to explore differences in local socioeconomic
-                outcomes.
+              <p>
+                Main estimation code and metadata concerning
+                broadband infrastructure and territorial
+                heterogeneity in quality-of-life outcomes.
               </p>
 
-              <div class="repo-links">
+              <div class="paper-links">
+
                 <a href="https://github.com/gmonturano/Digital_and_quality_of_life"
-                   target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                   target="_blank" rel="noopener">
+                  GitHub repository
                 </a>
+
               </div>
-
-              <details class="workflow">
-                <summary>Empirical and replication workflow</summary>
-                <div class="workflow-content">
-                  <div class="workflow-flow">
-                    <div class="workflow-step">Provincial Panel and Digital Infrastructure Data</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Quality-of-Life Indicators</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Metadata-Driven Model Specifications</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Difference-in-Differences Estimation</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step output">Quality-of-Life Effects</div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="repo-structure">
-                <summary>Repository materials</summary>
-                <pre>Digital_and_quality_of_life/
-├── README.md
-├── code/
-│   ├── Main DiD estimation
-│   └── Model metadata
-└── db/
-    └── pdata.rds</pre>
-              </details>
-
             </div>
           </article>
 
+          <!-- PAPER 5 -->
 
-          <!-- PAPER 5: FUEL PRICE LOCAL PROJECTION -->
+          <article class="paper-card">
 
-          <article class="repo-card">
+            <a class="paper-link-preview"
+               href="https://github.com/gmonturano/Fuel_price_local_projection"
+               target="_blank" rel="noopener noreferrer">
 
-            <div class="paper-preview">
-              <div class="preview-top">
-                <span class="preview-label">Research Article · Replication</span>
-                <span class="preview-year">2026</span>
+              <div class="paper-preview-image">
+                <img
+                  src="https://opengraph.githubassets.com/1/gmonturano/Fuel_price_local_projection"
+                  alt="Fuel Price Local Projections">
               </div>
-              <div>
-                <h2>Insights from Fuel Prices</h2>
-                <p>Local Projections · Structural Breaks · Energy Economics</p>
+
+              <div class="paper-preview-content">
+
+                <span class="paper-journal">
+                  Research Article · 2026
+                </span>
+
+                <span class="paper-title">
+                  Insights from Fuel Prices:
+                  A Local Projection Time-Series Analysis
+                  with Exogenous Structural Breaks
+                </span>
+
+                <span class="paper-preview-description">
+                  Open replication repository
+                </span>
+
               </div>
-            </div>
+            </a>
 
-            <div class="repo-body">
+            <div class="paper-details">
 
-              <h3 class="repo-title">
-                Insights from Fuel Prices:
-                A Local Projection Time-Series Analysis
-                with Exogenous Structural Breaks
-              </h3>
-
-              <div class="repo-tags">
-                <span class="badge badge-paper">Research Article</span>
+              <div class="paper-tags">
+                <span class="badge badge-paper">2026</span>
                 <span class="badge badge-r">R</span>
                 <span class="badge">Local Projections</span>
                 <span class="badge">Fuel Prices</span>
                 <span class="badge">Structural Breaks</span>
               </div>
 
-              <p class="repo-description">
-                The study investigates the dynamic behavior of
-                gasoline and diesel prices in relation to crude
-                oil price movements and exogenous events. The
-                empirical strategy uses a Local Projection
-                framework and accounts for structural changes
-                associated with major shocks and policy events.
+              <p>
+                Research code for time-series analysis of
+                fuel prices, structural breaks and
+                dynamic responses to economic shocks.
               </p>
 
-              <div class="repo-links">
+              <div class="paper-links">
+
                 <a href="https://github.com/gmonturano/Fuel_price_local_projection"
-                   target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                   target="_blank" rel="noopener">
+                  GitHub repository
                 </a>
+
               </div>
-
-              <details class="workflow">
-                <summary>Empirical and replication workflow</summary>
-                <div class="workflow-content">
-                  <div class="workflow-flow">
-                    <div class="workflow-step">Weekly Fuel Price and Brent Price Data</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Time-Series Transformations</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Structural Break Indicators</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Local Projection Estimation</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step output">Dynamic Responses and Confidence Intervals</div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="repo-structure">
-                <summary>Repository materials</summary>
-                <pre>Fuel_price_local_projection/
-├── README.md
-├── code/
-│   └── Local Projection framework
-└── db/
-    └── prov_week_var.RData</pre>
-              </details>
-
             </div>
           </article>
 
+          <!-- PAPER 6 -->
 
-          <!-- PAPER 6: PROTECTED AREAS -->
+          <article class="paper-card">
 
-          <article class="repo-card">
+            <a class="paper-link-preview"
+               href="https://link.springer.com/article/10.1007/s10640-026-01122-0"
+               target="_blank" rel="noopener noreferrer">
 
-            <div class="paper-preview">
-              <div class="preview-top">
-                <span class="preview-label">Research Article · Replication</span>
-                <span class="preview-year">2026</span>
+              <div class="paper-preview-image">
+                <img
+                  src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs10640-026-01122-0/MediaObjects/10640_2026_1122_Fig1_HTML.png"
+                  alt="Protected Areas and Income in Remote Regions">
               </div>
-              <div>
-                <h2>Protected Areas and Income in Remote Regions</h2>
-                <p>Environmental Economics · Inner Areas · Policy Evaluation</p>
+
+              <div class="paper-preview-content">
+
+                <span class="paper-journal">
+                  Environmental and Resource Economics · Springer Nature · 2026
+                </span>
+
+                <span class="paper-title">
+                  Do Protected Areas Affect the Income Levels
+                  in Remote Regions?
+                  Evidence from Italian Inner Areas
+                </span>
+
+                <span class="paper-preview-description">
+                  View published article
+                </span>
+
               </div>
-            </div>
+            </a>
 
-            <div class="repo-body">
+            <div class="paper-details">
 
-              <h3 class="repo-title">
-                Do Protected Areas Affect the Income Levels in
-                Remote Regions? Evidence from Italian Inner Areas
-              </h3>
-
-              <div class="repo-tags">
-                <span class="badge badge-paper">Published Article</span>
+              <div class="paper-tags">
+                <span class="badge badge-paper">2026</span>
                 <span class="badge badge-r">R</span>
                 <span class="badge">DiD</span>
                 <span class="badge">TWFE</span>
                 <span class="badge">Protected Areas</span>
-                <span class="badge">Regional Development</span>
               </div>
 
-              <p class="repo-description">
-                The paper examines the relationship between
-                protected areas and income levels in remote
-                Italian territories. The empirical analysis
-                applies panel-data methods and Difference-in-
-                Differences specifications to study the economic
-                consequences of environmental protection for
-                Italian inner areas.
+              <p>
+                Main econometric estimation code examining
+                protected areas and income levels in
+                Italian remote territories and inner areas.
               </p>
 
-              <div class="repo-links">
+              <div class="paper-links">
+
                 <a href="https://github.com/gmonturano/enviromental_income_park"
-                   target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                   target="_blank" rel="noopener">
+                  GitHub repository
                 </a>
 
                 <a href="https://doi.org/10.1007/s10640-026-01122-0"
-                   target="_blank" rel="noopener noreferrer">
-                  Published Article
+                   target="_blank" rel="noopener">
+                  Published article
                 </a>
+
               </div>
-
-              <details class="workflow">
-                <summary>Empirical and replication workflow</summary>
-                <div class="workflow-content">
-                  <div class="workflow-flow">
-                    <div class="workflow-step">Municipal and Territorial Panel Data</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Protected-Area Treatment Indicators</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">Income and Socioeconomic Variables</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step">TWFE / Difference-in-Differences Models</div>
-                    <div class="workflow-arrow">↓</div>
-                    <div class="workflow-step output">Income Effects in Italian Inner Areas</div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="repo-structure">
-                <summary>Repository materials</summary>
-                <pre>enviromental_income_park/
-├── README.md
-├── code/
-│   ├── 01_main_did.R
-│   └── meta_DB_Turi_spec_2007_2020.xlsx
-└── db/
-    └── db_TOT_aree_prot.RData</pre>
-              </details>
-
             </div>
           </article>
 
@@ -905,52 +898,125 @@
 
     </section>
 
-
-    <!-- SIDEBAR -->
+    <!-- ORIGINAL SIDEBAR -->
 
     <aside class="software-sidebar">
 
-      <div class="sidebar-block">
-        <h2>GitHub</h2>
-        <p>
-          Browse replication packages, R scripts
-          and research workflows.
-        </p>
-        <p style="margin-top:10px;">
-          <a href="https://github.com/gmonturano"
-             target="_blank" rel="noopener noreferrer">
-            Open GitHub profile
-          </a>
-        </p>
+      <div class="sidebar-block github-box">
+
+        <a href="https://github.com/gmonturano"
+           target="_blank" rel="noopener">
+
+          <img src="assets/icons/Ghithub.png" alt="GitHub">
+          <span>GitHub</span>
+
+        </a>
+      </div>
+
+      <div class="sidebar-block sidebar-note">
+
+        This page combines two types of content:
+
+        <strong>paper replication repositories</strong>
+        and
+        <strong>general research materials</strong>.
+
       </div>
 
       <div class="sidebar-block">
-        <h2>Replication materials</h2>
-        <p>
-          Research repositories provide selected estimation
-          scripts, supporting data and methodological
-          documentation associated with published articles.
-        </p>
+
+        <h2>Research materials</h2>
+
+        <div class="sidebar-materials">
+
+          <article class="sidebar-material-card">
+
+            <div class="sidebar-material-head">
+              <img src="assets/icons/R.svg.png" alt="R">
+              <h3>R code and statistical workflows</h3>
+            </div>
+
+            <div class="sidebar-material-tags">
+              <span class="badge badge-r">R</span>
+              <span class="badge badge-cran">CRAN</span>
+              <span class="badge">Data analysis</span>
+              <span class="badge">Spatial econometrics</span>
+              <span class="badge">Causal inference</span>
+            </div>
+
+            <p>
+              Estimation scripts, applied workflows,
+              reusable functions, spatial models,
+              causal inference routines and policy evaluation code.
+            </p>
+
+          </article>
+
+          <article class="sidebar-material-card">
+
+            <div class="sidebar-material-head">
+              <img src="assets/icons/Python.svg.png" alt="Python">
+              <h3>Python code and research pipelines</h3>
+            </div>
+
+            <div class="sidebar-material-tags">
+              <span class="badge">Python</span>
+              <span class="badge badge-pypi">PyPI</span>
+              <span class="badge">Machine learning</span>
+              <span class="badge">Network analysis</span>
+              <span class="badge">Scraping</span>
+              <span class="badge">Text analysis</span>
+            </div>
+
+            <p>
+              Material for machine learning, network analysis,
+              automated data collection, scraping, text analysis
+              and reproducible research pipelines.
+            </p>
+
+          </article>
+
+        </div>
       </div>
 
       <div class="sidebar-block">
-        <h2>Research methods</h2>
-        <ul>
-          <li>Panel Data Econometrics</li>
-          <li>Difference-in-Differences</li>
-          <li>Spatial Econometrics</li>
-          <li>Instrumental Variables</li>
-          <li>Double Machine Learning</li>
-          <li>Local Projections</li>
-          <li>Policy Evaluation</li>
+
+        <h2>Writing and presentation</h2>
+
+        <ul class="sidebar-mini-list">
+
+          <li>
+            <div class="sidebar-mini-title">
+              <img src="assets/icons/Latex.svg" alt="LaTeX">
+              <strong>LaTeX</strong>
+            </div>
+
+            CV templates, academic papers,
+            working papers, teaching notes
+            and formal documents.
+          </li>
+
+          <li>
+            <div class="sidebar-mini-title">
+              <img src="assets/icons/markdown.png" alt="Markdown">
+              <strong>Markdown</strong>
+            </div>
+
+            README files, repository documentation,
+            notes and lightweight research documentation.
+          </li>
+
+          <li>
+            <div class="sidebar-mini-title">
+              <img src="assets/icons/logo.png" alt="Quarto">
+              <strong>Quarto</strong>
+            </div>
+
+            Reproducible reports, slides,
+            article drafts and mixed code-text research outputs.
+          </li>
+
         </ul>
-      </div>
-
-      <div class="sidebar-block">
-        <h2>Research software</h2>
-        <p>
-          R · Python · LaTeX · Markdown · Quarto
-        </p>
       </div>
 
     </aside>
@@ -959,10 +1025,17 @@
 </main>
 
 <footer class="footer">
+
   <div class="wrap footer-inner">
+
     <span>© Gianluca Monturano</span>
-    <span>R · Python · LaTeX · Markdown · Quarto</span>
+
+    <span>
+      R · Python · LaTeX · Markdown · Quarto
+    </span>
+
   </div>
+
 </footer>
 
 </body>
