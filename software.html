@@ -1,264 +1,531 @@
 
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Software | Gianluca Monturano</title>
-<meta name="description" content="Research articles, code and replication repositories by Gianluca Monturano.">
-<link rel="stylesheet" href="styles.css">
 
-<style>
-.software-layout {
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 260px;
-  gap:34px;
-  align-items:start;
-}
-.software-head {
-  border-bottom:1px solid var(--rule,#ddd);
-  padding-bottom:14px;
-  margin-bottom:18px;
-}
-.software-head p {
-  color:var(--muted,#666);
-  line-height:1.6;
-}
-.github-hub {
-  display:grid;
-  grid-template-columns:110px minmax(0,1fr);
-  gap:20px;
-  align-items:center;
-  border:1px solid var(--rule,#ddd);
-  background:#fafafa;
-  padding:18px;
-  margin:16px 0 20px;
-}
-.github-hub img {
-  width:95px;
-  height:95px;
-  object-fit:contain;
-}
-.github-hub p {
-  margin:7px 0;
-  line-height:1.6;
-  font-size:.9rem;
-}
-.software-layout a:not(.link-preview) {
-  color:#0057d9;
-  text-decoration:underline;
-  text-underline-offset:2px;
-}
-.tags,.repo-tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin:10px 0;
-}
-.badge {
-  border:1px solid var(--rule,#ddd);
-  background:#f6f6f6;
-  padding:3px 7px;
-  border-radius:4px;
-  font-size:.73rem;
-  color:#444;
-}
-.papers-section,.paper-year {
-  border:1px solid var(--rule,#ddd);
-  background:#fff;
-  margin:12px 0;
-}
-.papers-section>summary,.paper-year>summary {
-  list-style:none;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 16px;
-  background:#f4f5f6;
-  font-weight:800;
-  color:#162b3c;
-}
-.papers-section>summary::-webkit-details-marker,
-.paper-year>summary::-webkit-details-marker {
-  display:none;
-}
-.papers-section>summary::after,
-.paper-year>summary::after {
-  content:"−";
-  border:1px solid #ccd3db;
-  padding:0 8px;
-  background:white;
-}
-.papers-section:not([open])>summary::after,
-.paper-year:not([open])>summary::after {
-  content:"+";
-}
-.papers-content {
-  padding:12px;
-}
-.repo-list {
-  padding:12px;
-  display:grid;
-  gap:14px;
-}
-.repo-card {
-  border:1px solid var(--rule,#ddd);
-  background:white;
-  overflow:hidden;
-}
-.link-preview {
-  display:grid;
-  grid-template-columns:250px minmax(0,1fr);
-  color:inherit;
-  text-decoration:none;
-  border-bottom:1px solid var(--rule,#ddd);
-  background:#fafafa;
-}
-.link-preview-media {
-  height:205px;
-  background:white;
-  overflow:hidden;
-  border-right:1px solid var(--rule,#ddd);
-}
-.link-preview-media img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
-.link-preview-copy {
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:8px;
-  padding:18px;
-}
-.link-preview-domain {
-  font-size:.72rem;
-  text-transform:uppercase;
-  letter-spacing:.035em;
-  color:#596978;
-  font-weight:700;
-}
-.link-preview-title {
-  font-size:1.06rem;
-  font-weight:800;
-  line-height:1.38;
-  color:#172e42;
-}
-.link-preview:hover .link-preview-title {
-  text-decoration:underline;
-  color:#0057d9;
-}
-.link-preview-subtitle,
-.paper-doi,
-.paper-date {
-  color:#65717b;
-  font-size:.79rem;
-}
-.paper-details {
-  padding:15px 18px;
-}
-.paper-details p {
-  margin:8px 0;
-  font-size:.91rem;
-  line-height:1.55;
-}
-.repo-links {
-  display:flex;
-  flex-wrap:wrap;
-  gap:18px;
-  margin-top:12px;
-  font-size:.86rem;
-  font-weight:700;
-}
-.software-sidebar {
-  position:sticky;
-  top:74px;
-}
-.sidebar-block {
-  border:1px solid var(--rule,#ddd);
-  background:#fafafa;
-  padding:12px;
-  margin-bottom:14px;
-}
-.sidebar-block h2 {
-  font-size:.98rem;
-  margin:0 0 10px;
-}
-.sidebar-block p {
-  font-size:.8rem;
-  line-height:1.5;
-}
-.sidebar-material-card,
-.sidebar-mini-list li {
-  background:white;
-  border:1px solid var(--rule,#ddd);
-  padding:10px;
-  margin:8px 0;
-}
-.sidebar-material-head,
-.sidebar-mini-title {
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.sidebar-material-head img,
-.sidebar-mini-title img {
-  width:24px;
-  height:24px;
-  object-fit:contain;
-}
-.sidebar-material-head h3 {
-  font-size:.84rem;
-  margin:0;
-}
-.sidebar-mini-list {
-  padding:0;
-  list-style:none;
-  font-size:.78rem;
-}
-@media(max-width:950px) {
-  .software-layout {
-    grid-template-columns:1fr;
-  }
-  .software-sidebar {
-    position:static;
-  }
-}
-@media(max-width:600px) {
-  .link-preview {
-    grid-template-columns:1fr;
-  }
-  .link-preview-media {
-    height:235px;
-    border-right:0;
-    border-bottom:1px solid var(--rule,#ddd);
-  }
-  .github-hub {
-    grid-template-columns:75px 1fr;
-  }
-  .github-hub img {
-    width:65px;
-    height:65px;
-  }
-  .papers-content,.repo-list {
-    padding:8px;
-  }
-}
-</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Software | Gianluca Monturano</title>
+
+  <meta name="description"
+        content="Academic publications, research software, estimation code and replication repositories by Gianluca Monturano.">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ======================================
+       MAIN LAYOUT
+       ====================================== */
+
+    .software-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .software-head {
+      border-bottom: 1px solid var(--rule, #ddd);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .software-head h1 {
+      margin-bottom: 6px;
+    }
+
+    .software-head p {
+      max-width: 860px;
+      color: var(--muted, #666);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .software-layout a:not(.link-preview) {
+      color: #0057d9;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ======================================
+       GITHUB HUB
+       ====================================== */
+
+    .github-hub {
+      display: grid;
+      grid-template-columns: 124px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      border: 1px solid var(--rule, #ddd);
+      background: #fafafa;
+      padding: 18px;
+      margin: 16px 0 20px;
+    }
+
+    .github-hub-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .github-hub-icon img {
+      display: block;
+      width: 104px;
+      height: 104px;
+      object-fit: contain;
+    }
+
+    .github-hub-content h2 {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+    }
+
+    .github-hub-content p {
+      margin: 0;
+      font-size: .94rem;
+      line-height: 1.58;
+    }
+
+    .github-hub-tags,
+    .repo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 9px 0 10px;
+    }
+
+    .github-hub-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    /* ======================================
+       BADGES
+       ====================================== */
+
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--rule, #ddd);
+      background: #f6f6f6;
+      color: #444;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-family: ui-monospace, SFMono-Regular,
+                   Menlo, Consolas, monospace;
+      font-size: .73rem;
+      line-height: 1.5;
+    }
+
+    .badge-r {
+      color: #276dc3;
+    }
+
+    .badge-py {
+      color: #b8860b;
+    }
+
+    .badge-tex {
+      color: #006f6f;
+    }
+
+    .badge-paper {
+      color: #7a2e12;
+      font-weight: 700;
+    }
+
+    .badge-cran {
+      color: #276dc3;
+    }
+
+    .badge-pypi {
+      color: #b8860b;
+    }
+
+    /* ======================================
+       COLLAPSIBLE SECTIONS
+       ====================================== */
+
+    .papers-section {
+      border: 1px solid var(--rule, #ddd);
+      margin-top: 23px;
+      background: #fff;
+    }
+
+    .papers-section > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 17px 18px;
+      background: #f1f4f7;
+      color: #17334c;
+      font-size: 1.06rem;
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .paper-year {
+      border: 1px solid var(--rule, #ddd);
+      margin: 12px 0;
+      background: #fff;
+    }
+
+    .paper-year > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 15px;
+      background: #f7f7f7;
+      color: #111;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .papers-section > summary::-webkit-details-marker,
+    .paper-year > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .papers-section > summary::after,
+    .paper-year > summary::after {
+      content: "−";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      border: 1px solid #cbd5de;
+      background: #fff;
+      color: #333;
+      font-weight: 800;
+    }
+
+    .papers-section:not([open]) > summary::after,
+    .paper-year:not([open]) > summary::after {
+      content: "+";
+    }
+
+    .papers-content {
+      padding: 13px;
+    }
+
+    .papers-intro {
+      margin: 0 0 14px;
+      color: #626f7b;
+      font-size: .84rem;
+      line-height: 1.6;
+    }
+
+    .year-count {
+      margin-left: 8px;
+      color: #777;
+      font-size: .76rem;
+      font-weight: 400;
+    }
+
+    .repo-list {
+      display: grid;
+      gap: 15px;
+      padding: 13px;
+      border-top: 1px solid var(--rule, #ddd);
+    }
+
+    /* ======================================
+       LINKEDIN / FACEBOOK-STYLE PREVIEWS
+       ====================================== */
+
+    .repo-card {
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .repo-card:hover {
+      border-color: #a3b4c5;
+    }
+
+    .link-preview {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      background: #fafafa;
+      border-bottom: 1px solid var(--rule, #ddd);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .link-preview-media {
+      position: relative;
+      height: 205px;
+      overflow: hidden;
+      background: #fff;
+      border-right: 1px solid var(--rule, #ddd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-preview-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .preview-placeholder {
+      padding: 20px;
+      text-align: center;
+      color: #687786;
+      font-size: .83rem;
+      line-height: 1.6;
+    }
+
+    .preview-placeholder strong {
+      display: block;
+      color: #233f58;
+      font-size: .92rem;
+      margin-bottom: 6px;
+    }
+
+    .link-preview-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px 21px;
+    }
+
+    .link-preview-domain {
+      color: #5c6f80;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      line-height: 1.5;
+    }
+
+    .link-preview-title {
+      color: #172e42;
+      font-size: 1.06rem;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .link-preview:hover .link-preview-title {
+      color: #0057d9;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .link-preview-subtitle {
+      color: #60717f;
+      font-size: .81rem;
+    }
+
+    .paper-doi,
+    .paper-date {
+      color: #687784;
+      font-size: .75rem;
+      line-height: 1.5;
+    }
+
+    .paper-details {
+      padding: 16px 19px;
+    }
+
+    .paper-details p {
+      margin: 8px 0 0;
+      color: #333;
+      font-size: .91rem;
+      line-height: 1.6;
+    }
+
+    .repo-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 14px;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    /* ======================================
+       ORIGINAL SIDEBAR AND LOGOS
+       ====================================== */
+
+    .software-sidebar {
+      position: sticky;
+      top: 74px;
+      font-size: .88rem;
+    }
+
+    .sidebar-block {
+      border: 1px solid var(--rule, #ddd);
+      background: #fafafa;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-block h2 {
+      margin: 0 0 10px;
+      font-size: .98rem;
+    }
+
+    .sidebar-block p {
+      margin: 0;
+      font-size: .8rem;
+      line-height: 1.55;
+    }
+
+    .github-box a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 700;
+    }
+
+    .github-box img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .sidebar-materials {
+      display: grid;
+      gap: 10px;
+    }
+
+    .sidebar-material-card {
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
+      padding: 10px;
+    }
+
+    .sidebar-material-head,
+    .sidebar-mini-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+
+    .sidebar-material-head img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .sidebar-material-head h3 {
+      margin: 0;
+      font-size: .86rem;
+      line-height: 1.3;
+    }
+
+    .sidebar-material-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin: 5px 0 7px;
+    }
+
+    .sidebar-material-card p {
+      color: #444;
+      font-size: .76rem;
+      line-height: 1.5;
+    }
+
+    .sidebar-mini-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sidebar-mini-list li {
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
+      padding: 9px;
+      font-size: .76rem;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    .sidebar-mini-title img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    /* ======================================
+       RESPONSIVE
+       ====================================== */
+
+    @media (max-width: 980px) {
+      .software-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .software-sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .papers-content,
+      .repo-list {
+        padding: 9px;
+      }
+
+      .link-preview {
+        grid-template-columns: 1fr;
+      }
+
+      .link-preview-media {
+        height: 215px;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule, #ddd);
+      }
+
+      .link-preview-copy {
+        padding: 15px;
+      }
+
+      .github-hub {
+        grid-template-columns: 80px minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .github-hub-icon img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- ======================================
+     NAVIGATION
+     ====================================== -->
+
 <header class="topbar">
   <div class="wrap">
     <div class="nav">
+
       <a class="name" href="index.html">
         Gianluca Monturano, PhD
       </a>
+
       <nav class="menu" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
@@ -267,591 +534,919 @@
         <a href="dissemination.html">Dissemination</a>
         <a href="cv.html">CV</a>
       </nav>
+
     </div>
   </div>
 </header>
 
 <main class="wrap page">
-<div class="software-layout">
+  <div class="software-layout">
 
-<section>
+    <section>
 
-<div class="software-head">
-  <h1>Software and replication code</h1>
-  <p>
-    Research code, replication materials and statistical
-    workflows associated with my academic publications.
-    Repositories are available on
-    <a href="https://github.com/gmonturano"
-       target="_blank" rel="noopener noreferrer">GitHub</a>.
-  </p>
-</div>
+      <!-- PAGE INTRODUCTION -->
 
-<section class="github-hub">
-  <div>
-    <img src="assets/icons/Ghithub.png" alt="GitHub">
-  </div>
-  <div>
-    <h2>GitHub code hub</h2>
-    <div class="tags">
-      <span class="badge">Replication code</span>
-      <span class="badge">R</span>
-      <span class="badge">Python</span>
-      <span class="badge">LaTeX</span>
-      <span class="badge">Markdown</span>
-      <span class="badge">Quarto</span>
-    </div>
-    <p>
-      Published papers, main estimation scripts,
-      research workflows and computational materials.
-    </p>
-    <a href="https://github.com/gmonturano"
-       target="_blank" rel="noopener noreferrer">
-      Open GitHub profile
-    </a>
-  </div>
-</section>
+      <div class="software-head">
 
-<!-- MAIN EXPANDABLE SECTION -->
+        <h1>Software and replication code</h1>
 
-<details class="papers-section" id="paper-code" open>
-<summary>Papers with code and replication repositories</summary>
+        <p>
+          Research code, econometric estimation scripts,
+          replication repositories and computational materials
+          associated with my academic publications.
 
-<div class="papers-content">
+          My repositories are collected on
+          <a href="https://github.com/gmonturano"
+             target="_blank"
+             rel="noopener noreferrer">
+            GitHub
+          </a>.
+        </p>
 
-<!-- ===================== 2026 ===================== -->
-
-<details class="paper-year" open>
-<summary>2026 · 6 papers</summary>
-
-<div class="repo-list">
-
-<!-- 1. PROTECTED AREAS -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/environmental_income_park"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/protected_areas.png"
-         alt="Protected areas and Italian inner regions"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      Environmental and Resource Economics · 2026
-    </span>
-    <span class="link-preview-title">
-      Do Protected Areas Affect the Income Levels
-      in Remote Regions? Evidence from Italian Inner Areas
-    </span>
-    <span class="paper-date">2 November 2026</span>
-    <span class="paper-doi">
-      DOI: 10.1007/s10640-026-01122-0
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">DiD</span>
-    <span class="badge">TWFE</span>
-    <span class="badge">Protected Areas</span>
-  </div>
-  <p>Main estimation code for protected-area exposure and municipal income.</p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/environmental_income_park"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1007/s10640-026-01122-0"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-<!-- 2. TAX REFORMS -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/tax_evation_self_employed"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/tax.png"
-         alt="Spatial tax reform analysis"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      The Annals of Regional Science · 2026
-    </span>
-    <span class="link-preview-title">
-      Spatial consequences of tax reforms on tax compliance:
-      econometric evidence from the Italian Minimum Taxpayer Regime
-    </span>
-    <span class="paper-date">13 October 2026</span>
-    <span class="paper-doi">
-      DOI: 10.1007/s00168-026-01546-y
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">DiD</span>
-    <span class="badge">Tax Compliance</span>
-  </div>
-  <p>
-    Main estimation procedures.
-    Confidential administrative data are excluded.
-  </p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/tax_evation_self_employed"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1007/s00168-026-01546-y"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-<!-- 3. QUALITY OF LIFE -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/Digital_and_quality_of_life"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/quality_of_life.png"
-         alt="Digital infrastructure and quality of life"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      Socio-Economic Planning Sciences · 2026
-    </span>
-    <span class="link-preview-title">
-      Digital infrastructure and territorial heterogeneity
-      in quality-of-life outcomes
-    </span>
-    <span class="paper-date">August 2026 issue</span>
-    <span class="paper-doi">
-      DOI: 10.1016/j.seps.2026.102545
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">DiD</span>
-    <span class="badge">Quality of Life</span>
-  </div>
-  <p>Main estimation code for broadband and quality-of-life outcomes.</p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/Digital_and_quality_of_life"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1016/j.seps.2026.102545"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-<!-- 4. FUEL PRICES -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/Fuel_price_local_projection"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/fuel_prices.png"
-         alt="Fuel prices and structural breaks"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      Italian Economic Journal · 2026
-    </span>
-    <span class="link-preview-title">
-      Insights from Fuel Prices:
-      A Local Projection Time-Series Analysis
-      with Exogenous Structural Breaks
-    </span>
-    <span class="paper-date">9 July 2026</span>
-    <span class="paper-doi">
-      DOI: 10.1007/s40797-026-00392-3
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">Local Projections</span>
-    <span class="badge">Structural Breaks</span>
-  </div>
-  <p>Public reference framework and supporting model metadata.</p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/Fuel_price_local_projection"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1007/s40797-026-00392-3"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-<!-- 5. RAIL ACCESSIBILITY -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/rail.jpg"
-         alt="Fuel costs and spatial rail accessibility"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      Research in Transportation Business &amp; Management · 2026
-    </span>
-    <span class="link-preview-title">
-      Fuel Costs and Spatial Rail Accessibility:
-      Econometric Evidence from an Empirically-Weighted
-      Network-Based 3SFCA Model
-    </span>
-    <span class="paper-date">June 2026 issue</span>
-    <span class="paper-doi">
-      DOI: 10.1016/j.rtbm.2026.101693
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">TWFE</span>
-    <span class="badge">IV / 2SLS</span>
-    <span class="badge">DML</span>
-  </div>
-  <p>Main code for network-based 3SFCA rail accessibility.</p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1016/j.rtbm.2026.101693"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-<!-- 6. DIGITAL DIVIDE -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/digital_divide_income_ineq"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/divide.png"
-         alt="Digital divide and income inequality"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      The Annals of Regional Science · 2026
-    </span>
-    <span class="link-preview-title">
-      Digital divide and income inequality:
-      causal evidence from Italian provinces
-    </span>
-    <span class="paper-date">
-      Online: 24 December 2025 · Journal volume: 2026
-    </span>
-    <span class="paper-doi">
-      DOI: 10.1007/s00168-025-01440-z
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">DiD</span>
-    <span class="badge">Broadband</span>
-    <span class="badge">Income Inequality</span>
-  </div>
-  <p>Main estimation code for broadband diffusion and income inequality.</p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/digital_divide_income_ineq"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1007/s00168-025-01440-z"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-</div>
-</details>
-
-<!-- ===================== 2025 ===================== -->
-
-<details class="paper-year" open>
-<summary>2025 · 2 papers</summary>
-
-<div class="repo-list">
-
-<!-- 7. INCOME SUPPORT AND VOTING -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/income_support_and_spatial_voting"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/income_support_voting_2025.jpg"
-         alt="Geographical distribution of Citizenship Income beneficiaries"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      Socio-Economic Review · 2025
-    </span>
-    <span class="link-preview-title">
-      Income support and voting with territorial disparities
-    </span>
-    <span class="paper-date">2 July 2025</span>
-    <span class="paper-doi">
-      DOI: 10.1093/ser/mwaf035
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">DiD</span>
-    <span class="badge">Income Support</span>
-    <span class="badge">Voting</span>
-  </div>
-  <p>
-    Selected code on Citizenship Income,
-    voting and territorial disparities.
-  </p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/income_support_and_spatial_voting"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1093/ser/mwaf035"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-<!-- 8. ROME HEALTHCARE -->
-
-<article class="repo-card">
-<a class="link-preview"
-   href="https://github.com/gmonturano/health_bus_buss"
-   target="_blank" rel="noopener noreferrer">
-
-  <div class="link-preview-media">
-    <img src="assets/papers/rome_healthcare_2025.jpg"
-         alt="Healthcare facilities and neighbourhoods in Rome"
-         loading="lazy">
-  </div>
-
-  <div class="link-preview-copy">
-    <span class="link-preview-domain">
-      Scientific Reports · Nature Portfolio · 2025
-    </span>
-    <span class="link-preview-title">
-      Analyzing the accessibility of Rome’s healthcare services
-      via public transportation: a complex network approach
-    </span>
-    <span class="paper-date">2 July 2025</span>
-    <span class="paper-doi">
-      DOI: 10.1038/s41598-025-05060-7
-    </span>
-    <span class="link-preview-subtitle">
-      Open code on GitHub
-    </span>
-  </div>
-</a>
-
-<div class="paper-details">
-  <div class="repo-tags">
-    <span class="badge">Network Analysis</span>
-    <span class="badge">Healthcare Accessibility</span>
-  </div>
-  <p>
-    Selected code on Rome public transport
-    and access to healthcare.
-  </p>
-  <div class="repo-links">
-    <a href="https://github.com/gmonturano/health_bus_buss"
-       target="_blank" rel="noopener noreferrer">
-      GitHub repository
-    </a>
-    <a href="https://doi.org/10.1038/s41598-025-05060-7"
-       target="_blank" rel="noopener noreferrer">
-      Published article
-    </a>
-  </div>
-</div>
-</article>
-
-</div>
-</details>
-
-</div>
-</details>
-
-</section>
-
-<!-- ORIGINAL SIDEBAR AND LOGOS -->
-
-<aside class="software-sidebar">
-
-<div class="sidebar-block">
-  <a href="https://github.com/gmonturano"
-     target="_blank" rel="noopener noreferrer">
-    <img src="assets/icons/Ghithub.png"
-         alt="GitHub" width="24" height="24">
-    GitHub
-  </a>
-</div>
-
-<div class="sidebar-block">
-  <p>
-    This page combines <strong>paper code repositories</strong>
-    and <strong>general research materials</strong>.
-  </p>
-</div>
-
-<div class="sidebar-block">
-  <h2>Research materials</h2>
-
-  <div class="sidebar-material-card">
-    <div class="sidebar-material-head">
-      <img src="assets/icons/R.svg.png" alt="R">
-      <h3>R code and statistical workflows</h3>
-    </div>
-    <div class="tags">
-      <span class="badge">R</span>
-      <span class="badge">CRAN</span>
-      <span class="badge">Spatial econometrics</span>
-      <span class="badge">Causal inference</span>
-    </div>
-    <p>
-      Estimation scripts, applied workflows,
-      reusable functions and policy evaluation.
-    </p>
-  </div>
-
-  <div class="sidebar-material-card">
-    <div class="sidebar-material-head">
-      <img src="assets/icons/Python.svg.png" alt="Python">
-      <h3>Python code and research pipelines</h3>
-    </div>
-    <div class="tags">
-      <span class="badge">Python</span>
-      <span class="badge">PyPI</span>
-      <span class="badge">Network analysis</span>
-    </div>
-    <p>
-      Machine learning, data collection,
-      scraping and text analysis.
-    </p>
-  </div>
-</div>
-
-<div class="sidebar-block">
-  <h2>Writing and presentation</h2>
-  <ul class="sidebar-mini-list">
-
-    <li>
-      <div class="sidebar-mini-title">
-        <img src="assets/icons/Latex.svg" alt="LaTeX">
-        <strong>LaTeX</strong>
       </div>
-      Academic papers, templates and teaching notes.
-    </li>
 
-    <li>
-      <div class="sidebar-mini-title">
-        <img src="assets/icons/markdown.png" alt="Markdown">
-        <strong>Markdown</strong>
+      <!-- GITHUB CODE HUB -->
+
+      <section class="github-hub" id="github-code-hub">
+
+        <div class="github-hub-icon">
+          <img src="assets/icons/Ghithub.png" alt="GitHub">
+        </div>
+
+        <div class="github-hub-content">
+
+          <h2>GitHub code hub</h2>
+
+          <div class="github-hub-tags">
+            <span class="badge">Research code</span>
+            <span class="badge badge-r">R</span>
+            <span class="badge badge-py">Python</span>
+            <span class="badge badge-tex">LaTeX</span>
+            <span class="badge">Markdown</span>
+            <span class="badge">Quarto</span>
+          </div>
+
+          <p>
+            My GitHub profile collects research repositories,
+            published-paper estimation code, reproducible
+            workflows and academic computing materials.
+          </p>
+
+          <a class="github-hub-link"
+             href="https://github.com/gmonturano"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open GitHub profile
+          </a>
+
+        </div>
+      </section>
+
+
+      <!-- ======================================
+           MAIN EXPANDABLE SECTION
+           ====================================== -->
+
+      <details class="papers-section" id="paper-code" open>
+
+        <summary>
+          Papers with code and replication repositories
+        </summary>
+
+        <div class="papers-content">
+
+          <p class="papers-intro">
+            Published research articles and associated public code.
+            Article previews are retrieved from the official
+            publisher pages.
+          </p>
+
+
+          <!-- ======================================
+               2026
+               ====================================== -->
+
+          <details class="paper-year" open>
+
+            <summary>
+              <span>
+                2026
+                <span class="year-count">6 papers</span>
+              </span>
+            </summary>
+
+            <div class="repo-list">
+
+
+              <!-- 1. PROTECTED AREAS -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/environmental_income_park"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://link.springer.com/article/10.1007/s10640-026-01122-0">
+
+                    <div class="preview-placeholder">
+                      <strong>Environmental and Resource Economics</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      Environmental and Resource Economics
+                      · Springer Nature · 2026
+                    </span>
+
+                    <span class="link-preview-title">
+                      Do Protected Areas Affect the Income Levels
+                      in Remote Regions? Evidence from Italian Inner Areas
+                    </span>
+
+                    <span class="paper-date">
+                      Published: 2 November 2026
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1007/s10640-026-01122-0
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2026</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">DiD</span>
+                    <span class="badge">TWFE</span>
+                    <span class="badge">Protected Areas</span>
+                  </div>
+
+                  <p>
+                    Main econometric estimation code for
+                    protected-area exposure and municipal
+                    income in Italian inner regions.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/environmental_income_park"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1007/s10640-026-01122-0"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+
+              <!-- 2. TAX REFORMS -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/tax_evation_self_employed"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://link.springer.com/article/10.1007/s00168-026-01546-y">
+
+                    <div class="preview-placeholder">
+                      <strong>The Annals of Regional Science</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      The Annals of Regional Science
+                      · Springer Nature · 2026
+                    </span>
+
+                    <span class="link-preview-title">
+                      Spatial consequences of tax reforms on tax compliance:
+                      econometric evidence from the Italian
+                      Minimum Taxpayer Regime
+                    </span>
+
+                    <span class="paper-date">
+                      Published: 13 October 2026
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1007/s00168-026-01546-y
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2026</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">DiD</span>
+                    <span class="badge">Tax Compliance</span>
+                  </div>
+
+                  <p>
+                    Main estimation procedures examining the Italian
+                    Minimum Taxpayer Regime and tax compliance.
+                    Confidential administrative data are excluded.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/tax_evation_self_employed"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1007/s00168-026-01546-y"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+
+              <!-- 3. QUALITY OF LIFE -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/Digital_and_quality_of_life"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://www.sciencedirect.com/science/article/pii/S0038012126001321">
+
+                    <div class="preview-placeholder">
+                      <strong>Socio-Economic Planning Sciences</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      Socio-Economic Planning Sciences
+                      · Elsevier · 2026
+                    </span>
+
+                    <span class="link-preview-title">
+                      Digital infrastructure and territorial
+                      heterogeneity in quality-of-life outcomes
+                    </span>
+
+                    <span class="paper-date">
+                      Journal issue: August 2026
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1016/j.seps.2026.102545
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2026</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">DiD</span>
+                    <span class="badge">Quality of Life</span>
+                    <span class="badge">Digital Infrastructure</span>
+                  </div>
+
+                  <p>
+                    Main estimation code for broadband infrastructure
+                    and territorial heterogeneity in
+                    quality-of-life outcomes.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/Digital_and_quality_of_life"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1016/j.seps.2026.102545"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+
+              <!-- 4. FUEL PRICES -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/Fuel_price_local_projection"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://link.springer.com/article/10.1007/s40797-026-00392-3">
+
+                    <div class="preview-placeholder">
+                      <strong>Italian Economic Journal</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      Italian Economic Journal
+                      · Springer Nature · 2026
+                    </span>
+
+                    <span class="link-preview-title">
+                      Insights from Fuel Prices:
+                      A Local Projection Time-Series Analysis
+                      with Exogenous Structural Breaks
+                    </span>
+
+                    <span class="paper-date">
+                      Published: 9 July 2026
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1007/s40797-026-00392-3
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2026</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">Local Projections</span>
+                    <span class="badge">Structural Breaks</span>
+                  </div>
+
+                  <p>
+                    Research dataset, model metadata and
+                    a reference Local Projection framework
+                    for the analysis of fuel-price dynamics.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/Fuel_price_local_projection"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1007/s40797-026-00392-3"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+
+              <!-- 5. RAIL ACCESSIBILITY -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://www.sciencedirect.com/science/article/pii/S2210539526000994">
+
+                    <div class="preview-placeholder">
+                      <strong>Research in Transportation Business &amp; Management</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      Research in Transportation Business &amp; Management
+                      · Elsevier · 2026
+                    </span>
+
+                    <span class="link-preview-title">
+                      Fuel Costs and Spatial Rail Accessibility:
+                      Econometric Evidence from an Empirically-Weighted
+                      Network-Based 3SFCA Model
+                    </span>
+
+                    <span class="paper-date">
+                      Journal issue: June 2026
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1016/j.rtbm.2026.101693
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2026</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">TWFE</span>
+                    <span class="badge">IV / 2SLS</span>
+                    <span class="badge">DML</span>
+                  </div>
+
+                  <p>
+                    Main estimation code for network-based
+                    3SFCA rail accessibility and fuel costs.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/Fuel-Costs-and-Spatial-Rail-Accessibility"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1016/j.rtbm.2026.101693"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+
+              <!-- 6. DIGITAL DIVIDE -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/digital_divide_income_ineq"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://link.springer.com/article/10.1007/s00168-025-01440-z">
+
+                    <div class="preview-placeholder">
+                      <strong>The Annals of Regional Science</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      The Annals of Regional Science
+                      · Springer Nature · 2026
+                    </span>
+
+                    <span class="link-preview-title">
+                      Digital divide and income inequality:
+                      causal evidence from Italian provinces
+                    </span>
+
+                    <span class="paper-date">
+                      Online: 24 December 2025
+                      · Journal volume: 2026
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1007/s00168-025-01440-z
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2026</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">DiD</span>
+                    <span class="badge">Broadband</span>
+                    <span class="badge">Income Inequality</span>
+                  </div>
+
+                  <p>
+                    Main estimation procedures for rural
+                    broadband diffusion and income inequality
+                    across Italian provinces.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/digital_divide_income_ineq"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1007/s00168-025-01440-z"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </details>
+
+
+          <!-- ======================================
+               2025
+               ====================================== -->
+
+          <details class="paper-year" open>
+
+            <summary>
+              <span>
+                2025
+                <span class="year-count">2 papers</span>
+              </span>
+            </summary>
+
+            <div class="repo-list">
+
+
+              <!-- 7. INCOME SUPPORT AND VOTING -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/income_support_and_spatial_voting"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://academic.oup.com/ser/article/23/4/2395/8182730">
+
+                    <div class="preview-placeholder">
+                      <strong>Socio-Economic Review</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      Socio-Economic Review
+                      · Oxford University Press · 2025
+                    </span>
+
+                    <span class="link-preview-title">
+                      Income support and voting
+                      with territorial disparities
+                    </span>
+
+                    <span class="paper-date">
+                      Published online: 2 July 2025
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1093/ser/mwaf035
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2025</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">DiD</span>
+                    <span class="badge">Income Support</span>
+                    <span class="badge">Voting Behaviour</span>
+                  </div>
+
+                  <p>
+                    Selected econometric estimation code and
+                    metadata examining Italy's Citizenship Income
+                    programme, voting and territorial disparities.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/income_support_and_spatial_voting"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1093/ser/mwaf035"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+
+              <!-- 8. ROME HEALTHCARE ACCESSIBILITY -->
+
+              <article class="repo-card">
+
+                <a class="link-preview"
+                   href="https://github.com/gmonturano/health_bus_buss"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                  <div class="link-preview-media"
+                       data-article="https://www.nature.com/articles/s41598-025-05060-7">
+
+                    <div class="preview-placeholder">
+                      <strong>Scientific Reports</strong>
+                      Loading article preview…
+                    </div>
+
+                  </div>
+
+                  <div class="link-preview-copy">
+
+                    <span class="link-preview-domain">
+                      Scientific Reports
+                      · Nature Portfolio · 2025
+                    </span>
+
+                    <span class="link-preview-title">
+                      Analyzing the accessibility of Rome’s
+                      healthcare services via public transportation:
+                      a complex network approach
+                    </span>
+
+                    <span class="paper-date">
+                      Published: 2 July 2025
+                    </span>
+
+                    <span class="paper-doi">
+                      DOI: 10.1038/s41598-025-05060-7
+                    </span>
+
+                    <span class="link-preview-subtitle">
+                      Open research code on GitHub
+                    </span>
+
+                  </div>
+                </a>
+
+                <div class="paper-details">
+
+                  <div class="repo-tags">
+                    <span class="badge badge-paper">2025</span>
+                    <span class="badge badge-r">R</span>
+                    <span class="badge">Network Analysis</span>
+                    <span class="badge">Healthcare Accessibility</span>
+                    <span class="badge">Public Transportation</span>
+                  </div>
+
+                  <p>
+                    Selected research code for network-based
+                    public transport analysis, healthcare accessibility
+                    and network resilience in Rome.
+                  </p>
+
+                  <div class="repo-links">
+
+                    <a href="https://github.com/gmonturano/health_bus_buss"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      GitHub repository
+                    </a>
+
+                    <a href="https://doi.org/10.1038/s41598-025-05060-7"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Published article
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </details>
+
+        </div>
+      </details>
+
+    </section>
+
+
+    <!-- ======================================
+         ORIGINAL SIDEBAR AND ICONS
+         ====================================== -->
+
+    <aside class="software-sidebar">
+
+      <div class="sidebar-block github-box">
+
+        <a href="https://github.com/gmonturano"
+           target="_blank"
+           rel="noopener noreferrer">
+
+          <img src="assets/icons/Ghithub.png" alt="GitHub">
+
+          <span>GitHub</span>
+        </a>
       </div>
-      README files and repository documentation.
-    </li>
 
-    <li>
-      <div class="sidebar-mini-title">
-        <img src="assets/icons/logo.png" alt="Quarto">
-        <strong>Quarto</strong>
+      <div class="sidebar-block">
+
+        <p>
+          This page combines
+          <strong>paper research repositories</strong>
+          and
+          <strong>general research materials</strong>.
+        </p>
+
       </div>
-      Reproducible reports and slides.
-    </li>
 
-  </ul>
-</div>
+      <div class="sidebar-block">
 
-</aside>
+        <h2>Research materials</h2>
 
-</div>
+        <div class="sidebar-materials">
+
+          <article class="sidebar-material-card">
+
+            <div class="sidebar-material-head">
+              <img src="assets/icons/R.svg.png" alt="R">
+              <h3>R code and statistical workflows</h3>
+            </div>
+
+            <div class="sidebar-material-tags">
+              <span class="badge badge-r">R</span>
+              <span class="badge badge-cran">CRAN</span>
+              <span class="badge">Data analysis</span>
+              <span class="badge">Spatial econometrics</span>
+              <span class="badge">Causal inference</span>
+            </div>
+
+            <p>
+              Estimation scripts, applied workflows,
+              reusable functions, spatial models,
+              causal inference routines and policy evaluation code.
+            </p>
+
+          </article>
+
+          <article class="sidebar-material-card">
+
+            <div class="sidebar-material-head">
+              <img src="assets/icons/Python.svg.png" alt="Python">
+              <h3>Python code and research pipelines</h3>
+            </div>
+
+            <div class="sidebar-material-tags">
+              <span class="badge badge-py">Python</span>
+              <span class="badge badge-pypi">PyPI</span>
+              <span class="badge">Machine learning</span>
+              <span class="badge">Network analysis</span>
+              <span class="badge">Scraping</span>
+              <span class="badge">Text analysis</span>
+            </div>
+
+            <p>
+              Material for machine learning, network analysis,
+              automated data collection, scraping,
+              text analysis and reproducible research pipelines.
+            </p>
+
+          </article>
+
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+
+        <h2>Writing and presentation</h2>
+
+        <ul class="sidebar-mini-list">
+
+          <li>
+            <div class="sidebar-mini-title">
+              <img src="assets/icons/Latex.svg" alt="LaTeX">
+              <strong>LaTeX</strong>
+            </div>
+
+            CV templates, academic papers,
+            working papers, teaching notes and formal documents.
+          </li>
+
+          <li>
+            <div class="sidebar-mini-title">
+              <img src="assets/icons/markdown.png" alt="Markdown">
+              <strong>Markdown</strong>
+            </div>
+
+            README files, repository documentation,
+            notes and research materials.
+          </li>
+
+          <li>
+            <div class="sidebar-mini-title">
+              <img src="assets/icons/logo.png" alt="Quarto">
+              <strong>Quarto</strong>
+            </div>
+
+            Reproducible reports, slides,
+            article drafts and mixed code-text outputs.
+          </li>
+
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
 </main>
+
+<!-- ======================================
+     FOOTER
+     ====================================== -->
 
 <footer class="footer">
   <div class="wrap footer-inner">
@@ -859,6 +1454,133 @@
     <span>R · Python · LaTeX · Markdown · Quarto</span>
   </div>
 </footer>
+
+
+<!-- ======================================
+     AUTOMATIC PUBLISHER SOCIAL IMAGES
+
+     Reads the article's online metadata
+     (Open Graph / social preview).
+
+     Does NOT use images stored in GitHub
+     or in assets/papers/.
+
+     The article URL is in data-article.
+     The clickable card URL remains GitHub.
+     ====================================== -->
+
+<script>
+(function () {
+  "use strict";
+
+  const previews = document.querySelectorAll(
+    ".link-preview-media[data-article]"
+  );
+
+  function showUnavailable(container) {
+    const placeholder = container.querySelector(
+      ".preview-placeholder"
+    );
+
+    if (placeholder) {
+      const journal = placeholder.querySelector("strong");
+
+      placeholder.textContent = "";
+
+      if (journal) {
+        placeholder.appendChild(journal);
+      }
+
+      placeholder.appendChild(
+        document.createTextNode(
+          "Publisher preview currently unavailable"
+        )
+      );
+    }
+  }
+
+  function loadPublisherImage(container) {
+    const articleURL = container.dataset.article;
+
+    if (!articleURL) {
+      showUnavailable(container);
+      return;
+    }
+
+    /*
+      Microlink extracts the same social-preview
+      image metadata commonly used for link cards.
+
+      embed=image.url returns the image directly,
+      without requiring browser-side scraping of
+      Springer, Elsevier, Oxford or Nature HTML.
+    */
+
+    const previewURL =
+      "https://api.microlink.io" +
+      "?url=" + encodeURIComponent(articleURL) +
+      "&embed=image.url";
+
+    const image = new Image();
+
+    image.alt = "Publisher article preview";
+    image.loading = "lazy";
+    image.referrerPolicy = "no-referrer";
+
+    image.onload = function () {
+      if (!image.naturalWidth || !image.naturalHeight) {
+        showUnavailable(container);
+        return;
+      }
+
+      container.replaceChildren(image);
+    };
+
+    image.onerror = function () {
+      showUnavailable(container);
+    };
+
+    image.src = previewURL;
+  }
+
+  /*
+    Load previews only when they approach
+    the visible area, avoiding unnecessary
+    external metadata requests.
+  */
+
+  if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+
+          observer.unobserve(entry.target);
+          loadPublisherImage(entry.target);
+        });
+
+      },
+      {
+        rootMargin: "250px 0px"
+      }
+    );
+
+    previews.forEach(function (preview) {
+      observer.observe(preview);
+    });
+
+  } else {
+
+    previews.forEach(function (preview) {
+      loadPublisherImage(preview);
+    });
+
+  }
+
+})();
+</script>
 
 </body>
 </html>
