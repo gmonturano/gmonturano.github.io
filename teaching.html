@@ -1,461 +1,2064 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teaching | Gianluca Monturano</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Politiche Pubbliche per l’Innovazione e le Imprese | Gianluca Monturano
+  </title>
+
+  <link rel="stylesheet" href="../styles.css">
+
 
   <style>
-    /* Teaching page only: wider writing area, smaller text, sticky index */
-    .teaching-shell{
-      max-width:1180px !important;
-      width:auto !important;
-      margin-left:auto !important;
-      margin-right:auto !important;
-      display:grid;
-      grid-template-columns:minmax(0,1fr) 190px;
-      gap:34px;
-      align-items:start;
-      font-size:.86rem;
-      line-height:1.46;
+
+    /* =========================================================
+       STRUTTURA GENERALE
+       ========================================================= */
+
+    .course-shell {
+      max-width: 1180px !important;
+      width: auto !important;
+
+      margin-left: auto !important;
+      margin-right: auto !important;
+
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 210px;
+
+      gap: 34px;
+      align-items: start;
+
+      font-size: .88rem;
+      line-height: 1.5;
     }
 
-    .teaching-content{
-      min-width:0;
+
+    .course-content {
+      min-width: 0;
     }
 
-    .teaching-content h1{
-      font-size:1.52rem;
-      margin-bottom:7px;
+
+    .course-content h1 {
+      font-size: 1.62rem;
+      margin-bottom: 7px;
     }
 
-    .teaching-content h2{
-      font-size:.96rem;
-      margin-top:20px;
-      margin-bottom:7px;
-      padding-bottom:3px;
-      scroll-margin-top:86px;
+
+    .course-content h2 {
+      font-size: 1.02rem;
+
+      margin-top: 0;
+      margin-bottom: 10px;
+
+      padding-bottom: 5px;
+
+      border-bottom: 1px solid var(--rule);
+
+      scroll-margin-top: 86px;
     }
 
-    .teaching-content .position{
-      font-size:.85rem;
-      margin-bottom:17px;
+
+    .course-content .position {
+      font-size: .86rem;
+      margin-bottom: 18px;
     }
 
-    .teaching-year{
-      font-weight:700;
-      color:#111;
-      white-space:nowrap;
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .course-hero {
+      position: relative;
+
+      border: 1px solid #cfd8e3;
+      border-left: 5px solid #0057d9;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f7fbff 100%
+        );
+
+      border-radius: 13px;
+
+      padding: 20px 22px;
+
+      margin-bottom: 26px;
+
+      box-shadow:
+        0 8px 22px rgba(0, 0, 0, .06);
     }
 
-    .teaching-list{
-      max-width:none;
+
+    .course-label {
+      display: inline-block;
+
+      font-size: .70rem;
+      font-weight: 800;
+
+      letter-spacing: .11em;
+      text-transform: uppercase;
+
+      color: #0057d9;
+
+      margin-bottom: 7px;
     }
 
-    .teaching-list li{
-      margin-bottom:7px;
-      line-height:1.46;
+
+    .course-meta {
+      color: #444;
+
+      font-size: .84rem;
+      font-weight: 600;
+
+      margin-top: 10px;
     }
 
-    .teaching-role{
-      font-weight:700;
-      color:#111;
+
+
+    /* =========================================================
+       QUICK LINKS
+       ========================================================= */
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 15px;
     }
 
-    .teaching-course{
-      font-weight:700;
-      color:#111;
+
+    .quick-links a {
+      display: inline-block;
+
+      border: 1px solid #cfd8e3;
+
+      background: white;
+      color: #0057d9;
+
+      text-decoration: none;
+
+      padding: 6px 10px;
+
+      border-radius: 7px;
+
+      font-size: .82rem;
+      font-weight: 700;
     }
 
-    /* Current course foreground box */
-    .current-course-box{
-      position:relative;
-      border:1px solid #cfd8e3;
-      border-left:5px solid #0057d9;
-      background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%);
-      padding:18px 20px;
-      margin:0 0 28px;
-      border-radius:12px;
-      box-shadow:0 8px 22px rgba(0,0,0,.06);
+
+    .quick-links a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      background: #f7fbff;
     }
 
-    .current-course-label{
-      display:inline-block;
-      font-size:.70rem;
-      font-weight:800;
-      letter-spacing:.11em;
-      text-transform:uppercase;
-      color:#0057d9;
-      margin-bottom:7px;
+
+
+    /* =========================================================
+       CARD SEZIONI
+       ========================================================= */
+
+    .course-section-card {
+      border: 1px solid var(--rule);
+
+      background: #fff;
+
+      border-radius: 12px;
+
+      padding: 16px 18px;
+
+      margin: 0 0 18px;
+
+      box-shadow:
+        0 4px 14px rgba(0, 0, 0, .035);
     }
 
-    .current-course-box h2{
-      margin-top:0 !important;
-      margin-bottom:7px !important;
-      padding-bottom:0 !important;
-      border-bottom:0 !important;
-      font-size:1.14rem !important;
-      line-height:1.28;
+
+    .course-section-card.highlight {
+      background: #fafcff;
+
+      border-left: 4px solid #0057d9;
     }
 
-    .current-course-title-link{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
-      font-weight:800;
+
+
+    /* =========================================================
+       AVVISI
+       ========================================================= */
+
+    .notice-box {
+      border: 1px solid var(--rule);
+
+      background: #fff;
+
+      border-radius: 10px;
+
+      padding: 13px 15px;
+
+      margin-bottom: 10px;
     }
 
-    .current-course-title-link:hover{
-      color:#003f9e;
+
+    .notice-date {
+      font-weight: 700;
+
+      color: #111;
+
+      font-size: .82rem;
+
+      margin-bottom: 4px;
     }
 
-    .current-course-box p{
-      margin:0 0 9px;
-      line-height:1.52;
+
+
+    /* =========================================================
+       TABELLE
+       ========================================================= */
+
+    .course-table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      margin-top: 8px;
+
+      font-size: .86rem;
     }
 
-    .current-course-meta{
-      color:#444;
-      font-size:.83rem;
-      margin-bottom:0 !important;
-      font-weight:600;
+
+    .course-table th,
+    .course-table td {
+      border-bottom: 1px solid var(--rule);
+
+      padding: 8px 7px;
+
+      vertical-align: top;
+
+      text-align: left;
     }
 
-    .page-index{
-      position:sticky;
-      top:74px;
-      align-self:start;
-      font-size:.82rem;
-      border-left:1px solid var(--rule);
-      padding-left:12px;
-      color:#333;
+
+    .course-table th {
+      font-weight: 700;
+
+      color: #111;
+
+      background: #fafafa;
     }
 
-    .page-index h2{
-      font-size:.95rem;
-      margin:0 0 9px;
-      padding:0;
-      border:0;
+
+
+    /* =========================================================
+       LISTE
+       ========================================================= */
+
+    .course-list {
+      max-width: none;
+
+      margin-bottom: 0;
     }
 
-    .page-index ul{
-      list-style:none;
-      padding:0;
-      margin:0;
+
+    .course-list li {
+      margin-bottom: 7px;
+
+      line-height: 1.5;
     }
 
-    .page-index li{
-      margin:0 0 7px;
-      line-height:1.25;
+
+
+    /* =========================================================
+       LINK AI FILE
+       ========================================================= */
+
+    .file-actions {
+      white-space: nowrap;
     }
 
-    .page-index a{
-      color:#333;
-      text-decoration:none;
+
+    .file-link {
+      color: #999;
+
+      text-decoration: none;
+
+      font-weight: 700;
+
+      margin-right: 8px;
+
+      pointer-events: none;
+
+      cursor: default;
     }
 
-    .page-index a:hover{
-      color:#0057d9;
-      text-decoration:underline;
-      text-underline-offset:2px;
+
+    .file-link.available {
+      color: #0057d9;
+
+      text-decoration: underline;
+
+      text-underline-offset: 2px;
+
+      pointer-events: auto;
+
+      cursor: pointer;
     }
 
-    @media (max-width:900px){
-      .teaching-shell{
-        display:block;
-        max-width:100% !important;
-        font-size:.93rem;
+
+    .file-status {
+      color: #777;
+
+      font-size: .8rem;
+    }
+
+
+
+    /* =========================================================
+       VALUTAZIONE
+       ========================================================= */
+
+    .assessment-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 12px;
+
+      margin-top: 12px;
+    }
+
+
+    .assessment-card {
+      border: 1px solid var(--rule);
+
+      background: #fafafa;
+
+      border-radius: 10px;
+
+      padding: 12px 14px;
+    }
+
+
+    .assessment-card strong {
+      display: block;
+
+      color: #111;
+
+      margin-bottom: 5px;
+    }
+
+
+    .assessment-card p {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+
+
+    /* =========================================================
+       INDICE LATERALE
+       ========================================================= */
+
+    .page-index {
+      position: sticky;
+
+      top: 74px;
+
+      align-self: start;
+
+      font-size: .82rem;
+
+      border-left: 1px solid var(--rule);
+
+      padding-left: 12px;
+
+      color: #333;
+    }
+
+
+    .page-index h2 {
+      font-size: .95rem;
+
+      margin: 0 0 9px;
+
+      padding: 0;
+
+      border: 0;
+    }
+
+
+    .page-index ul {
+      list-style: none;
+
+      padding: 0;
+
+      margin: 0;
+    }
+
+
+    .page-index li {
+      margin: 0 0 7px;
+
+      line-height: 1.25;
+    }
+
+
+    .page-index a {
+      color: #333;
+
+      text-decoration: none;
+    }
+
+
+    .page-index a:hover {
+      color: #0057d9;
+
+      text-decoration: underline;
+
+      text-underline-offset: 2px;
+    }
+
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .course-shell {
+        display: block;
+
+        max-width: 100% !important;
+
+        font-size: .93rem;
       }
 
-      .page-index{
-        position:static;
-        border-left:0;
-        border-bottom:1px solid var(--rule);
-        padding-left:0;
-        padding-bottom:12px;
-        margin-bottom:18px;
+
+      .page-index {
+        position: static;
+
+        border-left: 0;
+
+        border-bottom:
+          1px solid var(--rule);
+
+        padding-left: 0;
+
+        padding-bottom: 12px;
+
+        margin-bottom: 18px;
       }
 
-      .page-index ul{
-        display:flex;
-        flex-wrap:wrap;
-        gap:7px 12px;
+
+      .page-index ul {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 7px 12px;
       }
 
-      .page-index li{
-        margin:0;
+
+      .page-index li {
+        margin: 0;
       }
-    }
 
-    /* Previous teaching block: makes clear that everything below the current course refers to past/previous activities */
-    .previous-teaching-block{
-      margin-top:8px;
-      border:1px solid var(--rule);
-      border-radius:12px;
-      background:#fff;
-      padding:16px 18px 18px;
-      box-shadow:0 4px 14px rgba(0,0,0,.025);
-    }
 
-    .previous-teaching-header{
-      border:1px solid #d8e1ea;
-      border-left:4px solid #777;
-      background:#fafafa;
-      border-radius:10px;
-      padding:12px 14px;
-      margin-bottom:16px;
-    }
+      .file-actions {
+        white-space: normal;
+      }
 
-    .previous-teaching-label{
-      display:inline-block;
-      font-size:.68rem;
-      font-weight:800;
-      letter-spacing:.11em;
-      text-transform:uppercase;
-      color:#555;
-      margin-bottom:5px;
-    }
 
-    .previous-teaching-header h2{
-      margin:0 0 5px !important;
-      padding:0 !important;
-      border:0 !important;
-      font-size:1.05rem !important;
-      color:#111;
-    }
+      .assessment-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .previous-teaching-header p{
-      margin:0;
-      color:#555;
-      font-size:.84rem;
-      line-height:1.45;
-    }
-
-    .previous-teaching-block > h2{
-      color:#333;
-      border-bottom:1px solid var(--rule);
-      margin-top:20px;
-    }
-
-    .previous-teaching-block > h2:first-of-type{
-      margin-top:0;
-    }
-
-    .previous-teaching-block .teaching-list{
-      color:#333;
     }
 
   </style>
+
 </head>
 
+
+
 <body>
-<header class="topbar">
-  <div class="wrap">
-    <div class="nav">
-      <a class="name" href="index.html">Gianluca Monturano, PhD</a>
 
-      <nav class="menu" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="software.html">Software</a>
-        <a class="active" href="teaching.html">Teaching</a>
-        <a href="dissemination.html">Dissemination</a>
-        <a href="cv.html">CV</a>
-      </nav>
-    </div>
-  </div>
-</header>
 
-<main class="wrap page teaching-shell">
-  <section class="teaching-content">
-    <h1>Teaching</h1>
-    <p class="position">Economics, statistics, econometrics, empirical methods and data analysis.</p>
+  <!-- =======================================================
+       TOPBAR
+       ======================================================= -->
 
-    <section id="current-course" class="current-course-box">
-      <span class="current-course-label">Current course</span>
+  <header class="topbar">
 
-      <h2>
-        <a class="current-course-title-link" href="/courses/politiche-pubbliche-innovazione-imprese.html">
-          Politiche Pubbliche per l’Innovazione e le Imprese
+    <div class="wrap">
+
+      <div class="nav">
+
+        <a
+          class="name"
+          href="../index.html"
+        >
+          Gianluca Monturano, PhD
         </a>
-      </h2>
 
-      <p>
-        Course on the economics and evaluation of public policies for innovation and firms.
-        The course covers market failures, knowledge spillovers, public intervention,
-        financing of innovation, industrial and territorial policy, and empirical approaches
-        to policy evaluation.
-      </p>
 
-      <p class="current-course-meta">
-        University of Salento · Department of Economics · Academic year 2026–2026 · Professor: Gianluca Monturano
-      </p>
-    </section>
+        <nav
+          class="menu"
+          aria-label="Navigazione principale"
+        >
 
-    <section id="previous-teaching" class="previous-teaching-block">
-      <div class="previous-teaching-header">
-        <span class="previous-teaching-label">Previous teaching activities</span>
-        <h2></h2>
-        <p>
-          
-        </p>
+          <a href="../index.html">
+            Home
+          </a>
+
+          <a href="../research.html">
+            Research
+          </a>
+
+          <a href="../software.html">
+            Software
+          </a>
+
+          <a
+            class="active"
+            href="../teaching.html"
+          >
+            Teaching
+          </a>
+
+          <a href="../dissemination.html">
+            Dissemination
+          </a>
+
+          <a href="../cv.html">
+            CV
+          </a>
+
+        </nav>
+
       </div>
 
-    <h2 id="phd-teaching">PhD teaching</h2>
-    <ul class="pubs teaching-list">
-      <li>
-        <span class="teaching-year">2025–2026.</span>
-        <span class="teaching-role">Adjunct Professor</span> for the PhD course in transversal skills,
-        <span class="teaching-course">Strumenti informatici e software statistici per l’analisi dei dati</span>,
-        addressed to PhD students and postgraduate trainees, <em>University of Bari Aldo Moro</em>.
-      </li>
-    </ul>
+    </div>
 
-    <h2 id="undergraduate-graduate-courses">Undergraduate and graduate courses</h2>
-    <ul class="pubs teaching-list">
-      <li>
-        <span class="teaching-year">2025–2026.</span>
-        <span class="teaching-role">Adjunct Professor</span>,
-        <span class="teaching-course">Empirical Industrial Organization Competitive Analysis</span>,
-        SECS-P/06, Master’s Degree in Economics and Management, <em>University of Bari</em>.
-      </li>
+  </header>
 
-      <li>
-        <span class="teaching-year">2025–2026.</span>
-        <span class="teaching-role">Adjunct Professor</span>,
-        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
-        SECS-P/01, Bachelor’s Degree in Business Economics, <em>University of Bari</em>.
-      </li>
 
-      <li>
-        <span class="teaching-year">2024–2025.</span>
-        <span class="teaching-role">Adjunct Professor</span>,
-        <span class="teaching-course">Institutions of Political Economy — Microeconomics</span>,
-        SECS-P/01, Bachelor’s Degree in Marketing and Business Administration, <em>University of Bari</em>.
-      </li>
 
-      <li>
-        <span class="teaching-year">2022.</span>
-        <span class="teaching-role">Lecturer</span> in the academic training course
-        <span class="teaching-course">Turismo sostenibile in area marina protetta — TuSAMP</span>,
-        <em>University of Foggia</em>.
-      </li>
-    </ul>
+  <!-- =======================================================
+       CONTENUTO PRINCIPALE
+       ======================================================= -->
 
-    <h2 id="tutoring">Tutoring</h2>
-    <ul class="pubs teaching-list">
-      <li>
-        <span class="teaching-year">2024.</span>
-        <span class="teaching-role">Tutoring grant</span> for
-        <span class="teaching-course">Introduction to Macroeconomics</span>,
-        SECS-P/01, Bachelor’s Degree in Economics and Finance,
-        <em>University of Modena and Reggio Emilia</em>.
-      </li>
+  <main class="wrap page course-shell">
 
-      <li>
-        <span class="teaching-year">2022–2024.</span>
-        <span class="teaching-role">Tutoring grant</span> for
-        <span class="teaching-course">Statistics</span>,
-        SECS-S/01, Bachelor’s Degree in Business Economics and Management,
-        <em>University of Modena and Reggio Emilia</em>.
-      </li>
 
-      <li>
-        <span class="teaching-year">2022–2024.</span>
-        <span class="teaching-role">Tutoring grant</span> for
-        <span class="teaching-course">Statistics</span>,
-        SECS-S/01, Bachelor’s Degree in Economics and Finance,
-        <em>University of Modena and Reggio Emilia</em>.
-      </li>
+    <section class="course-content">
 
-      <li>
-        <span class="teaching-year">2022–2023.</span>
-        <span class="teaching-role">Tutoring grant</span> for
-        <span class="teaching-course">Statistics</span>,
-        SECS-S/01, Bachelor’s Degree in Economics and International Marketing,
-        <em>University of Modena and Reggio Emilia</em>.
-      </li>
-    </ul>
 
-    <h2 id="teaching-assistance-tutorials">Teaching assistance and tutorials</h2>
-    <ul class="pubs teaching-list">
-      <li>
-        <span class="teaching-year">2022–2023.</span>
-        <span class="teaching-role">Teaching assistance grant</span> for
-        <span class="teaching-course">Economic and Competitive Scenarios</span>,
-        SECS-P/01, Master’s Degree in Business Management and Communication,
-        <em>University of Modena and Reggio Emilia</em>.
-      </li>
+      <!-- ===================================================
+           HERO
+           =================================================== -->
 
-      <li>
-        <span class="teaching-year">2022–2024.</span>
-        <span class="teaching-role">Teaching assistance grant</span> for
-        <span class="teaching-course">Industrial Economics</span>,
-        SECS-P/01, Master’s Degree in Business Management and Consulting,
-        <em>University of Modena and Reggio Emilia</em>.
-      </li>
-    </ul>
+      <section class="course-hero">
 
-    <h2 id="lectures-invited-speaking">Lectures and invited speaking</h2>
-    <ul class="pubs teaching-list">
-      <li>
-        <span class="teaching-year">2026.</span>
-        <span class="teaching-role">Lecturer</span> at the
-        <span class="teaching-course">Crash Course in Machine Learning per l’analisi dei dati</span>,
-        organized by the Laboratory of Applied Economics of the University of Bari within the GRINS Spoke 7 Project,
-        in collaboration with the Italian Society of Transport and Logistics Economics (SIET), 2–4 February 2026.
-      </li>
+        <span class="course-label">
+          Corso attuale
+        </span>
 
-      <li>
-        <span class="teaching-year">2024.</span>
-        <span class="teaching-role">Lecturer</span> for
-        <span class="teaching-course">Big Data Analytics</span> and
-        <span class="teaching-course">Real-Time Big Data Processing</span>
-        within the MTDS Master’s Programme in Data Science and Data Management,
-        University of Padua, 15–16 May 2024.
-      </li>
 
-      <li>
-        <span class="teaching-year">2023.</span>
-        <span class="teaching-role">Invited seminar</span> for the university course in
-        <span class="teaching-course">Business Intelligence and Management Information Systems</span>,
-        Bachelor’s Degree in Digital Business Administration and Management,
-        Department of Management, University of Turin, 8 May 2023.
-        Seminar title: <em>Introduction to R. Application and Manipulation</em>.
-      </li>
+        <h1>
+          Politiche Pubbliche per l’Innovazione e le Imprese
+        </h1>
 
-      <li>
-        <span class="teaching-year">2023.</span>
-        <span class="teaching-role">Invited seminar</span> for the university course in
-        <span class="teaching-course">Economics of Local Development</span>,
-        Bachelor’s Degree in Economics and Management,
-        Department of Management, University of Enna “Kore”, 30 March 2023.
-        Seminar title: <em>Accrescere la resilienza dei sistemi economici locali: la Strategia Nazionale per le Aree Interne</em>.
-      </li>
-    </ul>
+
+        <p class="position">
+          Pagina del corso con news, calendario, ricevimento,
+          programma, syllabus, slide e materiali didattici.
+        </p>
+
+
+        <p>
+          Il corso introduce il razionale economico,
+          gli strumenti e i metodi di valutazione
+          delle politiche pubbliche per l’innovazione
+          e le imprese.
+
+          I temi principali includono fallimenti di mercato,
+          spillover di conoscenza, intervento pubblico,
+          finanziamento dell’innovazione,
+          politica industriale,
+          politiche territoriali
+          e valutazione empirica delle politiche.
+        </p>
+
+
+        <p class="course-meta">
+          Università del Salento ·
+          Dipartimento di Scienze dell’Economia ·
+          Anno accademico 2026–2027 ·
+          Docente: Gianluca Monturano
+        </p>
+
+
+        <div class="quick-links">
+
+          <a href="#news">
+            News
+          </a>
+
+          <a href="#calendario-ricevimento">
+            Calendario e ricevimento
+          </a>
+
+          <a href="#programma-syllabus">
+            Programma/Syllabus
+          </a>
+
+          <a href="#programma-sintetico">
+            Programma sintetico
+          </a>
+
+          <a href="#slide">
+            Slide
+          </a>
+
+          <a href="#codice-r">
+            Codice R
+          </a>
+
+          <a href="#valutazione">
+            Valutazione
+          </a>
+
+          <a href="#contatti">
+            Contatti
+          </a>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           NEWS
+           =================================================== -->
+
+      <section
+        id="news"
+        class="course-section-card highlight"
+      >
+
+        <h2>
+          News
+        </h2>
+
+
+        <div class="notice-box">
+
+          <div class="notice-date">
+            Avviso
+          </div>
+
+
+          <p>
+            Il pre-appello si terrà in data
+            <strong>28 ottobre 2026</strong>
+            presso l'aula E06,
+            durante l'orario di lezione
+            14:00–17:00.
+          </p>
+
+
+          <p>
+            Le slide e gli altri materiali del corso
+            saranno caricati progressivamente
+            durante il semestre.
+          </p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           CALENDARIO E RICEVIMENTO
+           =================================================== -->
+
+      <section
+        id="calendario-ricevimento"
+        class="course-section-card"
+      >
+
+        <h2>
+          Calendario e ricevimento
+        </h2>
+
+
+        <div class="notice-box">
+
+          <div class="notice-date">
+            Calendario delle lezioni
+          </div>
+
+
+          <p>
+            Le lezioni si svolgono
+            il martedì (aula 06)
+            e il mercoledì (aula 07),
+            dalle ore 14:00 alle ore 17:00.
+          </p>
+
+
+          <p>
+            Le slide saranno caricate progressivamente.
+          </p>
+
+        </div>
+
+
+        <div class="notice-box">
+
+          <div class="notice-date">
+            Ricevimento
+          </div>
+
+
+          <p>
+            Il ricevimento studenti si svolge
+            il mercoledì alle ore 11:00,
+            presso il mio ufficio al piano terra
+            del Dipartimento di Scienze dell’Economia.
+          </p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           PROGRAMMA E SYLLABUS
+           =================================================== -->
+
+      <section
+        id="programma-syllabus"
+        class="course-section-card"
+      >
+
+        <h2>
+          Programma e syllabus
+        </h2>
+
+
+        <p>
+          Il programma/syllabus del corso
+          è disponibile in formato PDF.
+        </p>
+
+
+        <table class="course-table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Documento
+              </th>
+
+              <th>
+                Descrizione
+              </th>
+
+              <th>
+                PDF
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            <tr>
+
+              <td>
+                Programma/Syllabus
+              </td>
+
+
+              <td>
+                Programma del corso,
+                obiettivi formativi,
+                struttura delle lezioni
+                e modalità di valutazione.
+              </td>
+
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/syllabus/syllabus.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           PROGRAMMA SINTETICO
+           =================================================== -->
+
+      <section
+        id="programma-sintetico"
+        class="course-section-card"
+      >
+
+        <h2>
+          Programma sintetico
+        </h2>
+
+
+        <ul class="pubs course-list">
+
+          <li>
+            Economia pubblica dell’innovazione
+            e razionale dell’intervento pubblico.
+          </li>
+
+          <li>
+            Conoscenza come bene economico:
+            appropriabilità,
+            esternalità
+            e spillover di conoscenza.
+          </li>
+
+          <li>
+            Finanziamento dell’innovazione:
+            asimmetrie informative,
+            rischio,
+            intangibili
+            e vincoli finanziari.
+          </li>
+
+          <li>
+            Incentivi pubblici a innovazione
+            e investimenti:
+            sussidi,
+            crediti d’imposta,
+            additionality
+            e deadweight.
+          </li>
+
+          <li>
+            Strumenti finanziari pubblici:
+            garanzie,
+            capitale di rischio,
+            venture capital pubblico
+            e co-investimento.
+          </li>
+
+          <li>
+            Politica industriale
+            e politica dell’innovazione:
+            coordinamento,
+            direzionalità,
+            selezione
+            e missioni.
+          </li>
+
+          <li>
+            Infrastrutture,
+            digitalizzazione
+            e territorio:
+            complementarità,
+            digital divide
+            ed economie di agglomerazione.
+          </li>
+
+          <li>
+            Valutazione delle politiche pubbliche:
+            causalità,
+            controfattuale,
+            selezione
+            e disegno empirico.
+          </li>
+
+          <li>
+            Difference-in-differences
+            e principali metodi quasi-sperimentali.
+          </li>
+
+          <li>
+            Dimensione spaziale
+            e territoriale
+            della valutazione delle politiche.
+          </li>
+
+          <li>
+            Dati, indicatori e analisi empirica in R:
+            gestione dei dati,
+            costruzione di indicatori,
+            visualizzazione,
+            regressione
+            e implementazione empirica.
+          </li>
+
+          <li>
+            Applicazioni empiriche in R:
+            valutazione di politiche,
+            casi studio,
+            interpretazione dei risultati
+            e sintesi finale del corso.
+          </li>
+
+        </ul>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           SLIDE
+           =================================================== -->
+
+      <section
+        id="slide"
+        class="course-section-card"
+      >
+
+        <h2>
+          Slide
+        </h2>
+
+
+        <p>
+          Per ogni lezione,
+          il primo link apre il PDF nel browser,
+          mentre il secondo consente di scaricarlo.
+          I link diventano blu solo dopo
+          il caricamento effettivo del file PDF
+          nel repository.
+        </p>
+
+
+        <table class="course-table">
+
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Lezione
+              </th>
+
+              <th>
+                Argomento
+              </th>
+
+              <th>
+                PDF
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+
+          <tbody>
+
+
+            <!-- LEZIONE 1 -->
+
+            <tr>
+
+              <td>
+                Lezione 1
+              </td>
+
+              <td>
+                Introduzione al corso
+                e presentazione del syllabus
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-01.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 2 -->
+
+            <tr>
+
+              <td>
+                Lezione 2
+              </td>
+
+              <td>
+                Economia pubblica dell’innovazione:
+                fallimenti di mercato,
+                spillover
+                e intervento pubblico
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-02.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 3 -->
+
+            <tr>
+
+              <td>
+                Lezione 3
+              </td>
+
+              <td>
+                Finanziamento dell’innovazione,
+                asimmetrie informative
+                e vincoli finanziari
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-03.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 4 -->
+
+            <tr>
+
+              <td>
+                Lezione 4
+              </td>
+
+              <td>
+                Incentivi pubblici a innovazione
+                e investimenti:
+                sussidi,
+                crediti d’imposta
+                e additionality
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-04.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 5 -->
+
+            <tr>
+
+              <td>
+                Lezione 5
+              </td>
+
+              <td>
+                Garanzie pubbliche,
+                capitale di rischio
+                e co-investimento
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-05.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 6 -->
+
+            <tr>
+
+              <td>
+                Lezione 6
+              </td>
+
+              <td>
+                Politica industriale
+                e politica dell’innovazione:
+                coordinamento,
+                selezione
+                e missioni
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-06.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 7 -->
+
+            <tr>
+
+              <td>
+                Lezione 7
+              </td>
+
+              <td>
+                Infrastrutture,
+                digitalizzazione
+                e territorio
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-07.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 8 -->
+
+            <tr>
+
+              <td>
+                Lezione 8
+              </td>
+
+              <td>
+                Valutazione delle politiche pubbliche
+                e logica controfattuale
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-08.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 9 -->
+
+            <tr>
+
+              <td>
+                Lezione 9
+              </td>
+
+              <td>
+                Difference-in-differences
+                e metodi quasi-sperimentali
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-09.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 10 -->
+
+            <tr>
+
+              <td>
+                Lezione 10
+              </td>
+
+              <td>
+                Dimensione spaziale
+                e territoriale
+                della valutazione delle politiche
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-10.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 11 -->
+
+            <tr>
+
+              <td>
+                Lezione 11
+              </td>
+
+              <td>
+                Dati, indicatori
+                e analisi empirica in R
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-11.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- LEZIONE 12 -->
+
+            <tr>
+
+              <td>
+                Lezione 12
+              </td>
+
+              <td>
+                Applicazioni empiriche in R:
+                valutazione di politiche
+                e casi studio
+              </td>
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri PDF
+                </a>
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/slides/lezione-12.pdf"
+                  download
+                >
+                  Scarica PDF
+                </a>
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           CODICE R
+           =================================================== -->
+
+      <section
+        id="codice-r"
+        class="course-section-card"
+      >
+
+        <h2>
+          Codice R
+        </h2>
+
+
+        <p>
+          In questa sezione è disponibile lo script R utilizzato
+          nelle lezioni applicate.
+
+          Il codice contiene esempi commentati di gestione
+          e trasformazione dei dati, costruzione di indicatori,
+          visualizzazione, regressione, effetti fissi,
+          difference-in-differences, event study
+          e analisi di eterogeneità.
+        </p>
+
+
+        <table class="course-table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Materiale
+              </th>
+
+              <th>
+                Descrizione
+              </th>
+
+              <th>
+                File
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            <tr>
+
+              <td>
+                Codice R — Lezioni 11–12
+              </td>
+
+
+              <td>
+                Script didattico commentato per l’analisi empirica
+                e la valutazione delle politiche pubbliche in R.
+              </td>
+
+
+              <td class="file-actions">
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/codice/cod.R"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri codice
+                </a>
+
+
+                <a
+                  class="file-link"
+                  data-file="politiche-pubbliche-innovazione-imprese/codice/cod.R"
+                  download
+                >
+                  Scarica .R
+                </a>
+
+
+                <span
+                  class="file-status"
+                  data-available-text="Disponibile"
+                  data-unavailable-text="Non ancora disponibile"
+                >
+                  Non ancora disponibile
+                </span>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           VALUTAZIONE
+           =================================================== -->
+
+      <section
+        id="valutazione"
+        class="course-section-card"
+      >
+
+        <h2>
+          Valutazione
+        </h2>
+
+
+        <p>
+          La valutazione prevede una prova individuale.
+
+          La prova verifica la capacità di comprendere
+          il razionale economico delle politiche pubbliche,
+          analizzare strumenti alternativi di intervento,
+          interpretare evidenza empirica
+          e discutere i principali metodi di valutazione
+          affrontati durante il corso.
+        </p>
+
+
+        <div class="assessment-grid">
+
+
+          <!-- ===============================================
+               PROVA INDIVIDUALE
+               =============================================== -->
+
+          <div class="assessment-card">
+
+            <strong>
+              Prova individuale
+            </strong>
+
+
+            <p>
+              Verifica della comprensione dei concetti,
+              degli strumenti di policy
+              e della logica della valutazione.
+            </p>
+
+
+            <div class="file-actions">
+
+              <a
+                class="file-link"
+                data-file="politiche-pubbliche-innovazione-imprese/preparazione/domande-orale.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Apri domande orientative
+              </a>
+
+
+              <a
+                class="file-link"
+                data-file="politiche-pubbliche-innovazione-imprese/preparazione/domande-orale.pdf"
+                download
+              >
+                Scarica PDF
+              </a>
+
+
+              <span
+                class="file-status"
+                data-available-text="Disponibile"
+                data-unavailable-text="Non ancora disponibile"
+              >
+                Non ancora disponibile
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ===============================================
+               ERASMUS
+               =============================================== -->
+
+          <div class="assessment-card">
+
+            <strong>
+              Erasmus students — Oral exam
+            </strong>
+
+
+            <p>
+              The oral exam for Erasmus students
+              is held in English.
+
+              The PDF contains the guiding questions
+              on which the exam will be based.
+            </p>
+
+
+            <div class="file-actions">
+
+              <a
+                class="file-link"
+                data-file="politiche-pubbliche-innovazione-imprese/preparazione/exam-questions-erasmus.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Open exam questions
+              </a>
+
+
+              <a
+                class="file-link"
+                data-file="politiche-pubbliche-innovazione-imprese/preparazione/exam-questions-erasmus.pdf"
+                download
+              >
+                Download PDF
+              </a>
+
+
+              <span
+                class="file-status"
+                data-available-text="Available"
+                data-unavailable-text="Not yet available"
+              >
+                Not yet available
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           CONTATTI
+           =================================================== -->
+
+      <section
+        id="contatti"
+        class="course-section-card"
+      >
+
+        <h2>
+          Contatti
+        </h2>
+
+
+        <p>
+          Per domande relative al corso,
+          gli studenti possono contattare
+          il professore al seguente indirizzo:
+
+          <a href="mailto:gianluca.monturano@unisalento.it">
+            gianluca.monturano@unisalento.it
+          </a>.
+        </p>
+
+      </section>
+
+
     </section>
-  </section>
 
-  <aside class="page-index" aria-label="Teaching page index">
-    <h2>Index</h2>
-    <ul>
-      <li><a href="#current-course">Current course</a></li>
-      <li><a href="#previous-teaching">Previous teaching activities</a></li>
-      <li><a href="#phd-teaching">PhD teaching</a></li>
-      <li><a href="#undergraduate-graduate-courses">Undergraduate and graduate courses</a></li>
-      <li><a href="#tutoring">Tutoring</a></li>
-      <li><a href="#teaching-assistance-tutorials">Teaching assistance and tutorials</a></li>
-      <li><a href="#lectures-invited-speaking">Lectures and invited speaking</a></li>
-    </ul>
-  </aside>
-</main>
 
-<footer class="footer">
-  <div class="wrap footer-inner">
-    <span>© Gianluca Monturano</span>
-    <span>Teaching</span>
-  </div>
-</footer>
+
+    <!-- =====================================================
+         INDICE LATERALE
+         ===================================================== -->
+
+    <aside
+      class="page-index"
+      aria-label="Indice della pagina del corso"
+    >
+
+      <h2>
+        Indice
+      </h2>
+
+
+      <ul>
+
+        <li>
+          <a href="#news">
+            News
+          </a>
+        </li>
+
+        <li>
+          <a href="#calendario-ricevimento">
+            Calendario e ricevimento
+          </a>
+        </li>
+
+        <li>
+          <a href="#programma-syllabus">
+            Programma/Syllabus
+          </a>
+        </li>
+
+        <li>
+          <a href="#programma-sintetico">
+            Programma sintetico
+          </a>
+        </li>
+
+        <li>
+          <a href="#slide">
+            Slide
+          </a>
+        </li>
+
+        <li>
+          <a href="#codice-r">
+            Codice R
+          </a>
+        </li>
+
+        <li>
+          <a href="#valutazione">
+            Valutazione
+          </a>
+        </li>
+
+        <li>
+          <a href="#contatti">
+            Contatti
+          </a>
+        </li>
+
+      </ul>
+
+    </aside>
+
+
+  </main>
+
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer class="footer">
+
+    <div class="wrap footer-inner">
+
+      <span>
+        © Gianluca Monturano
+      </span>
+
+      <span>
+        Politiche Pubbliche per l’Innovazione e le Imprese
+      </span>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =======================================================
+       CONTROLLO AUTOMATICO DISPONIBILITÀ FILE
+       ======================================================= -->
+
+  <script>
+
+    document
+      .querySelectorAll(".file-actions")
+      .forEach(group => {
+
+        const links =
+          group.querySelectorAll(".file-link");
+
+        const status =
+          group.querySelector(".file-status");
+
+        const file =
+          links[0]?.dataset.file;
+
+
+        if (!file) {
+          return;
+        }
+
+
+        const availableText =
+          status?.dataset.availableText
+          || "Disponibile";
+
+
+        const unavailableText =
+          status?.dataset.unavailableText
+          || "Non ancora disponibile";
+
+
+        fetch(
+          file,
+          {
+            method: "HEAD"
+          }
+        )
+
+          .then(response => {
+
+            if (response.ok) {
+
+              links.forEach(link => {
+
+                link.href = file;
+
+                link.classList.add(
+                  "available"
+                );
+
+              });
+
+
+              if (status) {
+
+                status.textContent =
+                  availableText;
+
+              }
+
+            }
+
+            else {
+
+              if (status) {
+
+                status.textContent =
+                  unavailableText;
+
+              }
+
+            }
+
+          })
+
+
+          .catch(() => {
+
+            if (status) {
+
+              status.textContent =
+                unavailableText;
+
+            }
+
+          });
+
+      });
+
+  </script>
+
+
 </body>
+
 </html>
