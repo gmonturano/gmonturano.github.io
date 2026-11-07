@@ -9,15 +9,15 @@
   <title>Software | Gianluca Monturano</title>
 
   <meta name="description"
-        content="Research code and replication repositories accompanying academic publications by Gianluca Monturano.">
+        content="Research software, academic publications, estimation code and replication repositories by Gianluca Monturano.">
 
   <link rel="stylesheet" href="styles.css">
 
   <style>
 
-    /* =========================================
-       MAIN PAGE
-       ========================================= */
+    /* ==========================================
+       PAGE LAYOUT
+       ========================================== */
 
     .software-layout {
       display: grid;
@@ -38,6 +38,7 @@
 
     .software-head p {
       margin: 0;
+      max-width: 860px;
       color: var(--muted, #666);
       line-height: 1.65;
     }
@@ -48,19 +49,19 @@
       text-underline-offset: 2px;
     }
 
-    /* =========================================
+    /* ==========================================
        GITHUB HUB
-       ========================================= */
+       ========================================== */
 
     .github-hub {
       display: grid;
       grid-template-columns: 110px minmax(0, 1fr);
       gap: 20px;
       align-items: center;
-      padding: 18px;
-      margin: 18px 0 24px;
       border: 1px solid var(--rule, #ddd);
       background: #fafafa;
+      padding: 18px;
+      margin: 18px 0 24px;
     }
 
     .github-hub-image {
@@ -73,11 +74,12 @@
       width: 95px;
       height: 95px;
       object-fit: contain;
+      display: block;
     }
 
     .github-hub h2 {
-      font-size: 1.08rem;
       margin: 0 0 9px;
+      font-size: 1.08rem;
     }
 
     .github-hub p {
@@ -89,15 +91,15 @@
     .badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
+      gap: 6px;
       margin: 10px 0;
     }
 
     .badge {
       display: inline-block;
-      border: 1px solid var(--rule, #ddd);
-      background: #f6f6f6;
       padding: 3px 8px;
+      background: #f6f6f6;
+      border: 1px solid var(--rule, #ddd);
       border-radius: 4px;
       color: #444;
       font-family: ui-monospace, monospace;
@@ -118,21 +120,21 @@
       color: #b8860b;
     }
 
-    /* =========================================
-       COLLAPSIBLE SECTIONS
-       ========================================= */
+    /* ==========================================
+       COLLAPSIBLE PAPERS SECTION
+       ========================================== */
 
     .papers-section {
-      border: 1px solid var(--rule, #ddd);
-      background: white;
       margin-top: 20px;
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
     }
 
     .papers-section > summary,
     .paper-year > summary {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
       cursor: pointer;
       list-style: none;
@@ -165,11 +167,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
       width: 25px;
       height: 25px;
-      flex-shrink: 0;
-      border: 1px solid #cbd4dc;
       background: #fff;
+      border: 1px solid #cbd4dc;
       color: #334455;
       font-size: 1rem;
     }
@@ -184,16 +186,16 @@
     }
 
     .papers-intro {
+      margin: 0 0 15px;
       color: #607080;
       font-size: .85rem;
       line-height: 1.6;
-      margin: 0 0 15px;
     }
 
     .paper-year {
-      border: 1px solid var(--rule, #ddd);
-      background: white;
       margin-bottom: 14px;
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
     }
 
     .paper-year:last-child {
@@ -201,10 +203,10 @@
     }
 
     .year-count {
+      margin-left: 8px;
+      color: #777;
       font-weight: 400;
       font-size: .78rem;
-      color: #777;
-      margin-left: 8px;
     }
 
     .paper-list {
@@ -214,14 +216,14 @@
       border-top: 1px solid var(--rule, #ddd);
     }
 
-    /* =========================================
-       PAPER LINK PREVIEW CARDS
-       ========================================= */
+    /* ==========================================
+       PAPER PREVIEW CARDS
+       ========================================== */
 
     .paper-card {
-      border: 1px solid var(--rule, #ddd);
-      background: white;
       overflow: hidden;
+      border: 1px solid var(--rule, #ddd);
+      background: #fff;
     }
 
     .paper-card:hover {
@@ -240,12 +242,12 @@
 
     .paper-preview-media {
       height: 205px;
-      background: white;
-      border-right: 1px solid var(--rule, #ddd);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      background: white;
+      border-right: 1px solid var(--rule, #ddd);
     }
 
     .paper-preview-media img {
@@ -257,17 +259,17 @@
 
     .paper-preview-fallback {
       padding: 18px;
-      text-align: center;
       color: #637485;
       font-size: .8rem;
+      text-align: center;
       line-height: 1.6;
     }
 
     .paper-preview-fallback strong {
       display: block;
+      margin-bottom: 8px;
       color: #203e59;
       font-size: .92rem;
-      margin-bottom: 8px;
     }
 
     .paper-preview-copy {
@@ -280,19 +282,19 @@
     }
 
     .paper-journal {
-      text-transform: uppercase;
       color: #5b7083;
       font-size: .71rem;
-      line-height: 1.5;
-      letter-spacing: .04em;
       font-weight: 700;
+      letter-spacing: .04em;
+      line-height: 1.5;
+      text-transform: uppercase;
     }
 
     .paper-title {
-      font-size: 1.06rem;
-      line-height: 1.4;
-      font-weight: 800;
       color: #17324b;
+      font-size: 1.06rem;
+      font-weight: 800;
+      line-height: 1.4;
     }
 
     .paper-preview:hover .paper-title {
@@ -303,8 +305,8 @@
     .paper-date,
     .paper-doi,
     .paper-action {
-      font-size: .78rem;
       color: #667684;
+      font-size: .78rem;
       line-height: 1.5;
     }
 
@@ -313,10 +315,10 @@
     }
 
     .paper-description {
+      margin: 10px 0 0;
+      color: #333;
       font-size: .9rem;
       line-height: 1.65;
-      color: #333;
-      margin: 10px 0 0;
     }
 
     .paper-links {
@@ -328,9 +330,9 @@
       font-weight: 700;
     }
 
-    /* =========================================
+    /* ==========================================
        SIDEBAR AND ORIGINAL LOGOS
-       ========================================= */
+       ========================================== */
 
     .software-sidebar {
       position: sticky;
@@ -338,21 +340,21 @@
     }
 
     .sidebar-block {
-      border: 1px solid var(--rule, #ddd);
-      padding: 12px;
-      background: #fafafa;
       margin-bottom: 14px;
+      padding: 12px;
+      border: 1px solid var(--rule, #ddd);
+      background: #fafafa;
     }
 
     .sidebar-block h2 {
-      font-size: .98rem;
       margin: 0 0 10px;
+      font-size: .98rem;
     }
 
     .sidebar-block p {
+      margin: 0;
       font-size: .8rem;
       line-height: 1.55;
-      margin: 0;
     }
 
     .sidebar-logo-link {
@@ -369,10 +371,10 @@
     }
 
     .sidebar-material-card {
-      padding: 11px;
       margin-bottom: 10px;
+      padding: 11px;
       border: 1px solid var(--rule, #ddd);
-      background: white;
+      background: #fff;
     }
 
     .sidebar-material-card:last-child {
@@ -393,31 +395,31 @@
     }
 
     .sidebar-material-head h3 {
-      font-size: .86rem;
       margin: 0;
+      font-size: .86rem;
     }
 
     .sidebar-material-card p {
+      margin-top: 8px;
+      color: #444;
       font-size: .76rem;
       line-height: 1.5;
-      color: #444;
-      margin-top: 8px;
     }
 
     .sidebar-mini-list {
-      list-style: none;
       margin: 0;
       padding: 0;
+      list-style: none;
     }
 
     .sidebar-mini-list li {
-      padding: 10px;
       margin-bottom: 9px;
+      padding: 10px;
       border: 1px solid var(--rule, #ddd);
-      background: white;
+      background: #fff;
+      color: #444;
       font-size: .78rem;
       line-height: 1.5;
-      color: #444;
     }
 
     .sidebar-mini-list li:last-child {
@@ -437,9 +439,9 @@
       object-fit: contain;
     }
 
-    /* =========================================
-       MOBILE
-       ========================================= */
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
 
     @media (max-width: 980px) {
       .software-layout {
@@ -487,9 +489,9 @@
 
 <body>
 
-  <!-- =========================================
+  <!-- ==========================================
        NAVIGATION
-       ========================================= -->
+       ========================================== -->
 
   <header class="topbar">
     <div class="wrap">
@@ -513,9 +515,9 @@
   </header>
 
 
-  <!-- =========================================
+  <!-- ==========================================
        MAIN PAGE
-       ========================================= -->
+       ========================================== -->
 
   <main class="wrap page">
 
@@ -524,6 +526,7 @@
       <section>
 
         <div class="software-head">
+
           <h1>Software and replication code</h1>
 
           <p>
@@ -538,6 +541,7 @@
               GitHub
             </a>.
           </p>
+
         </div>
 
 
@@ -546,9 +550,8 @@
         <section class="github-hub" id="github-code-hub">
 
           <div class="github-hub-image">
-            <img
-              src="assets/icons/Ghithub.png"
-              alt="GitHub">
+            <img src="assets/icons/Ghithub.png"
+                 alt="GitHub">
           </div>
 
           <div class="github-hub-content">
@@ -567,7 +570,7 @@
             <p>
               My GitHub profile contains research code
               accompanying published articles,
-              estimation scripts, reproducible workflows,
+              estimation scripts, reproducible workflows
               and supporting computational materials.
             </p>
 
@@ -581,9 +584,9 @@
         </section>
 
 
-        <!-- =========================================
+        <!-- ==========================================
              COLLAPSIBLE PAPERS SECTION
-             ========================================= -->
+             ========================================== -->
 
         <details class="papers-section" id="paper-code" open>
 
@@ -599,9 +602,6 @@
               or use the links below each paper to visit the publication.
             </p>
 
-
-            <!-- PAPER CARDS ARE RENDERED BELOW -->
-
             <div id="papers-container"></div>
 
           </div>
@@ -611,9 +611,9 @@
       </section>
 
 
-      <!-- =========================================
+      <!-- ==========================================
            SIDEBAR WITH ORIGINAL LOGOS
-           ========================================= -->
+           ========================================== -->
 
       <aside class="software-sidebar">
 
@@ -624,11 +624,11 @@
              target="_blank"
              rel="noopener noreferrer">
 
-            <img
-              src="assets/icons/Ghithub.png"
-              alt="GitHub">
+            <img src="assets/icons/Ghithub.png"
+                 alt="GitHub">
 
             <span>GitHub</span>
+
           </a>
 
         </div>
@@ -652,13 +652,8 @@
           <article class="sidebar-material-card">
 
             <div class="sidebar-material-head">
-
-              <img
-                src="assets/icons/R.svg.png"
-                alt="R">
-
+              <img src="assets/icons/R.svg.png" alt="R">
               <h3>R code and statistical workflows</h3>
-
             </div>
 
             <div class="badges">
@@ -680,13 +675,9 @@
           <article class="sidebar-material-card">
 
             <div class="sidebar-material-head">
-
-              <img
-                src="assets/icons/Python.svg.png"
-                alt="Python">
-
+              <img src="assets/icons/Python.svg.png"
+                   alt="Python">
               <h3>Python code and research pipelines</h3>
-
             </div>
 
             <div class="badges">
@@ -714,46 +705,37 @@
           <ul class="sidebar-mini-list">
 
             <li>
-
               <div class="sidebar-mini-title">
-                <img
-                  src="assets/icons/Latex.svg"
-                  alt="LaTeX">
+                <img src="assets/icons/Latex.svg"
+                     alt="LaTeX">
                 <strong>LaTeX</strong>
               </div>
 
               CV templates, academic papers,
               working papers, teaching notes,
               and formal documents.
-
             </li>
 
             <li>
-
               <div class="sidebar-mini-title">
-                <img
-                  src="assets/icons/markdown.png"
-                  alt="Markdown">
+                <img src="assets/icons/markdown.png"
+                     alt="Markdown">
                 <strong>Markdown</strong>
               </div>
 
               README files, repository documentation,
               and research notes.
-
             </li>
 
             <li>
-
               <div class="sidebar-mini-title">
-                <img
-                  src="assets/icons/logo.png"
-                  alt="Quarto">
+                <img src="assets/icons/logo.png"
+                     alt="Quarto">
                 <strong>Quarto</strong>
               </div>
 
               Reproducible reports, academic slides,
               research papers, and mixed code-text outputs.
-
             </li>
 
           </ul>
@@ -770,47 +752,35 @@
   <!-- FOOTER -->
 
   <footer class="footer">
-
     <div class="wrap footer-inner">
       <span>© Gianluca Monturano</span>
       <span>R · Python · LaTeX · Markdown · Quarto</span>
     </div>
-
   </footer>
 
 
-  <!-- =========================================
-       PAPER DATA AND ONLINE PREVIEWS
-       ========================================= -->
+  <!-- ==========================================
+       PAPER DATA AND ONLINE IMAGES
+       ========================================== -->
 
   <script>
-
     "use strict";
 
     /*
-      The images are loaded from online sources.
+      All paper images are loaded from online
+      publisher-hosted sources.
 
-      No assets/papers/ folder is required.
+      No local assets/papers folder is used.
+      No Microlink service is used.
 
-      For each paper:
-      - Clicking the card opens GitHub.
-      - "GitHub repository" opens GitHub.
-      - "Published article" opens the DOI.
-      - The image comes from the publisher's
-        online content or publisher-page preview.
-
-      The image system does not use Microlink.
+      Clicking the card opens GitHub.
+      Both GitHub and DOI links appear below.
     */
-
-
-    /* =========================================
-       PUBLISHED ARTICLES
-       ========================================= */
 
     const papers = [
 
       /* ======================================
-         2026 — 1. PROTECTED AREAS
+         2026 — PROTECTED AREAS
          ====================================== */
 
       {
@@ -830,18 +800,12 @@
         doi:
           "10.1007/s10640-026-01122-0",
 
-        article:
-          "https://link.springer.com/article/" +
-          "10.1007/s10640-026-01122-0",
-
         github:
-          "https://github.com/gmonturano/" +
-          "environmental_income_park",
+          "https://github.com/gmonturano/environmental_income_park",
 
         description:
-          "Main econometric estimation code examining " +
-          "protected-area exposure and municipal income " +
-          "in Italian inner regions.",
+          "Main econometric estimation code examining protected-area " +
+          "exposure and municipal income in Italian inner regions.",
 
         tags: [
           "R",
@@ -865,7 +829,7 @@
 
 
       /* ======================================
-         2026 — 2. TAX REFORMS
+         2026 — TAX REFORMS
          ====================================== */
 
       {
@@ -873,9 +837,9 @@
         order: 2,
 
         title:
-          "Spatial consequences of tax reforms on tax " +
-          "compliance: econometric evidence from the " +
-          "Italian Minimum Taxpayer Regime",
+          "Spatial consequences of tax reforms on tax compliance: " +
+          "econometric evidence from the Italian " +
+          "Minimum Taxpayer Regime",
 
         journal:
           "The Annals of Regional Science · Springer Nature",
@@ -886,19 +850,13 @@
         doi:
           "10.1007/s00168-026-01546-y",
 
-        article:
-          "https://link.springer.com/article/" +
-          "10.1007/s00168-026-01546-y",
-
         github:
-          "https://github.com/gmonturano/" +
-          "tax_evation_self_employed",
+          "https://github.com/gmonturano/tax_evation_self_employed",
 
         description:
-          "Main estimation procedures for the effects of " +
-          "the Italian Minimum Taxpayer Regime on tax " +
-          "compliance. Confidential administrative data " +
-          "are not publicly distributed.",
+          "Main estimation procedures for the effects of the Italian " +
+          "Minimum Taxpayer Regime on tax compliance. " +
+          "Confidential administrative data are not publicly distributed.",
 
         tags: [
           "R",
@@ -922,7 +880,7 @@
 
 
       /* ======================================
-         2026 — 3. QUALITY OF LIFE
+         2026 — QUALITY OF LIFE
          ====================================== */
 
       {
@@ -930,8 +888,8 @@
         order: 3,
 
         title:
-          "Digital infrastructure and territorial " +
-          "heterogeneity in quality-of-life outcomes",
+          "Digital infrastructure and territorial heterogeneity " +
+          "in quality-of-life outcomes",
 
         journal:
           "Socio-Economic Planning Sciences · Elsevier",
@@ -942,18 +900,12 @@
         doi:
           "10.1016/j.seps.2026.102545",
 
-        article:
-          "https://www.sciencedirect.com/science/" +
-          "article/pii/S0038012126001321",
-
         github:
-          "https://github.com/gmonturano/" +
-          "Digital_and_quality_of_life",
+          "https://github.com/gmonturano/Digital_and_quality_of_life",
 
         description:
-          "Main estimation code examining broadband " +
-          "infrastructure and territorial heterogeneity " +
-          "in quality-of-life outcomes.",
+          "Main estimation code examining broadband infrastructure " +
+          "and territorial heterogeneity in quality-of-life outcomes.",
 
         tags: [
           "R",
@@ -973,7 +925,7 @@
 
 
       /* ======================================
-         2026 — 4. FUEL PRICES
+         2026 — FUEL PRICES
          ====================================== */
 
       {
@@ -993,18 +945,13 @@
         doi:
           "10.1007/s40797-026-00392-3",
 
-        article:
-          "https://link.springer.com/article/" +
-          "10.1007/s40797-026-00392-3",
-
         github:
-          "https://github.com/gmonturano/" +
-          "Fuel_price_local_projection",
+          "https://github.com/gmonturano/Fuel_price_local_projection",
 
         description:
-          "Supporting data, model metadata, and a public " +
-          "Local Projection reference framework for " +
-          "fuel-price dynamics and structural breaks.",
+          "Supporting data, model metadata, and a public Local Projection " +
+          "reference framework for fuel-price dynamics " +
+          "and structural breaks.",
 
         tags: [
           "R",
@@ -1028,7 +975,7 @@
 
 
       /* ======================================
-         2026 — 5. RAIL ACCESSIBILITY
+         2026 — RAIL ACCESSIBILITY
          ====================================== */
 
       {
@@ -1049,18 +996,13 @@
         doi:
           "10.1016/j.rtbm.2026.101693",
 
-        article:
-          "https://www.sciencedirect.com/science/" +
-          "article/pii/S2210539526000994",
-
         github:
           "https://github.com/gmonturano/" +
           "Fuel-Costs-and-Spatial-Rail-Accessibility",
 
         description:
-          "Main TWFE, IV/2SLS, and Double Machine Learning " +
-          "estimation code for network-based spatial " +
-          "rail accessibility and fuel costs.",
+          "Main TWFE, IV/2SLS, and Double Machine Learning estimation " +
+          "code for network-based spatial rail accessibility and fuel costs.",
 
         tags: [
           "R",
@@ -1081,7 +1023,7 @@
 
 
       /* ======================================
-         2026 — 6. DIGITAL DIVIDE
+         2026 — DIGITAL DIVIDE
          ====================================== */
 
       {
@@ -1101,18 +1043,12 @@
         doi:
           "10.1007/s00168-025-01440-z",
 
-        article:
-          "https://link.springer.com/article/" +
-          "10.1007/s00168-025-01440-z",
-
         github:
-          "https://github.com/gmonturano/" +
-          "digital_divide_income_ineq",
+          "https://github.com/gmonturano/digital_divide_income_ineq",
 
         description:
-          "Main estimation code for rural broadband " +
-          "diffusion and income inequality across " +
-          "Italian provinces.",
+          "Main estimation code for rural broadband diffusion " +
+          "and income inequality across Italian provinces.",
 
         tags: [
           "R",
@@ -1136,7 +1072,7 @@
 
 
       /* ======================================
-         2025 — 1. INCOME SUPPORT
+         2025 — INCOME SUPPORT AND VOTING
          ====================================== */
 
       {
@@ -1155,10 +1091,6 @@
         doi:
           "10.1093/ser/mwaf035",
 
-        article:
-          "https://academic.oup.com/ser/" +
-          "article/23/4/2395/8182730",
-
         github:
           "https://github.com/gmonturano/" +
           "income_support_and_spatial_voting",
@@ -1175,18 +1107,12 @@
           "Voting Behaviour"
         ],
 
-        /*
-          The official OUP article is used for
-          the online-page preview fallback.
-          No unverified figure URL is invented.
-        */
-
         images: []
       },
 
 
       /* ======================================
-         2025 — 2. ROME HEALTHCARE
+         2025 — ROME HEALTHCARE
          ====================================== */
 
       {
@@ -1194,9 +1120,8 @@
         order: 2,
 
         title:
-          "Analyzing the accessibility of Rome’s healthcare " +
-          "services via public transportation: " +
-          "a complex network approach",
+          "Analyzing the accessibility of Rome’s healthcare services " +
+          "via public transportation: a complex network approach",
 
         journal:
           "Scientific Reports · Nature Portfolio",
@@ -1207,17 +1132,12 @@
         doi:
           "10.1038/s41598-025-05060-7",
 
-        article:
-          "https://www.nature.com/articles/" +
-          "s41598-025-05060-7",
-
         github:
-          "https://github.com/gmonturano/" +
-          "health_bus_buss",
+          "https://github.com/gmonturano/health_bus_buss",
 
         description:
-          "Selected research code for network-based public " +
-          "transport analysis, healthcare accessibility, " +
+          "Selected research code for network-based public transport " +
+          "analysis, healthcare accessibility, " +
           "and transport-network resilience in Rome.",
 
         tags: [
@@ -1243,9 +1163,9 @@
     ];
 
 
-    /* =========================================
-       SAFE HTML TEXT
-       ========================================= */
+    /* ==========================================
+       ESCAPE HTML
+       ========================================== */
 
     function escapeHTML(value) {
       return String(value)
@@ -1257,9 +1177,9 @@
     }
 
 
-    /* =========================================
-       CREATE ONE PAPER CARD
-       ========================================= */
+    /* ==========================================
+       BUILD PAPER CARD
+       ========================================== */
 
     function createPaperCard(paper) {
 
@@ -1284,7 +1204,7 @@
 
               <div class="paper-preview-fallback">
                 <strong>${escapeHTML(paper.journal)}</strong>
-                <span>Article preview</span>
+                <span>Loading online article preview…</span>
               </div>
 
             </div>
@@ -1318,10 +1238,13 @@
           <div class="paper-details">
 
             <div class="badges">
+
               <span class="badge badge-year">
                 ${paper.year}
               </span>
+
               ${tags}
+
             </div>
 
             <p class="paper-description">
@@ -1351,9 +1274,9 @@
     }
 
 
-    /* =========================================
-       CREATE YEAR SECTION
-       ========================================= */
+    /* ==========================================
+       BUILD YEAR SECTION
+       ========================================== */
 
     function createYearSection(year) {
 
@@ -1365,7 +1288,9 @@
           return a.order - b.order;
         });
 
-      const cards = yearPapers.map(createPaperCard).join("");
+      const cards = yearPapers
+        .map(createPaperCard)
+        .join("");
 
       return `
         <details class="paper-year" open>
@@ -1388,9 +1313,9 @@
     }
 
 
-    /* =========================================
+    /* ==========================================
        RENDER ALL PAPERS
-       ========================================= */
+       ========================================== */
 
     const papersContainer =
       document.getElementById("papers-container");
@@ -1400,72 +1325,51 @@
       createYearSection(2025);
 
 
-    /* =========================================
-       ONLINE PUBLISHER IMAGE LOADING
-       ========================================= */
+    /* ==========================================
+       ONLINE IMAGE LOADING — CORRECTED
+       ========================================== */
 
     /*
-      First, attempt the publisher-hosted
-      figure URLs associated with each article.
+      IMPORTANT FIX:
 
-      If an image is unavailable, attempt an
-      online screenshot of the official article
-      page through WordPress mShots.
+      Preloaded images MUST use eager loading.
 
-      mShots is an external screenshot service.
-      It is not guaranteed to be available.
+      The browser must finish loading each image
+      before it is inserted into the page.
 
-      The fallback is a preview of the official
-      article PAGE, not an invented research figure.
+      Do not set loading="lazy" on these
+      detached Image objects.
 
-      No local article images are used.
-      No Microlink API requests are made.
+      Images are hosted online by publishers.
     */
-
-
-    function publisherPagePreview(articleURL) {
-
-      return (
-        "https://s.wordpress.com/mshots/v1/" +
-        encodeURIComponent(articleURL) +
-        "?w=600"
-      );
-    }
-
 
     function loadOnlineImage(container, paper) {
 
-      const sources = [
-        ...paper.images,
-        publisherPagePreview(paper.article)
-      ];
+      const sources = paper.images;
 
       let current = 0;
+
+      function showUnavailable() {
+
+        const message = container.querySelector(
+          ".paper-preview-fallback span"
+        );
+
+        if (message) {
+          message.textContent =
+            "Online publisher image unavailable";
+        }
+
+      }
 
       function tryNext() {
 
         if (current >= sources.length) {
-
-          const fallback =
-            container.querySelector(
-              ".paper-preview-fallback"
-            );
-
-          if (fallback) {
-            const message =
-              fallback.querySelector("span");
-
-            if (message) {
-              message.textContent =
-                "Online publisher preview unavailable";
-            }
-          }
-
+          showUnavailable();
           return;
         }
 
-        const source = sources[current];
-        current += 1;
+        const source = sources[current++];
 
         const img = new Image();
 
@@ -1473,7 +1377,12 @@
           "Online image associated with: " +
           paper.title;
 
-        img.loading = "lazy";
+        /*
+          FIX: EAGER PRELOADING.
+        */
+
+        img.loading = "eager";
+        img.decoding = "async";
 
         img.onload = function () {
 
@@ -1492,7 +1401,16 @@
 
         };
 
-        img.onerror = tryNext;
+        img.onerror = function () {
+
+          console.warn(
+            "Publisher image unavailable:",
+            source
+          );
+
+          tryNext();
+
+        };
 
         img.src = source;
 
@@ -1503,14 +1421,9 @@
     }
 
 
-    /* =========================================
-       LOAD PAPER PREVIEWS
-       ========================================= */
-
-    const previewContainers =
-      document.querySelectorAll(
-        ".paper-preview-media[data-paper-doi]"
-      );
+    /* ==========================================
+       LOAD IMAGES AS CARDS APPROACH SCREEN
+       ========================================== */
 
     const paperByDOI = new Map(
       papers.map(function (paper) {
@@ -1518,13 +1431,16 @@
       })
     );
 
+    const imageContainers =
+      document.querySelectorAll(
+        ".paper-preview-media[data-paper-doi]"
+      );
+
     function loadContainer(container) {
 
-      const doi =
-        container.dataset.paperDoi;
+      const doi = container.dataset.paperDoi;
 
-      const paper =
-        paperByDOI.get(doi);
+      const paper = paperByDOI.get(doi);
 
       if (!paper) return;
 
@@ -1533,39 +1449,41 @@
     }
 
     /*
-      IntersectionObserver loads only previews
-      approaching the visible screen.
+      IntersectionObserver delays the REQUEST
+      for off-screen cards.
+
+      Once requested, each Image is eagerly
+      preloaded and inserted after onload.
     */
 
     if ("IntersectionObserver" in window) {
 
-      const observer =
-        new IntersectionObserver(
-          function (entries) {
+      const observer = new IntersectionObserver(
+        function (entries) {
 
-            entries.forEach(function (entry) {
+          entries.forEach(function (entry) {
 
-              if (!entry.isIntersecting) return;
+            if (!entry.isIntersecting) return;
 
-              observer.unobserve(entry.target);
+            observer.unobserve(entry.target);
 
-              loadContainer(entry.target);
+            loadContainer(entry.target);
 
-            });
+          });
 
-          },
-          {
-            rootMargin: "300px 0px"
-          }
-        );
+        },
+        {
+          rootMargin: "300px 0px"
+        }
+      );
 
-      previewContainers.forEach(function (container) {
+      imageContainers.forEach(function (container) {
         observer.observe(container);
       });
 
     } else {
 
-      previewContainers.forEach(loadContainer);
+      imageContainers.forEach(loadContainer);
 
     }
 
