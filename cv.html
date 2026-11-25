@@ -1,490 +1,517 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>CV | Gianluca Monturano</title>
-
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* =========================================
-       CV PAGE
-    ========================================= */
-
-    .cv-page {
-      max-width: 1280px !important;
+    .cv-page{
+      max-width:1100px;
     }
 
-    .cv-top {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 540px;
-      gap: 28px;
-      align-items: start;
-      margin: 6px 0 22px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--rule);
+    .cv-hero{
+      margin:6px 0 20px;
     }
 
-    .cv-hero {
-      margin: 0 0 18px;
+    .cv-hero h1{
+      margin-bottom:6px;
     }
 
-    .cv-hero h1 {
-      margin-bottom: 6px;
+    .cv-hero .position{
+      margin-bottom:0;
     }
 
-    .cv-hero .position {
-      margin-bottom: 0;
+    .cv-section{
+      margin:22px 0 28px;
     }
 
-    /* =========================================
-       ACADEMIC PROFILES
-    ========================================= */
-
-    .cv-profile-strip {
-      margin: 0;
-      padding: 0;
-      border: 0;
+    .cv-section h2{
+      margin-bottom:12px;
+      padding-bottom:6px;
+      border-bottom:1px solid var(--rule);
     }
 
-    .cv-profile-strip h2 {
-      font-size: 1rem;
-      margin: 0 0 10px;
-      padding: 0;
-      border: 0;
+    .cv-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
     }
 
-    .cv-profile-links {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin: 0;
+    .cv-card{
+      display:flex;
+      gap:12px;
+      padding:14px 15px;
+      border:1px solid var(--rule);
+      background:#fafafa;
+      border-radius:10px;
     }
-
-    .cv-profile-link {
-      width: 24px;
-      height: 24px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      box-shadow: none;
-      transition:
-        transform .15s ease,
-        opacity .15s ease;
-    }
-
-    .cv-profile-link:hover {
-      transform: translateY(-2px);
-      opacity: .82;
-    }
-
-    .cv-profile-link img {
-      max-width: 24px;
-      max-height: 24px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    .cv-profile-link.wide img {
-      max-width: 28px;
-      max-height: 22px;
-    }
-
-    /* =========================================
-       LANDSCAPE IMAGE
-    ========================================= */
-
-    .cv-landscape-caption {
-      max-width: 540px;
-      margin: 0 0 7px auto;
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-      color: #555;
-      text-align: left;
-    }
-
-    .cv-landscape {
-      width: 100%;
-      max-width: 540px;
-      height: 182px;
-      margin: 0 0 0 auto;
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      overflow: hidden;
-      background: #f7f7f7;
-      box-shadow: 0 5px 16px rgba(0,0,0,.05);
-    }
-
-    .cv-landscape img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center center;
-    }
-
-    /* =========================================
-       TWO-COLUMN LAYOUT
-    ========================================= */
-
-    .cv-two-column {
-      display: grid;
-      grid-template-columns:
-        minmax(0, .92fr)
-        minmax(420px, .78fr);
-      gap: 28px;
-      align-items: start;
-    }
-
-    .cv-left {
-      min-width: 0;
-    }
-
-    .cv-right {
-      min-width: 0;
-      position: sticky;
-      top: 74px;
-      align-self: start;
-    }
-
-    /* =========================================
-       CV SECTIONS
-    ========================================= */
-
-    .cv-section {
-      margin: 18px 0 24px;
-    }
-
-    .cv-section h2 {
-      margin-bottom: 10px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .cv-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    /* =========================================
-       CV CARDS
-    ========================================= */
-
-    .cv-card {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 12px 13px;
-      border: 1px solid var(--rule);
-      background: #fafafa;
-      border-radius: 10px;
-    }
-
-    .cv-card-body {
-      min-width: 0;
-    }
-
-    .cv-date {
-      display: block;
-      font-size: .84rem;
-      font-weight: 700;
-      color: #666;
-      margin-bottom: 3px;
-      letter-spacing: .02em;
-    }
-
-    .cv-role {
-      display: block;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 4px;
-      line-height: 1.4;
-    }
-
-    .cv-place {
-      color: #444;
-      line-height: 1.42;
-    }
-
-    .cv-role-email {
-      margin-top: 6px;
-      font-size: .82rem;
-      line-height: 1.35;
-    }
-
-    .cv-role-email a {
-      color: #0057d9;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    /* =========================================
-       ICONS
-    ========================================= */
 
     .cv-card-icon,
-    .cv-detail-icon {
-      flex: 0 0 auto;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--icon-border);
-      background: var(--icon-bg);
-      color: var(--icon);
+    .cv-detail-icon{
+      flex:0 0 auto;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--icon-border);
+      background:var(--icon-bg);
+      color:var(--icon);
     }
 
-    .cv-card-icon {
-      width: 38px;
-      height: 38px;
+    .cv-card-icon{
+      width:42px;
+      height:42px;
     }
 
-    .cv-detail-icon {
-      width: 30px;
-      height: 30px;
-      margin-top: 1px;
+    .cv-detail-icon{
+      width:30px;
+      height:30px;
+      margin-top:1px;
     }
 
     .cv-card-icon svg,
-    .cv-detail-icon svg {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .cv-detail-icon svg{
+      fill:none;
+      stroke:currentColor;
+      stroke-linecap:round;
+      stroke-linejoin:round;
     }
 
-    .cv-card-icon svg {
-      width: 19px;
-      height: 19px;
+    .cv-card-icon svg{
+      width:50px;
+      height:50px;
+      stroke-width:1.9;
     }
 
-    .cv-detail-icon svg {
-      width: 17px;
-      height: 17px;
+    .cv-detail-icon svg{
+      width:17px;
+      height:17px;
+      stroke-width:1.9;
     }
 
-    .cv-icon-blue {
-      --icon: #1f5fa8;
-      --icon-bg: #eef6ff;
-      --icon-border: #c9dff7;
+    .cv-icon-blue{
+      --icon:#1f5fa8;
+      --icon-bg:#eef6ff;
+      --icon-border:#c9dff7;
     }
 
-    .cv-icon-green {
-      --icon: #20785a;
-      --icon-bg: #eefaf5;
-      --icon-border: #c8eadc;
+    .cv-icon-green{
+      --icon:#20785a;
+      --icon-bg:#eefaf5;
+      --icon-border:#c8eadc;
     }
 
-    .cv-icon-orange {
-      --icon: #b45f06;
-      --icon-bg: #fff6ea;
-      --icon-border: #f0d6b5;
+    .cv-icon-orange{
+      --icon:#b45f06;
+      --icon-bg:#fff6ea;
+      --icon-border:#f0d6b5;
     }
 
-    .cv-icon-purple {
-      --icon: #6b4fa3;
-      --icon-bg: #f5f1ff;
-      --icon-border: #d9cef6;
+    .cv-icon-purple{
+      --icon:#6b4fa3;
+      --icon-bg:#f5f1ff;
+      --icon-border:#d9cef6;
     }
 
-    .cv-icon-red {
-      --icon: #9f2f3f;
-      --icon-bg: #fff0f2;
-      --icon-border: #efc9d0;
+    .cv-icon-red{
+      --icon:#9f2f3f;
+      --icon-bg:#fff0f2;
+      --icon-border:#efc9d0;
     }
 
-    .cv-icon-teal {
-      --icon: #14747a;
-      --icon-bg: #eefbfc;
-      --icon-border: #c6e8ea;
+    .cv-icon-teal{
+      --icon:#14747a;
+      --icon-bg:#eefbfc;
+      --icon-border:#c6e8ea;
     }
 
-    .cv-icon-grey {
-      --icon: #4b5563;
-      --icon-bg: #f3f4f6;
-      --icon-border: #d9dde2;
+    .cv-icon-grey{
+      --icon:#4b5563;
+      --icon-bg:#f3f4f6;
+      --icon-border:#d9dde2;
     }
 
-    /* =========================================
-       OTHER ACADEMIC ROLES
-    ========================================= */
-
-    .cv-inline-details {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
+    .cv-card-body{
+      min-width:0;
     }
 
-    .cv-detail-item {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      padding: 10px 12px;
-      border: 1px solid var(--rule);
-      background: #fcfcfc;
-      border-radius: 8px;
+    .cv-date{
+      display:block;
+      font-size:.84rem;
+      font-weight:700;
+      color:#666;
+      margin-bottom:3px;
+      letter-spacing:.02em;
     }
 
-    .cv-detail-text {
-      line-height: 1.55;
-      color: #333;
+    .cv-role{
+      display:block;
+      font-weight:700;
+      color:#111;
+      margin-bottom:4px;
     }
 
-    /* =========================================
-       SCIENTIFIC CV PDF
-    ========================================= */
-
-    .cv-pdf-block {
-      margin-top: 0;
+    .cv-place{
+      color:#444;
+      line-height:1.5;
     }
 
-    .cv-pdf-heading {
-      height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 0 12px;
-      background: #fff;
-      color: #111;
-      border: 1px solid var(--rule);
-      border-bottom: 0;
-      border-radius: 10px 10px 0 0;
-      font-size: .82rem;
-      font-weight: 700;
+    .cv-role-email{
+      margin-top:6px;
+      font-size:.82rem;
+      line-height:1.35;
     }
 
-    .cv-pdf-heading h2 {
-      margin: 0 !important;
-      padding: 0 !important;
-      border: 0 !important;
-      color: #111;
-      font-size: .86rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .cv-role-email a{
+      color:#0057d9;
+      text-decoration:underline;
+      text-underline-offset:2px;
     }
 
-    .cv-fullscreen-btn {
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--rule);
-      border-radius: 7px;
-      background: #fafafa;
-      color: #111;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1rem;
-      line-height: 1;
-      flex: 0 0 auto;
+    .cv-inline-details{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
     }
 
-    .cv-fullscreen-btn:hover {
-      background: #f0f0f0;
+    .cv-detail-item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border:1px solid var(--rule);
+      background:#fcfcfc;
+      border-radius:8px;
     }
 
-    .pdf-viewer {
-      width: 100%;
-      height: 760px;
-      border: 1px solid var(--rule);
-      background: #f7f7f7;
-      border-radius: 0 0 10px 10px;
-      overflow: hidden;
+    .cv-detail-text{
+      line-height:1.55;
+      color:#333;
     }
 
-    .pdf-viewer iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
+    .cv-profiles{
+      margin:8px 0 6px;
     }
 
-    .pdf-viewer:fullscreen {
-      width: 100vw;
-      height: 100vh;
-      border-radius: 0;
-      background: #fff;
+    .cv-profiles .logo-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      max-width:none;
+      margin:0;
     }
 
-    /* =========================================
-       RESPONSIVE
-    ========================================= */
+    .cv-profiles .round-logo{
+      width:30px;
+      height:30px;
+      flex:0 0 auto;
+    }
 
-    @media (max-width: 1050px) {
+    .cv-profiles .round-logo.small{
+      width:26px;
+      height:26px;
+    }
 
+    /* Academic profile logos: small, clean, no borders */
+    .cv-profile-strip{
+      margin:14px 0 24px;
+      padding-bottom:14px;
+      border-bottom:1px solid var(--rule);
+    }
+
+    .cv-profile-strip h2{
+      font-size:1rem;
+      margin:0 0 10px;
+      padding:0;
+      border:0;
+    }
+
+    .cv-profile-links{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+      margin:0;
+    }
+
+    .cv-profile-link{
+      width:24px;
+      height:24px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      border:0;
+      background:transparent;
+      box-shadow:none;
+      transition:transform .15s ease, opacity .15s ease;
+    }
+
+    .cv-profile-link:hover{
+      transform:translateY(-2px);
+      opacity:.82;
+    }
+
+    .cv-profile-link img{
+      max-width:24px;
+      max-height:24px;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      display:block;
+    }
+
+    .cv-profile-link.wide img{
+      max-width:28px;
+      max-height:22px;
+    }
+
+    .cv-pdf-block{
+      margin-top:8px;
+    }
+
+    .pdf-viewer{
+      width:100%;
+      height:860px;
+      border:1px solid var(--rule);
+      background:#f7f7f7;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .pdf-viewer iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    @media (max-width:860px){
+      .cv-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:720px){
+      .pdf-viewer{
+        height:680px;
+      }
+    }
+
+    /* CV page redesign: top image + two-column CV/PDF layout */
+    .cv-page{
+      max-width:1280px !important;
+    }
+
+    .cv-top{
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 540px;
+      gap:28px;
+      align-items:start;
+      margin:6px 0 22px;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--rule);
+    }
+
+    .cv-hero{
+      margin:0 0 18px !important;
+    }
+
+    .cv-hero h1{
+      margin-bottom:6px;
+    }
+
+    .cv-hero .position{
+      margin-bottom:0;
+    }
+
+    .cv-profile-strip{
+      margin:0 !important;
+      padding-bottom:0 !important;
+      border-bottom:0 !important;
+    }
+
+    .cv-landscape-caption{
+      max-width:540px;
+      margin:0 0 7px auto;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      color:#555;
+      text-align:left;
+    }
+
+    .cv-landscape{
+      width:100%;
+      max-width:540px;
+      height:182px;
+      margin-left:auto;
+      border:1px solid var(--rule);
+      border-radius:12px;
+      overflow:hidden;
+      background:#f7f7f7;
+      box-shadow:0 5px 16px rgba(0,0,0,.05);
+    }
+
+    .cv-landscape img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:center center;
+    }
+
+    .cv-two-column{
+      display:grid;
+      grid-template-columns:minmax(0, 0.92fr) minmax(420px, 0.78fr);
+      gap:28px;
+      align-items:start;
+    }
+
+    .cv-left{
+      min-width:0;
+    }
+
+    .cv-right{
+      min-width:0;
+      position:sticky;
+      top:74px;
+      align-self:start;
+    }
+
+    .cv-grid{
+      grid-template-columns:1fr !important;
+      gap:12px !important;
+    }
+
+    .cv-card{
+      padding:12px 13px !important;
+    }
+
+    .cv-card-icon{
+      width:38px !important;
+      height:38px !important;
+    }
+
+    .cv-card-icon svg{
+      width:19px !important;
+      height:19px !important;
+    }
+
+    .cv-place{
+      line-height:1.42 !important;
+    }
+
+    .cv-section{
+      margin:18px 0 24px !important;
+    }
+
+    .cv-section h2{
+      margin-bottom:10px !important;
+    }
+
+    .cv-pdf-block{
+      margin-top:0 !important;
+    }
+
+    .cv-pdf-heading{
+      height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:0 12px;
+      margin-bottom:0;
+      background:#fff;
+      color:#111;
+      border:1px solid var(--rule);
+      border-bottom:0;
+      border-radius:10px 10px 0 0;
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .cv-pdf-heading h2{
+      margin:0 !important;
+      padding-bottom:0 !important;
+      border-bottom:0 !important;
+      color:#111;
+      font-size:.86rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .cv-fullscreen-btn{
+      width:34px;
+      height:34px;
+      border:1px solid var(--rule);
+      border-radius:7px;
+      background:#fafafa;
+      color:#111;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:1rem;
+      line-height:1;
+      flex:0 0 auto;
+    }
+
+    .cv-fullscreen-btn:hover{
+      background:#f0f0f0;
+    }
+
+    .pdf-viewer{
+      border-radius:0 0 10px 10px !important;
+    }
+
+    .pdf-viewer{
+      height:760px !important;
+      border-radius:10px !important;
+    }
+
+    @media (max-width:1050px){
       .cv-top,
-      .cv-two-column {
-        grid-template-columns: 1fr;
+      .cv-two-column{
+        grid-template-columns:1fr;
       }
 
-      .cv-right {
-        position: static;
+      .cv-right{
+        position:static;
       }
 
-      .cv-landscape {
-        max-width: 100%;
-        height: 190px;
-        margin-left: 0;
+      .cv-landscape{
+        max-width:100%;
+        height:190px;
+        margin-left:0;
       }
 
-      .cv-landscape-caption {
-        max-width: 100%;
-        margin-left: 0;
-      }
-
-      .pdf-viewer {
-        height: 720px;
+      .pdf-viewer{
+        height:720px !important;
       }
     }
 
-    @media (max-width: 720px) {
-
-      .cv-landscape {
-        height: 150px;
+    @media (max-width:720px){
+      .cv-landscape{
+        height:150px;
       }
 
-      .pdf-viewer {
-        height: 680px;
-      }
-
-      .cv-top {
-        gap: 16px;
-      }
-
-      .cv-two-column {
-        gap: 20px;
+      .pdf-viewer{
+        height:680px !important;
       }
     }
   </style>
 </head>
 
 <body>
-
-<!-- =========================================
-     NAVIGATION
-========================================= -->
-
 <header class="topbar">
   <div class="wrap">
     <div class="nav">
-
-      <a class="name" href="index.html">
-        Gianluca Monturano, PhD
-      </a>
+      <a class="name" href="index.html">Gianluca Monturano, PhD</a>
 
       <nav class="menu" aria-label="Primary navigation">
         <a href="index.html">Home</a>
@@ -494,241 +521,81 @@
         <a href="dissemination.html">Dissemination</a>
         <a class="active" href="cv.html">CV</a>
       </nav>
-
     </div>
   </div>
 </header>
 
-<!-- =========================================
-     MAIN PAGE
-========================================= -->
-
 <main class="wrap page cv-page">
-
-  <!-- =======================================
-       TOP AREA
-  ======================================== -->
-
   <section class="cv-top">
-
     <div>
-
       <section class="cv-hero">
         <h1>Curriculum vitae</h1>
-
-        <p class="position">
-          Academic profile, current positions and full CV preview.
-        </p>
+        <p class="position">Academic profile, current positions and full CV preview.</p>
       </section>
-
-      <!-- ===================================
-           ACADEMIC PROFILES
-      ==================================== -->
 
       <section class="cv-profile-strip">
-
         <h2>Academic profiles</h2>
 
-        <div
-          class="cv-profile-links"
-          aria-label="Main academic and professional profiles"
-        >
-
-          <a
-            class="cv-profile-link"
-            href="https://www.linkedin.com/in/gianluca-monturano93/"
-            title="LinkedIn"
-            aria-label="LinkedIn"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/LinkeIn.png"
-              alt="LinkedIn"
-            >
+        <div class="cv-profile-links" aria-label="Main academic and professional profiles">
+          <a class="cv-profile-link" href="https://www.linkedin.com/in/gianluca-monturano93/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <img src="assets/icons/LinkeIn.png" alt="LinkedIn">
           </a>
 
-          <a
-            class="cv-profile-link wide"
-            href="https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB"
-            title="Microsoft Teams"
-            aria-label="Microsoft Teams"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/teams.jpg"
-              alt="Microsoft Teams"
-            >
+          <a class="cv-profile-link wide" href="https://teams.live.com/meet/9352556770941?p=nsbqeskWOO0TsyRsZB" title="Microsoft Teams" aria-label="Microsoft Teams" target="_blank" rel="noopener">
+            <img src="assets/icons/teams.jpg" alt="Teams">
           </a>
 
-          <a
-            class="cv-profile-link wide"
-            href="https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao"
-            title="Google Scholar"
-            aria-label="Google Scholar"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/Scholar.png"
-              alt="Google Scholar"
-            >
+          <a class="cv-profile-link wide" href="https://scholar.google.com/citations?user=pMHPXbYAAAAJ&hl=en&oi=ao" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener">
+            <img src="assets/icons/Scholar.png" alt="Google Scholar">
           </a>
 
-          <a
-            class="cv-profile-link"
-            href="https://github.com/gmonturano"
-            title="GitHub"
-            aria-label="GitHub"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/github.svg"
-              alt="GitHub"
-            >
+          <a class="cv-profile-link" href="https://github.com/gmonturano" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
+            <img src="assets/icons/github.svg" alt="GitHub">
           </a>
 
-          <a
-            class="cv-profile-link"
-            href="https://www.researchgate.net/profile/Gianluca-Monturano"
-            title="ResearchGate"
-            aria-label="ResearchGate"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/Research_gate.png"
-              alt="ResearchGate"
-            >
+          <a class="cv-profile-link" href="https://www.researchgate.net/profile/Gianluca-Monturano" title="ResearchGate" aria-label="ResearchGate" target="_blank" rel="noopener">
+            <img src="assets/icons/Research_gate.png" alt="ResearchGate">
           </a>
 
-          <a
-            class="cv-profile-link"
-            href="https://orcid.org/0009-0003-0728-1423"
-            title="ORCID"
-            aria-label="ORCID"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/Orcid.png"
-              alt="ORCID"
-            >
+          <a class="cv-profile-link" href="https://orcid.org/0009-0003-0728-1423" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
+            <img src="assets/icons/Orcid.png" alt="ORCID">
           </a>
 
-          <a
-            class="cv-profile-link"
-            href="https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage"
-            title="Scopus"
-            aria-label="Scopus"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/Socups.jpg"
-              alt="Scopus"
-            >
+          <a class="cv-profile-link" href="https://www.scopus.com/authid/detail.uri?authorId=58619644100&origin=recordPage" title="Scopus" aria-label="Scopus" target="_blank" rel="noopener">
+            <img src="assets/icons/Socups.jpg" alt="Scopus">
           </a>
 
-          <a
-            class="cv-profile-link"
-            href="https://x.com/GMonturano"
-            title="X"
-            aria-label="X"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/x.svg"
-              alt="X"
-            >
+          <a class="cv-profile-link" href="https://x.com/GMonturano" title="X" aria-label="X" target="_blank" rel="noopener">
+            <img src="assets/icons/x.svg" alt="X">
           </a>
 
-          <a
-            class="cv-profile-link wide"
-            href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author"
-            title="arXiv"
-            aria-label="arXiv"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/ArXiv.png"
-              alt="arXiv"
-            >
+          <a class="cv-profile-link wide" href="https://arxiv.org/search/?query=Gianluca+Monturano&searchtype=author" title="arXiv" aria-label="arXiv" target="_blank" rel="noopener">
+            <img src="assets/icons/ArXiv.png" alt="arXiv">
           </a>
 
-          <a
-            class="cv-profile-link"
-            href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6299055"
-            title="SSRN"
-            aria-label="SSRN"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="assets/icons/ssrn.svg"
-              alt="SSRN"
-            >
+          <a class="cv-profile-link" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6299055" title="SSRN" aria-label="SSRN" target="_blank" rel="noopener">
+            <img src="assets/icons/ssrn.svg" alt="SSRN">
           </a>
-
         </div>
       </section>
-
     </div>
-
-    <!-- =====================================
-         LANDSCAPE
-    ====================================== -->
 
     <div>
-
-      <div class="cv-landscape-caption">
-        My place with a view over the Adriatic Sea
-      </div>
-
-      <figure
-        class="cv-landscape"
-        aria-label="Landscape image"
-      >
-        <img
-          src="assets/cv-landscap.png"
-          alt="Landscape view"
-        >
+      <div class="cv-landscape-caption">My place with a view over the Adriatic Sea</div>
+      <figure class="cv-landscape" aria-label="Landscape image">
+        <img src="assets/cv-landscap.png" alt="Landscape view">
       </figure>
-
     </div>
-
   </section>
 
-  <!-- =======================================
-       CV CONTENT AND PDF
-  ======================================== -->
-
   <div class="cv-two-column">
-
     <div class="cv-left">
-
-      <!-- ===================================
-           CURRENT ROLES
-      ==================================== -->
-
       <section class="cv-section">
-
         <h2>Current roles</h2>
 
         <div class="cv-grid">
-
-          <!-- TENURE-TRACK RESEARCHER -->
-
           <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-blue"
-              aria-hidden="true"
-            >
+            <div class="cv-card-icon cv-icon-blue" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M4 20h16"/>
                 <path d="M5 20V9l7-4 7 4v11"/>
@@ -738,27 +605,17 @@
             </div>
 
             <div class="cv-card-body">
-
-              <span class="cv-date">
-                2026–present
-              </span>
-
-              <span class="cv-role">
-                Tenure-Track Researcher (RTT) in Political Economy
-              </span>
-
+              <span class="cv-date">2026–present</span>
+              <span class="cv-role">Assistant Professor (RTDA)</span>
+              <div class="cv-place">Department of Economics, University of Salento.</div>
+              <div class="cv-role-email">
+                <a href="mailto:gianluca.monturano@unisalento.it">gianluca.monturano@unisalento.it</a>
+              </div>
             </div>
-
           </article>
 
-          <!-- FONDAZIONE ENI ENRICO MATTEI -->
-
           <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-green"
-              aria-hidden="true"
-            >
+            <div class="cv-card-icon cv-icon-green" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M9 3v6l-4 8a3 3 0 0 0 2.7 4h8.6a3 3 0 0 0 2.7-4l-4-8V3"/>
                 <path d="M8 3h8"/>
@@ -768,37 +625,17 @@
             </div>
 
             <div class="cv-card-body">
-
-              <span class="cv-date">
-                2026–present
-              </span>
-
-              <span class="cv-role">
-                Senior Researcher
-              </span>
-
-              <div class="cv-place">
-                Fondazione Eni Enrico Mattei, Milan.
-              </div>
-
+              <span class="cv-date">2026–present</span>
+              <span class="cv-role">Senior Researcher</span>
+              <div class="cv-place">Fondazione Eni Enrico Mattei, Milan.</div>
               <div class="cv-role-email">
-                <a href="mailto:gianluca.monturano@feem.it">
-                  gianluca.monturano@feem.it
-                </a>
+                <a href="mailto:gianluca.monturano@feem.it">gianluca.monturano@feem.it</a>
               </div>
-
             </div>
-
           </article>
 
-          <!-- LABORATORY OF APPLIED ECONOMICS -->
-
           <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-orange"
-              aria-hidden="true"
-            >
+            <div class="cv-card-icon cv-icon-orange" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M4 19V5"/>
                 <path d="M4 19h16"/>
@@ -809,39 +646,17 @@
             </div>
 
             <div class="cv-card-body">
-
-              <span class="cv-date">
-                2024–present
-              </span>
-
-              <span class="cv-role">
-                Senior Researcher
-              </span>
-
-              <div class="cv-place">
-                Laboratory of Applied Economics (LEA),
-                Department of Economics, Management and
-                Business Law, University of Bari.
-              </div>
-
+              <span class="cv-date">2024–present</span>
+              <span class="cv-role">Senior Researcher</span>
+              <div class="cv-place">Laboratory of Applied Economics (LEA), Department of Economics, Management and Business Law, University of Bari.</div>
               <div class="cv-role-email">
-                <a href="mailto:gianluca.monturano@uniba.it">
-                  gianluca.monturano@uniba.it
-                </a>
+                <a href="mailto:gianluca.monturano@uniba.it">gianluca.monturano@uniba.it</a>
               </div>
-
             </div>
-
           </article>
 
-          <!-- ADJUNCT PROFESSOR -->
-
           <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-purple"
-              aria-hidden="true"
-            >
+            <div class="cv-card-icon cv-icon-purple" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M3 7l9-4 9 4-9 4-9-4z"/>
                 <path d="M7 10v5c0 2 2 4 5 4s5-2 5-4v-5"/>
@@ -850,86 +665,23 @@
             </div>
 
             <div class="cv-card-body">
-
-              <span class="cv-date">
-                2025–present
-              </span>
-
-              <span class="cv-role">
-                Adjunct Professor of Political Economy
-              </span>
-
-              <div class="cv-place">
-                Department of Economics, Management and
-                Business Law, University of Bari.
-              </div>
-
+              <span class="cv-date">2025–present</span>
+              <span class="cv-role">Adjunct Professor of Political Economy</span>
+              <div class="cv-place">Department of Economics, Management and Business Law, University of Bari.</div>
               <div class="cv-role-email">
-                <a href="mailto:gianluca.monturano@uniba.it">
-                  gianluca.monturano@uniba.it
-                </a>
+                <a href="mailto:gianluca.monturano@uniba.it">gianluca.monturano@uniba.it</a>
               </div>
-
             </div>
-
           </article>
-
         </div>
       </section>
 
-      <!-- ===================================
-           PREVIOUS ROLES AND EDUCATION
-      ==================================== -->
-
       <section class="cv-section">
-
         <h2>Previous roles and education</h2>
 
         <div class="cv-grid">
-
-          <!-- UNIVERSITY OF SALENTO -->
-
           <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-blue"
-              aria-hidden="true"
-            >
-              <svg viewBox="0 0 24 24">
-                <path d="M4 20h16"/>
-                <path d="M5 20V9l7-4 7 4v11"/>
-                <path d="M9 20v-6h6v6"/>
-                <path d="M9 11h.01M12 11h.01M15 11h.01"/>
-              </svg>
-            </div>
-
-            <div class="cv-card-body">
-
-              <span class="cv-date">
-                2026
-              </span>
-
-              <span class="cv-role">
-                Assistant Professor (RTDA) in Political Economy
-              </span>
-
-              <div class="cv-place">
-                Department of Economics,
-                University of Salento.
-              </div>
-
-            </div>
-
-          </article>
-
-          <!-- UNIVERSITY OF BARI -->
-
-          <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-teal"
-              aria-hidden="true"
-            >
+            <div class="cv-card-icon cv-icon-teal" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M8 4h8"/>
                 <path d="M10 4v5l-5 8a3 3 0 0 0 2.6 4h8.8a3 3 0 0 0 2.6-4l-5-8V4"/>
@@ -938,32 +690,14 @@
             </div>
 
             <div class="cv-card-body">
-
-              <span class="cv-date">
-                2024–2026
-              </span>
-
-              <span class="cv-role">
-                Postdoctoral Research Fellow
-              </span>
-
-              <div class="cv-place">
-                Department of Economics, Management and
-                Business Law, University of Bari.
-              </div>
-
+              <span class="cv-date">2024–2026</span>
+              <span class="cv-role">Postdoctoral Research Fellow</span>
+              <div class="cv-place">Department of Economics, Management and Business Law, University of Bari.</div>
             </div>
-
           </article>
 
-          <!-- PHD -->
-
           <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-red"
-              aria-hidden="true"
-            >
+            <div class="cv-card-icon cv-icon-red" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M12 3l9 5-9 5-9-5 9-5z"/>
                 <path d="M5 10v5c2 3 12 3 14 0v-5"/>
@@ -973,32 +707,14 @@
             </div>
 
             <div class="cv-card-body">
-
-              <span class="cv-date">
-                2021–2025
-              </span>
-
-              <span class="cv-role">
-                Ph.D. in Economics
-              </span>
-
-              <div class="cv-place">
-                Department of Economics,
-                University of Modena and Reggio Emilia.
-              </div>
-
+              <span class="cv-date">2021–2025</span>
+              <span class="cv-role">Ph.D. in Economics</span>
+              <div class="cv-place">Department of Economics, University of Modena and Reggio Emilia.</div>
             </div>
-
           </article>
 
-          <!-- VISITING PHD -->
-
           <article class="cv-card">
-
-            <div
-              class="cv-card-icon cv-icon-grey"
-              aria-hidden="true"
-            >
+            <div class="cv-card-icon cv-icon-grey" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"/>
                 <path d="M3 12h18"/>
@@ -1010,43 +726,20 @@
             </div>
 
             <div class="cv-card-body">
-
-              <span class="cv-date">
-                2024
-              </span>
-
-              <span class="cv-role">
-                Visiting PhD Candidate
-              </span>
-
-              <div class="cv-place">
-                Solvay Brussels School of Economics and
-                Management, Université Libre de Bruxelles.
-              </div>
-
+              <span class="cv-date">2024</span>
+              <span class="cv-role">Visiting PhD Candidate</span>
+              <div class="cv-place">Solvay Brussels School of Economics and Management, Université Libre de Bruxelles.</div>
             </div>
-
           </article>
-
         </div>
       </section>
 
-      <!-- ===================================
-           OTHER ACADEMIC ROLES
-      ==================================== -->
-
       <section class="cv-section">
-
         <h2>Other academic roles</h2>
 
         <div class="cv-inline-details">
-
           <div class="cv-detail-item">
-
-            <div
-              class="cv-detail-icon cv-icon-blue"
-              aria-hidden="true"
-            >
+            <div class="cv-detail-icon cv-icon-blue" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M6 5h12"/>
                 <path d="M8 5c4 5 4 9 0 14"/>
@@ -1056,124 +749,58 @@
             </div>
 
             <div class="cv-detail-text">
-              Subject expert appointments in Applied Economics,
-              Statistics and Economic Statistics at the University
-              of Bari, University of Modena and Reggio Emilia,
-              University of Milano-Bicocca.
+              Subject expert appointments in Applied Economics, Statistics and Economic Statistics at the University of Bari, University of Modena and Reggio Emilia, University of Milano-Bicocca.
             </div>
-
           </div>
-
         </div>
       </section>
-
     </div>
 
-    <!-- =====================================
-         RIGHT COLUMN: PDF
-    ====================================== -->
-
     <aside class="cv-right">
-
       <section class="cv-section cv-pdf-block">
-
         <div class="cv-pdf-heading">
-
           <h2>Scientific CV</h2>
-
-          <button
-            class="cv-fullscreen-btn"
-            type="button"
-            title="Full screen"
-            aria-label="Full screen"
-            onclick="openCvFullscreen()"
-          >
-            ⛶
-          </button>
-
+          <button class="cv-fullscreen-btn" type="button" title="Full screen" aria-label="Full screen" onclick="openCvFullscreen()">⛶</button>
         </div>
 
-        <div
-          class="pdf-viewer"
-          id="cvPdfViewer"
-        >
-
-          <iframe
-            src="cv/main.pdf"
-            title="Curriculum vitae - Gianluca Monturano"
-          ></iframe>
-
+        <div class="pdf-viewer" id="cvPdfViewer">
+          <iframe src="cv/main.pdf" title="Curriculum vitae - Gianluca Monturano"></iframe>
         </div>
-
       </section>
-
     </aside>
-
   </div>
 </main>
 
-<!-- =========================================
-     FOOTER
-========================================= -->
-
 <footer class="footer">
-
   <div class="wrap footer-inner">
-
-    <span>
-      © Gianluca Monturano
-    </span>
-
-    <span>
-      CV
-    </span>
-
+    <span>© Gianluca Monturano</span>
+    <span>CV</span>
   </div>
-
 </footer>
 
-<!-- =========================================
-     FULLSCREEN SCRIPT
-========================================= -->
-
 <script>
-
   function openCvFullscreen() {
-
     const viewer = document.getElementById("cvPdfViewer");
-
-    if (!viewer) {
-      return;
-    }
+    if (!viewer) return;
 
     if (!document.fullscreenElement) {
-
       if (viewer.requestFullscreen) {
         viewer.requestFullscreen();
-
       } else if (viewer.webkitRequestFullscreen) {
         viewer.webkitRequestFullscreen();
-
       } else if (viewer.msRequestFullscreen) {
         viewer.msRequestFullscreen();
       }
-
     } else {
-
       if (document.exitFullscreen) {
         document.exitFullscreen();
-
       } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
-
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
       }
-
     }
-
   }
-
 </script>
 
 </body>
